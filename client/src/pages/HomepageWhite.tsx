@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import {
   Accordion,
   AccordionContent,
@@ -125,7 +125,7 @@ export const HomepageWhite = (): JSX.Element => {
     <div className="min-h-screen w-full bg-white">
       <header className="sticky top-0 z-50 border-b border-transparent bg-white">
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-8 px-4 py-3 md:px-[53px] md:py-[19px]">
-          <Link to="/homepage-u47-white-background" className="shrink-0">
+          <Link href="/" className="shrink-0">
             <img
               className="block h-auto w-[180px] md:w-[270px]"
               alt="Logo"
