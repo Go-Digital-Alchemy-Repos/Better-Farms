@@ -247,7 +247,7 @@ export const GetInvolved = (): JSX.Element => {
               <img
                 className="mt-24 h-[420px] w-full rounded-[14px] object-cover"
                 alt="Sheep gathered in a pasture"
-                src="/figmaAssets/sheep_feeding.jpg"
+                src="/figmaAssets/sheep_flock.jpg"
               />
               <img
                 className="mt-24 h-[330px] w-full rounded-[14px] object-cover"
@@ -413,7 +413,7 @@ export const GetInvolved = (): JSX.Element => {
           <img
             className="mt-10 h-[380px] w-full object-cover md:h-[480px]"
             alt="Cattle grazing in a wide pasture"
-            src="/figmaAssets/grazing_pasture.jpg"
+            src="/figmaAssets/cattle_herd_pano.jpg"
           />
         </section>
       </main>
