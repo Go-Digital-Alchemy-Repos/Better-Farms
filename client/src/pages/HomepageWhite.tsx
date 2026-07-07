@@ -169,7 +169,7 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Group"
               src="/figmaAssets/group-2.png"
             />
-            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[110px]">
+            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[110px]">
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
@@ -194,7 +194,7 @@ export const HomepageWhite = (): JSX.Element => {
         <section className="mx-auto grid max-w-[1440px] grid-cols-1 overflow-hidden md:grid-cols-2">
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[720px] md:px-[94px] md:py-[154px]">
             <div className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Benton_Modern_D-Bold',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
                 Building Better Farms From the Ground Up
               </h2>
               <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-white">
@@ -266,7 +266,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[730px]">
-            <h2 className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
@@ -326,7 +326,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
@@ -387,7 +387,7 @@ export const HomepageWhite = (): JSX.Element => {
             <div className="absolute inset-0 bg-[#827b3e] opacity-80" />
             <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
               <div>
-                <h2 className="max-w-[642px] [font-family:'Benton_Modern_D-Bold',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
                   Sign up for Our Newsletter, See What&apos;s Growing
                 </h2>
                 <p className="mt-8 max-w-[529px] [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-white">
@@ -442,7 +442,7 @@ export const HomepageWhite = (): JSX.Element => {
             <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#5e4540]" />
           </div>
           <div className="mx-auto mt-12 max-w-[844px]">
-            <h2 className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               Led by the People Who Built Organic Agriculture
             </h2>
           </div>
@@ -452,8 +452,8 @@ export const HomepageWhite = (): JSX.Element => {
             that expertise to work for the farms that need it most.
           </p>
           <div className="mx-auto mt-12 max-w-[944px] rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
-            <blockquote className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
-              <span className="[font-family:'Benton_Modern_D-BoldItalic',Helvetica] italic font-bold">
+            <blockquote className="text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
+              <span className="[font-family:'Playfair_Display',Helvetica] italic font-bold">
                 &quot;We knew what we needed to do to make our operation more
                 resilient, but we couldn&apos;t get the financing. Better Farms
                 didn&apos;t just write a check—they helped us design the
@@ -522,7 +522,7 @@ export const HomepageWhite = (): JSX.Element => {
           />
           <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[240px]">
             <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[84px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[84px]">
                 Fund a Farm Today
               </h2>
               <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">
@@ -619,7 +619,7 @@ export const HomepageWhite = (): JSX.Element => {
               ))}
             </nav>
             <div>
-              <h2 className="text-center [font-family:'Benton_Modern_D-Bold',Helvetica] text-[32px] font-bold leading-[1.05] text-white md:text-[40px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] text-white md:text-[40px]">
                 Sign up for Our Newsletter, See What&apos;s Growing
               </h2>
               <form className="mt-6 space-y-4">
