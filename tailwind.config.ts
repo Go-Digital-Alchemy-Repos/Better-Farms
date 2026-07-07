@@ -49,7 +49,9 @@ module.exports = {
         h2: "var(--h2-font-family)",
         h3: "var(--h3-font-family)",
         "intro-large": "var(--intro-large-font-family)",
+        heading: ['"Playfair Display"', "Georgia", "serif"],
         sans: [
+          '"Inter"',
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
