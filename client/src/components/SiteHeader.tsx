@@ -6,7 +6,7 @@ export const navItems = [
   { label: "HOW IT WORKS", href: "/how-it-works" },
   { label: "GET INVOLVED", href: "/" },
   { label: "FOR FARMERS", href: "/" },
-  { label: "CONTACT", href: "/" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export const SiteHeader = (): JSX.Element => {
