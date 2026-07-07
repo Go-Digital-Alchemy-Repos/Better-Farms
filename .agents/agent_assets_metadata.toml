@@ -72,3 +72,9 @@ id = "F966tpRKIJbNxLuDmlBrF"
 uri = "file://attached_assets/stock_images/farm_silo.jpg"
 type = "image"
 title = "corn field farm silo sepia landscape"
+
+[[outputs]]
+id = "5tP_V-iKkNBrFyilZ3Hl7"
+uri = "file://attached_assets/stock_images/stock_image.jpg"
+type = "image"
+title = "rancher cattle field sunset mountains"

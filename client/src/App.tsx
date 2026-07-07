@@ -6,12 +6,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { HomepageWhite } from "@/pages/HomepageWhite";
 import { HowItWorks } from "@/pages/HowItWorks";
+import { AboutUs } from "@/pages/AboutUs";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomepageWhite} />
       <Route path="/how-it-works" component={HowItWorks} />
+      <Route path="/about" component={AboutUs} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

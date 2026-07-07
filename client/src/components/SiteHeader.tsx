@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 
 export const navItems = [
-  { label: "ABOUT US", href: "/" },
+  { label: "ABOUT US", href: "/about" },
   { label: "HOW IT WORKS", href: "/how-it-works" },
   { label: "GET INVOLVED", href: "/" },
   { label: "FOR FARMERS", href: "/" },
