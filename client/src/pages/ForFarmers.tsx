@@ -112,7 +112,7 @@ export const ForFarmers = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-14 md:px-8 md:py-20">
+        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
             The Farm Projects We Fund
           </h2>
@@ -148,7 +148,7 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-14 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms

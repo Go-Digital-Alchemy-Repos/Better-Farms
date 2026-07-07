@@ -149,7 +149,7 @@ export const GetInvolved = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pt-14 md:px-[60px] md:pt-[80px]">
+          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pt-10 md:px-[60px] md:pt-14">
             <p className="text-center text-xl font-bold text-white md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
@@ -164,7 +164,7 @@ export const GetInvolved = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-16 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#2f2820] md:text-xl">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
@@ -266,7 +266,7 @@ export const GetInvolved = (): JSX.Element => {
               src="/figmaAssets/cornfield_farm.jpg"
             />
             <div className="absolute inset-0 bg-[#8a4f37]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[80px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter, See What&apos;s Growing
@@ -304,11 +304,11 @@ export const GetInvolved = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-16 md:px-8 md:py-24">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Why Partner With Better Farms
           </h2>
-          <div className="mx-auto mt-16 grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
             {partnerBenefits.map((benefit, index) => (
               <div
                 key={index}

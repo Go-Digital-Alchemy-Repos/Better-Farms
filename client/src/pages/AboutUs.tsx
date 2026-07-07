@@ -98,7 +98,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-14 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <blockquote
             className="mx-auto max-w-[640px] text-center text-[26px] leading-[1.5] text-[#5e4540] md:text-[32px]"
             style={{ fontFamily: '"Dancing Script", cursive' }}
@@ -119,7 +119,7 @@ export const AboutUs = (): JSX.Element => {
             alt="Rolling hills and farmland"
             src="/figmaAssets/hills_valley.jpg"
           />
-          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-16 pt-14 md:rounded-b-[30px] md:px-8 md:pb-24 md:pt-20">
+          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-16 md:pt-14">
             <div className="mx-auto max-w-[1000px]">
               <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[52px]">
                 The Principles Behind Every Project
@@ -142,7 +142,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-16 md:px-8 md:py-24">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
@@ -190,7 +190,7 @@ export const AboutUs = (): JSX.Element => {
               src="/figmaAssets/cornfield_farm.jpg"
             />
             <div className="absolute inset-0 bg-[#5c5426]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[80px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter, See What&apos;s Growing
@@ -228,7 +228,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-16 md:px-8 md:py-24">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
@@ -261,7 +261,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-14 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[720px] text-center text-[40px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
             Ready to See How It Works?
           </h2>

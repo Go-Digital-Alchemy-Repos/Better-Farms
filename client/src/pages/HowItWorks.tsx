@@ -189,7 +189,7 @@ export const HowItWorks = (): JSX.Element => {
               src="/figmaAssets/farm_silo.jpg"
             />
             <div className="absolute inset-0 bg-[#8a4a35]/80" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[80px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter, See What&apos;s Growing
@@ -227,7 +227,7 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-14 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms
@@ -310,7 +310,7 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-14 md:px-8 md:py-20">
+        <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
             <div>
               <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
@@ -339,7 +339,7 @@ export const HowItWorks = (): JSX.Element => {
               src="/figmaAssets/farmer_wheat_tablet.jpg"
             />
           </div>
-          <div className="mx-auto mt-16 grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
             <img
               className="order-1 h-[400px] w-full rounded-none object-cover"
               alt="Pig on pasture"
