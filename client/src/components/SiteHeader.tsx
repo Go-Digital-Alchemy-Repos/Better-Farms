@@ -28,7 +28,7 @@ export const SiteHeader = (): JSX.Element => {
               key={item.label}
               href={item.href}
               data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-              className={`[font-family:'Inter',Helvetica] text-lg font-bold leading-[26px] text-[#5e4540] transition-opacity hover:opacity-80 ${
+              className={`[font-family:'Inter',Helvetica] text-lg font-bold leading-[26px] text-[#5e4540] transition-colors hover:text-[#827b3e] ${
                 item.href !== "/" && location === item.href ? "underline underline-offset-4" : ""
               }`}
             >

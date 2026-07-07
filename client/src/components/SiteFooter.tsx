@@ -26,7 +26,7 @@ export const SiteFooter = (): JSX.Element => {
                 key={item.label}
                 href={item.href}
                 data-testid={`link-footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className="[font-family:'Inter',Helvetica] text-base font-medium leading-[normal] text-white"
+                className="[font-family:'Inter',Helvetica] text-base font-medium leading-[normal] text-white transition-colors hover:text-[#827b3e]"
               >
                 {item.label}
               </Link>
