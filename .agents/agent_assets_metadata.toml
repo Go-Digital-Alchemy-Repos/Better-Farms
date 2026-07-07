@@ -1,0 +1,74 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "jA_mOdOzMiKUJ2IPC_g6f"
+uri = "file://attached_assets/stock_images/drip_irrigation.jpg"
+type = "image"
+title = "drip irrigation water droplet on crops close up"
+
+[[outputs]]
+id = "SFKxzKWGP23cPtpm5J1M-"
+uri = "file://attached_assets/stock_images/barn_infrastructure.jpg"
+type = "image"
+title = "old wooden barn on ranch with mountains"
+
+[[outputs]]
+id = "aK_j0jxtybyUk4JdUqaUF"
+uri = "file://attached_assets/stock_images/regenerative_practices.jpg"
+type = "image"
+title = "farmer kneeling in pasture holding soil grass with cattle"
+
+[[outputs]]
+id = "SKIE4wSGOWNvwDBge3MVw"
+uri = "file://attached_assets/stock_images/solar_farm.jpg"
+type = "image"
+title = "solar panels on farm field"
+
+[[outputs]]
+id = "vY80bXBuxXl5XlaG7FKdj"
+uri = "file://attached_assets/stock_images/food_processing.jpg"
+type = "image"
+title = "food processing facility conveyor belt"
+
+[[outputs]]
+id = "FHVvilZZImIIM_phP6AEt"
+uri = "file://attached_assets/stock_images/farmers_field.jpg"
+type = "image"
+title = "two farmers walking in green soybean field at sunset"
+
+[[outputs]]
+id = "VHs3VBuPYPBbj-ThgoynS"
+uri = "file://attached_assets/stock_images/handshake_field.jpg"
+type = "image"
+title = "two farmers shaking hands in crop field wide landscape"
+
+[[outputs]]
+id = "gFoiH4vBSN1C7GQQdbDZX"
+uri = "file://attached_assets/stock_images/grazing_pasture.jpg"
+type = "image"
+title = "sheep and alpacas grazing green pasture hillside"
+
+[[outputs]]
+id = "2wz2nqPozRUE0ia2ffLJX"
+uri = "file://attached_assets/stock_images/farmer_wheat_tablet.jpg"
+type = "image"
+title = "farmer with tablet standing in wheat field"
+
+[[outputs]]
+id = "oiQMkHZvbwOGwPME2wMK9"
+uri = "file://attached_assets/stock_images/pig_pasture.jpg"
+type = "image"
+title = "brown pig piglet on grass pasture farm"
+
+[[outputs]]
+id = "xk1fhOL7GNEDlXEGuviYm"
+uri = "file://attached_assets/stock_images/orchard_aerial.jpg"
+type = "image"
+title = "aerial view apple harvest tractor orchard crates"
+
+[[outputs]]
+id = "F966tpRKIJbNxLuDmlBrF"
+uri = "file://attached_assets/stock_images/farm_silo.jpg"
+type = "image"
+title = "corn field farm silo sepia landscape"

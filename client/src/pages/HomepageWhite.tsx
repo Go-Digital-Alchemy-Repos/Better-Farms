@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import {
   Accordion,
   AccordionContent,
@@ -9,17 +8,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const HomepageWhite = (): JSX.Element => {
   const [selectedDonation, setSelectedDonation] = useState("$30");
-
-  const navItems = [
-    "ABOUT US",
-    "HOW IT WORKS",
-    "GET INVOLVED",
-    "FOR FARMERS",
-    "CONTACT",
-  ];
 
   const impactStats = [
     {
@@ -123,44 +116,7 @@ export const HomepageWhite = (): JSX.Element => {
 
   return (
     <div className="min-h-screen w-full bg-white">
-      <header className="sticky top-0 z-50 border-b border-transparent bg-white">
-        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-8 px-4 py-3 md:px-[53px] md:py-[19px]">
-          <Link href="/" className="shrink-0">
-            <img
-              className="block h-auto w-[180px] md:w-[270px]"
-              alt="Logo"
-              src="/figmaAssets/logo-1.svg"
-            />
-          </Link>
-          <nav
-            className="hidden items-center gap-6 lg:flex"
-            aria-label="Primary"
-          >
-            {navItems.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className="[font-family:'Inter',Helvetica] text-lg font-bold leading-[26px] text-[#5e4540] transition-opacity hover:opacity-80"
-              >
-                {item}
-              </button>
-            ))}
-          </nav>
-          <Button
-            type="button"
-            className="h-auto rounded-lg bg-[#7587ac] px-4 py-3 text-white hover:bg-[#6c7ea0] md:px-6"
-          >
-            <span className="[font-family:'Inter',Helvetica] text-sm font-medium md:text-lg">
-              Fund a Farm
-            </span>
-            <img
-              className="ml-2 h-6 w-6"
-              alt="Keyboard arrow right"
-              src="/figmaAssets/keyboard-arrow-right-2.svg"
-            />
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-[90px]">
           <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-8 md:px-[42px] md:pb-8 md:pt-[58px]">
@@ -589,118 +545,7 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
       </main>
-      <footer className="bg-[#5e4540] px-4 py-10 md:px-8 md:py-12">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="grid gap-10 md:grid-cols-[1fr_auto_430px] md:items-start md:px-[102px]">
-            <div className="space-y-6">
-              <img
-                className="h-auto w-[240px] md:w-[365px]"
-                alt="Logo"
-                src="/figmaAssets/logo.svg"
-              />
-              <img
-                className="h-7 w-[204px]"
-                alt="Frame"
-                src="/figmaAssets/frame-37278.svg"
-              />
-            </div>
-            <nav
-              className="flex flex-col items-start gap-4 pt-2"
-              aria-label="Footer"
-            >
-              {navItems.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  className="[font-family:'Inter',Helvetica] text-base font-medium leading-[normal] text-white"
-                >
-                  {item}
-                </button>
-              ))}
-            </nav>
-            <div>
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] text-white md:text-[40px]">
-                Sign up for Our Newsletter, See What&apos;s Growing
-              </h2>
-              <form className="mt-6 space-y-4">
-                <Input
-                  defaultValue="Full Name"
-                  className="h-[42.93px] rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-[1fr_122px] gap-[5px]">
-                  <Input
-                    defaultValue="Type Your Email..."
-                    className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="button"
-                    className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[19px] text-[#e6dfc9] hover:bg-[#6c7ea0]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-sm font-medium">
-                      Subscribe
-                    </span>
-                    <img
-                      className="ml-2 h-6 w-6"
-                      alt="Keyboard arrow right"
-                      src="/figmaAssets/keyboard-arrow-right-2.svg"
-                    />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="mt-12">
-            <img
-              className="h-auto w-full max-w-[1423px]"
-              alt="Better farms"
-              src="/figmaAssets/better-farms.svg"
-            />
-          </div>
-          <div className="mt-6 flex flex-col gap-4 border-t border-white/0 pt-2 md:flex-row md:items-center md:justify-between md:px-[103px]">
-            <div className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
-              <span>
-                © 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              </span>
-              <a
-                href="https://directory.herplan.org/privacy-policy"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="underline"
-              >
-                Privacy Policy
-              </a>
-              <span> | </span>
-              <a
-                href="https://directory.herplan.org/terms-conditions"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="underline"
-              >
-                Terms of Use
-              </a>
-              <span> | </span>
-              <a
-                href="https://herplan.org/accessibility/"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="underline"
-              >
-                Accessibility
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
-                Made by
-              </span>
-              <img
-                className="h-[21px] w-auto"
-                alt="Da logo"
-                src="/figmaAssets/da-logo.png"
-              />
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 };
