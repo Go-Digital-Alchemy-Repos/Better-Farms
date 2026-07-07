@@ -9,6 +9,7 @@ import { HowItWorks } from "@/pages/HowItWorks";
 import { AboutUs } from "@/pages/AboutUs";
 import { Contact } from "@/pages/Contact";
 import { ForFarmers } from "@/pages/ForFarmers";
+import { FundAFarm } from "@/pages/FundAFarm";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/about" component={AboutUs} />
       <Route path="/contact" component={Contact} />
       <Route path="/for-farmers" component={ForFarmers} />
+      <Route path="/fund-a-farm" component={FundAFarm} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

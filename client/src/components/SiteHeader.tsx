@@ -37,18 +37,20 @@ export const SiteHeader = (): JSX.Element => {
           ))}
         </nav>
         <Button
-          type="button"
+          asChild
           data-testid="button-fund-a-farm-header"
           className="h-auto rounded-lg bg-[#7587ac] px-4 py-3 text-white hover:bg-[#6c7ea0] md:px-6"
         >
-          <span className="[font-family:'Inter',Helvetica] text-sm font-medium md:text-lg">
-            Fund a Farm
-          </span>
-          <img
-            className="ml-2 h-6 w-6"
-            alt=""
-            src="/figmaAssets/keyboard-arrow-right-2.svg"
-          />
+          <Link href="/fund-a-farm">
+            <span className="[font-family:'Inter',Helvetica] text-sm font-medium md:text-lg">
+              Fund a Farm
+            </span>
+            <img
+              className="ml-2 h-6 w-6"
+              alt=""
+              src="/figmaAssets/keyboard-arrow-right-2.svg"
+            />
+          </Link>
         </Button>
       </div>
     </header>
