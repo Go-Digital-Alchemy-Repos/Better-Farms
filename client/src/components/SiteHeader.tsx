@@ -5,7 +5,7 @@ export const navItems = [
   { label: "ABOUT US", href: "/about" },
   { label: "HOW IT WORKS", href: "/how-it-works" },
   { label: "GET INVOLVED", href: "/" },
-  { label: "FOR FARMERS", href: "/" },
+  { label: "FOR FARMERS", href: "/for-farmers" },
   { label: "CONTACT", href: "/contact" },
 ];
 

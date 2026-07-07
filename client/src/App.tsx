@@ -8,6 +8,7 @@ import { HomepageWhite } from "@/pages/HomepageWhite";
 import { HowItWorks } from "@/pages/HowItWorks";
 import { AboutUs } from "@/pages/AboutUs";
 import { Contact } from "@/pages/Contact";
+import { ForFarmers } from "@/pages/ForFarmers";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/about" component={AboutUs} />
       <Route path="/contact" component={Contact} />
+      <Route path="/for-farmers" component={ForFarmers} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
