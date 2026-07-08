@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,30 @@ export const navItems = [
 export const SiteHeader = (): JSX.Element => {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) {
+      const firstLink = drawerRef.current?.querySelector("a");
+      firstLink?.focus();
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setMobileOpen(false);
+          menuButtonRef.current?.focus();
+        }
+      };
+      document.addEventListener("keydown", onKeyDown);
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+        document.body.style.overflow = "";
+      };
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-transparent bg-white">
@@ -63,48 +87,120 @@ export const SiteHeader = (): JSX.Element => {
           </Button>
           <button
             type="button"
+            ref={menuButtonRef}
             data-testid="button-mobile-menu"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             onClick={() => setMobileOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-md text-[#5e4540] lg:hidden"
+            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-md text-[#5e4540] transition-transform duration-300 active:scale-90 lg:hidden"
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Menu
+              className={`absolute h-6 w-6 transition-all duration-300 ${
+                mobileOpen
+                  ? "rotate-90 scale-50 opacity-0"
+                  : "rotate-0 scale-100 opacity-100"
+              }`}
+            />
+            <X
+              className={`absolute h-6 w-6 transition-all duration-300 ${
+                mobileOpen
+                  ? "rotate-0 scale-100 opacity-100"
+                  : "-rotate-90 scale-50 opacity-0"
+              }`}
+            />
           </button>
         </div>
       </div>
-      {mobileOpen && (
-        <nav
-          id="mobile-nav"
-          className="border-t border-[#eee7d8] bg-white px-4 pb-4 pt-2 lg:hidden"
-          aria-label="Mobile"
-        >
-          <Link
-            href="/fund-a-farm"
-            data-testid="link-mobile-fund-a-farm"
-            onClick={() => setMobileOpen(false)}
-            className="block py-3 [font-family:'Inter',Helvetica] text-base font-bold text-[#7587ac] transition-colors hover:text-[#827b3e] sm:hidden"
-          >
-            FUND A FARM
-          </Link>
-          {navItems.map((item) => (
+      {/* Backdrop */}
+      <div
+        aria-hidden="true"
+        onClick={() => setMobileOpen(false)}
+        className={`fixed inset-0 z-40 bg-[#3c3520]/40 backdrop-blur-[2px] transition-opacity duration-300 lg:hidden ${
+          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      {/* Slide-out drawer */}
+      <nav
+        id="mobile-nav"
+        ref={drawerRef}
+        aria-label="Mobile"
+        {...(mobileOpen ? {} : ({ inert: "" } as object))}
+        className={`fixed right-0 top-0 z-50 flex h-full w-[300px] max-w-[85vw] flex-col overflow-y-auto bg-[#faf5e4] shadow-[-12px_0_40px_rgba(60,53,32,0.25)] transition-transform duration-500 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+          mobileOpen ? "translate-x-0" : "pointer-events-none translate-x-full"
+        }`}
+      >
+        <div className="h-1.5 w-full bg-gradient-to-r from-[#827b3e] via-[#bc623f] to-[#7587ac]" />
+        <div className="flex flex-1 flex-col px-7 pb-8 pt-20">
+          {navItems.map((item, index) => (
             <Link
               key={item.label}
               href={item.href}
               data-testid={`link-mobile-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={() => setMobileOpen(false)}
-              className={`block whitespace-nowrap py-3 [font-family:'Inter',Helvetica] text-base font-bold text-[#5e4540] transition-colors hover:text-[#827b3e] ${
+              style={{
+                transitionDelay: mobileOpen ? `${120 + index * 60}ms` : "0ms",
+              }}
+              className={`group flex items-center justify-between border-b border-[#e8dfc6] py-4 [font-family:'Inter',Helvetica] text-base font-bold tracking-wide transition-all duration-500 ${
+                mobileOpen
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-8 opacity-0"
+              } ${
                 item.href !== "/" && location === item.href
-                  ? "underline underline-offset-4"
-                  : ""
+                  ? "text-[#bc623f]"
+                  : "text-[#5e4540] hover:text-[#827b3e]"
               }`}
             >
-              {item.label}
+              <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                {item.label}
+              </span>
+              <span
+                className={`text-[#bc623f] transition-all duration-300 ${
+                  item.href !== "/" && location === item.href
+                    ? "opacity-100"
+                    : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                }`}
+              >
+                →
+              </span>
             </Link>
           ))}
-        </nav>
-      )}
+          <Link
+            href="/fund-a-farm"
+            data-testid="link-mobile-fund-a-farm"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              transitionDelay: mobileOpen
+                ? `${120 + navItems.length * 60}ms`
+                : "0ms",
+            }}
+            className={`mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#7587ac] px-5 py-3.5 [font-family:'Inter',Helvetica] text-base font-medium text-white transition-all duration-500 hover:bg-[#6c7ea0] ${
+              mobileOpen
+                ? "translate-x-0 opacity-100"
+                : "translate-x-8 opacity-0"
+            }`}
+          >
+            Fund a Farm
+            <img
+              className="h-5 w-5"
+              alt=""
+              src="/figmaAssets/keyboard-arrow-right-2.svg"
+            />
+          </Link>
+          <p
+            style={{
+              transitionDelay: mobileOpen
+                ? `${200 + navItems.length * 60}ms`
+                : "0ms",
+            }}
+            className={`mt-auto pt-10 [font-family:'Playfair_Display',serif] text-sm italic text-[#827b3e] transition-all duration-500 ${
+              mobileOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+            }`}
+          >
+            Building resilient food systems
+          </p>
+        </div>
+      </nav>
     </header>
   );
 };
