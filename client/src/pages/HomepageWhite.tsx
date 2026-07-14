@@ -12,7 +12,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const HomepageWhite = (): JSX.Element => {
-  const [selectedDonation, setSelectedDonation] = useState("$30");
+  const [selectedDonation, setSelectedDonation] = useState("$100");
+  const [donationFrequency, setDonationFrequency] = useState("One-Time");
   const [openChallenge, setOpenChallenge] = useState("01");
 
   const impactStats = [
@@ -25,7 +26,7 @@ export const HomepageWhite = (): JSX.Element => {
       value: "160K+",
     },
     {
-      label: "Uninsured disaster farm loses since 2022",
+      label: "Disaster losses farmers absorbed without insurance since 2022.",
       value: "$26B",
     },
   ];
@@ -117,7 +118,7 @@ export const HomepageWhite = (): JSX.Element => {
     },
   ];
 
-  const donationOptions = ["$25", "$30", "$100"];
+  const donationOptions = ["$1,000", "$500", "$250", "$100", "$50", "$25"];
 
   return (
     <div className="min-h-screen w-full bg-white">
@@ -209,10 +210,9 @@ export const HomepageWhite = (): JSX.Element => {
               ))}
 
               <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-xs font-medium leading-[normal] text-[#2f3a56] md:text-sm">
-                Source: 2022 Census of Agriculture,{" "}
-                <span className="underline">58</span> ,{" "}
-                <span className="underline">160,000</span>,{" "}
-                <span className="underline">$26 Billion</span>
+                Sources: <span className="underline">2022 Census of Agriculture</span>,{" "}
+                <span className="underline">USDA</span>,{" "}
+                <span className="underline">Farm Bureau</span>
               </p>
             </div>
           </div>
@@ -358,7 +358,7 @@ export const HomepageWhite = (): JSX.Element => {
             <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
               <div>
                 <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
-                  Sign up for Our Newsletter, See What&apos;s Growing
+                  Sign up for Our Newsletter &amp; See What&apos;s Growing
                 </h2>
                 <p className="mt-8 max-w-[529px] [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-white">
                   We cover projects, farmers, policy shifts, and the latest
@@ -367,12 +367,13 @@ export const HomepageWhite = (): JSX.Element => {
               </div>
               <form className="flex flex-col gap-4 self-center">
                 <Input
-                  defaultValue="Full Name"
+                  placeholder="Full Name"
                   className="h-[60px] rounded-lg border-0 bg-white px-[26px] [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
                   <Input
-                    defaultValue="Type Your Email..."
+                    type="email"
+                    placeholder="Enter email"
                     className="h-[60px] rounded-lg border-0 bg-white px-[26px] [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540]"
                   />
                   <Button
@@ -421,6 +422,9 @@ export const HomepageWhite = (): JSX.Element => {
             build national brands, and advise the USDA. They&apos;re putting
             that expertise to work for the farms that need it most.
           </p>
+          <h2 className="mt-16 text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            Voices From the Field
+          </h2>
           <div className="mx-auto mt-12 max-w-[944px] rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
             <blockquote className="text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
               <span className="[font-family:'Playfair_Display',Helvetica] italic font-bold">
@@ -505,48 +509,73 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
               </p>
               <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
-                <div className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:px-[55px] md:py-[30px]">
-                  <div className="flex flex-1 flex-col gap-4">
-                    <div className="flex flex-wrap gap-3">
-                      {donationOptions.map((option) => (
+                <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
+                  <p className="text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
+                    Every Investment Builds Something Real
+                  </p>
+                  <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
+                    <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
+                      Choose Amount
+                    </span>
+                    <div className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]">
+                      {["One-Time", "Monthly"].map((freq) => (
                         <button
-                          key={option}
+                          key={freq}
                           type="button"
-                          onClick={() => setSelectedDonation(option)}
-                          className={`flex h-[58px] min-w-[160px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-[28px] font-bold leading-[normal] ${
-                            selectedDonation === option
-                              ? "border-[#d7d7d7] bg-[#434343] text-white"
-                              : "border-[#bcb9b9] bg-white text-[#434343]"
+                          onClick={() => setDonationFrequency(freq)}
+                          className={`px-5 py-2 [font-family:'Inter',Helvetica] text-sm font-semibold ${
+                            donationFrequency === freq
+                              ? "bg-[#434343] text-white"
+                              : "bg-white text-[#434343]"
                           }`}
                         >
-                          {option}
+                          {freq}
                         </button>
                       ))}
                     </div>
-                    <div className="flex flex-col gap-2 md:max-w-[162px]">
-                      <span className="[font-family:'Inter',Helvetica] text-sm font-semibold leading-[normal] text-[#5e4540]">
-                        Enter Donation
-                      </span>
-                      <div className="flex h-[58px] items-center rounded-[10px] border border-[#bcb9b9] bg-white px-[18px]">
-                        <span className="[font-family:'Inter',Helvetica] text-[28px] font-bold leading-[normal] text-[#5e4540]">
-                          $
-                        </span>
-                      </div>
-                    </div>
                   </div>
-                  <Button
-                    type="button"
-                    className="h-auto rounded-lg bg-[#bc623f] px-[18px] py-[19px] text-white hover:bg-[#ab5838]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                      Donate Now
-                    </span>
-                    <img
-                      className="ml-2 h-6 w-6"
-                      alt="Keyboard arrow right"
-                      src="/figmaAssets/keyboard-arrow-right-2.svg"
-                    />
-                  </Button>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+                    {donationOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setSelectedDonation(option)}
+                        className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
+                          selectedDonation === option
+                            ? "border-[#d7d7d7] bg-[#434343] text-white"
+                            : "border-[#bcb9b9] bg-white text-[#434343]"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="flex h-[58px] flex-1 items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] md:max-w-[280px]">
+                      <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
+                        $
+                      </span>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="Other Amount"
+                        className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      className="h-auto rounded-lg bg-[#bc623f] px-[18px] py-[19px] text-white hover:bg-[#ab5838]"
+                    >
+                      <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                        Fund a Farm
+                      </span>
+                      <img
+                        className="ml-2 h-6 w-6"
+                        alt="Keyboard arrow right"
+                        src="/figmaAssets/keyboard-arrow-right-2.svg"
+                      />
+                    </Button>
+                  </div>
                 </div>
               </div>
               <p className="mx-auto mt-4 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#2f2820]">
