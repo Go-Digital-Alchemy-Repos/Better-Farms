@@ -39,22 +39,26 @@ export const HomepageWhite = (): JSX.Element => {
     {
       id: "02",
       title: "Rising Costs, Shrinking Margins",
-      content: "",
+      content:
+        "Building a laying hen barn or constructing a greenhouse costs nearly double what it did five years ago. Feed, labor, and equipment keep climbing, but prices haven't kept pace.",
     },
     {
       id: "03",
       title: "Policy Whiplash",
-      content: "",
+      content:
+        "Independent farms are built on long horizons. Restoring soil, raising a herd, or establishing a market takes years. Agricultural policy plays a vital role in that work. Farmers do best when programs match the pace of nature. Greater continuity in policy would help growers plan with confidence and keep family farms thriving.",
     },
     {
       id: "04",
       title: "Climate Uncertainty",
-      content: "",
+      content:
+        "Weather patterns that farmers relied on for generations no longer hold. Droughts hit harder. Storms arrive at the wrong times. Adapting requires capital that most small operations don't have.",
     },
     {
       id: "05",
       title: "A Generation Walking Away",
-      content: "",
+      content:
+        "The average farmer is nearing retirement, and their kids have seen the struggle up close. Many are selling land to developers rather than passing it on. Once that ground is paved, it never grows food again.",
     },
   ];
 
