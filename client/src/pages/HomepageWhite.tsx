@@ -13,6 +13,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const HomepageWhite = (): JSX.Element => {
   const [selectedDonation, setSelectedDonation] = useState("$30");
+  const [openChallenge, setOpenChallenge] = useState("01");
 
   const impactStats = [
     {
@@ -234,53 +235,63 @@ export const HomepageWhite = (): JSX.Element => {
             <Accordion
               type="single"
               collapsible
-              defaultValue="01"
+              value={openChallenge}
+              onValueChange={setOpenChallenge}
               className="space-y-0"
             >
-              {challenges.map((item, index) => (
-                <AccordionItem
-                  key={item.id}
-                  value={item.id}
-                  className={`border-[#5e4540] ${
-                    index === 0
-                      ? "border bg-[#7587ac]/90 text-white"
-                      : "border-x border-b bg-white/90 text-[#5e4540]"
-                  }`}
-                >
-                  <AccordionTrigger className="px-6 py-5 hover:no-underline md:px-[27px] md:py-[19px]">
-                    <div className="flex flex-1 items-center gap-5 text-left">
+              {challenges.map((item) => {
+                const isOpen = openChallenge === item.id;
+                return (
+                  <AccordionItem
+                    key={item.id}
+                    value={item.id}
+                    className={`border-none ${isOpen ? "mb-8" : ""}`}
+                  >
+                    <AccordionTrigger
+                      className={`border border-[#5e4540] px-5 py-5 hover:no-underline md:px-[27px] md:py-[19px] [&>svg]:hidden ${
+                        isOpen
+                          ? "bg-[#8396be] text-white"
+                          : "-mt-px bg-white/90 text-[#5e4540]"
+                      }`}
+                    >
+                      <div className="flex flex-1 items-center gap-5 text-left">
+                        <span
+                          className={`w-[32px] shrink-0 [font-family:'Inter',Helvetica] text-xs font-medium leading-7 ${
+                            isOpen ? "text-white" : "text-[#5e4540]"
+                          }`}
+                        >
+                          {item.id}.
+                        </span>
+                        <span
+                          className={`h-[52px] w-px shrink-0 ${
+                            isOpen ? "bg-white/80" : "bg-[#5e4540]/50"
+                          }`}
+                        />
+                        <span
+                          className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[normal] md:text-[28px] ${
+                            isOpen ? "text-white" : "text-[#5e4540]"
+                          }`}
+                        >
+                          {item.title}
+                        </span>
+                      </div>
                       <span
-                        className={`w-[32px] shrink-0 [font-family:'Inter',Helvetica] text-sm leading-7 ${
-                          index === 0
-                            ? "font-medium text-white"
-                            : "font-medium text-[#5e4540]"
+                        aria-hidden="true"
+                        className={`shrink-0 pl-4 text-3xl font-light leading-none ${
+                          isOpen ? "text-white" : "text-[#5e4540]"
                         }`}
                       >
-                        {item.id}.
+                        {isOpen ? "\u2212" : "+"}
                       </span>
-                      <span
-                        className={`h-[61px] w-px shrink-0 ${index === 0 ? "bg-white" : "bg-[#5e4540]"}`}
-                      />
-                      <span
-                        className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[normal] md:text-[32px] ${
-                          index === 0 ? "text-white" : "text-[#5e4540]"
-                        }`}
-                      >
-                        {item.title}
-                      </span>
-                    </div>
-                  </AccordionTrigger>
-                  {item.content ? (
-                    <AccordionContent className="px-6 pb-8 pt-0 md:px-[125px]">
-                      <p className="[font-family:'Inter',Helvetica] text-xl font-normal leading-7 text-[#5e4540]">
+                    </AccordionTrigger>
+                    <AccordionContent className="px-5 pb-0 pt-8 md:px-[125px]">
+                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-base font-normal leading-7 text-[#5e4540]">
                         {item.content}
                       </p>
                     </AccordionContent>
-                  ) : (
-                    <AccordionContent className="px-6 pb-0 pt-0 md:px-[125px]" />
-                  )}
-                </AccordionItem>
-              ))}
+                  </AccordionItem>
+                );
+              })}
             </Accordion>
           </div>
         </section>
