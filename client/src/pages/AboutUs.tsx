@@ -32,7 +32,7 @@ const othersDo = [
   "Rely on volunteer networks",
   "Provide feel-good impact photos",
   "Depend on shifting government grants",
-  "Work in Isolation",
+  "Work in isolation",
   "Talk about problems",
 ];
 
@@ -40,7 +40,7 @@ const weDo = [
   "Fund direct farm projects",
   "Deploy professional staff",
   "Deliver technical ESG reporting",
-  "Maintain independence from political cycle",
+  "Maintain independence from political cycles",
   "Aggregate funding from multiple sources",
   "Solve problems",
 ];
@@ -71,15 +71,13 @@ export const AboutUs = (): JSX.Element => {
 
         <section className="px-4 py-12 md:px-8 md:py-[100px]">
           <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
-            Our team has spent careers inside American agriculture.
+            We&apos;re Funding the Farms That Keep America Fed
           </h2>
           <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-            We&apos;ve served on federal advisory boards, built companies in
-            organic farming, and helped shape the standards this industry runs
-            on. That work gave us a clear view of what farmers are up against
-            and what actually helps them succeed. The Better Farms Foundation
-            is our answer. We identify the problem on the farm, design the
-            solution, and fund the work to get it done.
+            Better Farms Foundation bridges the gap between donors who want to
+            make a real impact and the farmers who need it most. We manage
+            every project on the ground, handling everything from planning to
+            execution.
           </p>
         </section>
 
@@ -96,6 +94,21 @@ export const AboutUs = (): JSX.Element => {
               src="/figmaAssets/goats_grazing.jpg"
             />
           </div>
+        </section>
+
+        <section className="px-4 py-12 md:px-8 md:py-16">
+          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+            The Moment We Knew We Had to Act
+          </h2>
+          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+            Our team has spent careers inside American agriculture. We&apos;ve
+            served on federal advisory boards, built companies in organic
+            farming, and helped shape the standards this industry runs on. That
+            work gave us a clear view of what farmers are up against and what
+            actually helps them succeed. The Better Farms Foundation is our
+            answer. We identify the problem on the farm, design the solution,
+            and fund the work to get it done.
+          </p>
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
@@ -146,6 +159,10 @@ export const AboutUs = (): JSX.Element => {
           <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
+          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+            The difference is simple. We don&apos;t hand over a check and hope
+            for the best. Here&apos;s how our approach stands apart.
+          </p>
           <div className="mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
             <div className="rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022] md:-rotate-1 md:translate-y-[-10px]">
               <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
@@ -193,7 +210,7 @@ export const AboutUs = (): JSX.Element => {
             <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-                  Sign up for Our Newsletter, See What&apos;s Growing
+                  Sign up for Our Newsletter &amp; See What&apos;s Growing
                 </h2>
                 <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
                   We cover projects, farmers, policy shifts, and the latest
@@ -208,7 +225,8 @@ export const AboutUs = (): JSX.Element => {
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
                   <Input
-                    placeholder="Type Your Email..."
+                    type="email"
+                    placeholder="Enter email"
                     data-testid="input-newsletter-email"
                     className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
@@ -275,9 +293,9 @@ export const AboutUs = (): JSX.Element => {
               asChild
               className="h-auto rounded-lg bg-[#7587ac] px-[24px] py-[15px] text-white hover:bg-[#6c7ea0]"
             >
-              <Link href="/how-it-works" data-testid="link-meet-the-team">
+              <Link href="/how-it-works" data-testid="link-how-it-works">
                 <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  Meet The Team
+                  How It Works
                 </span>
                 <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
               </Link>
