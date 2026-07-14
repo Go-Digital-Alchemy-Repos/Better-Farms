@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import {
   Accordion,
   AccordionContent,
@@ -475,17 +476,20 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
           <div className="mt-12 flex justify-center">
             <Button
-              type="button"
+              asChild
+              data-testid="button-meet-the-team"
               className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[19px] text-white hover:bg-[#6c7ea0]"
             >
-              <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                Meet The Team
-              </span>
-              <img
-                className="ml-2 h-6 w-6"
-                alt="Keyboard arrow right"
-                src="/figmaAssets/keyboard-arrow-right-2.svg"
-              />
+              <Link href="/about#team">
+                <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                  Meet The Team
+                </span>
+                <img
+                  className="ml-2 h-6 w-6"
+                  alt="Keyboard arrow right"
+                  src="/figmaAssets/keyboard-arrow-right-2.svg"
+                />
+              </Link>
             </Button>
           </div>
         </section>

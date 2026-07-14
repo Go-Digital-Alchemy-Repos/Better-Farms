@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
@@ -52,6 +53,14 @@ const boardMembers = [
 ];
 
 export const AboutUs = (): JSX.Element => {
+  useEffect(() => {
+    if (window.location.hash === "#team") {
+      requestAnimationFrame(() => {
+        document.getElementById("team")?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-full bg-white">
       <SiteHeader />
@@ -246,7 +255,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-16">
           <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
