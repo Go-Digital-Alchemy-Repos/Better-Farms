@@ -14,6 +14,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const HomepageWhite = (): JSX.Element => {
   const [selectedDonation, setSelectedDonation] = useState("$100");
   const [donationFrequency, setDonationFrequency] = useState("One-Time");
+  const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
 
   const impactStats = [
@@ -517,11 +518,16 @@ export const HomepageWhite = (): JSX.Element => {
                     <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                       Choose Amount
                     </span>
-                    <div className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]">
+                    <div
+                      role="group"
+                      aria-label="Donation frequency"
+                      className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]"
+                    >
                       {["One-Time", "Monthly"].map((freq) => (
                         <button
                           key={freq}
                           type="button"
+                          aria-pressed={donationFrequency === freq}
                           onClick={() => setDonationFrequency(freq)}
                           className={`px-5 py-2 [font-family:'Inter',Helvetica] text-sm font-semibold ${
                             donationFrequency === freq
@@ -534,12 +540,20 @@ export const HomepageWhite = (): JSX.Element => {
                       ))}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+                  <div
+                    role="group"
+                    aria-label="Donation amount"
+                    className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6"
+                  >
                     {donationOptions.map((option) => (
                       <button
                         key={option}
                         type="button"
-                        onClick={() => setSelectedDonation(option)}
+                        aria-pressed={selectedDonation === option}
+                        onClick={() => {
+                          setSelectedDonation(option);
+                          setCustomAmount("");
+                        }}
                         className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
                           selectedDonation === option
                             ? "border-[#d7d7d7] bg-[#434343] text-white"
@@ -556,9 +570,16 @@ export const HomepageWhite = (): JSX.Element => {
                         $
                       </span>
                       <input
+                        id="donation-other-amount"
                         type="text"
                         inputMode="numeric"
+                        aria-label="Other donation amount"
                         placeholder="Other Amount"
+                        value={customAmount}
+                        onChange={(e) => {
+                          setCustomAmount(e.target.value);
+                          if (e.target.value) setSelectedDonation("");
+                        }}
                         className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
                       />
                     </div>
