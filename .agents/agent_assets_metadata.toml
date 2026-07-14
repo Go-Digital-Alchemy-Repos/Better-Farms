@@ -1,5 +1,10 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "dhAFAQsjVpbDBNB5BisFj"
+uri = "file://client/public/figmaAssets/fund_farm_consult_sunset.png"
+type = "image"
+title = "generated_image"
 
 [[outputs]]
 id = "jA_mOdOzMiKUJ2IPC_g6f"
@@ -78,3 +83,27 @@ id = "5tP_V-iKkNBrFyilZ3Hl7"
 uri = "file://attached_assets/stock_images/stock_image.jpg"
 type = "image"
 title = "ripe peaches fruit harvest in basket on grass orchard"
+
+[[outputs]]
+id = "XZzXErU0UKl2GrkE6qven"
+uri = "file://attached_assets/stock_images/farmers_field_sunset_laptop_1.jpg"
+type = "image"
+title = "farmer and agronomist walking in farm field at golden hour sunset with laptop cornfield"
+
+[[outputs]]
+id = "RNPHIzobqPl8aQbKOVczK"
+uri = "file://attached_assets/stock_images/farmers_field_sunset_laptop_2.jpg"
+type = "image"
+title = "farmer and agronomist walking in farm field at golden hour sunset with laptop cornfield"
+
+[[outputs]]
+id = "u-p1FYTGfmbjFsF0-ZLe3"
+uri = "file://attached_assets/stock_images/farmers_field_sunset_laptop_3.jpg"
+type = "image"
+title = "farmer and agronomist walking in farm field at golden hour sunset with laptop cornfield"
+
+[[outputs]]
+id = "h5uUrNYuzCEkzuRRig9yt"
+uri = "file://attached_assets/stock_images/farmers_field_sunset_laptop_4.jpg"
+type = "image"
+title = "farmer and agronomist walking in farm field at golden hour sunset with laptop cornfield"

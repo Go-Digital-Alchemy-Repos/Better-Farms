@@ -93,9 +93,9 @@ export const FundAFarm = (): JSX.Element => {
             </p>
           </div>
           <img
-            className="-mt-16 h-[420px] w-full object-cover object-top md:-mt-24 md:h-[540px]"
+            className="-mt-16 h-[420px] w-full object-cover md:-mt-24 md:h-[540px]"
             alt="Farmers reviewing plans in a field at sunset"
-            src="/figmaAssets/rectangle-114.png"
+            src="/figmaAssets/fund_farm_consult_sunset.png"
           />
         </section>
       </main>
