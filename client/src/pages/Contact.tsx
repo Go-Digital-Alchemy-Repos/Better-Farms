@@ -64,7 +64,7 @@ export const Contact = (): JSX.Element => {
     <div className="min-h-screen w-full bg-white">
       <SiteHeader />
       <main>
-        <section className="mx-auto grid max-w-[1440px] gap-10 px-4 py-10 md:grid-cols-2 md:gap-12 md:px-[70px] md:py-[40px]">
+        <section className="mx-auto grid w-full max-w-[1600px] gap-10 px-4 py-10 md:grid-cols-2 md:gap-12 md:px-[70px] md:py-[40px]">
           <div>
             <h1 className="max-w-[420px] text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[44px]">
               Take the First Step Towards Better Farms

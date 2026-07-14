@@ -152,7 +152,7 @@ export const HomepageWhite = (): JSX.Element => {
             </span>
           </div>
         </section>
-        <section className="mx-auto grid max-w-[1440px] grid-cols-1 overflow-hidden md:grid-cols-2">
+        <section className="grid w-full grid-cols-1 overflow-hidden md:grid-cols-2">
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[720px] md:px-[94px] md:py-[154px]">
             <div className="max-w-[565px]">
               <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
@@ -189,11 +189,11 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
           <div className="flex flex-col bg-[#7587ac]">
             <img
-              className="h-[240px] w-full object-cover grayscale md:h-[300px]"
+              className="h-[240px] w-full object-cover grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
               src="/figmaAssets/rectangle-45.png"
             />
-            <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 md:px-[60px] md:py-10">
+            <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 md:px-[52px] md:py-8">
               {impactStats.map((stat) => (
                 <div
                   key={stat.value}

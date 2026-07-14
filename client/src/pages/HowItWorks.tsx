@@ -250,7 +250,7 @@ export const HowItWorks = (): JSX.Element => {
             </div>
           </div>
           <img
-            className="mx-auto mt-14 h-[320px] w-full max-w-[1440px] object-cover md:h-[420px]"
+            className="mt-14 h-[320px] w-full object-cover md:h-[420px]"
             alt="Farmers shaking hands in a field"
             src="/figmaAssets/handshake_field.jpg"
           />
