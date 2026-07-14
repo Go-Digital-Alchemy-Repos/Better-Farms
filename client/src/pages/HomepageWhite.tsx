@@ -23,6 +23,25 @@ export const HomepageWhite = (): JSX.Element => {
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      quote:
+        '"We knew what we needed to do to make our operation more resilient, but we couldn\'t get the financing. Better Farms didn\'t just write a check—they helped us design the project, manage the installation, and now we have data showing exactly how much our water usage has dropped. For the first time in years, I\'m not worried about the next drought."',
+      attribution: "— Tristan Ludlow, SpringRight Farms, North Carolina",
+    },
+    {
+      quote:
+        '"Our transition to organic felt impossible until Better Farms stepped in. They walked our fields with us, built a plan we could actually follow, and stayed involved through certification. Two seasons later our soil is healthier and our margins are stronger than they\'ve ever been."',
+      attribution: "— Placeholder Name, Placeholder Farm, Iowa",
+    },
+    {
+      quote:
+        '"As a first-generation farmer, I didn\'t have family land or family knowledge to lean on. Better Farms connected me with mentors, funded our irrigation upgrade, and treated our small operation like it mattered. That belief changed everything for us."',
+      attribution: "— Placeholder Name, Placeholder Ranch, Montana",
+    },
+  ];
 
   const impactStats = [
     {
@@ -419,32 +438,59 @@ export const HomepageWhite = (): JSX.Element => {
               src="/figmaAssets/rectangle-56.png"
             />
           </div>
-          <div className="mx-auto mt-12 flex w-fit items-center gap-[9px]">
-            <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#bc623f]" />
-            <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#5e4540]" />
-            <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#5e4540]" />
-          </div>
           <h2 className="mt-12 text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
             Voices From the Field
           </h2>
-          <div className="mx-auto mt-12 max-w-[944px] rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
-            <blockquote className="text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
-              <span className="[font-family:'Playfair_Display',Helvetica] italic font-bold">
-                &quot;We knew what we needed to do to make our operation more
-                resilient, but we couldn&apos;t get the financing. Better Farms
-                didn&apos;t just write a check—they helped us design the
-                project, manage the installation, and now we have data showing
-                exactly how much our water usage has dropped. For the first time
-                in years, I&apos;m not worried about the next drought.&quot;
-              </span>
-              <span className="[font-family:'Inter',Helvetica] text-xl md:text-[32px]">
-                <br />
-                <br />
-              </span>
-              <footer className="[font-family:'Inter',Helvetica] text-xl font-normal text-white">
-                — Tristan Ludlow, SpringRight Farms, North Carolina
-              </footer>
-            </blockquote>
+          <div className="mx-auto mt-12 max-w-[944px] overflow-hidden">
+            <div
+              className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
+              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="w-full shrink-0 px-1"
+                  aria-hidden={activeTestimonial !== index}
+                >
+                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
+                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
+                      <span
+                        className="[font-family:'Playfair_Display',Helvetica] italic font-bold"
+                        data-testid={`text-testimonial-quote-${index}`}
+                      >
+                        {testimonial.quote}
+                      </span>
+                      <span className="[font-family:'Inter',Helvetica] text-xl md:text-[32px]">
+                        <br />
+                        <br />
+                      </span>
+                      <footer
+                        className="[font-family:'Inter',Helvetica] text-xl font-normal text-white"
+                        data-testid={`text-testimonial-attribution-${index}`}
+                      >
+                        {testimonial.attribution}
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mx-auto mt-8 flex w-fit items-center gap-[9px]">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Show testimonial ${index + 1}`}
+                data-testid={`button-testimonial-dot-${index}`}
+                onClick={() => setActiveTestimonial(index)}
+                className={`h-[9px] w-[9px] rounded-full transition-colors duration-300 ${
+                  activeTestimonial === index
+                    ? "bg-[#bc623f]"
+                    : "bg-[#5e4540] hover:bg-[#827b3e]"
+                }`}
+              />
+            ))}
           </div>
           <div className="mx-auto mt-16 max-w-[844px]">
             <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
