@@ -108,9 +108,9 @@ export const ForFarmers = (): JSX.Element => {
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
             <div className="overflow-hidden rounded-2xl md:sticky md:top-28 md:self-start">
               <img
-                className="h-[420px] w-full object-cover md:h-[640px]"
+                className="h-[520px] w-full object-cover md:h-[820px]"
                 alt="Family walking through a livestock barn"
-                src="/figmaAssets/family_barn_walk.jpg"
+                src="/figmaAssets/family_barn_walk_tall.jpg"
               />
             </div>
             <div className="flex flex-col gap-8">
