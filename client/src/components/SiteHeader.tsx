@@ -41,7 +41,7 @@ export const SiteHeader = (): JSX.Element => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-transparent bg-white">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 xl:px-[53px]">
+      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 xl:px-[53px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img
             className="block h-auto w-[160px] md:w-[200px] xl:w-[240px]"
@@ -50,7 +50,7 @@ export const SiteHeader = (): JSX.Element => {
           />
         </Link>
         <nav
-          className="hidden items-center gap-4 lg:flex xl:gap-6"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-[18px] lg:flex xl:gap-[26px]"
           aria-label="Primary"
         >
           {navItems.map((item) => (
