@@ -187,29 +187,28 @@ export const HomepageWhite = (): JSX.Element => {
               </Button>
             </div>
           </div>
-          <div className="relative bg-[#7587ac]">
+          <div className="flex flex-col bg-[#7587ac]">
             <img
-              className="h-full w-full object-cover md:min-h-[359px]"
-              alt="Rectangle"
+              className="h-[240px] w-full object-cover grayscale md:h-[300px]"
+              alt="Cattle in a barn"
               src="/figmaAssets/rectangle-45.png"
             />
-            <div className="absolute inset-0 bg-[#7587ac]/70" />
-            <div className="relative z-10 flex h-full flex-col justify-center gap-3 px-6 py-8 md:px-[79px]">
+            <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 md:px-[60px] md:py-10">
               {impactStats.map((stat) => (
                 <div
                   key={stat.value}
-                  className="flex min-h-[73px] items-center justify-between gap-6 rounded-[64px] border border-white bg-[#8396be] px-6 py-3"
+                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-2xl border border-white/70 bg-white/10 px-6 py-3"
                 >
-                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-base font-medium leading-[normal] text-white">
+                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-white md:text-base">
                     {stat.label}
                   </p>
-                  <p className="[font-family:'Inter',Helvetica] text-4xl font-bold leading-[normal] text-white md:text-5xl">
+                  <p className="[font-family:'Inter',Helvetica] text-3xl font-bold leading-[normal] text-white md:text-[40px]">
                     {stat.value}
                   </p>
                 </div>
               ))}
 
-              <p className="px-4 pt-1 [font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-[#2f2820]">
+              <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-xs font-medium leading-[normal] text-[#2f3a56] md:text-sm">
                 Source: 2022 Census of Agriculture,{" "}
                 <span className="underline">58</span> ,{" "}
                 <span className="underline">160,000</span>,{" "}
