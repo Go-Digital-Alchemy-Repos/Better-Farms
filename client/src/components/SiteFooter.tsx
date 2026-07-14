@@ -103,7 +103,7 @@ export const SiteFooter = (): JSX.Element => {
             <span className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
               Made by
             </span>
-            <img className="h-[21px] w-auto" alt="Digital Alchemy" src="/figmaAssets/da-logo.png" />
+            <img className="h-[21px] w-auto" alt="Digital Alchemy" src="/figmaAssets/da-logo.svg" />
           </div>
         </div>
       </div>
