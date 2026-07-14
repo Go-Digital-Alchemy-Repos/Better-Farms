@@ -355,7 +355,8 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Rectangle"
               src="/figmaAssets/rectangle-90.png"
             />
-            <div className="absolute inset-0 bg-[#827b3e] opacity-80" />
+            <div className="absolute inset-0 bg-[#4a4526] opacity-80 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-black/30" />
             <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
               <div>
                 <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
@@ -379,7 +380,7 @@ export const HomepageWhite = (): JSX.Element => {
                   />
                   <Button
                     type="button"
-                    className="h-auto rounded-lg bg-[#bc623f] px-[18px] py-[19px] text-white hover:bg-[#ab5838]"
+                    className="h-[60px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                   >
                     <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
                       Subscribe
