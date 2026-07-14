@@ -414,17 +414,7 @@ export const HomepageWhite = (): JSX.Element => {
             <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#5e4540]" />
             <div className="h-[7px] w-[7px] rounded-[3.5px] bg-[#5e4540]" />
           </div>
-          <div className="mx-auto mt-12 max-w-[844px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
-              Led by the People Who Built Organic Agriculture
-            </h2>
-          </div>
-          <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
-            The people running Better Farms helped define organic standards,
-            build national brands, and advise the USDA. They&apos;re putting
-            that expertise to work for the farms that need it most.
-          </p>
-          <h2 className="mt-16 text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+          <h2 className="mt-12 text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
             Voices From the Field
           </h2>
           <div className="mx-auto mt-12 max-w-[944px] rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
@@ -446,6 +436,16 @@ export const HomepageWhite = (): JSX.Element => {
               </footer>
             </blockquote>
           </div>
+          <div className="mx-auto mt-16 max-w-[844px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+              Led by the People Who Built Organic Agriculture
+            </h2>
+          </div>
+          <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
+            The people running Better Farms helped define organic standards,
+            build national brands, and advise the USDA. They&apos;re putting
+            that expertise to work for the farms that need it most.
+          </p>
           <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
@@ -454,12 +454,12 @@ export const HomepageWhite = (): JSX.Element => {
               >
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
-                    className={`w-full object-cover ${index === 2 ? "h-[303px]" : "h-[375px]"}`}
+                    className={`w-full object-cover grayscale ${index === 2 ? "h-[303px]" : "h-[375px]"}`}
                     alt="Rectangle"
                     src={member.image}
                   />
                   <div
-                    className={`absolute inset-0 rounded-2xl ${member.overlay}`}
+                    className={`absolute inset-0 rounded-2xl mix-blend-multiply ${member.overlay.replace("/30", "/40")}`}
                   />
                 </div>
                 <div className="pt-4">
