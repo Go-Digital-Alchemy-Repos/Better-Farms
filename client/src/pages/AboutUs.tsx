@@ -1,4 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  TeamMemberDialog,
+  type TeamMember,
+  placeholderBio,
+} from "@/components/TeamMemberDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
@@ -46,13 +51,15 @@ const weDo = [
   "Solve problems",
 ];
 
-const boardMembers = [
-  { image: "/figmaAssets/portrait_woman_farmer.jpg", name: "Full Name", credential: "One-line credential" },
-  { image: "/figmaAssets/portrait_elderly_woman.jpg", name: "Full Name", credential: "One-line credential" },
-  { image: "/figmaAssets/portrait_man_farmer.jpg", name: "Full Name", credential: "One-line credential" },
+const boardMembers: TeamMember[] = [
+  { image: "/figmaAssets/portrait_woman_farmer.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_elderly_woman.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_man_farmer.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
 ];
 
 export const AboutUs = (): JSX.Element => {
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
   useEffect(() => {
     if (window.location.hash === "#team") {
       requestAnimationFrame(() => {
@@ -269,8 +276,17 @@ export const AboutUs = (): JSX.Element => {
             {boardMembers.map((member, index) => (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
                 data-testid={`card-board-member-${index}`}
-                className={index === 1 ? "md:mt-16" : ""}
+                onClick={() => setSelectedMember(member)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedMember(member);
+                  }
+                }}
+                className={`cursor-pointer ${index === 1 ? "md:mt-16" : ""}`}
               >
                 <img
                   className="h-[360px] w-full rounded-2xl object-cover grayscale-[60%] sepia-[20%]"
@@ -318,6 +334,10 @@ export const AboutUs = (): JSX.Element => {
           src="/figmaAssets/cattle_rancher_field.jpg"
         />
       </main>
+      <TeamMemberDialog
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
       <SiteFooter />
     </div>
   );

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import {
+  TeamMemberDialog,
+  type TeamMember,
+  placeholderBio,
+} from "@/components/TeamMemberDialog";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -17,6 +22,7 @@ export const HomepageWhite = (): JSX.Element => {
   const [donationFrequency, setDonationFrequency] = useState("One-Time");
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const impactStats = [
     {
@@ -99,24 +105,27 @@ export const HomepageWhite = (): JSX.Element => {
     },
   ];
 
-  const teamCards = [
+  const teamCards: (TeamMember & { overlay: string })[] = [
     {
       image: "/figmaAssets/rectangle-88.png",
       overlay: "bg-[#7587ac]/30",
       name: "Full Name",
       credential: "One-line credential",
+      bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-80.png",
       overlay: "bg-[#827b3e]/30",
       name: "Full Name",
       credential: "One-line credential",
+      bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-87.png",
       overlay: "bg-[#bc623f]/30",
       name: "Full Name",
       credential: "One-line credential",
+      bio: placeholderBio,
     },
   ];
 
@@ -451,7 +460,17 @@ export const HomepageWhite = (): JSX.Element => {
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
-                className="flex flex-col"
+                role="button"
+                tabIndex={0}
+                data-testid={`card-team-member-${index}`}
+                onClick={() => setSelectedMember(member)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedMember(member);
+                  }
+                }}
+                className="flex cursor-pointer flex-col"
               >
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
@@ -614,6 +633,10 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
       </main>
+      <TeamMemberDialog
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
       <SiteFooter />
     </div>
   );
