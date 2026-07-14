@@ -482,11 +482,14 @@ export const HowItWorks = (): JSX.Element => {
               impact reporting included
             </p>
           </div>
-          <img
-            className="mt-10 h-[380px] w-full object-cover md:h-[480px]"
-            alt="Farmers reviewing plans in a field"
-            src="/figmaAssets/rectangle-114.png"
-          />
+          <div className="relative mt-10">
+            <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
+            <img
+              className="h-[380px] w-full object-cover md:h-[480px]"
+              alt="Farmers reviewing plans in a field"
+              src="/figmaAssets/rectangle-114.png"
+            />
+          </div>
         </section>
       </main>
       <SiteFooter />

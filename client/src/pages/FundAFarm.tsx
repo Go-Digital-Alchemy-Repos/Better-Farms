@@ -92,11 +92,14 @@ export const FundAFarm = (): JSX.Element => {
               impact reporting included
             </p>
           </div>
-          <img
-            className="-mt-16 h-[420px] w-full object-cover md:-mt-24 md:h-[540px]"
-            alt="Farmers reviewing plans in a field at sunset"
-            src="/figmaAssets/fund_farm_consult_sunset.png"
-          />
+          <div className="relative -mt-16 md:-mt-24">
+            <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[240px]" />
+            <img
+              className="h-[420px] w-full object-cover md:h-[540px]"
+              alt="Farmers reviewing plans in a field at sunset"
+              src="/figmaAssets/fund_farm_consult_sunset.png"
+            />
+          </div>
         </section>
       </main>
       <SiteFooter />

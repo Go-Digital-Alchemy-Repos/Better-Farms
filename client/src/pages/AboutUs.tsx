@@ -328,11 +328,14 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <img
-          className="h-[360px] w-full object-cover md:h-[460px]"
-          alt="Rancher with cattle at sunset"
-          src="/figmaAssets/cattle_rancher_field.jpg"
-        />
+        <div className="relative">
+          <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
+          <img
+            className="h-[360px] w-full object-cover md:h-[460px]"
+            alt="Rancher with cattle at sunset"
+            src="/figmaAssets/cattle_rancher_field.jpg"
+          />
+        </div>
       </main>
       <TeamMemberDialog
         member={selectedMember}
