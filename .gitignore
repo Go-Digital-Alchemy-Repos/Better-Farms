@@ -4,3 +4,9 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Local design source files and visual QA artifacts
+/.playwright-cli/
+/Figma Exports/
+/Source Photos/
+/output/
