@@ -1,13 +1,5 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import {
-  Sprout,
-  Bird,
-  Sun,
-  BookOpen,
-  FlaskConical,
-  TreeDeciduous,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -109,32 +101,32 @@ const pathways = [
 
 const partnerBenefits = [
   {
-    icon: Sprout,
+    icon: "/sourcePhotos/get-involved/sunflower.svg",
     title: "Multiplied Funding",
     text: "Join a curated pipeline of ready-to-fund projects. Contribute at any scale, skip the diligence burden, and deploy capital faster than building from scratch.",
   },
   {
-    icon: Bird,
+    icon: "/sourcePhotos/get-involved/chicken.svg",
     title: "Direct Farm Impact",
     text: "Choose the projects that align with your mission. Every opportunity comes with a clear scope, budget, and expected outcomes before you commit.",
   },
   {
-    icon: Sun,
+    icon: "/sourcePhotos/get-involved/sun.svg",
     title: "Professional Management",
     text: "We handle contracts, timelines, and quality control, so partners never carry the operational risk of project delivery.",
   },
   {
-    icon: BookOpen,
+    icon: "/sourcePhotos/get-involved/book.svg",
     title: "Verified Reporting",
     text: "Take the data and story back to your stakeholders. Get branded impact reports, case studies, and media assets for communications.",
   },
   {
-    icon: FlaskConical,
+    icon: "/sourcePhotos/get-involved/jar.svg",
     title: "ESG Integration",
     text: "Strengthen your environmental commitments with audit-ready numbers. Biogenic carbon insetting data feeds directly into Scope 3 reporting and sustainability disclosures.",
   },
   {
-    icon: TreeDeciduous,
+    icon: "/sourcePhotos/get-involved/tree.svg",
     title: "Proven Leadership",
     text: "Gain access to the founders, pioneers, and policy voices who shaped sustainable agriculture.",
   },
@@ -146,7 +138,7 @@ export const GetInvolved = (): JSX.Element => {
   const [customAmount, setCustomAmount] = useState("");
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
@@ -158,14 +150,14 @@ export const GetInvolved = (): JSX.Element => {
               Help Independent Farms Thrive
             </h1>
             <img
-              className="mt-12 h-[320px] w-full rounded-t-[20px] object-cover md:h-[480px]"
+              className="mt-12 h-[320px] w-full rounded-t-[20px] object-cover md:h-[580px]"
               alt="Chickens roaming outside a mobile coop"
-              src="/figmaAssets/chickens_pasture_coop.jpg"
+              src="/sourcePhotos/get-involved/chickens-roaming.webp"
             />
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section className="px-4 py-12 md:px-8 md:py-[104px]">
           <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#2f2820] md:text-xl">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
@@ -178,8 +170,8 @@ export const GetInvolved = (): JSX.Element => {
           <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Choose the Path That Fits Your Organization
           </h2>
-          <div className="mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[1fr_440px]">
-            <div className="flex flex-col gap-16">
+          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_440px]">
+            <div className="flex flex-col gap-24 md:gap-[190px]">
               {pathways.map((pathway) => (
                 <div key={pathway.id} data-testid={`section-pathway-${pathway.id}`}>
                   <h2 className="text-[32px] font-bold leading-[1.1] text-[#5e4540] md:text-[40px]">
@@ -242,21 +234,11 @@ export const GetInvolved = (): JSX.Element => {
                 </div>
               ))}
             </div>
-            <div className="hidden flex-col gap-10 md:flex">
+            <div className="hidden lg:block">
               <img
                 className="h-[520px] w-full rounded-[14px] object-cover"
                 alt="Farmer harvesting fresh vegetables into a wooden crate"
-                src="/figmaAssets/veggie_harvest_crate.jpg"
-              />
-              <img
-                className="mt-24 h-[420px] w-full rounded-[14px] object-cover"
-                alt="Sheep gathered in a pasture"
-                src="/figmaAssets/sheep_flock.jpg"
-              />
-              <img
-                className="mt-24 h-[330px] w-full rounded-[14px] object-cover"
-                alt="Bucket of freshly picked peaches"
-                src="/figmaAssets/peaches_bucket.jpg"
+                src="/sourcePhotos/get-involved/vegetable-crate.webp"
               />
             </div>
           </div>
@@ -267,10 +249,10 @@ export const GetInvolved = (): JSX.Element => {
             <img
               className="absolute inset-0 h-full w-full object-cover"
               alt="Cornfield with farm buildings at dusk"
-              src="/figmaAssets/cornfield_farm.jpg"
+              src="/figmaAssets/cornfield_farm.webp"
             />
             <div className="absolute inset-0 bg-[#8a4f37]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
@@ -320,10 +302,7 @@ export const GetInvolved = (): JSX.Element => {
                 data-testid={`card-benefit-${index}`}
                 className="flex gap-6 border-b border-[#d9d4c8] pb-10"
               >
-                <benefit.icon
-                  className="h-12 w-12 shrink-0 text-[#7587ac]"
-                  strokeWidth={1.25}
-                />
+                <img className="h-12 w-12 shrink-0 object-contain" src={benefit.icon} alt="" />
                 <div>
                   <h3 className="text-2xl font-bold text-[#5e4540] md:text-[28px]">
                     {benefit.title}
@@ -334,6 +313,21 @@ export const GetInvolved = (): JSX.Element => {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="px-4 py-10 md:px-8 md:py-16">
+          <div className="mx-auto grid max-w-[1200px] gap-8 md:grid-cols-[1fr_1fr] md:items-start md:gap-16">
+            <img
+              className="h-[330px] w-full rounded-2xl object-cover md:h-[430px]"
+              alt="Goats gathered in a pasture"
+              src="/sourcePhotos/get-involved/goats.webp"
+            />
+            <img
+              className="h-[330px] w-full rounded-2xl object-cover md:mt-20 md:h-[390px]"
+              alt="Fresh apples in a bushel"
+              src="/sourcePhotos/get-involved/apples.webp"
+            />
           </div>
         </section>
 
@@ -451,7 +445,7 @@ export const GetInvolved = (): JSX.Element => {
             <img
               className="h-[380px] w-full object-cover md:h-[480px]"
               alt="Cattle grazing in a wide pasture"
-              src="/figmaAssets/cattle_herd_pano.jpg"
+              src="/sourcePhotos/get-involved/cows-grazing.webp"
             />
           </div>
         </section>

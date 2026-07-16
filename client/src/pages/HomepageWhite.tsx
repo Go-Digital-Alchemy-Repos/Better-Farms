@@ -18,7 +18,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const HomepageWhite = (): JSX.Element => {
-  const [selectedDonation, setSelectedDonation] = useState("$100");
+  const [selectedDonation, setSelectedDonation] = useState("$30");
   const [donationFrequency, setDonationFrequency] = useState("One-Time");
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
@@ -96,7 +96,7 @@ export const HomepageWhite = (): JSX.Element => {
       title: "On-the-Ground Work",
       description:
         "Our team partners with farmers to build infrastructure and put sustainable practices into action. Projects get finished. Farms get stronger.",
-      image: "/figmaAssets/1ddb56c4332c19e514b07403985f5daf-3.png",
+      image: "/sourcePhotos/homepage/farmer-and-child.webp",
       bg: "bg-[#e6dfc9]",
       titleColor: "text-[#5e4540]",
       bodyColor: "text-[#5e4540]",
@@ -106,7 +106,7 @@ export const HomepageWhite = (): JSX.Element => {
       title: "Proof, Not Just Updates",
       description:
         "Every project is tracked closely and reported back with clear data. Funders walk away with ESG-ready metrics that show real impact.",
-      image: "/figmaAssets/1ddb56c4332c19e514b07403985f5daf-3-1.png",
+      image: "/sourcePhotos/homepage/computer.webp",
       bg: "bg-[#7587ac]",
       titleColor: "text-white",
       bodyColor: "text-white",
@@ -116,7 +116,7 @@ export const HomepageWhite = (): JSX.Element => {
       title: "Funding That Multiplies",
       description:
         "Contributions from corporations, foundations, and donor-advised funds are pooled into a single effort. Each dollar stretches further, and one farm project can draw from several sources.",
-      image: "/figmaAssets/1ddb56c4332c19e514b07403985f5daf-3-2.png",
+      image: "/sourcePhotos/homepage/hand.webp",
       bg: "bg-[#f3ebd3]",
       titleColor: "text-[#5e4540]",
       bodyColor: "text-[#5e4540]",
@@ -126,21 +126,21 @@ export const HomepageWhite = (): JSX.Element => {
 
   const teamCards: (TeamMember & { overlay: string })[] = [
     {
-      image: "/figmaAssets/rectangle-88.png",
+      image: "/figmaAssets/rectangle-88.webp",
       overlay: "bg-[#7587ac]/30",
       name: "Full Name",
       credential: "One-line credential",
       bio: placeholderBio,
     },
     {
-      image: "/figmaAssets/rectangle-80.png",
+      image: "/figmaAssets/rectangle-80.webp",
       overlay: "bg-[#827b3e]/30",
       name: "Full Name",
       credential: "One-line credential",
       bio: placeholderBio,
     },
     {
-      image: "/figmaAssets/rectangle-87.png",
+      image: "/figmaAssets/rectangle-87.webp",
       overlay: "bg-[#bc623f]/30",
       name: "Full Name",
       credential: "One-line credential",
@@ -148,10 +148,10 @@ export const HomepageWhite = (): JSX.Element => {
     },
   ];
 
-  const donationOptions = ["$1,000", "$500", "$250", "$100", "$50", "$25"];
+  const donationOptions = ["$25", "$30", "$100"];
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-6">
@@ -159,20 +159,20 @@ export const HomepageWhite = (): JSX.Element => {
             <img
               className="mx-auto mb-4 h-[72px] w-[72px] md:mb-6 md:h-[106px] md:w-[106px]"
               alt="Group"
-              src="/figmaAssets/group-2.png"
+              src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[110px]">
+            <h1 className="mx-auto max-w-[1060px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.02] text-white md:text-[64px] lg:text-[80px]">
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
               className="mt-6 h-auto w-full rounded-[20px] object-cover"
               alt="Rectangle"
-              src="/figmaAssets/rectangle-59.png"
+              src="/sourcePhotos/homepage/farm-aerial.webp"
             />
           </div>
         </section>
-        <section className="px-4 py-10 md:px-8 md:py-[140px]">
-          <div className="mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[32px] md:leading-10">
+        <section className="px-4 py-10 md:px-8 md:py-[108px]">
+          <div className="mx-auto max-w-[850px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[26px] md:leading-9">
             <span className="font-bold">
               Better Farms Foundation bridges the gap{" "}
             </span>
@@ -184,9 +184,9 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="grid w-full grid-cols-1 overflow-hidden md:grid-cols-2">
-          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[720px] md:px-[94px] md:py-[154px]">
+          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[650px] md:px-[94px] md:py-[120px]">
             <div className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[56px]">
                 Building Better Farms From the Ground Up
               </h2>
               <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-white">
@@ -222,7 +222,7 @@ export const HomepageWhite = (): JSX.Element => {
             <img
               className="h-[240px] w-full object-cover grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
-              src="/figmaAssets/rectangle-45.png"
+              src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
             <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 md:px-[52px] md:py-8">
               {impactStats.map((stat) => (
@@ -251,12 +251,12 @@ export const HomepageWhite = (): JSX.Element => {
           <img
             className="h-auto w-full"
             alt="Rectangle"
-            src="/figmaAssets/rectangle-44.png"
+            src="/figmaAssets/rectangle-44.webp"
           />
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[730px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[56px]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
@@ -326,7 +326,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[60px]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
@@ -376,19 +376,24 @@ export const HomepageWhite = (): JSX.Element => {
               </Card>
             ))}
           </div>
+          <div className="mt-9 flex justify-center">
+            <Button asChild className="h-auto rounded-lg bg-[#7587ac] px-5 py-3.5 text-white hover:bg-[#6c7ea0]">
+              <Link href="/fund-a-farm">Fund A Farm<img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" /></Link>
+            </Button>
+          </div>
         </section>
         <section className="px-4 py-12 md:px-[39px] md:py-16">
           <div className="relative mx-auto max-w-[1372px] overflow-hidden rounded-lg">
             <img
               className="absolute inset-0 h-full w-full object-cover"
               alt="Rectangle"
-              src="/figmaAssets/rectangle-90.png"
+              src="/figmaAssets/rectangle-90.webp"
             />
             <div className="absolute inset-0 bg-[#4a4526] opacity-80 mix-blend-multiply" />
             <div className="absolute inset-0 bg-black/30" />
             <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
               <div>
-                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[56px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
                 </h2>
                 <p className="mt-8 max-w-[529px] [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-white">
@@ -426,22 +431,19 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto flex max-w-[1317px] flex-col items-start justify-between gap-8 md:flex-row md:gap-[308px]">
+          <div className="mx-auto grid max-w-[1317px] grid-cols-1 items-start gap-8 md:grid-cols-[406px_603px] md:justify-between">
             <img
               className="h-auto w-full max-w-[406px] rounded-lg object-cover"
               alt="Rectangle"
-              src="/figmaAssets/rectangle-55.png"
+              src="/sourcePhotos/homepage/crops.webp"
             />
             <img
               className="h-auto w-full max-w-[603px] rounded-[8px_0px_0px_8px] object-cover"
               alt="Rectangle"
-              src="/figmaAssets/rectangle-56.png"
+              src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
           </div>
-          <h2 className="mt-12 text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
-            Voices From the Field
-          </h2>
-          <div className="mx-auto mt-12 max-w-[944px] overflow-hidden">
+          <div className="mx-auto mt-16 max-w-[944px] overflow-hidden">
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -452,8 +454,8 @@ export const HomepageWhite = (): JSX.Element => {
                   className="w-full shrink-0 px-1"
                   aria-hidden={activeTestimonial !== index}
                 >
-                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[66px]">
-                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
+                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[52px]">
+                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[34px]">
                       <span
                         className="[font-family:'Playfair_Display',Helvetica] italic font-bold"
                         data-testid={`text-testimonial-quote-${index}`}
@@ -493,7 +495,7 @@ export const HomepageWhite = (): JSX.Element => {
             ))}
           </div>
           <div className="mx-auto mt-16 max-w-[844px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[56px]">
               Led by the People Who Built Organic Agriculture
             </h2>
           </div>
@@ -561,13 +563,13 @@ export const HomepageWhite = (): JSX.Element => {
         <section className="relative overflow-hidden">
           <div className="absolute inset-x-0 top-0 z-10 h-[245px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)]" />
           <img
-            className="h-auto w-full"
+            className="h-[760px] w-full object-cover md:h-[820px]"
             alt="Rectangle"
-            src="/figmaAssets/rectangle-114.png"
+            src="/sourcePhotos/homepage/tractor-spraying.webp"
           />
           <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[240px]">
             <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[84px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">
                 Fund a Farm Today
               </h2>
               <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">
@@ -581,10 +583,10 @@ export const HomepageWhite = (): JSX.Element => {
               </p>
               <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
                 <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
-                  <p className="text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
+                  <p className="hidden text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
                     Every Investment Builds Something Real
                   </p>
-                  <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
+                  <div className="hidden flex-col items-center gap-4 md:flex-row md:justify-between">
                     <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                       Choose Amount
                     </span>
@@ -613,7 +615,7 @@ export const HomepageWhite = (): JSX.Element => {
                   <div
                     role="group"
                     aria-label="Donation amount"
-                    className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6"
+                    className="grid grid-cols-3 gap-3"
                   >
                     {donationOptions.map((option) => (
                       <button

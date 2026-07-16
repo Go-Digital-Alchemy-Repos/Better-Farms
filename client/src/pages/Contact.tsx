@@ -61,10 +61,10 @@ export const Contact = (): JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="mx-auto grid w-full max-w-[1600px] gap-10 px-4 py-10 md:grid-cols-2 md:gap-12 md:px-[70px] md:py-[40px]">
+        <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 min-[1400px]:grid-cols-[560px_642px] min-[1400px]:gap-[86px] min-[1400px]:pb-[32px] min-[1400px]:pl-[112px] min-[1400px]:pr-0 min-[1400px]:pt-[32px]">
           <div>
             <h1 className="max-w-[420px] text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[44px]">
               Take the First Step Towards Better Farms
@@ -75,7 +75,7 @@ export const Contact = (): JSX.Element => {
             </p>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 max-w-[430px]">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 max-w-[552px]">
                 <p className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
                   Personal Information
                 </p>
@@ -231,9 +231,9 @@ export const Contact = (): JSX.Element => {
           </div>
           <div>
             <img
-              className="h-[420px] w-full object-cover md:sticky md:top-28 md:h-[620px]"
+              className="h-[520px] w-full rounded-lg object-cover min-[1400px]:h-[900px]"
               alt="Two farmers inspecting crops at dusk"
-              src="/figmaAssets/contact_farmers_field.jpg"
+              src="/sourcePhotos/contact/farmers.webp"
             />
           </div>
         </section>

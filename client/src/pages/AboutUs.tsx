@@ -52,9 +52,12 @@ const weDo = [
 ];
 
 const boardMembers: TeamMember[] = [
-  { image: "/figmaAssets/portrait_woman_farmer.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_elderly_woman.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_man_farmer.jpg", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
 ];
 
 export const AboutUs = (): JSX.Element => {
@@ -69,7 +72,7 @@ export const AboutUs = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
@@ -78,22 +81,19 @@ export const AboutUs = (): JSX.Element => {
               Better Farms Start With Better Partners
             </h1>
             <img
-              className="mt-8 h-auto max-h-[560px] w-full rounded-[20px] object-cover"
+              className="mt-8 h-auto max-h-[560px] w-full rounded-[20px] object-cover md:h-[610px] md:max-h-none"
               alt="Sheep feeding at a wooden trough"
-              src="/figmaAssets/sheep_feeding.jpg"
+              src="/sourcePhotos/about/sheep-feeding.webp"
             />
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-[100px]">
-          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
-            We&apos;re Funding the Farms That Keep America Fed
+        <section className="px-4 py-12 md:px-8 md:py-[142px]">
+          <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.1] text-[#5e4540] md:text-[50px]">
+            Our Team Has Spent Careers Inside American Agriculture.
           </h2>
           <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-            Better Farms Foundation bridges the gap between donors who want to
-            make a real impact and the farmers who need it most. We manage
-            every project on the ground, handling everything from planning to
-            execution.
+            We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>
 
@@ -102,29 +102,14 @@ export const AboutUs = (): JSX.Element => {
             <img
               className="h-[380px] w-full rounded-2xl object-cover md:h-[520px]"
               alt="Farmer pitching hay in a dairy barn"
-              src="/figmaAssets/farmer_hay_barn.jpg"
+              src="/sourcePhotos/about/man-feeding-cows.webp"
             />
             <img
               className="h-[260px] w-full rounded-2xl object-cover md:h-[340px]"
               alt="Goats grazing on green pasture"
-              src="/figmaAssets/goats_grazing.jpg"
+              src="/sourcePhotos/about/goats-grazing.webp"
             />
           </div>
-        </section>
-
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
-            The Moment We Knew We Had to Act
-          </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-            Our team has spent careers inside American agriculture. We&apos;ve
-            served on federal advisory boards, built companies in organic
-            farming, and helped shape the standards this industry runs on. That
-            work gave us a clear view of what farmers are up against and what
-            actually helps them succeed. The Better Farms Foundation is our
-            answer. We identify the problem on the farm, design the solution,
-            and fund the work to get it done.
-          </p>
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
@@ -146,11 +131,11 @@ export const AboutUs = (): JSX.Element => {
           <img
             className="h-[300px] w-full object-cover md:h-[420px]"
             alt="Rolling hills and farmland"
-            src="/figmaAssets/hills_valley.jpg"
+            src="/sourcePhotos/about/landscape.webp"
           />
           <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-16 md:pt-14">
             <div className="mx-auto max-w-[1000px]">
-              <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[52px]">
+              <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[50px]">
                 The Principles Behind Every Project
               </h2>
               <div className="mt-14 grid gap-x-16 gap-y-12 md:grid-cols-2">
@@ -172,7 +157,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+          <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
           <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
@@ -220,7 +205,7 @@ export const AboutUs = (): JSX.Element => {
             <img
               className="absolute inset-0 h-full w-full object-cover"
               alt="Cornfield with farm buildings"
-              src="/figmaAssets/cornfield_farm.jpg"
+              src="/figmaAssets/cornfield_farm.webp"
             />
             <div className="absolute inset-0 bg-[#5c5426]/70" />
             <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
@@ -263,7 +248,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+          <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
           <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
@@ -272,7 +257,7 @@ export const AboutUs = (): JSX.Element => {
             operations in sustainable agriculture. They have the relationships,
             credibility, and track record to make Better Farms a great success.
           </p>
-          <div className="mx-auto mt-14 grid max-w-[1100px] gap-10 md:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-[1100px] gap-x-10 gap-y-14 md:grid-cols-3">
             {boardMembers.map((member, index) => (
               <div
                 key={index}
@@ -286,10 +271,10 @@ export const AboutUs = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className={`cursor-pointer ${index === 1 ? "md:mt-16" : ""}`}
+                className={`cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
               >
                 <img
-                  className="h-[360px] w-full rounded-2xl object-cover grayscale-[60%] sepia-[20%]"
+                  className="h-[330px] w-full rounded-2xl object-cover grayscale-[60%] sepia-[20%]"
                   alt={member.name}
                   src={member.image}
                 />
@@ -333,7 +318,7 @@ export const AboutUs = (): JSX.Element => {
           <img
             className="h-[360px] w-full object-cover md:h-[460px]"
             alt="Rancher with cattle at sunset"
-            src="/figmaAssets/cattle_rancher_field.jpg"
+            src="/figmaAssets/cattle_rancher_field.webp"
           />
         </div>
       </main>

@@ -8,27 +8,27 @@ const foundationCards = [
   {
     title: "Climate Resilience",
     body: "Weather patterns keep shifting, putting harvests at risk. We fund drought-resistant infrastructure, water management systems, and diversified planting to help farms adapt. Operations gain the flexibility to thrive in any conditions.",
-    image: "/figmaAssets/drip_irrigation.jpg",
+    image: "/figmaAssets/drip_irrigation.webp",
   },
   {
     title: "Sustainable Infrastructure",
     body: "Aging barns, old equipment, and worn fencing slow farms down. Our team funds physical upgrades that improve daily operations and cut long-term costs. Farms run more smoothly and are built for the future.",
-    image: "/figmaAssets/barn_infrastructure.jpg",
+    image: "/figmaAssets/barn_infrastructure.webp",
   },
   {
     title: "Regenerative Practices",
     body: "Healthy soil grows healthy farms, yet years of conventional methods have worn it down. We support cover cropping, agroforestry, composting, and pollinator habitat that bring soil back to life. Land rebuilds, carbon gets stored, and yields improve over time.",
-    image: "/figmaAssets/regenerative_practices.jpg",
+    image: "/figmaAssets/regenerative_practices.webp",
   },
   {
     title: "Energy Independence",
     body: "Utility costs eat into already tight margins. We help farms lower expenses through solar, efficient equipment, and other upgrades. Savings stay with the producer, where they make the biggest difference.",
-    image: "/figmaAssets/solar_farm.jpg",
+    image: "/figmaAssets/solar_farm.webp",
   },
   {
     title: "Local Food Systems",
     body: "Small farms grow great food, but often can't reach nearby buyers. We fund processing equipment, cold storage, and distribution hubs that connect fields to tables. Producers expand their reach, and communities get steady access to local food.",
-    image: "/figmaAssets/food_processing.jpg",
+    image: "/figmaAssets/food_processing.webp",
   },
 ];
 
@@ -115,7 +115,7 @@ export const HowItWorks = (): JSX.Element => {
   const [customAmount, setCustomAmount] = useState("");
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
@@ -129,7 +129,7 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover"
               alt="Apple harvest in an orchard"
-              src="/figmaAssets/orchard_aerial.jpg"
+              src="/sourcePhotos/how-it-works/orchard.webp"
             />
           </div>
         </section>
@@ -156,7 +156,7 @@ export const HowItWorks = (): JSX.Element => {
               <img
                 className="h-[420px] w-full object-cover md:h-[640px]"
                 alt="Farmers inspecting crops at sunset"
-                src="/figmaAssets/farmers_field.jpg"
+                src="/sourcePhotos/how-it-works/couple-clipboard.webp"
               />
             </div>
             <div className="flex flex-col gap-8">
@@ -188,7 +188,7 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="absolute inset-0 h-full w-full object-cover"
               alt="Farm with silo"
-              src="/figmaAssets/farm_silo.jpg"
+              src="/figmaAssets/farm_silo.webp"
             />
             <div className="absolute inset-0 bg-[#8a4a35]/80" />
             <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
@@ -255,7 +255,7 @@ export const HowItWorks = (): JSX.Element => {
           <img
             className="mt-14 h-[320px] w-full object-cover md:h-[420px]"
             alt="Farmers shaking hands in a field"
-            src="/figmaAssets/handshake_field.jpg"
+            src="/sourcePhotos/how-it-works/parallax.webp"
           />
         </section>
 
@@ -309,7 +309,7 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="mt-10 h-[280px] w-full rounded-2xl object-cover md:h-[360px]"
               alt="Livestock grazing on pasture"
-              src="/figmaAssets/grazing_pasture.jpg"
+              src="/figmaAssets/grazing_pasture.webp"
             />
           </div>
         </section>
@@ -340,14 +340,14 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="h-[420px] w-full rounded-none object-cover"
               alt="Farmer reviewing data in a wheat field"
-              src="/figmaAssets/farmer_wheat_tablet.jpg"
+              src="/sourcePhotos/how-it-works/farmer-clipboard.webp"
             />
           </div>
           <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
             <img
               className="order-1 h-[400px] w-full rounded-none object-cover"
               alt="Pig on pasture"
-              src="/figmaAssets/pig_pasture.jpg"
+              src="/sourcePhotos/how-it-works/red-pig.webp"
             />
             <div className="order-2">
               <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
@@ -487,7 +487,7 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="h-[380px] w-full object-cover md:h-[480px]"
               alt="Farmers reviewing plans in a field"
-              src="/figmaAssets/rectangle-114.png"
+              src="/figmaAssets/rectangle-114.webp"
             />
           </div>
         </section>

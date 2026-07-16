@@ -11,12 +11,12 @@ export const FundAFarm = (): JSX.Element => {
   const [customAmount, setCustomAmount] = useState("");
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="relative overflow-hidden pt-10 md:pt-14">
+        <section className="relative overflow-hidden pt-8 md:pt-10">
           <div className="px-4 md:px-8">
-            <h1 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">
+            <h1 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               Fund a Farm Today
             </h1>
             <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-[#5e4540] md:text-xl">
@@ -27,7 +27,7 @@ export const FundAFarm = (): JSX.Element => {
                 Put your dollars to work and get proof of what you&apos;ve built.
               </span>
             </p>
-            <div className="relative z-10 mx-auto mt-10 max-w-[860px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
+            <div className="relative z-10 mx-auto mt-8 max-w-[860px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
               <div className="flex flex-col gap-6 p-6 md:flex-row md:items-end md:justify-center md:gap-4 md:px-[40px] md:py-[34px]">
                 <div className="flex flex-wrap gap-3">
                   {donationOptions.map((option) => (
@@ -92,12 +92,12 @@ export const FundAFarm = (): JSX.Element => {
               impact reporting included
             </p>
           </div>
-          <div className="relative -mt-16 md:-mt-24">
-            <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[240px]" />
+          <div className="relative -mt-12 md:-mt-20">
+            <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[200px]" />
             <img
-              className="h-[420px] w-full object-cover md:h-[540px]"
+              className="h-[300px] w-full object-cover md:h-[300px]"
               alt="Farmers reviewing plans in a field at sunset"
-              src="/figmaAssets/fund_farm_consult_sunset.png"
+              src="/sourcePhotos/fund-a-farm/field-sunset.webp"
             />
           </div>
         </section>

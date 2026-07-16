@@ -1,33 +1,33 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CompactDonationCard } from "@/components/CompactDonationCard";
 
 const projectCards = [
   {
     title: "Climate Resilience",
     body: "Unpredictable weather puts every season at risk. Our team helps you plant hardier crops, strengthen water management, and diversify against the unexpected. A farm that adapts is a farm that lasts.",
-    image: "/figmaAssets/drip_irrigation.jpg",
+    image: "/sourcePhotos/for-farmers/irrigation.webp",
   },
   {
     title: "Sustainable Infrastructure",
     body: "That aging barn or outdated setup is quietly draining your bottom line. We bring in professionals to design and manage upgrades built around how you actually work. Solid infrastructure pays for itself season after season.",
-    image: "/figmaAssets/barn_infrastructure.jpg",
+    image: "/sourcePhotos/for-farmers/barn.webp",
   },
   {
     title: "Regenerative Practices",
     body: "Years of conventional farming wear down even the best land. Cover crops, rotational grazing, and composting systems can bring it back. Healthier soil means stronger yields and carbon capture you can measure.",
-    image: "/figmaAssets/regenerative_practices.jpg",
+    image: "/sourcePhotos/for-farmers/grass.webp",
   },
   {
     title: "Energy Independence",
     body: "Utility bills keep climbing, and margins keep tightening. We design solar, wind, or biodigestion systems tailored to your operation. Generate your own power and avoid volatile energy markets.",
-    image: "/figmaAssets/solar_farm.jpg",
+    image: "/sourcePhotos/for-farmers/solar.webp",
   },
   {
     title: "Local Food Systems",
     body: "Growing great food only matters if buyers can get it. Cold storage, processing capacity, and distribution connections put your harvest within reach of local markets. Shorter supply chains mean more revenue for you and fresher food for your community.",
-    image: "/figmaAssets/food_processing.jpg",
+    image: "/sourcePhotos/for-farmers/food-processing.webp",
   },
 ];
 
@@ -71,7 +71,7 @@ const processSteps = [
 
 export const ForFarmers = (): JSX.Element => {
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
@@ -85,7 +85,7 @@ export const ForFarmers = (): JSX.Element => {
             <img
               className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover"
               alt="Red barn farm with silo and cornfields"
-              src="/figmaAssets/red_barn_farm.jpg"
+              src="/figmaAssets/red_barn_farm.webp"
             />
           </div>
         </section>
@@ -101,7 +101,7 @@ export const ForFarmers = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-12 md:px-8 md:py-16">
+        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-12 md:min-h-[3000px] md:px-8 md:py-20">
           <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
             The Farm Projects We Fund
           </h2>
@@ -110,25 +110,25 @@ export const ForFarmers = (): JSX.Element => {
               <img
                 className="h-[520px] w-full object-cover md:h-[820px]"
                 alt="Family walking through a livestock barn"
-                src="/figmaAssets/family_barn_walk_tall.jpg"
+                src="/sourcePhotos/for-farmers/walking-barn.webp"
               />
             </div>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-12">
               {projectCards.map((card) => (
                 <article
                   key={card.title}
                   data-testid={`card-project-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="rounded-2xl bg-[#faf5e4] p-6"
+                  className="rounded-2xl bg-[#faf5e4] p-7"
                 >
                   <img
-                    className="h-[190px] w-full rounded-lg object-cover"
+                    className="h-[220px] w-full rounded-lg object-cover"
                     alt={card.title}
                     src={card.image}
                   />
                   <h3 className="mt-6 text-[26px] font-bold text-[#5e4540]">
                     {card.title}
                   </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
                     {card.body}
                   </p>
                 </article>
@@ -137,10 +137,10 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section className="px-4 py-12 md:px-8 md:pb-[500px] md:pt-24">
           <div className="mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
-              How to Apply
+              The 6-Step Process for Better Farms
             </h2>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {processSteps.map((step) => (
@@ -174,68 +174,41 @@ export const ForFarmers = (): JSX.Element => {
           <img
             className="mt-14 h-[320px] w-full object-cover md:h-[420px]"
             alt="Farmers shaking hands in a field"
-            src="/figmaAssets/handshake_field.jpg"
+            src="/sourcePhotos/for-farmers/parallax.webp"
           />
         </section>
 
-        <section className="px-4 py-10 md:px-8">
+        <section className="px-4 py-10 md:px-8 md:py-[140px]">
           <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2">
             <img
               className="h-[340px] w-full rounded-2xl object-cover grayscale"
               alt="Chickens in a coop"
-              src="/figmaAssets/chickens_coop.jpg"
+              src="/sourcePhotos/for-farmers/chickens.webp"
             />
             <img
               className="h-[340px] w-full rounded-2xl object-cover md:mt-20"
               alt="Cow closeup in pasture"
-              src="/figmaAssets/cow_closeup.jpg"
+              src="/sourcePhotos/for-farmers/cow.webp"
             />
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-[29px]">
-          <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
+        <section className="px-4 py-10 md:px-[29px] md:pb-0">
+          <div className="relative mx-auto min-h-[700px] max-w-[1386px] overflow-hidden rounded-[20px]">
             <img
               className="absolute inset-0 h-full w-full object-cover"
               alt="Chickens in tall grass at sunset"
-              src="/figmaAssets/chickens_grass.jpg"
+              src="/sourcePhotos/for-farmers/hero.webp"
             />
-            <div className="absolute inset-0 bg-[#8a4f37]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
-              <div>
-                <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex flex-col gap-4 self-center">
-                <Input
-                  placeholder="Full Name"
-                  data-testid="input-newsletter-name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
-                  <Input
-                    type="email"
-                    placeholder="Enter email"
-                    data-testid="input-newsletter-email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="button"
-                    data-testid="button-newsletter-subscribe"
-                    className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </form>
+            <div className="absolute inset-0 bg-[#4a4526]/50" />
+            <div className="relative z-10 flex min-h-[700px] flex-col items-center justify-center px-6 py-16 text-center">
+              <h2 className="text-[44px] font-bold leading-[1.05] text-white md:text-[68px]">Fund a Farm Today</h2>
+              <p className="mx-auto mt-6 max-w-[720px] [font-family:'Inter',Helvetica] text-lg leading-8 text-white md:text-xl">
+                <span className="font-bold">Your contribution can strengthen a farm for decades. </span>
+                Put your dollars to work and get proof of what you&apos;ve built.
+              </p>
+              <CompactDonationCard />
+              <p className="mt-5 [font-family:'Inter',Helvetica] text-sm font-bold text-white">501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG impact reporting included</p>
             </div>
           </div>
         </section>

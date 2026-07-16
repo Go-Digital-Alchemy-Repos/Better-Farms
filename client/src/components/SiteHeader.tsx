@@ -46,7 +46,7 @@ export const SiteHeader = (): JSX.Element => {
           <img
             className="block h-auto w-[160px] md:w-[200px] xl:w-[240px]"
             alt="Better Farms Foundation"
-            src="/figmaAssets/logo-1.svg"
+            src="/sourcePhotos/brand/logo.svg"
           />
         </Link>
         <nav
