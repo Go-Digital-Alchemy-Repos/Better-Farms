@@ -131,7 +131,25 @@ export const SiteHeader = (): JSX.Element => {
         }`}
       >
         <div className="h-1.5 w-full bg-gradient-to-r from-[#827b3e] via-[#bc623f] to-[#7587ac]" />
-        <div className="flex flex-1 flex-col px-7 pb-8 pt-20">
+        <div className="flex flex-1 flex-col px-7 pb-8 pt-6">
+          <Link
+            href="/"
+            data-testid="link-mobile-home-logo"
+            aria-label="Better Farms Foundation home"
+            onClick={() => setMobileOpen(false)}
+            style={{ transitionDelay: mobileOpen ? "80ms" : "0ms" }}
+            className={`mb-5 block w-[190px] max-w-[calc(100%-2.5rem)] transition-all duration-500 ${
+              mobileOpen
+                ? "translate-x-0 opacity-100"
+                : "translate-x-8 opacity-0"
+            }`}
+          >
+            <img
+              className="block h-auto w-full"
+              alt="Better Farms Foundation"
+              src="/sourcePhotos/brand/logo.svg"
+            />
+          </Link>
           {navItems.map((item, index) => (
             <Link
               key={item.label}
