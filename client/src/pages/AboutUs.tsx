@@ -117,9 +117,9 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section className="relative z-20 px-4 pb-0 pt-12 md:-mb-8 md:px-8 md:pt-16">
           <blockquote
-            className="mx-auto max-w-[640px] text-center text-[26px] leading-[1.5] text-[#5e4540] md:text-[32px]"
+            className="mx-auto max-w-[640px] translate-y-8 text-center text-[26px] leading-[1.5] text-[#5e4540] md:translate-y-16 md:text-[32px]"
             style={{ fontFamily: '"Dancing Script", cursive' }}
             data-testid="text-quote"
           >
@@ -132,7 +132,8 @@ export const AboutUs = (): JSX.Element => {
           </blockquote>
         </section>
 
-        <section>
+        <section className="relative">
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[48%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.82)_34%,rgba(255,255,255,0)_100%)]" />
           <img
             className="h-[300px] w-full object-cover md:h-[420px]"
             alt="Rolling hills and farmland"
