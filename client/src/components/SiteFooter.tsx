@@ -12,7 +12,7 @@ export const SiteFooter = (): JSX.Element => {
             <img
               className="h-auto w-[240px] md:w-[265px]"
               alt="Better Farms Foundation"
-              src="/figmaAssets/logo.svg"
+              src="/sourcePhotos/brand/footer-logo.svg"
             />
             <img
               className="h-5 w-[150px]"
