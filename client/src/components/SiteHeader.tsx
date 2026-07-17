@@ -93,7 +93,7 @@ export const SiteHeader = (): JSX.Element => {
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             onClick={() => setMobileOpen((open) => !open)}
-            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-md text-[#5e4540] transition-transform duration-300 active:scale-90 lg:hidden"
+            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-md text-[#5e4540] transition-transform duration-300 active:scale-90 lg:hidden"
           >
             <Menu
               className={`absolute h-6 w-6 transition-all duration-300 ${

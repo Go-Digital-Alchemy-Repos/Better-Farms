@@ -101,14 +101,14 @@ export const ForFarmers = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-12 md:px-8 md:py-20">
+        <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-12 md:px-8 md:pb-[105px] md:pt-20">
           <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
             The Farm Projects We Fund
           </h2>
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[minmax(0,740px)_420px] md:items-start">
-            <div className="overflow-hidden rounded-2xl md:sticky md:top-24 md:self-start">
+            <div className="overflow-hidden rounded-2xl md:self-start">
               <img
-                className="h-[560px] w-full object-cover object-bottom md:h-[calc(100vh-7.5rem)] md:min-h-[840px] md:max-h-[1040px]"
+                className="h-[560px] w-full object-cover object-bottom md:h-[891px]"
                 alt="Family walking through a livestock barn"
                 src="/sourcePhotos/for-farmers/walking-barn.webp"
               />

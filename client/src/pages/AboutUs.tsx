@@ -138,20 +138,20 @@ export const AboutUs = (): JSX.Element => {
             alt="Rolling hills and farmland"
             src="/sourcePhotos/about/landscape.webp"
           />
-          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-16 md:pt-14">
+          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-10 md:pt-12">
             <div className="mx-auto max-w-[1000px]">
               <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[50px]">
                 The Principles Behind Every Project
               </h2>
-              <div className="mt-14 grid gap-x-16 gap-y-12 md:grid-cols-2">
+              <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
                 {principles.map((p) => (
                   <div
                     key={p.title}
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="border-b border-white/40 pb-8"
+                    className="border-b border-white/40 pb-6"
                   >
                     <img
-                      className="mb-5 h-14 w-14 object-contain"
+                      className="mb-3 h-11 w-11 object-contain"
                       src={p.icon}
                       alt=""
                       aria-hidden="true"
@@ -218,7 +218,7 @@ export const AboutUs = (): JSX.Element => {
               alt="Cornfield with farm buildings"
               src="/figmaAssets/cornfield_farm.webp"
             />
-            <div className="absolute inset-0 bg-[#5c5426]/70" />
+            <div className="absolute inset-0 bg-[#54501f]/85 mix-blend-multiply" />
             <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[94px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
@@ -258,7 +258,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[114px]">
+        <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[84px]">
           <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>

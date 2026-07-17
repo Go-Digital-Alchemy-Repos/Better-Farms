@@ -249,8 +249,8 @@ export const GetInvolved = (): JSX.Element => {
               alt="Cornfield with farm buildings at dusk"
               src="/figmaAssets/cornfield_farm.webp"
             />
-            <div className="absolute inset-0 bg-[#8a4f37]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[130px]">
+            <div className="absolute inset-0 bg-[#783f30]/85 mix-blend-multiply" />
+            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[138px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing

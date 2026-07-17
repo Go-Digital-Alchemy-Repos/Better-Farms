@@ -19,7 +19,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const HomepageWhite = (): JSX.Element => {
   const [selectedDonation, setSelectedDonation] = useState("$30");
-  const [donationFrequency, setDonationFrequency] = useState("One-Time");
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -338,35 +337,35 @@ export const HomepageWhite = (): JSX.Element => {
               >
                 <CardContent className="p-0">
                   <div
-                    className={`grid items-center gap-0 md:min-h-[432px] md:grid-cols-[470px_1fr] ${
-                      card.reverse ? "md:grid-cols-[1fr_470px]" : ""
+                    className={`grid items-center gap-0 lg:min-h-[432px] lg:grid-cols-[470px_1fr] ${
+                      card.reverse ? "lg:grid-cols-[1fr_470px]" : ""
                     }`}
                   >
                     {!card.reverse && (
                       <img
-                        className="h-full w-full object-cover md:min-h-[432px]"
+                        className="h-full w-full object-cover lg:min-h-[432px]"
                         alt="Img"
                         src={card.image}
                       />
                     )}
 
                     <div
-                      className={`flex flex-col items-start gap-6 p-6 md:p-10 ${card.reverse ? "md:pl-16" : ""}`}
+                      className={`flex flex-col items-start gap-6 p-6 md:p-10 ${card.reverse ? "lg:pl-16" : ""}`}
                     >
                       <h3
-                        className={`font-h3 text-[length:var(--h3-font-size)] font-[number:var(--h3-font-weight)] leading-[var(--h3-line-height)] tracking-[var(--h3-letter-spacing)] [font-style:var(--h3-font-style)] ${card.titleColor}`}
+                        className={`[font-family:'Playfair_Display',Helvetica] text-[36px] font-bold leading-[1.05] md:text-[40px] ${card.titleColor}`}
                       >
                         {card.title}
                       </h3>
                       <p
-                        className={`[font-family:'Inter',Helvetica] text-xl font-normal leading-7 ${card.bodyColor}`}
+                        className={`[font-family:'Inter',Helvetica] text-lg font-normal leading-7 ${card.bodyColor}`}
                       >
                         {card.description}
                       </p>
                     </div>
                     {card.reverse && (
                       <img
-                        className="h-full w-full object-cover md:min-h-[432px]"
+                        className="h-full w-full object-cover lg:min-h-[432px]"
                         alt="Img"
                         src={card.image}
                       />
@@ -391,32 +390,32 @@ export const HomepageWhite = (): JSX.Element => {
             />
             <div className="absolute inset-0 bg-[#4a4526] opacity-80 mix-blend-multiply" />
             <div className="absolute inset-0 bg-black/30" />
-            <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
+            <div className="relative z-10 grid gap-10 px-6 py-10 md:px-[83px] md:py-[74px] lg:grid-cols-[minmax(0,1fr)_minmax(360px,500px)]">
               <div>
-                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
                 </h2>
-                <p className="mt-8 max-w-[529px] [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-white">
+                <p className="mt-6 max-w-[529px] [font-family:'Inter',Helvetica] text-base font-normal leading-6 text-white">
                   We cover projects, farmers, policy shifts, and the latest
                   thinking on building a more resilient food system.
                 </p>
               </div>
-              <form className="flex flex-col gap-4 self-center">
+              <form className="flex w-full flex-col gap-4 self-center">
                 <Input
                   placeholder="Full Name"
-                  className="h-[60px] rounded-lg border-0 bg-white px-[26px] [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540]"
+                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
                   <Input
                     type="email"
                     placeholder="Enter email"
-                    className="h-[60px] rounded-lg border-0 bg-white px-[26px] [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540]"
+                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
                   <Button
                     type="button"
-                    className="h-[60px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
+                    className="h-[52px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                   >
-                    <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                       Subscribe
                     </span>
                     <img
@@ -430,8 +429,8 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto grid max-w-[1317px] grid-cols-1 items-start gap-8 md:grid-cols-[406px_603px] md:justify-between">
+        <section className="px-4 py-12 md:px-8 md:pb-[160px] md:pt-[128px]">
+          <div className="mx-auto grid max-w-[1317px] grid-cols-1 items-start gap-8 xl:grid-cols-[406px_603px] xl:justify-between">
             <img
               className="h-auto w-full max-w-[406px] rounded-lg object-cover"
               alt="Rectangle"
@@ -443,7 +442,7 @@ export const HomepageWhite = (): JSX.Element => {
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
           </div>
-          <div className="mx-auto mt-12 max-w-[944px] overflow-hidden">
+          <div className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]">
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -454,8 +453,8 @@ export const HomepageWhite = (): JSX.Element => {
                   className="w-full shrink-0 px-1"
                   aria-hidden={activeTestimonial !== index}
                 >
-                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-8">
-                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
+                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[70px] md:py-12">
+                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.18] text-white md:text-[28px]">
                       <span
                         className="[font-family:'Playfair_Display',Helvetica] italic font-bold"
                         data-testid={`text-testimonial-quote-${index}`}
@@ -467,7 +466,7 @@ export const HomepageWhite = (): JSX.Element => {
                         <br />
                       </span>
                       <footer
-                        className="[font-family:'Inter',Helvetica] text-xl font-normal text-white"
+                        className="[font-family:'Inter',Helvetica] text-base font-normal text-white"
                         data-testid={`text-testimonial-attribution-${index}`}
                       >
                         {testimonial.attribution}
@@ -494,8 +493,8 @@ export const HomepageWhite = (): JSX.Element => {
               />
             ))}
           </div>
-          <div className="mx-auto mt-16 max-w-[844px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+          <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[52px]">
               Led by the People Who Built Organic Agriculture
             </h2>
           </div>
@@ -522,7 +521,7 @@ export const HomepageWhite = (): JSX.Element => {
               >
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
-                    className={`w-full object-cover grayscale ${index === 2 ? "h-[303px]" : "h-[375px]"}`}
+                    className={`w-full object-cover grayscale ${index === 1 ? "h-[375px]" : "h-[303px]"}`}
                     alt="Rectangle"
                     src={member.image}
                   />
@@ -531,10 +530,10 @@ export const HomepageWhite = (): JSX.Element => {
                   />
                 </div>
                 <div className="pt-4">
-                  <h3 className="[font-family:'Inter',Helvetica] text-lg font-bold leading-7 text-[#5e4540]">
+                  <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#5e4540]">
                     {member.name}
                   </h3>
-                  <p className="[font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
+                  <p className="[font-family:'Inter',Helvetica] text-base font-normal leading-6 text-[#5e4540]">
                     {member.credential}
                   </p>
                 </div>
@@ -567,9 +566,9 @@ export const HomepageWhite = (): JSX.Element => {
             alt="Rectangle"
             src="/sourcePhotos/homepage/tractor-spraying.webp"
           />
-          <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[240px]">
+          <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[78px]">
             <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[84px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
                 Fund a Farm Today
               </h2>
               <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">
@@ -583,40 +582,7 @@ export const HomepageWhite = (): JSX.Element => {
               </p>
               <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
                 <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
-                  <p className="hidden text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
-                    Every Investment Builds Something Real
-                  </p>
-                  <div className="hidden flex-col items-center gap-4 md:flex-row md:justify-between">
-                    <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
-                      Choose Amount
-                    </span>
-                    <div
-                      role="group"
-                      aria-label="Donation frequency"
-                      className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]"
-                    >
-                      {["One-Time", "Monthly"].map((freq) => (
-                        <button
-                          key={freq}
-                          type="button"
-                          aria-pressed={donationFrequency === freq}
-                          onClick={() => setDonationFrequency(freq)}
-                          className={`px-5 py-2 [font-family:'Inter',Helvetica] text-sm font-semibold ${
-                            donationFrequency === freq
-                              ? "bg-[#434343] text-white"
-                              : "bg-white text-[#434343]"
-                          }`}
-                        >
-                          {freq}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div
-                    role="group"
-                    aria-label="Donation amount"
-                    className="grid grid-cols-3 gap-3"
-                  >
+                  <div className="grid gap-3 lg:grid-cols-[repeat(3,1fr)_1.15fr_170px] lg:items-end" role="group" aria-label="Donation amount">
                     {donationOptions.map((option) => (
                       <button
                         key={option}
@@ -635,9 +601,8 @@ export const HomepageWhite = (): JSX.Element => {
                         {option}
                       </button>
                     ))}
-                  </div>
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <div className="flex h-[58px] flex-1 items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] md:max-w-[280px]">
+                    <div className="relative flex h-[58px] items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px]">
+                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap [font-family:'Inter',Helvetica] text-xs font-semibold text-[#5e4540]">Enter Donation</span>
                       <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
                         $
                       </span>
@@ -657,10 +622,10 @@ export const HomepageWhite = (): JSX.Element => {
                     </div>
                     <Button
                       type="button"
-                      className="h-auto rounded-lg bg-[#bc623f] px-[18px] py-[19px] text-white hover:bg-[#ab5838]"
+                      className="h-[58px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                     >
                       <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                        Fund a Farm
+                        Donate Now
                       </span>
                       <img
                         className="ml-2 h-6 w-6"

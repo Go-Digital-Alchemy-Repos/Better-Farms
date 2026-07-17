@@ -5,53 +5,53 @@ import { navItems } from "@/components/SiteHeader";
 
 export const SiteFooter = (): JSX.Element => {
   return (
-    <footer className="bg-[#5e4540] px-4 py-10 md:px-8 md:py-5">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-10 md:grid-cols-[1fr_auto_360px] md:items-start md:px-[72px]">
+    <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
+      <div className="relative mx-auto max-w-[1440px] xl:h-full">
+        <div className="grid gap-10 xl:grid-cols-[1fr_auto_430px] xl:items-start xl:px-[102px]">
           <div className="space-y-4">
             <img
-              className="h-auto w-[240px] md:w-[265px]"
+              className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
               alt="Better Farms Foundation"
               src="/sourcePhotos/brand/footer-logo.svg"
             />
             <img
-              className="h-5 w-[150px]"
+              className="h-5 w-[150px] xl:h-7 xl:w-[204px]"
               alt="Social media"
               src="/figmaAssets/frame-37278.svg"
             />
           </div>
-          <nav className="flex flex-col items-start gap-2.5 pt-1" aria-label="Footer">
+          <nav className="flex flex-col items-start gap-4 pt-1" aria-label="Footer">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 data-testid={`link-footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className="[font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-white transition-colors hover:text-[#827b3e]"
+                className="inline-flex min-h-11 items-center [font-family:'Inter',Helvetica] text-base font-medium leading-[normal] text-white transition-colors hover:text-[#827b3e] xl:min-h-0"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
           <div>
-            <h2 className="text-center text-[30px] font-bold leading-[1.05] text-white">
+            <h2 className="text-center text-[30px] font-bold leading-[1.05] text-white xl:text-[40px]">
               Sign up for Our Newsletter, See What&apos;s Growing
             </h2>
-            <form className="mt-4 space-y-2.5">
+            <form className="mt-6 space-y-4">
               <Input
                 placeholder="Full Name"
                 data-testid="input-footer-name"
-                className="h-9 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
+                className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
               />
               <div className="grid grid-cols-[1fr_122px] gap-[5px]">
                 <Input
                   placeholder="Type Your Email..."
                   data-testid="input-footer-email"
-                  className="h-9 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
+                  className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
                 />
                 <Button
                   type="button"
                   data-testid="button-footer-subscribe"
-                  className="h-9 rounded-lg bg-[#7587ac] px-4 py-0 text-[#e6dfc9] hover:bg-[#6c7ea0]"
+                  className="h-11 rounded-lg bg-[#7587ac] px-4 py-0 text-[#e6dfc9] hover:bg-[#6c7ea0]"
                 >
                   <span className="[font-family:'Inter',Helvetica] text-sm font-medium">
                     Subscribe
@@ -62,14 +62,14 @@ export const SiteFooter = (): JSX.Element => {
             </form>
           </div>
         </div>
-        <div className="mt-4">
+        <div className="mt-5 xl:mt-0">
           <img
-            className="h-auto w-full max-w-[1423px] md:h-[190px]"
+            className="h-auto w-full max-w-[1423px] xl:h-[190px]"
             alt="Better farms"
             src="/figmaAssets/better-farms.svg"
           />
         </div>
-        <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 md:flex-row md:items-center md:justify-between md:px-[72px]">
+        <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 xl:absolute xl:inset-x-0 xl:bottom-1 xl:mt-0 xl:flex-row xl:items-center xl:justify-between xl:px-[102px]">
           <div className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
             <span>© 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp; </span>
             <a

@@ -14,7 +14,7 @@ export const FundAFarm = (): JSX.Element => {
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="relative overflow-hidden pt-10 md:pt-[130px]">
+        <section className="relative overflow-hidden pt-10 md:pt-[123px]">
           <div className="px-4 md:px-8">
             <h1 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px] lg:text-[88px] xl:text-[100px]">
               Fund a Farm Today
