@@ -154,25 +154,25 @@ export const HomepageWhite = (): JSX.Element => {
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="px-4 pt-4 md:px-[29px] md:pt-6">
+        <section className="px-4 pt-4 md:px-[29px] md:pt-4">
           <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-8 md:px-[42px] md:pb-8 md:pt-[58px]">
             <img
               className="mx-auto mb-4 h-[72px] w-[72px] md:mb-6 md:h-[106px] md:w-[106px]"
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="mx-auto max-w-[1060px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.02] text-white md:text-[64px] lg:text-[80px]">
+            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[80px] xl:text-[94px]">
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
-              className="mt-6 h-auto w-full rounded-[20px] object-cover"
+              className="mt-24 h-auto w-full rounded-[20px] object-cover"
               alt="Rectangle"
               src="/sourcePhotos/homepage/farm-aerial.webp"
             />
           </div>
         </section>
-        <section className="px-4 py-10 md:px-8 md:py-[108px]">
-          <div className="mx-auto max-w-[850px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[26px] md:leading-9">
+        <section className="px-4 py-10 md:px-8 md:py-[120px]">
+          <div className="mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[32px] md:leading-10">
             <span className="font-bold">
               Better Farms Foundation bridges the gap{" "}
             </span>
@@ -184,9 +184,9 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="grid w-full grid-cols-1 overflow-hidden md:grid-cols-2">
-          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[650px] md:px-[94px] md:py-[120px]">
+          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
             <div className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[56px]">
+              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
                 Building Better Farms From the Ground Up
               </h2>
               <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-white">
@@ -256,7 +256,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[730px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[56px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
@@ -326,7 +326,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[60px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
@@ -393,7 +393,7 @@ export const HomepageWhite = (): JSX.Element => {
             <div className="absolute inset-0 bg-black/30" />
             <div className="relative z-10 grid gap-10 px-6 py-10 md:grid-cols-[1fr_500px] md:px-[83px] md:py-[91px]">
               <div>
-                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[56px]">
+                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
                 </h2>
                 <p className="mt-8 max-w-[529px] [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-white">
@@ -443,7 +443,7 @@ export const HomepageWhite = (): JSX.Element => {
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
           </div>
-          <div className="mx-auto mt-16 max-w-[944px] overflow-hidden">
+          <div className="mx-auto mt-12 max-w-[944px] overflow-hidden">
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -454,8 +454,8 @@ export const HomepageWhite = (): JSX.Element => {
                   className="w-full shrink-0 px-1"
                   aria-hidden={activeTestimonial !== index}
                 >
-                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-[52px]">
-                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[34px]">
+                  <div className="flex h-full items-center rounded-lg bg-[#bc623f] px-6 py-10 md:px-[91px] md:py-8">
+                    <blockquote className="w-full text-center [font-family:'Playfair_Display',Helvetica] text-[26px] leading-[1.15] text-white md:text-[40px]">
                       <span
                         className="[font-family:'Playfair_Display',Helvetica] italic font-bold"
                         data-testid={`text-testimonial-quote-${index}`}
@@ -495,7 +495,7 @@ export const HomepageWhite = (): JSX.Element => {
             ))}
           </div>
           <div className="mx-auto mt-16 max-w-[844px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[56px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               Led by the People Who Built Organic Agriculture
             </h2>
           </div>
@@ -569,7 +569,7 @@ export const HomepageWhite = (): JSX.Element => {
           />
           <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[240px]">
             <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[84px]">
                 Fund a Farm Today
               </h2>
               <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">

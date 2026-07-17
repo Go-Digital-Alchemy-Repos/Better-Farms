@@ -41,7 +41,7 @@ export const SiteHeader = (): JSX.Element => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-transparent bg-white">
-      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 xl:px-[53px]">
+      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 lg:py-[6px] xl:px-[37px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img
             className="block h-auto w-[160px] md:w-[200px] xl:w-[240px]"
@@ -138,7 +138,7 @@ export const SiteHeader = (): JSX.Element => {
             aria-label="Better Farms Foundation home"
             onClick={() => setMobileOpen(false)}
             style={{ transitionDelay: mobileOpen ? "80ms" : "0ms" }}
-            className={`mb-5 block w-[190px] max-w-[calc(100%-2.5rem)] transition-all duration-500 ${
+            className={`mb-5 mt-7 block w-[240px] max-w-full transition-all duration-500 sm:mt-0 sm:w-[190px] sm:max-w-[calc(100%-2.5rem)] ${
               mobileOpen
                 ? "translate-x-0 opacity-100"
                 : "translate-x-8 opacity-0"

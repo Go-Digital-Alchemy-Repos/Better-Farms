@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CompactDonationCard } from "@/components/CompactDonationCard";
 
 const foundationCards = [
   {
@@ -107,13 +107,7 @@ const trackingColumns = [
   },
 ];
 
-const donationOptions = ["$1,000", "$500", "$250", "$100", "$50", "$25"];
-
 export const HowItWorks = (): JSX.Element => {
-  const [selectedDonation, setSelectedDonation] = useState("$100");
-  const [donationFrequency, setDonationFrequency] = useState("One-Time");
-  const [customAmount, setCustomAmount] = useState("");
-
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -123,7 +117,7 @@ export const HowItWorks = (): JSX.Element => {
             <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start With a Better Process
             </p>
-            <h1 className="mx-auto mt-4 max-w-[900px] text-center text-[42px] font-bold leading-[1.1] text-white md:text-[76px]">
+            <h1 className="mx-auto mt-4 max-w-[900px] text-center text-[42px] font-bold leading-[1.1] text-white md:text-[64px] lg:text-[72px] xl:text-[76px]">
               Invest in Farm Projects for Future Generations
             </h1>
             <img
@@ -387,95 +381,7 @@ export const HowItWorks = (): JSX.Element => {
                 Put your dollars to work and get proof of what you&apos;ve built.
               </span>
             </p>
-            <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
-              <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
-                <p className="text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
-                  Every Investment Builds Something Real
-                </p>
-                <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
-                  <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
-                    Choose Amount
-                  </span>
-                  <div
-                    role="group"
-                    aria-label="Donation frequency"
-                    className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]"
-                  >
-                    {["One-Time", "Monthly"].map((freq) => (
-                      <button
-                        key={freq}
-                        type="button"
-                        aria-pressed={donationFrequency === freq}
-                        data-testid={`button-frequency-${freq.toLowerCase()}`}
-                        onClick={() => setDonationFrequency(freq)}
-                        className={`px-5 py-2 [font-family:'Inter',Helvetica] text-sm font-semibold ${
-                          donationFrequency === freq
-                            ? "bg-[#434343] text-white"
-                            : "bg-white text-[#434343]"
-                        }`}
-                      >
-                        {freq}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div
-                  role="group"
-                  aria-label="Donation amount"
-                  className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6"
-                >
-                  {donationOptions.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      aria-pressed={selectedDonation === option}
-                      data-testid={`button-donation-${option.replace(/[$,]/g, "")}`}
-                      onClick={() => {
-                        setSelectedDonation(option);
-                        setCustomAmount("");
-                      }}
-                      className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
-                        selectedDonation === option
-                          ? "border-[#d7d7d7] bg-[#434343] text-white"
-                          : "border-[#bcb9b9] bg-white text-[#434343]"
-                      }`}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex h-[58px] flex-1 items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] md:max-w-[280px]">
-                    <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
-                      $
-                    </span>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      aria-label="Other donation amount"
-                      placeholder="Other Amount"
-                      data-testid="input-other-amount"
-                      value={customAmount}
-                      onChange={(e) => {
-                        setCustomAmount(e.target.value);
-                        if (e.target.value) setSelectedDonation("");
-                      }}
-                      className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
-                    />
-                  </div>
-                  <Button
-                    type="button"
-                    data-testid="button-donate-now"
-                    className="h-[58px] rounded-lg bg-[#bc623f] px-[24px] text-white hover:bg-[#ab5838]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                      Fund a Farm
-                    </span>
-                    <img className="ml-2 h-6 w-6" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <CompactDonationCard />
             <p className="mx-auto mt-6 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-sm font-bold leading-6 text-[#2f2820]">
               501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of
               your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG

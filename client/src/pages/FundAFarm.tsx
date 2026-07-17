@@ -14,9 +14,9 @@ export const FundAFarm = (): JSX.Element => {
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="relative overflow-hidden pt-8 md:pt-10">
+        <section className="relative overflow-hidden pt-10 md:pt-[130px]">
           <div className="px-4 md:px-8">
-            <h1 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h1 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px] lg:text-[88px] xl:text-[100px]">
               Fund a Farm Today
             </h1>
             <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-[#5e4540] md:text-xl">
@@ -27,7 +27,7 @@ export const FundAFarm = (): JSX.Element => {
                 Put your dollars to work and get proof of what you&apos;ve built.
               </span>
             </p>
-            <div className="relative z-10 mx-auto mt-8 max-w-[860px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
+            <div className="relative z-10 mx-auto mt-12 max-w-[860px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
               <div className="flex flex-col gap-6 p-6 md:flex-row md:items-end md:justify-center md:gap-4 md:px-[40px] md:py-[34px]">
                 <div className="flex flex-wrap gap-3">
                   {donationOptions.map((option) => (
@@ -92,10 +92,10 @@ export const FundAFarm = (): JSX.Element => {
               impact reporting included
             </p>
           </div>
-          <div className="relative -mt-12 md:-mt-20">
-            <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[200px]" />
+          <div className="relative -mt-16 md:-mt-[158px]">
+            <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[240px]" />
             <img
-              className="h-[300px] w-full object-cover md:h-[300px]"
+              className="h-[400px] w-full object-cover"
               alt="Farmers reviewing plans in a field at sunset"
               src="/sourcePhotos/fund-a-farm/field-sunset.webp"
             />

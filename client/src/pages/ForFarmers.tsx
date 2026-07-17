@@ -75,15 +75,15 @@ export const ForFarmers = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-10 md:px-[42px] md:pb-10 md:pt-[70px]">
+          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-10 md:px-[42px] md:pb-10 md:pt-[95px]">
             <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start Here
             </p>
-            <h1 className="mx-auto mt-4 max-w-[900px] text-center text-[42px] font-bold leading-[1.1] text-white md:text-[76px]">
+            <h1 className="mx-auto mt-6 max-w-[1040px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[68px] lg:text-[82px] xl:text-[96px]">
               The Farm You&apos;ve Been Wanting to Build
             </h1>
             <img
-              className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover"
+              className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover md:mt-[116px]"
               alt="Red barn farm with silo and cornfields"
               src="/figmaAssets/red_barn_farm.webp"
             />
@@ -106,7 +106,7 @@ export const ForFarmers = (): JSX.Element => {
             The Farm Projects We Fund
           </h2>
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
-            <div className="overflow-hidden rounded-2xl md:sticky md:top-28 md:self-start">
+            <div className="overflow-hidden rounded-2xl md:self-start">
               <img
                 className="h-[520px] w-full object-cover md:h-[820px]"
                 alt="Family walking through a livestock barn"
@@ -137,7 +137,7 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:pb-[500px] md:pt-24">
+        <section className="px-4 py-12 md:px-8 md:pb-0 md:pt-24">
           <div className="mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms
@@ -172,7 +172,7 @@ export const ForFarmers = (): JSX.Element => {
             </div>
           </div>
           <img
-            className="mt-14 h-[320px] w-full object-cover md:h-[420px]"
+            className="mt-14 h-[320px] w-full object-cover md:mt-[430px] md:h-[520px]"
             alt="Farmers shaking hands in a field"
             src="/sourcePhotos/for-farmers/parallax.webp"
           />
@@ -193,23 +193,19 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-[29px] md:pb-0">
-          <div className="relative mx-auto min-h-[700px] max-w-[1386px] overflow-hidden rounded-[20px]">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Chickens in tall grass at sunset"
-              src="/sourcePhotos/for-farmers/hero.webp"
-            />
-            <div className="absolute inset-0 bg-[#4a4526]/50" />
-            <div className="relative z-10 flex min-h-[700px] flex-col items-center justify-center px-6 py-16 text-center">
-              <h2 className="text-[44px] font-bold leading-[1.05] text-white md:text-[68px]">Fund a Farm Today</h2>
-              <p className="mx-auto mt-6 max-w-[720px] [font-family:'Inter',Helvetica] text-lg leading-8 text-white md:text-xl">
-                <span className="font-bold">Your contribution can strengthen a farm for decades. </span>
-                Put your dollars to work and get proof of what you&apos;ve built.
-              </p>
-              <CompactDonationCard />
-              <p className="mt-5 [font-family:'Inter',Helvetica] text-sm font-bold text-white">501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG impact reporting included</p>
-            </div>
+        <section className="relative overflow-hidden pt-10 md:pt-[110px]">
+          <div className="relative z-10 px-4 md:px-8">
+            <h2 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">Fund a Farm Today</h2>
+            <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#5e4540] md:text-xl">
+              <span className="font-bold">Your contribution can strengthen a farm for decades. </span>
+              Put your dollars to work and get proof of what you&apos;ve built.
+            </p>
+            <CompactDonationCard />
+            <p className="mx-auto mt-6 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-sm font-bold leading-6 text-[#2f2820]">501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG impact reporting included</p>
+          </div>
+          <div className="relative mt-[-40px]">
+            <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)]" />
+            <img className="h-[420px] w-full object-cover" alt="Chickens in tall grass at sunset" src="/sourcePhotos/for-farmers/hero.webp" />
           </div>
         </section>
       </main>

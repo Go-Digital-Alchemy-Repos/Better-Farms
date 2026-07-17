@@ -76,12 +76,12 @@ export const AboutUs = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-8 pt-10 md:px-[42px] md:pb-12 md:pt-[70px]">
-            <h1 className="mx-auto max-w-[900px] text-center text-[42px] font-bold leading-[1.1] text-white md:text-[72px]">
+          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-8 pt-10 md:px-[42px] md:pb-12 md:pt-[88px]">
+            <h1 className="mx-auto max-w-[1000px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[88px] xl:text-[104px]">
               Better Farms Start With Better Partners
             </h1>
             <img
-              className="mt-8 h-auto max-h-[560px] w-full rounded-[20px] object-cover md:h-[610px] md:max-h-none"
+              className="mt-16 h-auto max-h-[560px] w-full rounded-[20px] object-cover md:h-[610px] md:max-h-none"
               alt="Sheep feeding at a wooden trough"
               src="/sourcePhotos/about/sheep-feeding.webp"
             />
@@ -208,7 +208,7 @@ export const AboutUs = (): JSX.Element => {
               src="/figmaAssets/cornfield_farm.webp"
             />
             <div className="absolute inset-0 bg-[#5c5426]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[94px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
@@ -247,7 +247,7 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-16">
+        <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[114px]">
           <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>

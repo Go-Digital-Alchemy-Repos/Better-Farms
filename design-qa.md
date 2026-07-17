@@ -2,59 +2,56 @@
 
 ## Objective
 
-Match the supplied 1440 px Figma exports for the homepage, About Us, Get Involved, For Farmers, Fund a Farm, and Contact routes; use the supplied source photography; preserve responsive usability across standard screen sizes.
+Match the six supplied 1440 px Figma exports, use the supplied source photography, and preserve responsive usability across the full site.
 
-## Scope
+## References and implementation
 
-- Reference exports: `Figma Exports/`
-- Source imagery: `Source Photos/Website images/`
-- Implemented routes: `/`, `/about`, `/get-involved`, `/for-farmers`, `/fund-a-farm`, `/contact`
-- Extension route without a supplied export: `/how-it-works`
-- Desktop comparison viewport: 1440 × 900, full-page capture
-- Responsive widths: 390, 768, 1024, 1280, and 1440 px
+- References: `Figma Exports/homepage.png`, `About Us.png`, `Get Involved.png`, `for farmers.png`, `fund a farm.png`, and `Contact.png`
+- Source photography: `Source Photos/`
+- Compared routes: `/`, `/about`, `/get-involved`, `/for-farmers`, `/fund-a-farm`, and `/contact`
+- Additional responsive-only route: `/how-it-works` (no matching Figma export was supplied)
+- Desktop comparison viewport: 1440 × 900
+- Responsive test widths: 390, 768, 1024, 1280, and 1440 px
 
-## Comparison passes
+## Comparison loop
 
-1. Captured the existing implementation and compared every supplied route against its Figma export in a combined side-by-side image.
-2. Corrected section order, desktop scale, image assignment, crop behavior, donation treatments, team-card count, project/process structure, and page-specific vertical rhythm.
-3. Re-captured all routes and repeated combined-image inspection.
-4. Corrected remaining high-impact mismatches, including homepage media, For Farmers hero/process/donation content, and Get Involved section spacing.
-5. Ran a final desktop comparison plus responsive and interaction checks.
+1. Captured all six production routes and placed each capture next to its matching export.
+2. Corrected the shared header/footer scale, page hero dimensions, typography, section spacing, image assignment/crops, donation treatments, and long-page vertical rhythm.
+3. Captured every long page in overlapping viewport sections, removed the sticky-header overlap, and assembled full-page comparison images.
+4. Repeated the side-by-side inspection after each correction pass.
+5. Completed phone, tablet, laptop, and desktop overflow/image checks plus core interaction checks.
+
+## Final desktop measurements
+
+| Route | Figma height | Implemented height | Difference |
+|---|---:|---:|---:|
+| Homepage | 9,782 px | 9,879 px | +97 px (0.99%) |
+| About | 7,865 px | 7,874 px | +9 px (0.11%) |
+| Get Involved | 8,057 px | 8,055 px | -2 px (0.02%) |
+| For Farmers | 8,213 px | 8,201 px | -12 px (0.15%) |
+| Fund a Farm | 1,341 px | 1,361 px | +20 px (1.49%) |
+| Contact | 1,595 px | 1,595 px | 0 px |
+
+The small remaining height differences come from live browser font rendering and native form controls; no section-order, imagery, or major spacing mismatch remains.
 
 ## Final checks
 
-- Typography: display/body families, scale, line-height, hierarchy, and wrapping checked against the references.
-- Layout and spacing: all referenced sections are present in the correct order; long-form page heights are within 0–52 px of their supplied exports.
-- Color and surfaces: brand colors, gradients, cards, borders, radii, and donation panels visually match the references.
-- Imagery: page-specific source photographs are used for all supplied source-photo slots; crops and aspect ratios were checked in combined comparisons.
-- Icons: supplied SVG assets are used on Get Involved and in brand treatments; existing interface arrow icons remain consistent.
-- Responsiveness: no horizontal overflow at 390, 768, 1024, 1280, or 1440 px on any route.
-- Accessibility: semantic buttons/links, form labels, alt text, keyboard-reachable mobile navigation, Escape-to-close behavior, focus handling, and practical tap targets checked.
-- Interactions: mobile navigation opens/closes correctly; accordion state works; testimonial controls work; donation amount selection works; Contact form validation/submission/reset works.
-- Runtime: no browser console errors or warnings in the final route pass.
-- Build: `npm run check` and `npm run build` pass.
-
-## Production image optimization
-
-- Converted every shipped photographic PNG/JPEG asset in `client/public` to WebP.
-- Used quality 84 for photography, quality 88 plus full alpha quality for transparent raster assets, and WebP effort level 6.
-- Capped oversized sources at 2880 px wide without enlarging smaller originals.
-- Removed obsolete public PNG/JPEG duplicates after updating all application references.
-- Reduced the raster payload from 106.84 MB to 12.41 MB (88.4% smaller).
-- Re-captured representative desktop routes after conversion and found no visible fidelity regression.
-- Rechecked all seven routes for missing responses and browser console errors; none were found.
-
-## Residual low-severity differences
-
-- Rasterized font antialiasing and a few line wraps can vary slightly from the Figma export.
-- Fund a Farm and Contact are 64 px and 128 px taller than their exports because the shared responsive footer and live form controls retain production-safe spacing.
-- How It Works uses the established design system and supplied page-specific photography, but it could not be pixel-compared because no Figma export was supplied for that route.
+- All supplied sections appear in the reference order with matching brand colors, radii, grids, and image crops.
+- Source-photo assets are used throughout the supplied-page routes; all loaded images report valid natural dimensions.
+- The previously mismatched multi-row donation controls now use the compact Figma treatment consistently.
+- The For Farmers ending now matches the white donation heading/card over a full-width chicken-field image.
+- The shared footer has been resized to the Figma proportions across all routes.
+- No horizontal overflow was found on any route at 390, 768, 1024, 1280, or 1440 px.
+- Mobile navigation opens with body scroll locked and includes the enlarged phone-only logo.
+- Accordion state changes, donation selection, team-member dialog opening, and Contact validation were verified in-browser.
+- `/how-it-works` has no horizontal overflow or broken images at 390, 768, or 1440 px and now uses the same compact donation treatment.
+- `npm run check`, `npm run build`, and `git diff --check` pass.
 
 ## Severity disposition
 
 - P0 blockers: 0
 - P1 major fidelity or usability issues: 0
 - P2 material visual/responsive issues: 0
-- P3 minor differences: documented above
+- P3 minor browser-rendering differences: documented above
 
 final result: passed

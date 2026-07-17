@@ -64,12 +64,12 @@ export const Contact = (): JSX.Element => {
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 min-[1400px]:grid-cols-[560px_642px] min-[1400px]:gap-[86px] min-[1400px]:pb-[32px] min-[1400px]:pl-[112px] min-[1400px]:pr-0 min-[1400px]:pt-[32px]">
+        <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 min-[1400px]:grid-cols-[560px_642px] min-[1400px]:gap-[86px] min-[1400px]:pb-[54px] min-[1400px]:pl-[112px] min-[1400px]:pr-0 min-[1400px]:pt-[40px]">
           <div>
-            <h1 className="max-w-[420px] text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[44px]">
+            <h1 className="max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
               Take the First Step Towards Better Farms
             </h1>
-            <p className="mt-6 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+            <p className="mt-10 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
               Every partnership, project, and breakthrough starts with a simple
               conversation. Fill out the form below. Our team will be in touch.
             </p>
@@ -89,7 +89,7 @@ export const Contact = (): JSX.Element => {
                           <Input
                             placeholder="Full Name*"
                             data-testid="input-full-name"
-                            className="h-[46px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                            className="h-[54px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                             {...field}
                           />
                         </FormControl>
@@ -107,7 +107,7 @@ export const Contact = (): JSX.Element => {
                             <Input
                               placeholder="Email*"
                               data-testid="input-email"
-                              className="h-[46px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                              className="h-[54px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                               {...field}
                             />
                           </FormControl>
@@ -124,7 +124,7 @@ export const Contact = (): JSX.Element => {
                             <Input
                               placeholder="Organization"
                               data-testid="input-organization"
-                              className="h-[46px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                              className="h-[54px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                               {...field}
                             />
                           </FormControl>
@@ -147,7 +147,7 @@ export const Contact = (): JSX.Element => {
                         <FormControl>
                           <SelectTrigger
                             data-testid="select-role"
-                            className="h-[46px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                            className="h-[54px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                           >
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
@@ -177,7 +177,7 @@ export const Contact = (): JSX.Element => {
                         <FormControl>
                           <SelectTrigger
                             data-testid="select-referral"
-                            className="h-[46px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                            className="h-[54px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                           >
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
@@ -207,7 +207,7 @@ export const Contact = (): JSX.Element => {
                         <Textarea
                           placeholder="Leave a message"
                           data-testid="input-message"
-                          className="min-h-[120px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
+                          className="min-h-[160px] rounded-lg border-[#bcb9b9] [font-family:'Inter',Helvetica] text-sm text-[#3a332b]"
                           {...field}
                         />
                       </FormControl>

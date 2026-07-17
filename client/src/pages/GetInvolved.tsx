@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-
-const donationOptions = ["$1,000", "$500", "$250", "$100", "$50", "$25"];
+import { CompactDonationCard } from "@/components/CompactDonationCard";
 
 const pathways = [
   {
@@ -133,24 +131,20 @@ const partnerBenefits = [
 ];
 
 export const GetInvolved = (): JSX.Element => {
-  const [selectedDonation, setSelectedDonation] = useState("$100");
-  const [donationFrequency, setDonationFrequency] = useState("One-Time");
-  const [customAmount, setCustomAmount] = useState("");
-
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pt-10 md:px-[60px] md:pt-14">
-            <p className="text-center text-xl font-bold text-white md:text-[28px]">
+          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pt-10 md:px-[42px] md:pt-[116px]">
+            <p className="text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
-            <h1 className="mx-auto mt-4 max-w-[900px] text-center text-[44px] font-bold leading-[1.05] text-white md:text-[80px]">
+            <h1 className="mx-auto mt-[38px] max-w-[1000px] text-center text-[44px] font-bold leading-[1.02] text-white md:text-[72px] lg:text-[92px] xl:text-[112px]">
               Help Independent Farms Thrive
             </h1>
             <img
-              className="mt-12 h-[320px] w-full rounded-t-[20px] object-cover md:h-[580px]"
+              className="mt-[68px] h-[320px] w-full rounded-t-[20px] object-cover md:h-[635px]"
               alt="Chickens roaming outside a mobile coop"
               src="/sourcePhotos/get-involved/chickens-roaming.webp"
             />
@@ -167,13 +161,17 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 pb-10 md:px-8">
-          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
-          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_440px]">
-            <div className="flex flex-col gap-24 md:gap-[190px]">
-              {pathways.map((pathway) => (
-                <div key={pathway.id} data-testid={`section-pathway-${pathway.id}`}>
+          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_440px] lg:pt-[108px]">
+            <div className="flex flex-col gap-24 md:gap-0">
+              {pathways.map((pathway, index) => (
+                <div
+                  key={pathway.id}
+                  data-testid={`section-pathway-${pathway.id}`}
+                  className={index === 0 ? "" : index === 2 ? "md:mt-[190px]" : "md:mt-20"}
+                >
                   <h2 className="text-[32px] font-bold leading-[1.1] text-[#5e4540] md:text-[40px]">
                     {pathway.title}
                   </h2>
@@ -252,7 +250,7 @@ export const GetInvolved = (): JSX.Element => {
               src="/figmaAssets/cornfield_farm.webp"
             />
             <div className="absolute inset-0 bg-[#8a4f37]/70" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[64px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[130px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
@@ -331,7 +329,7 @@ export const GetInvolved = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative overflow-hidden pt-10">
+        <section className="relative overflow-hidden pt-10 md:pt-[270px]">
           <div className="px-4 md:px-8">
             <h2 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">
               Fund a Farm Today
@@ -344,96 +342,7 @@ export const GetInvolved = (): JSX.Element => {
                 Put your dollars to work and get proof of what you&apos;ve built.
               </span>
             </p>
-            <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white shadow-[0px_4px_10px_#00000040]">
-              <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
-                <p className="text-center [font-family:'Inter',Helvetica] text-lg font-bold text-[#5e4540]">
-                  Every Investment Builds Something Real
-                </p>
-                <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
-                  <span className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
-                    Choose Amount
-                  </span>
-                  <div
-                    role="group"
-                    aria-label="Donation frequency"
-                    className="flex overflow-hidden rounded-[10px] border border-[#bcb9b9]"
-                  >
-                    {["One-Time", "Monthly"].map((freq) => (
-                      <button
-                        key={freq}
-                        type="button"
-                        aria-pressed={donationFrequency === freq}
-                        data-testid={`button-frequency-${freq.toLowerCase()}`}
-                        onClick={() => setDonationFrequency(freq)}
-                        className={`px-5 py-2 [font-family:'Inter',Helvetica] text-sm font-semibold ${
-                          donationFrequency === freq
-                            ? "bg-[#434343] text-white"
-                            : "bg-white text-[#434343]"
-                        }`}
-                      >
-                        {freq}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div
-                  role="group"
-                  aria-label="Donation amount"
-                  className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6"
-                >
-                  {donationOptions.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      aria-pressed={selectedDonation === option}
-                      data-testid={`button-donation-${option.replace(/[$,]/g, "")}`}
-                      onClick={() => {
-                        setSelectedDonation(option);
-                        setCustomAmount("");
-                      }}
-                      className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
-                        selectedDonation === option
-                          ? "border-[#d7d7d7] bg-[#434343] text-white"
-                          : "border-[#bcb9b9] bg-white text-[#434343]"
-                      }`}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex h-[58px] flex-1 items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] md:max-w-[280px]">
-                    <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
-                      $
-                    </span>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      aria-label="Other donation amount"
-                      placeholder="Other Amount"
-                      data-testid="input-custom-donation"
-                      value={customAmount}
-                      onChange={(e) => {
-                        const numeric = e.target.value.replace(/\D/g, "");
-                        setCustomAmount(numeric);
-                        if (numeric.length > 0) setSelectedDonation("");
-                      }}
-                      className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
-                    />
-                  </div>
-                  <Button
-                    type="button"
-                    data-testid="button-donate-now"
-                    className="h-[58px] rounded-lg bg-[#bc623f] px-[24px] text-white hover:bg-[#ab5838]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                      Fund a Farm
-                    </span>
-                    <img className="ml-2 h-6 w-6" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <CompactDonationCard />
             <p className="relative z-10 mx-auto mt-8 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-sm font-bold leading-6 text-[#2f2820]">
               501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of
               your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG
@@ -443,7 +352,7 @@ export const GetInvolved = (): JSX.Element => {
           <div className="relative mt-10">
             <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
             <img
-              className="h-[380px] w-full object-cover md:h-[480px]"
+              className="h-[380px] w-full object-cover md:h-[590px]"
               alt="Cattle grazing in a wide pasture"
               src="/sourcePhotos/get-involved/cows-grazing.webp"
             />
