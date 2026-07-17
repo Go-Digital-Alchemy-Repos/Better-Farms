@@ -36,6 +36,7 @@ const processSteps = [
     id: "01",
     title: "Application",
     body: "Submit a project proposal describing your operation, the challenge you're facing, and the outcomes you're hoping to achieve.",
+    icon: "/sourcePhotos/for-farmers/application.svg",
     bg: "bg-[#f3ebd3]",
     text: "text-[#5e4540]",
   },
@@ -43,6 +44,7 @@ const processSteps = [
     id: "02",
     title: "Assessment",
     body: "Our team visits your farm to assess conditions, refine the project scope, and set measurable targets together.",
+    icon: "/sourcePhotos/for-farmers/assessment.svg",
     bg: "bg-[#bc623f]",
     text: "text-white",
   },
@@ -50,6 +52,7 @@ const processSteps = [
     id: "03",
     title: "Funding",
     body: "Better Farms assembles the capital needed to fully resource your project. You never have to chase donors or write grant applications.",
+    icon: "/sourcePhotos/for-farmers/leaf.svg",
     bg: "bg-[#e6dfc9]",
     text: "text-[#5e4540]",
   },
@@ -57,6 +60,7 @@ const processSteps = [
     id: "04",
     title: "Execution",
     body: "Professional project managers work alongside you to oversee every phase of construction and implementation on your farm.",
+    icon: "/sourcePhotos/for-farmers/execution.svg",
     bg: "bg-[#7587ac]",
     text: "text-white",
   },
@@ -64,10 +68,17 @@ const processSteps = [
     id: "05",
     title: "Measurement",
     body: "Rigorous data collection begins on day one and continues throughout the project to document the real impact on your operation.",
+    icon: "/sourcePhotos/for-farmers/measurement.svg",
     bg: "bg-[#f3ebd3]",
     text: "text-[#5e4540]",
   },
 ];
+
+const topoPatternStyle = {
+  backgroundImage:
+    "url(\"data:image/svg+xml,%3Csvg width='720' height='460' viewBox='0 0 720 460' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235e4540' stroke-opacity='.1' stroke-width='1.8'%3E%3Cpath d='M-70 96c75-41 151-42 228-4 64 31 120 34 168 10 68-34 137-27 207 21 60 41 134 44 224 7'/%3E%3Cpath d='M-64 126c78-37 151-36 221 4 62 36 118 39 169 9 70-42 142-35 216 20 57 43 126 48 206 16'/%3E%3Cpath d='M-58 158c78-33 149-28 213 13 62 40 121 42 176 4 68-47 144-38 226 24 53 40 117 46 193 20'/%3E%3Cpath d='M-52 192c74-30 143-24 207 20 66 45 131 43 196-7 58-45 131-34 219 33 50 37 108 43 174 20'/%3E%3Cpath d='M-46 228c77-29 149-20 216 28 60 43 121 39 184-11 60-48 134-35 221 39 45 38 98 44 160 20'/%3E%3Cpath d='M-39 266c83-31 161-22 233 29 56 40 112 36 169-13 60-52 137-39 230 41 39 34 86 40 141 19'/%3E%3Cpath d='M-31 304c84-30 162-20 236 30 57 38 110 33 161-14 62-57 143-42 241 46 35 31 76 36 124 18'/%3E%3Cpath d='M33 80c21-35 54-54 98-56 52-3 95 20 130 67 38 51 85 66 140 45 64-24 126-12 186 37 43 35 96 47 158 35'/%3E%3Cpath d='M38 47c37-32 82-46 136-42 51 4 93 31 127 80 31 45 72 57 123 35 64-28 129-18 194 31 37 28 80 40 130 36'/%3E%3Cpath d='M106 372c48-40 99-47 153-20 55 28 102 22 142-16 51-48 105-54 163-18 62 39 123 38 184-2'/%3E%3Cpath d='M84 414c60-48 121-54 183-18 50 30 94 24 132-16 52-56 111-62 176-19 56 37 112 35 169-5'/%3E%3C/g%3E%3C/svg%3E\")",
+  backgroundSize: "720px 460px",
+};
 
 export const ForFarmers = (): JSX.Element => {
   return (
@@ -106,7 +117,7 @@ export const ForFarmers = (): JSX.Element => {
             The Farm Projects We Fund
           </h2>
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[minmax(0,740px)_420px] md:items-start">
-            <div className="overflow-hidden rounded-2xl md:self-start">
+            <div className="hidden overflow-hidden rounded-2xl md:sticky md:top-28 md:block md:self-start">
               <img
                 className="h-[560px] w-full object-cover object-bottom md:h-[891px]"
                 alt="Family walking through a livestock barn"
@@ -137,8 +148,9 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:pb-0 md:pt-24">
-          <div className="mx-auto max-w-[1100px]">
+        <section className="relative overflow-hidden px-4 py-12 md:px-8 md:pb-0 md:pt-24">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] opacity-80" style={topoPatternStyle} />
+          <div className="relative z-10 mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms
             </h2>
@@ -149,6 +161,12 @@ export const ForFarmers = (): JSX.Element => {
                   data-testid={`card-step-${step.id}`}
                   className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
                 >
+                  <img
+                    className="mb-7 h-16 w-20 object-contain object-left"
+                    alt=""
+                    aria-hidden="true"
+                    src={step.icon}
+                  />
                   <h3 className="text-[24px] font-bold">
                     {step.id}. {step.title}
                   </h3>
@@ -172,7 +190,7 @@ export const ForFarmers = (): JSX.Element => {
             </div>
           </div>
           <img
-            className="mt-14 h-[320px] w-full object-cover md:mt-[430px] md:h-[520px]"
+            className="hidden w-full object-cover md:mt-[430px] md:block md:h-[520px]"
             alt="Farmers shaking hands in a field"
             src="/sourcePhotos/for-farmers/parallax.webp"
           />

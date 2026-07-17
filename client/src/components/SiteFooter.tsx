@@ -1,13 +1,107 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { navItems } from "@/components/SiteHeader";
+
+const legalDocuments = [
+  {
+    label: "Privacy Policy",
+    title: "Privacy Policy",
+    description:
+      "How Better Farms Foundation collects, uses, and protects information shared through this website.",
+    updated: "July 17, 2026",
+    sections: [
+      {
+        heading: "Information We Collect",
+        body: "We may collect information you choose to provide, including your name, email address, donation details, newsletter preferences, and messages submitted through forms. We may also collect basic technical information such as browser type, device information, pages viewed, and general usage data to help us improve the website.",
+      },
+      {
+        heading: "How We Use Information",
+        body: "We use information to process donations, respond to inquiries, send requested updates, operate and improve our website, protect against misuse, and maintain records required for nonprofit operations. We do not sell personal information.",
+      },
+      {
+        heading: "Donations and Service Providers",
+        body: "Donation and payment information may be processed by trusted third-party providers. Those providers use information according to their own security and privacy practices. Better Farms Foundation only shares information as needed to provide services, comply with law, or protect the organization and the people we serve.",
+      },
+      {
+        heading: "Your Choices",
+        body: "You may unsubscribe from email updates using the link in our messages or contact us to request that we update or remove information where applicable. Some records may be retained when required for legal, accounting, fraud prevention, or legitimate operational purposes.",
+      },
+      {
+        heading: "Security",
+        body: "We use reasonable administrative, technical, and organizational safeguards designed to protect information. No website or transmission method is completely secure, but we work to handle information responsibly.",
+      },
+    ],
+  },
+  {
+    label: "Terms of Use",
+    title: "Terms of Use",
+    description:
+      "The basic rules for using the Better Farms Foundation website and digital materials.",
+    updated: "July 17, 2026",
+    sections: [
+      {
+        heading: "Website Use",
+        body: "By using this website, you agree to use it only for lawful purposes and in a way that does not interfere with the site, its security, or other visitors. You may not attempt to gain unauthorized access to systems, submit harmful code, or misuse forms and donation tools.",
+      },
+      {
+        heading: "Content",
+        body: "Text, images, logos, graphics, and other materials on this website are owned by or licensed to Better Farms Foundation unless otherwise noted. You may view and share links to our public pages, but you may not copy, modify, or reuse materials for commercial purposes without permission.",
+      },
+      {
+        heading: "Donations",
+        body: "Donation amounts, program descriptions, and impact statements are provided in good faith. We aim to direct funds toward the farm-level work described on this site while preserving the flexibility needed to manage nonprofit operations, project needs, compliance, and changing conditions.",
+      },
+      {
+        heading: "Third-Party Services",
+        body: "This website may rely on third-party services for payments, analytics, email, hosting, or other operations. We are not responsible for third-party websites or services that are outside our control.",
+      },
+      {
+        heading: "No Warranty",
+        body: "The website is provided as available. We work to keep information accurate and current, but we do not guarantee that all content will be complete, uninterrupted, error-free, or suitable for every purpose.",
+      },
+    ],
+  },
+  {
+    label: "Accessibility",
+    title: "Accessibility Statement",
+    description:
+      "Our commitment to making the Better Farms Foundation website usable for as many people as possible.",
+    updated: "July 17, 2026",
+    sections: [
+      {
+        heading: "Our Commitment",
+        body: "Better Farms Foundation is committed to providing a website that is accessible to people with diverse abilities, technologies, and browsing needs. We aim to follow widely accepted accessibility practices, including clear structure, readable contrast, keyboard access, descriptive text, and responsive layouts.",
+      },
+      {
+        heading: "Ongoing Improvements",
+        body: "Accessibility is an ongoing effort. As we update content, images, forms, and interactive features, we work to identify and improve barriers that may affect visitors using assistive technologies.",
+      },
+      {
+        heading: "Supported Features",
+        body: "The site is designed to support semantic headings, keyboard navigation, visible focus states, descriptive alternative text where appropriate, and form labels or accessible names for key interactions.",
+      },
+      {
+        heading: "Feedback",
+        body: "If you experience difficulty using this website, please contact us through the Contact page and include the page address, the issue you encountered, and the technology or browser you were using. We will review the issue and work toward a practical resolution.",
+      },
+    ],
+  },
+];
 
 export const SiteFooter = (): JSX.Element => {
   return (
     <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
       <div className="relative mx-auto max-w-[1440px] xl:h-full">
-        <div className="grid gap-10 xl:grid-cols-[1fr_auto_430px] xl:items-start xl:px-[102px]">
+        <div className="grid gap-10 xl:translate-y-[48px] xl:grid-cols-[1fr_auto_430px] xl:items-start xl:px-[102px]">
           <div className="space-y-4">
             <img
               className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
@@ -72,32 +166,61 @@ export const SiteFooter = (): JSX.Element => {
         <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 xl:absolute xl:inset-x-0 xl:bottom-1 xl:mt-0 xl:flex-row xl:items-center xl:justify-between xl:px-[102px]">
           <div className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
             <span>© 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp; </span>
-            <a
-              href="https://directory.herplan.org/privacy-policy"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="underline"
-            >
-              Privacy Policy
-            </a>
-            <span> | </span>
-            <a
-              href="https://directory.herplan.org/terms-conditions"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="underline"
-            >
-              Terms of Use
-            </a>
-            <span> | </span>
-            <a
-              href="https://herplan.org/accessibility/"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="underline"
-            >
-              Accessibility
-            </a>
+            {legalDocuments.map((document, index) => (
+              <span key={document.label}>
+                {index > 0 && <span> | </span>}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="underline underline-offset-2 transition-colors hover:text-[#e6dfc9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
+                    >
+                      {document.label}
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-h-[88vh] max-w-[760px] overflow-hidden rounded-[20px] border-0 bg-[#f8f4e8] p-0 text-[#5e4540] shadow-2xl">
+                    <div className="border-b border-[#5e4540]/15 bg-white px-6 py-5 md:px-8">
+                      <DialogHeader className="space-y-4 text-left">
+                        <img
+                          className="h-auto w-[220px]"
+                          alt="Better Farms Foundation"
+                          src="/sourcePhotos/brand/logo.svg"
+                        />
+                        <div>
+                          <DialogTitle className="[font-family:'Playfair_Display',Helvetica] text-[34px] font-bold leading-[1.05] text-[#5e4540] md:text-[44px]">
+                            {document.title}
+                          </DialogTitle>
+                          <DialogDescription className="mt-3 max-w-[580px] [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]/80">
+                            {document.description}
+                          </DialogDescription>
+                        </div>
+                      </DialogHeader>
+                    </div>
+                    <div className="max-h-[56vh] overflow-y-auto px-6 py-6 md:px-8">
+                      <p className="[font-family:'Inter',Helvetica] text-xs font-semibold uppercase tracking-[0.12em] text-[#827b3e]">
+                        Last updated {document.updated}
+                      </p>
+                      <div className="mt-5 space-y-6">
+                        {document.sections.map((section) => (
+                          <section key={section.heading}>
+                            <h3 className="[font-family:'Playfair_Display',Helvetica] text-[24px] font-bold leading-tight text-[#5e4540]">
+                              {section.heading}
+                            </h3>
+                            <p className="mt-2 [font-family:'Inter',Helvetica] text-sm leading-7 text-[#5e4540] md:text-base">
+                              {section.body}
+                            </p>
+                          </section>
+                        ))}
+                      </div>
+                      <div className="mt-8 rounded-xl bg-[#e6dfc9] p-5 [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]">
+                        For questions about this document, please reach out through
+                        the Better Farms Foundation Contact page.
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </span>
+            ))}
           </div>
           <div className="flex items-center gap-2">
             <span className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">

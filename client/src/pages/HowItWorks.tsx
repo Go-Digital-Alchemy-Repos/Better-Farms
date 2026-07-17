@@ -37,6 +37,7 @@ const processSteps = [
     id: "01",
     title: "Application",
     body: "Farmers submit project proposals describing their needs, goals, and expected outcomes for our team to review.",
+    icon: "/sourcePhotos/for-farmers/application.svg",
     bg: "bg-[#f3ebd3]",
     text: "text-[#5e4540]",
   },
@@ -44,6 +45,7 @@ const processSteps = [
     id: "02",
     title: "Assessment",
     body: "Our staff visits the farm to evaluate conditions, refine the project scope, and establish measurable targets alongside the farmer.",
+    icon: "/sourcePhotos/for-farmers/assessment.svg",
     bg: "bg-[#bc623f]",
     text: "text-white",
   },
@@ -51,6 +53,7 @@ const processSteps = [
     id: "03",
     title: "Funding",
     body: "We assemble capital from corporate donors, foundations, and donor-advised funds to fully fund the project.",
+    icon: "/sourcePhotos/for-farmers/leaf.svg",
     bg: "bg-[#e6dfc9]",
     text: "text-[#5e4540]",
   },
@@ -58,6 +61,7 @@ const processSteps = [
     id: "04",
     title: "Execution",
     body: "Professional project managers work alongside farmers to oversee every phase of construction and implementation on-site.",
+    icon: "/sourcePhotos/for-farmers/execution.svg",
     bg: "bg-[#7587ac]",
     text: "text-white",
   },
@@ -65,17 +69,25 @@ const processSteps = [
     id: "05",
     title: "Measurement",
     body: "Rigorous data collection begins on day one, continues throughout the project, and beyond completion.",
+    icon: "/sourcePhotos/for-farmers/measurement.svg",
     bg: "bg-[#f3ebd3]",
     text: "text-[#5e4540]",
   },
   {
     id: "06",
-    title: "Reporting",
+    title: "Impact Report",
     body: "Donors receive detailed impact reports featuring ESG metrics, carbon accounting, and verified operational outcomes.",
+    icon: "/sourcePhotos/about/principles/results.svg",
     bg: "bg-[#5e4540]",
     text: "text-white",
   },
 ];
+
+const topoPatternStyle = {
+  backgroundImage:
+    "url(\"data:image/svg+xml,%3Csvg width='720' height='460' viewBox='0 0 720 460' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235e4540' stroke-opacity='.1' stroke-width='1.8'%3E%3Cpath d='M-70 96c75-41 151-42 228-4 64 31 120 34 168 10 68-34 137-27 207 21 60 41 134 44 224 7'/%3E%3Cpath d='M-64 126c78-37 151-36 221 4 62 36 118 39 169 9 70-42 142-35 216 20 57 43 126 48 206 16'/%3E%3Cpath d='M-58 158c78-33 149-28 213 13 62 40 121 42 176 4 68-47 144-38 226 24 53 40 117 46 193 20'/%3E%3Cpath d='M-52 192c74-30 143-24 207 20 66 45 131 43 196-7 58-45 131-34 219 33 50 37 108 43 174 20'/%3E%3Cpath d='M-46 228c77-29 149-20 216 28 60 43 121 39 184-11 60-48 134-35 221 39 45 38 98 44 160 20'/%3E%3Cpath d='M-39 266c83-31 161-22 233 29 56 40 112 36 169-13 60-52 137-39 230 41 39 34 86 40 141 19'/%3E%3Cpath d='M-31 304c84-30 162-20 236 30 57 38 110 33 161-14 62-57 143-42 241 46 35 31 76 36 124 18'/%3E%3Cpath d='M33 80c21-35 54-54 98-56 52-3 95 20 130 67 38 51 85 66 140 45 64-24 126-12 186 37 43 35 96 47 158 35'/%3E%3Cpath d='M38 47c37-32 82-46 136-42 51 4 93 31 127 80 31 45 72 57 123 35 64-28 129-18 194 31 37 28 80 40 130 36'/%3E%3Cpath d='M106 372c48-40 99-47 153-20 55 28 102 22 142-16 51-48 105-54 163-18 62 39 123 38 184-2'/%3E%3Cpath d='M84 414c60-48 121-54 183-18 50 30 94 24 132-16 52-56 111-62 176-19 56 37 112 35 169-5'/%3E%3C/g%3E%3C/svg%3E\")",
+  backgroundSize: "720px 460px",
+};
 
 const trackingColumns = [
   {
@@ -146,11 +158,11 @@ export const HowItWorks = (): JSX.Element => {
             five most critical threats to independent farms.
           </p>
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
-            <div className="overflow-hidden rounded-none md:sticky md:top-28 md:self-start">
+            <div className="hidden overflow-hidden rounded-none md:sticky md:top-28 md:block md:self-start">
               <img
-                className="h-[420px] w-full object-cover md:h-[640px]"
-                alt="Farmers inspecting crops at sunset"
-                src="/sourcePhotos/how-it-works/couple-clipboard.webp"
+                className="h-auto w-full object-cover"
+                alt="Farmers reviewing plans in a wheat field"
+                src="/figmaAssets/farmer_wheat_tablet.webp"
               />
             </div>
             <div className="flex flex-col gap-8">
@@ -224,8 +236,9 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-[1100px]">
+        <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />
+          <div className="relative z-10 mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms
             </h2>
@@ -236,6 +249,12 @@ export const HowItWorks = (): JSX.Element => {
                   data-testid={`card-step-${step.id}`}
                   className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
                 >
+                  <img
+                    className="mb-7 h-16 w-20 object-contain object-left"
+                    alt=""
+                    aria-hidden="true"
+                    src={step.icon}
+                  />
                   <h3 className="text-[24px] font-bold">
                     {step.id}. {step.title}
                   </h3>
@@ -246,62 +265,76 @@ export const HowItWorks = (): JSX.Element => {
               ))}
             </div>
           </div>
-          <img
-            className="mt-14 h-[320px] w-full object-cover md:h-[420px]"
-            alt="Farmers shaking hands in a field"
-            src="/sourcePhotos/how-it-works/parallax.webp"
-          />
+          <div className="relative mt-14 z-20">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[170px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.94)_44%,rgba(255,255,255,0)_100%)] md:h-[230px]" />
+            <img
+              className="h-[320px] w-full rounded-b-[30px] object-cover md:h-[420px]"
+              alt="Farmers shaking hands in a field"
+              src="/sourcePhotos/how-it-works/parallax.webp"
+            />
+          </div>
         </section>
 
-        <section className="px-4 pb-14 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[30px] bg-gradient-to-b from-[#6e7f9e] to-[#4d5b78] px-6 py-14 md:px-[80px] md:py-[90px]">
-            <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-              Tracking Everything From Carbon to Crop Yield
-            </h2>
-            <p className="mx-auto mt-6 max-w-[640px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-white/90">
-              Traditional nonprofit reporting leaves donors guessing about real
-              impact. Better Farms tracks ESG metrics throughout every project
-              using a clear methodology.
-            </p>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {trackingColumns.map((col) => (
-                <div
-                  key={col.title}
-                  data-testid={`card-tracking-${col.title.toLowerCase()}`}
-                  className="rounded-xl bg-[#faf5e4] p-7"
-                >
-                  <h3 className="text-[26px] font-bold text-[#5e4540]">
-                    {col.title}
-                  </h3>
-                  <ul className="mt-5">
-                    {col.items.map((item) => (
-                      <li
-                        key={item}
-                        className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-[15px] text-[#5e4540] last:border-b-0"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        <section className="relative z-10 mt-[-30px] px-4 pb-14 md:px-[29px]">
+          <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-b-[30px] bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-6 pb-20 pt-24 md:px-[80px] md:pb-[120px] md:pt-[105px]">
+            <div className="pointer-events-none absolute inset-0 opacity-45" style={topoPatternStyle} />
+            <div className="relative z-10">
+              <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[56px]">
+                Tracking Everything From Carbon to Crop Yield
+              </h2>
+              <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-8 text-white/90 md:text-lg">
+                Traditional nonprofit reporting leaves donors guessing about real
+                impact. Better Farms tracks ESG metrics throughout every project
+                using a clear methodology.
+              </p>
+              <div className="relative mx-auto mt-20 hidden h-[82px] max-w-[760px] md:block" aria-hidden="true">
+                <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/60" />
+                <div className="absolute left-[15%] right-[15%] top-10 h-px bg-white/60" />
+                <div className="absolute left-[15%] top-10 h-[62px] w-px bg-white/60" />
+                <div className="absolute right-[15%] top-10 h-[62px] w-px bg-white/60" />
+              </div>
+              <div className="mt-12 grid gap-6 md:mt-0 md:grid-cols-3 md:gap-8">
+                {trackingColumns.map((col) => (
+                  <div
+                    key={col.title}
+                    data-testid={`card-tracking-${col.title.toLowerCase()}`}
+                    className="rounded-xl bg-[#faf5e4] p-8 shadow-[0_14px_26px_rgba(47,40,32,0.28)] md:min-h-[330px] md:p-10"
+                  >
+                    <h3 className="text-[30px] font-bold text-[#5e4540] md:text-[36px]">
+                      {col.title}
+                    </h3>
+                    <ul className="mt-8">
+                      {col.items.map((item) => (
+                        <li
+                          key={item}
+                          className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] last:border-b-0 md:text-lg"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-8">
-          <div className="mx-auto max-w-[1100px]">
-            <blockquote className="mx-auto max-w-[720px] text-center text-[24px] italic leading-[1.4] text-[#bc623f] md:text-[30px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
-              &quot;We&apos;re not going to come back with just feel-good
-              photos of farmers with cows. We&apos;re going to come back with
-              technical rigor—data that helps donors with their own reporting
-              and proves what actually happened on the ground.&quot;
-              <footer className="mt-4 [font-family:'Inter',Helvetica] text-base not-italic text-[#5e4540]">
+        <section className="px-4 py-12 md:px-8 md:py-16">
+          <div className="relative mx-auto max-w-[1100px] pt-[120px] md:pt-[165px]">
+            <blockquote
+              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 -rotate-3 text-center text-[27px] leading-[1.12] text-[#bc623f] md:text-[38px]"
+              style={{ fontFamily: '"Dancing Script", cursive' }}
+            >
+              &quot;Farmers don&apos;t need more research papers. They need someone
+              to show up with a plan, the funding, and the know-how to make
+              their operation stronger. That&apos;s the job.&quot;
+              <footer className="mt-5 rotate-3 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
                 — Name
               </footer>
             </blockquote>
             <img
-              className="mt-10 h-[280px] w-full rounded-2xl object-cover md:h-[360px]"
+              className="h-[360px] w-full rounded-2xl object-cover md:h-[500px]"
               alt="Livestock grazing on pasture"
               src="/figmaAssets/grazing_pasture.webp"
             />
@@ -332,14 +365,14 @@ export const HowItWorks = (): JSX.Element => {
               </Button>
             </div>
             <img
-              className="h-[420px] w-full rounded-none object-cover"
+              className="h-[420px] w-full rounded-[10px] object-cover"
               alt="Farmer reviewing data in a wheat field"
               src="/sourcePhotos/how-it-works/farmer-clipboard.webp"
             />
           </div>
           <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
             <img
-              className="order-1 h-[400px] w-full rounded-none object-cover"
+              className="order-1 h-[400px] w-full rounded-[10px] object-cover"
               alt="Pig on pasture"
               src="/sourcePhotos/how-it-works/red-pig.webp"
             />
@@ -392,8 +425,8 @@ export const HowItWorks = (): JSX.Element => {
             <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
             <img
               className="h-[380px] w-full object-cover md:h-[480px]"
-              alt="Farmers reviewing plans in a field"
-              src="/figmaAssets/rectangle-114.webp"
+              alt="Tractor spraying crops in a field"
+              src="/sourcePhotos/homepage/tractor-spraying.webp"
             />
           </div>
         </section>

@@ -56,6 +56,12 @@ const weDo = [
   "Solve problems",
 ];
 
+const topoPatternStyle = {
+  backgroundImage:
+    "url(\"data:image/svg+xml,%3Csvg width='720' height='460' viewBox='0 0 720 460' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235e4540' stroke-opacity='.1' stroke-width='1.8'%3E%3Cpath d='M-70 96c75-41 151-42 228-4 64 31 120 34 168 10 68-34 137-27 207 21 60 41 134 44 224 7'/%3E%3Cpath d='M-64 126c78-37 151-36 221 4 62 36 118 39 169 9 70-42 142-35 216 20 57 43 126 48 206 16'/%3E%3Cpath d='M-58 158c78-33 149-28 213 13 62 40 121 42 176 4 68-47 144-38 226 24 53 40 117 46 193 20'/%3E%3Cpath d='M-52 192c74-30 143-24 207 20 66 45 131 43 196-7 58-45 131-34 219 33 50 37 108 43 174 20'/%3E%3Cpath d='M-46 228c77-29 149-20 216 28 60 43 121 39 184-11 60-48 134-35 221 39 45 38 98 44 160 20'/%3E%3Cpath d='M-39 266c83-31 161-22 233 29 56 40 112 36 169-13 60-52 137-39 230 41 39 34 86 40 141 19'/%3E%3Cpath d='M-31 304c84-30 162-20 236 30 57 38 110 33 161-14 62-57 143-42 241 46 35 31 76 36 124 18'/%3E%3Cpath d='M33 80c21-35 54-56 98-56 52-3 95 20 130 67 38 51 85 66 140 45 64-24 126-12 186 37 43 35 96 47 158 35'/%3E%3Cpath d='M38 47c37-32 82-46 136-42 51 4 93 31 127 80 31 45 72 57 123 35 64-28 129-18 194 31 37 28 80 40 130 36'/%3E%3Cpath d='M106 372c48-40 99-47 153-20 55 28 102 22 142-16 51-48 105-54 163-18 62 39 123 38 184-2'/%3E%3Cpath d='M84 414c60-48 121-54 183-18 50 30 94 24 132-16 52-56 111-62 176-19 56 37 112 35 169-5'/%3E%3C/g%3E%3C/svg%3E\")",
+  backgroundSize: "720px 460px",
+};
+
 const boardMembers: TeamMember[] = [
   { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
   { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
@@ -133,7 +139,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="relative">
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[48%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.82)_34%,rgba(255,255,255,0)_100%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[26%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)] md:h-[30%]" />
           <img
             className="h-[300px] w-full object-cover md:h-[420px]"
             alt="Rolling hills and farmland"
@@ -149,10 +155,10 @@ export const AboutUs = (): JSX.Element => {
                   <div
                     key={p.title}
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="border-b border-white/40 pb-6"
+                    className="border-b border-white/40 pb-6 text-center md:text-left"
                   >
                     <img
-                      className="mb-3 h-11 w-11 object-contain"
+                      className="mx-auto mb-3 h-11 w-11 object-contain md:mx-0"
                       src={p.icon}
                       alt=""
                       aria-hidden="true"
@@ -168,15 +174,16 @@ export const AboutUs = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
+        <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />
+          <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
-          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
             The difference is simple. We don&apos;t hand over a check and hope
             for the best. Here&apos;s how our approach stands apart.
           </p>
-          <div className="mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
+          <div className="relative z-10 mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
             <div className="rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022] md:-rotate-1 md:translate-y-[-10px]">
               <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
                 What Others Do

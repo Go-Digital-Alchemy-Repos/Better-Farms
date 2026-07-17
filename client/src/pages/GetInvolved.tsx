@@ -136,18 +136,18 @@ export const GetInvolved = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pt-10 md:px-[42px] md:pt-[116px]">
+        <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pb-6 pt-10 md:px-[42px] md:pb-[42px] md:pt-[116px]">
             <p className="text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
             <h1 className="mx-auto mt-[38px] max-w-[1000px] text-center text-[44px] font-bold leading-[1.02] text-white md:text-[72px] lg:text-[92px] xl:text-[112px]">
               Help Independent Farms Thrive
             </h1>
-            <img
-              className="mt-[68px] h-[320px] w-full rounded-t-[20px] object-cover md:h-[635px]"
-              alt="Chickens roaming outside a mobile coop"
-              src="/sourcePhotos/get-involved/chickens-roaming.webp"
-            />
+          <img
+            className="mt-[68px] h-auto w-full rounded-[20px] object-contain"
+            alt="Chickens roaming outside a mobile coop"
+            src="/sourcePhotos/get-involved/chickens-roaming.webp"
+          />
           </div>
         </section>
 

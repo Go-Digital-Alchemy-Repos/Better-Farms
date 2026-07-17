@@ -333,39 +333,35 @@ export const HomepageWhite = (): JSX.Element => {
             {workCards.map((card) => (
               <Card
                 key={card.title}
-                className={`overflow-hidden rounded-[20px] border-0 shadow-none ${card.bg}`}
+                className={`overflow-hidden rounded-[20px] border-0 shadow-none md:h-[300px] lg:h-[342px] ${card.bg}`}
               >
-                <CardContent className="p-0">
-                  <div
-                    className={`grid items-center gap-0 lg:min-h-[432px] lg:grid-cols-[470px_1fr] ${
-                      card.reverse ? "lg:grid-cols-[1fr_470px]" : ""
-                    }`}
-                  >
+                <CardContent className="h-full p-0">
+                  <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
                     {!card.reverse && (
                       <img
-                        className="h-full w-full object-cover lg:min-h-[432px]"
+                        className="h-[240px] w-full object-cover md:h-full"
                         alt="Img"
                         src={card.image}
                       />
                     )}
 
                     <div
-                      className={`flex flex-col items-start gap-6 p-6 md:p-10 ${card.reverse ? "lg:pl-16" : ""}`}
+                      className="flex h-full flex-col items-start justify-center gap-5 p-6 md:p-10 lg:px-[54px]"
                     >
                       <h3
-                        className={`[font-family:'Playfair_Display',Helvetica] text-[36px] font-bold leading-[1.05] md:text-[40px] ${card.titleColor}`}
+                        className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] md:text-[38px] lg:text-[40px] ${card.titleColor}`}
                       >
                         {card.title}
                       </h3>
                       <p
-                        className={`[font-family:'Inter',Helvetica] text-lg font-normal leading-7 ${card.bodyColor}`}
+                        className={`[font-family:'Inter',Helvetica] text-base font-normal leading-6 md:text-lg md:leading-7 ${card.bodyColor}`}
                       >
                         {card.description}
                       </p>
                     </div>
                     {card.reverse && (
                       <img
-                        className="h-full w-full object-cover lg:min-h-[432px]"
+                        className="h-[240px] w-full object-cover md:h-full"
                         alt="Img"
                         src={card.image}
                       />

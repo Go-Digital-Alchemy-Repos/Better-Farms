@@ -95,7 +95,7 @@ export const FundAFarm = (): JSX.Element => {
           <div className="relative -mt-16 md:-mt-[158px]">
             <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[240px]" />
             <img
-              className="h-[400px] w-full object-cover"
+              className="h-[460px] w-full object-cover object-bottom md:h-[520px]"
               alt="Farmers reviewing plans in a field at sunset"
               src="/sourcePhotos/fund-a-farm/field-sunset.webp"
             />

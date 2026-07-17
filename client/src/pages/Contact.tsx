@@ -229,7 +229,7 @@ export const Contact = (): JSX.Element => {
               </form>
             </Form>
           </div>
-          <div>
+          <div className="hidden md:block">
             <img
               className="h-[520px] w-full rounded-lg object-cover min-[1400px]:h-[900px]"
               alt="Two farmers inspecting crops at dusk"

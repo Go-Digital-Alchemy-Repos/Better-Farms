@@ -44,7 +44,7 @@ export const SiteHeader = (): JSX.Element => {
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 lg:py-[6px] xl:px-[37px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img
-            className="block h-auto w-[160px] md:w-[200px] xl:w-[240px]"
+            className="block h-auto w-[224px] md:w-[200px] xl:w-[240px]"
             alt="Better Farms Foundation"
             src="/sourcePhotos/brand/logo.svg"
           />
