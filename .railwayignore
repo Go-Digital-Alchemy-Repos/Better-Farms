@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.DS_Store
+
+# Design source files and QA artifacts are not needed at runtime.
+attached_assets
+.agents
+Figma Exports
+Source Photos
+output
+.playwright-cli
