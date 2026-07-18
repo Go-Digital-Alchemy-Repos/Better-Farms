@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 const principles = [
   {
@@ -72,6 +73,7 @@ const boardMembers: TeamMember[] = [
 ];
 
 export const AboutUs = (): JSX.Element => {
+  const handleNewsletterSignup = useNewsletterSignup();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   useEffect(() => {
@@ -227,7 +229,7 @@ export const AboutUs = (): JSX.Element => {
               src="/figmaAssets/cornfield_farm.webp"
             />
             <div className="absolute inset-0 bg-[#54501f]/85 mix-blend-multiply" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[94px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center md:px-[60px] md:py-[94px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
@@ -237,21 +239,27 @@ export const AboutUs = (): JSX.Element => {
                   thinking on building a more resilient food system.
                 </p>
               </div>
-              <form className="flex flex-col gap-4 self-center">
+              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
                 <Input
+                  name="name"
+                  aria-label="Full name"
+                  required
                   placeholder="Full Name"
                   data-testid="input-newsletter-name"
                   className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
                   <Input
+                    name="email"
                     type="email"
+                    aria-label="Email address"
+                    required
                     placeholder="Enter email"
                     data-testid="input-newsletter-email"
                     className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     data-testid="button-newsletter-subscribe"
                     className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
                   >

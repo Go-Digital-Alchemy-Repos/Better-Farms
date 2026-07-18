@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CompactDonationCard } from "@/components/CompactDonationCard";
+import { Link } from "wouter";
+import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 const foundationCards = [
   {
@@ -120,6 +122,7 @@ const trackingColumns = [
 ];
 
 export const HowItWorks = (): JSX.Element => {
+  const handleNewsletterSignup = useNewsletterSignup();
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -197,7 +200,7 @@ export const HowItWorks = (): JSX.Element => {
               src="/figmaAssets/farm_silo.webp"
             />
             <div className="absolute inset-0 bg-[#8a4a35]/80" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 md:grid-cols-[1fr_460px] md:items-center md:px-[60px] md:py-[64px]">
+            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center md:px-[60px] md:py-[64px]">
               <div>
                 <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
                   Sign up for Our Newsletter &amp; See What&apos;s Growing
@@ -207,21 +210,27 @@ export const HowItWorks = (): JSX.Element => {
                   thinking on building a more resilient food system.
                 </p>
               </div>
-              <form className="flex flex-col gap-4 self-center">
+              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
                 <Input
+                  name="name"
+                  aria-label="Full name"
+                  required
                   placeholder="Full Name"
                   data-testid="input-newsletter-name"
                   className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
                   <Input
+                    name="email"
                     type="email"
+                    aria-label="Email address"
+                    required
                     placeholder="Enter email"
                     data-testid="input-newsletter-email"
                     className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     data-testid="button-newsletter-subscribe"
                     className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
                   >
@@ -354,14 +363,16 @@ export const HowItWorks = (): JSX.Element => {
                 satisfies your board and resonates with your stakeholders.
               </p>
               <Button
-                type="button"
+                asChild
                 data-testid="button-fund-a-farm-esg"
                 className="mt-8 h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
               >
-                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  Fund a Farm
-                </span>
-                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                <Link href="/fund-a-farm">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
+                    Fund a Farm
+                  </span>
+                  <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                </Link>
               </Button>
             </div>
             <img
@@ -388,14 +399,16 @@ export const HowItWorks = (): JSX.Element => {
                 deliver results that matter.
               </p>
               <Button
-                type="button"
+                asChild
                 data-testid="button-start-partnership"
                 className="mt-8 h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
               >
-                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  Start a Partnership
-                </span>
-                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                <Link href="/contact">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
+                    Start a Partnership
+                  </span>
+                  <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                </Link>
               </Button>
             </div>
           </div>

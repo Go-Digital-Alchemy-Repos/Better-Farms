@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 const amounts = ["$25", "$30", "$100"];
 
@@ -34,9 +35,11 @@ export function CompactDonationCard(): JSX.Element {
             />
           </span>
         </label>
-        <Button type="button" className="h-[58px] rounded-lg bg-[#bc623f] px-6 text-white hover:bg-[#ab5838]">
-          Donate Now
-          <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+        <Button asChild className="h-[58px] rounded-lg bg-[#bc623f] px-6 text-white hover:bg-[#ab5838]">
+          <Link href="/contact">
+            Donate Now
+            <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+          </Link>
         </Button>
       </div>
     </div>

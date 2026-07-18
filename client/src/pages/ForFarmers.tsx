@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CompactDonationCard } from "@/components/CompactDonationCard";
+import { Link } from "wouter";
 
 const projectCards = [
   {
@@ -178,14 +179,16 @@ export const ForFarmers = (): JSX.Element => {
             </div>
             <div className="mt-12 flex justify-center">
               <Button
-                type="button"
+                asChild
                 data-testid="button-apply-now"
                 className="h-auto rounded-lg bg-[#7587ac] px-[24px] py-[15px] text-white hover:bg-[#6c7ea0]"
               >
-                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  Apply Now
-                </span>
-                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                <Link href="/contact">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
+                    Apply Now
+                  </span>
+                  <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                </Link>
               </Button>
             </div>
           </div>

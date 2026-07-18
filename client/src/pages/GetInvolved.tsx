@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CompactDonationCard } from "@/components/CompactDonationCard";
+import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 const pathways = [
   {
@@ -131,6 +132,7 @@ const partnerBenefits = [
 ];
 
 export const GetInvolved = (): JSX.Element => {
+  const handleNewsletterSignup = useNewsletterSignup();
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -260,21 +262,27 @@ export const GetInvolved = (): JSX.Element => {
                   thinking on building a more resilient food system.
                 </p>
               </div>
-              <form className="flex flex-col gap-4 self-center">
+              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
                 <Input
+                  name="name"
+                  aria-label="Full name"
+                  required
                   placeholder="Full Name"
                   data-testid="input-newsletter-name"
                   className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
                   <Input
+                    name="email"
                     type="email"
+                    aria-label="Email address"
+                    required
                     placeholder="Enter email"
                     data-testid="input-newsletter-email"
                     className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     data-testid="button-newsletter-subscribe"
                     className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
                   >

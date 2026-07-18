@@ -16,8 +16,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 export const HomepageWhite = (): JSX.Element => {
+  const handleNewsletterSignup = useNewsletterSignup();
   const [selectedDonation, setSelectedDonation] = useState("$30");
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
@@ -203,17 +205,19 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
               </p>
               <Button
-                type="button"
+                asChild
                 className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90"
               >
-                <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                  Fund A Farm
-                </span>
-                <img
-                  className="ml-2 h-6 w-6"
-                  alt="Keyboard arrow right"
-                  src="/figmaAssets/keyboard-arrow-right-2.svg"
-                />
+                <Link href="/fund-a-farm">
+                  <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                    Fund A Farm
+                  </span>
+                  <img
+                    className="ml-2 h-6 w-6"
+                    alt=""
+                    src="/figmaAssets/keyboard-arrow-right-2.svg"
+                  />
+                </Link>
               </Button>
             </div>
           </div>
@@ -396,19 +400,25 @@ export const HomepageWhite = (): JSX.Element => {
                   thinking on building a more resilient food system.
                 </p>
               </div>
-              <form className="flex w-full flex-col gap-4 self-center">
+              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
                 <Input
+                  name="name"
+                  aria-label="Full name"
+                  required
                   placeholder="Full Name"
                   className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                 />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
                   <Input
+                    name="email"
                     type="email"
+                    aria-label="Email address"
+                    required
                     placeholder="Enter email"
                     className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     className="h-[52px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                   >
                     <span className="[font-family:'Inter',Helvetica] text-base font-medium">
@@ -481,12 +491,17 @@ export const HomepageWhite = (): JSX.Element => {
                 aria-label={`Show testimonial ${index + 1}`}
                 data-testid={`button-testimonial-dot-${index}`}
                 onClick={() => setActiveTestimonial(index)}
-                className={`h-[9px] w-[9px] rounded-full transition-colors duration-300 ${
-                  activeTestimonial === index
-                    ? "bg-[#bc623f]"
-                    : "bg-[#5e4540] hover:bg-[#827b3e]"
-                }`}
-              />
+                className="group flex h-8 w-8 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5e4540] focus-visible:ring-offset-2"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`h-[9px] w-[9px] rounded-full transition-colors duration-300 ${
+                    activeTestimonial === index
+                      ? "bg-[#bc623f]"
+                      : "bg-[#5e4540] group-hover:bg-[#827b3e]"
+                  }`}
+                />
+              </button>
             ))}
           </div>
           <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
@@ -617,17 +632,19 @@ export const HomepageWhite = (): JSX.Element => {
                       />
                     </div>
                     <Button
-                      type="button"
+                      asChild
                       className="h-[58px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                     >
-                      <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                        Donate Now
-                      </span>
-                      <img
-                        className="ml-2 h-6 w-6"
-                        alt="Keyboard arrow right"
-                        src="/figmaAssets/keyboard-arrow-right-2.svg"
-                      />
+                      <Link href="/contact">
+                        <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                          Donate Now
+                        </span>
+                        <img
+                          className="ml-2 h-6 w-6"
+                          alt=""
+                          src="/figmaAssets/keyboard-arrow-right-2.svg"
+                        />
+                      </Link>
                     </Button>
                   </div>
                 </div>

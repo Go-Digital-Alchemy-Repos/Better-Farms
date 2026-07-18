@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { navItems } from "@/components/SiteHeader";
+import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 const legalDocuments = [
   {
@@ -98,6 +99,8 @@ const legalDocuments = [
 ];
 
 export const SiteFooter = (): JSX.Element => {
+  const handleNewsletterSignup = useNewsletterSignup();
+
   return (
     <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
       <div className="relative mx-auto max-w-[1440px] xl:h-full">
@@ -130,20 +133,27 @@ export const SiteFooter = (): JSX.Element => {
             <h2 className="text-center text-[30px] font-bold leading-[1.05] text-white xl:text-[40px]">
               Sign up for Our Newsletter, See What&apos;s Growing
             </h2>
-            <form className="mt-6 space-y-4">
+            <form className="mt-6 space-y-4" onSubmit={handleNewsletterSignup}>
               <Input
+                name="name"
+                aria-label="Full name"
+                required
                 placeholder="Full Name"
                 data-testid="input-footer-name"
                 className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
               />
               <div className="grid grid-cols-[1fr_122px] gap-[5px]">
                 <Input
+                  name="email"
+                  type="email"
+                  aria-label="Email address"
+                  required
                   placeholder="Type Your Email..."
                   data-testid="input-footer-email"
                   className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
                 />
                 <Button
-                  type="button"
+                  type="submit"
                   data-testid="button-footer-subscribe"
                   className="h-11 rounded-lg bg-[#7587ac] px-4 py-0 text-[#e6dfc9] hover:bg-[#6c7ea0]"
                 >
@@ -164,7 +174,7 @@ export const SiteFooter = (): JSX.Element => {
           />
         </div>
         <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 xl:absolute xl:inset-x-0 xl:bottom-1 xl:mt-0 xl:flex-row xl:items-center xl:justify-between xl:px-[102px]">
-          <div className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
+          <div className="flex flex-wrap items-center gap-x-1 [font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
             <span>© 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp; </span>
             {legalDocuments.map((document, index) => (
               <span key={document.label}>
@@ -173,7 +183,7 @@ export const SiteFooter = (): JSX.Element => {
                   <DialogTrigger asChild>
                     <button
                       type="button"
-                      className="underline underline-offset-2 transition-colors hover:text-[#e6dfc9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
+                      className="inline-flex min-h-6 items-center underline underline-offset-2 transition-colors hover:text-[#e6dfc9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
                     >
                       {document.label}
                     </button>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Link } from "wouter";
 
 const donationOptions = ["$25", "$30", "$100"];
 
@@ -34,6 +35,7 @@ export const FundAFarm = (): JSX.Element => {
                     <button
                       key={option}
                       type="button"
+                      aria-pressed={selectedDonation === option}
                       data-testid={`button-donation-${option.replace("$", "")}`}
                       onClick={() => {
                         setSelectedDonation(option);
@@ -58,6 +60,7 @@ export const FundAFarm = (): JSX.Element => {
                       $
                     </span>
                     <Input
+                      aria-label="Custom donation amount"
                       value={customAmount}
                       onChange={(e) => {
                         const numeric = e.target.value.replace(/\D/g, "");
@@ -75,14 +78,16 @@ export const FundAFarm = (): JSX.Element => {
                   </div>
                 </div>
                 <Button
-                  type="button"
+                  asChild
                   data-testid="button-donate-now"
                   className="h-[58px] rounded-lg bg-[#bc623f] px-[24px] text-white hover:bg-[#ab5838]"
                 >
-                  <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                    Donate Now
-                  </span>
-                  <img className="ml-2 h-6 w-6" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                  <Link href="/contact">
+                    <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                      Donate Now
+                    </span>
+                    <img className="ml-2 h-6 w-6" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                  </Link>
                 </Button>
               </div>
             </div>
