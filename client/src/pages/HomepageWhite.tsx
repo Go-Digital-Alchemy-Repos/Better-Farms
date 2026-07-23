@@ -231,7 +231,7 @@ export const HomepageWhite = (): JSX.Element => {
               {impactStats.map((stat) => (
                 <div
                   key={stat.value}
-                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-2xl border border-white/70 bg-white/10 px-6 py-3"
+                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3"
                 >
                   <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-white md:text-base">
                     {stat.label}
