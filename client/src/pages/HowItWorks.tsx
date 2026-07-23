@@ -133,7 +133,7 @@ export const HowItWorks = (): JSX.Element => {
             <p className="hero-eyebrow text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start With a Better Process
             </p>
-            <h1 className="hero-title mx-auto text-center font-bold leading-[1.1] text-white">
+            <h1 className="hero-title mx-auto text-center font-bold text-white">
               Invest in Farm Projects for Future Generations
             </h1>
             <img

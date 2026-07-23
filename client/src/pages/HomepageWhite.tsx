@@ -163,7 +163,7 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold leading-[1.05] text-white">
+            <h1 className="hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white">
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img

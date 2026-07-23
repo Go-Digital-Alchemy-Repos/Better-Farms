@@ -142,7 +142,7 @@ export const GetInvolved = (): JSX.Element => {
             <p className="hero-eyebrow text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
-            <h1 className="hero-title mx-auto text-center font-bold leading-[1.02] text-white">
+            <h1 className="hero-title mx-auto text-center font-bold text-white">
               Help Independent Farms Thrive
             </h1>
           <img

@@ -91,7 +91,7 @@ export const AboutUs = (): JSX.Element => {
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
           <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
-            <h1 className="hero-title mx-auto text-center font-bold leading-[1.05] text-white">
+            <h1 className="hero-title mx-auto text-center font-bold text-white">
               Better Farms Start With Better Partners
             </h1>
             <img
