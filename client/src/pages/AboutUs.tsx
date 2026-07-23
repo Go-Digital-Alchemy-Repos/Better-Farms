@@ -89,7 +89,7 @@ export const AboutUs = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-8 pt-10 md:px-[42px] md:pb-12 md:pt-[88px]">
+          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-10 md:px-[42px] md:pb-[42px] md:pt-[88px]">
             <h1 className="mx-auto max-w-[1000px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[88px] xl:text-[104px]">
               Better Farms Start With Better Partners
             </h1>
