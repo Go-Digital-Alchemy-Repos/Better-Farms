@@ -329,7 +329,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
