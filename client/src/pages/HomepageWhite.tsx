@@ -223,7 +223,7 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
           <div className="flex flex-col bg-[#7587ac]">
             <img
-              className="h-[240px] w-full object-cover grayscale md:h-[48%] md:min-h-[300px]"
+              className="h-[240px] w-full object-cover object-left grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
