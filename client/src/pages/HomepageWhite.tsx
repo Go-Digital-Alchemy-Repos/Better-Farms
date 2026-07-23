@@ -572,9 +572,9 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="relative overflow-hidden">
-          <div className="absolute inset-x-0 top-0 z-10 h-[245px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)]" />
+          <div className="absolute inset-x-0 top-0 z-10 h-[320px] bg-[linear-gradient(180deg,#fff_0%,#fff_18%,rgba(255,255,255,0.92)_38%,rgba(255,255,255,0)_100%)]" />
           <img
-            className="h-[760px] w-full object-cover md:h-[820px]"
+            className="block h-[760px] w-full object-cover md:h-[820px]"
             alt="Rectangle"
             src="/sourcePhotos/homepage/tractor-spraying.webp"
           />
