@@ -161,7 +161,7 @@ export const HowItWorks = (): JSX.Element => {
             five most critical threats to independent farms.
           </p>
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
-            <div className="hidden overflow-hidden rounded-none md:sticky md:top-28 md:block md:self-start">
+            <div className="hidden overflow-hidden rounded-2xl md:sticky md:top-28 md:block md:self-start">
               <img
                 className="h-auto w-full object-cover"
                 alt="Farmers reviewing plans in a wheat field"
