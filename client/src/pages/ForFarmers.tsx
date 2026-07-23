@@ -100,7 +100,7 @@ export const ForFarmers = (): JSX.Element => {
             <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start Here
             </p>
-            <h1 className="hero-title mx-auto mt-6 max-w-[1040px] text-center font-bold leading-[1.05] text-white">
+            <h1 className="hero-title mx-auto mt-6 text-center font-bold leading-[1.05] text-white">
               The Farm You&apos;ve Been Wanting to Build
             </h1>
             <img

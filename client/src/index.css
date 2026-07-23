@@ -69,6 +69,9 @@
 
 .hero-title {
   font-size: 42px;
+  max-width: none;
+  padding-inline: 0;
+  width: 100%;
 }
 
 .hero-image-after-title {
