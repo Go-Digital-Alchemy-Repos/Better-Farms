@@ -64,13 +64,13 @@ const topoPatternStyle = {
   backgroundSize: "100% 100%",
 };
 
-const boardMembers: TeamMember[] = [
-  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+const boardMembers: (TeamMember & { overlay: string })[] = [
+  { image: "/figmaAssets/portrait_woman_farmer.webp", overlay: "rgba(117, 135, 172, 0.30)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_elderly_woman.webp", overlay: "rgba(130, 123, 62, 0.36)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_man_farmer.webp", overlay: "rgba(188, 98, 63, 0.32)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_elderly_woman.webp", overlay: "rgba(188, 98, 63, 0.32)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_man_farmer.webp", overlay: "rgba(117, 135, 172, 0.30)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { image: "/figmaAssets/portrait_woman_farmer.webp", overlay: "rgba(130, 123, 62, 0.36)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
 ];
 
 export const AboutUs = (): JSX.Element => {
@@ -301,11 +301,17 @@ export const AboutUs = (): JSX.Element => {
                 }}
                 className={`cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
               >
-                <img
-                  className="h-[330px] w-full rounded-2xl object-cover grayscale-[60%] sepia-[20%]"
-                  alt={member.name}
-                  src={member.image}
-                />
+                <div className="relative overflow-hidden rounded-2xl">
+                  <img
+                    className="h-[330px] w-full object-cover grayscale"
+                    alt={member.name}
+                    src={member.image}
+                  />
+                  <div
+                    className="absolute inset-0 mix-blend-multiply"
+                    style={{ backgroundColor: member.overlay }}
+                  />
+                </div>
                 <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold text-[#5e4540]">
                   {member.name}
                 </p>
