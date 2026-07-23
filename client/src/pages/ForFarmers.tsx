@@ -195,12 +195,13 @@ export const ForFarmers = (): JSX.Element => {
               </Button>
             </div>
           </div>
-          <div className="hidden overflow-hidden rounded-b-[20px] md:-mx-8 md:-mt-6 md:block md:w-[calc(100%+4rem)]">
+          <div className="relative z-0 hidden overflow-hidden rounded-b-[20px] md:-mx-8 md:-mt-6 md:block md:w-[calc(100%+4rem)]">
             <img
               className="h-[520px] w-full object-cover"
               alt="Farmers shaking hands in a field"
               src="/sourcePhotos/for-farmers/parallax.webp"
             />
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[180px] bg-gradient-to-b from-white via-white/70 to-transparent" />
           </div>
         </section>
 
