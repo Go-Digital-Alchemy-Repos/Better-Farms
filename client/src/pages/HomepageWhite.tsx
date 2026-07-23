@@ -350,7 +350,7 @@ export const HomepageWhite = (): JSX.Element => {
                     )}
 
                     <div
-                      className="flex h-full flex-col items-center justify-center gap-5 p-6 text-center md:min-h-[300px] md:p-10 lg:min-h-[342px] lg:px-[54px]"
+                      className="flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-[300px] md:p-10 lg:min-h-[342px] lg:px-[54px]"
                     >
                       <h3
                         className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] md:text-[38px] lg:text-[40px] ${card.titleColor}`}
