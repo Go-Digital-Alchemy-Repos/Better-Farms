@@ -67,6 +67,51 @@
   animation: var(--animate-spin);
 }
 
+.tracking-cards-container {
+  container-type: inline-size;
+}
+
+.tracking-card-connector {
+  display: none;
+}
+
+.tracking-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.tracking-card {
+  padding: 2rem;
+}
+
+.tracking-card-title {
+  font-size: 1.875rem;
+  line-height: 1.08;
+}
+
+@container (min-width: 784px) {
+  .tracking-card-connector {
+    display: block;
+  }
+
+  .tracking-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 0;
+  }
+
+  .tracking-card {
+    min-height: 330px;
+    padding: clamp(1.5rem, 3.25cqw, 2.5rem);
+  }
+
+  .tracking-card-title {
+    font-size: clamp(1.5rem, 3cqw, 2.25rem);
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(1turn);

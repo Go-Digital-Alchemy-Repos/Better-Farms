@@ -301,34 +301,36 @@ export const HowItWorks = (): JSX.Element => {
                 impact. Better Farms tracks ESG metrics throughout every project
                 using a clear methodology.
               </p>
-              <div className="relative mx-auto mt-20 hidden h-[82px] max-w-[760px] md:block" aria-hidden="true">
-                <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/60" />
-                <div className="absolute left-[15%] right-[15%] top-10 h-px bg-white/60" />
-                <div className="absolute left-[15%] top-10 h-[62px] w-px bg-white/60" />
-                <div className="absolute right-[15%] top-10 h-[62px] w-px bg-white/60" />
-              </div>
-              <div className="mt-12 grid gap-6 md:mt-0 md:grid-cols-3 md:gap-8">
-                {trackingColumns.map((col) => (
-                  <div
-                    key={col.title}
-                    data-testid={`card-tracking-${col.title.toLowerCase()}`}
-                    className="rounded-xl bg-[#faf5e4] p-8 shadow-[0_14px_26px_rgba(47,40,32,0.28)] md:min-h-[330px] md:p-10"
-                  >
-                    <h3 className="text-[30px] font-bold text-[#5e4540] md:text-[36px]">
-                      {col.title}
-                    </h3>
-                    <ul className="mt-8">
-                      {col.items.map((item) => (
-                        <li
-                          key={item}
-                          className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] last:border-b-0 md:text-lg"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="tracking-cards-container">
+                <div className="tracking-card-connector relative mx-auto mt-20 h-[82px] max-w-[760px]" aria-hidden="true">
+                  <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/60" />
+                  <div className="absolute left-[15%] right-[15%] top-10 h-px bg-white/60" />
+                  <div className="absolute left-[15%] top-10 h-[62px] w-px bg-white/60" />
+                  <div className="absolute right-[15%] top-10 h-[62px] w-px bg-white/60" />
+                </div>
+                <div className="tracking-card-grid">
+                  {trackingColumns.map((col) => (
+                    <div
+                      key={col.title}
+                      data-testid={`card-tracking-${col.title.toLowerCase()}`}
+                      className="tracking-card rounded-xl bg-[#faf5e4] shadow-[0_14px_26px_rgba(47,40,32,0.28)]"
+                    >
+                      <h3 className="tracking-card-title font-bold text-[#5e4540]">
+                        {col.title}
+                      </h3>
+                      <ul className="mt-8">
+                        {col.items.map((item) => (
+                          <li
+                            key={item}
+                            className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] last:border-b-0 md:text-lg"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
