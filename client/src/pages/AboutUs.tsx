@@ -90,12 +90,12 @@ export const AboutUs = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-10 md:px-[42px] md:pb-[42px] md:pt-[88px]">
+          <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
             <h1 className="hero-title mx-auto text-center font-bold leading-[1.05] text-white">
               Better Farms Start With Better Partners
             </h1>
             <img
-              className="hero-image-after-title h-auto max-h-[560px] w-full rounded-[20px] object-cover md:h-[610px] md:max-h-none"
+              className="hero-image-after-title w-full rounded-[20px]"
               alt="Sheep feeding at a wooden trough"
               src="/sourcePhotos/about/sheep-feeding.webp"
             />

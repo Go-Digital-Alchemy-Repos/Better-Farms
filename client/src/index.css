@@ -74,13 +74,32 @@
   width: 100%;
 }
 
+.hero-panel {
+  padding-top: 40px;
+}
+
+.hero-eyebrow,
+.hero-eyebrow-mark {
+  margin-bottom: 24px;
+}
+
 .hero-image-after-title {
+  height: 280px;
   margin-top: 50px;
+  object-fit: cover;
 }
 
 @media (min-width: 768px) {
+  .hero-panel {
+    padding-top: 72px;
+  }
+
   .hero-title {
     font-size: 110px;
+  }
+
+  .hero-image-after-title {
+    height: 520px;
   }
 }
 

@@ -96,15 +96,15 @@ export const ForFarmers = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-10 md:px-[42px] md:pb-[42px] md:pt-[95px]">
-            <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
+          <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
+            <p className="hero-eyebrow text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start Here
             </p>
-            <h1 className="hero-title mx-auto mt-6 text-center font-bold leading-[1.05] text-white">
+            <h1 className="hero-title mx-auto text-center font-bold leading-[1.05] text-white">
               The Farm You&apos;ve Been Wanting to Build
             </h1>
             <img
-              className="hero-image-after-title h-auto max-h-[520px] w-full rounded-[20px] object-cover"
+              className="hero-image-after-title w-full rounded-[20px]"
               alt="Red barn farm with silo and cornfields"
               src="/figmaAssets/red_barn_farm.webp"
             />

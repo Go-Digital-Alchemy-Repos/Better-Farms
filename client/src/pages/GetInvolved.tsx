@@ -138,15 +138,15 @@ export const GetInvolved = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px]">
-        <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pb-6 pt-10 md:px-[42px] md:pb-[42px] md:pt-[116px]">
-            <p className="text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
+        <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pb-6 md:px-[42px] md:pb-[42px]">
+            <p className="hero-eyebrow text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
-            <h1 className="hero-title mx-auto mt-[38px] text-center font-bold leading-[1.02] text-white">
+            <h1 className="hero-title mx-auto text-center font-bold leading-[1.02] text-white">
               Help Independent Farms Thrive
             </h1>
           <img
-            className="hero-image-after-title h-auto w-full rounded-[20px] object-contain"
+            className="hero-image-after-title w-full rounded-[20px]"
             alt="Chickens roaming outside a mobile coop"
             src="/sourcePhotos/get-involved/chickens-roaming.webp"
           />

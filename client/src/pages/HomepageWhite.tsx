@@ -157,9 +157,9 @@ export const HomepageWhite = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-8 md:px-[42px] md:pb-[42px] md:pt-[58px]">
+          <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
             <img
-              className="mx-auto mb-4 h-[72px] w-[72px] md:mb-6 md:h-[106px] md:w-[106px]"
+              className="hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
@@ -167,7 +167,7 @@ export const HomepageWhite = (): JSX.Element => {
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
-              className="hero-image-after-title h-auto w-full rounded-[20px] object-cover"
+              className="hero-image-after-title w-full rounded-[20px]"
               alt="Rectangle"
               src="/sourcePhotos/homepage/farm-aerial.webp"
             />
