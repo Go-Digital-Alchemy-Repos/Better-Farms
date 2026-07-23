@@ -73,6 +73,14 @@ const processSteps = [
     bg: "bg-[#f3ebd3]",
     text: "text-[#5e4540]",
   },
+  {
+    id: "06",
+    title: "Impact Report",
+    body: "Donors receive detailed impact reports featuring ESG metrics, carbon accounting, and verified operational outcomes.",
+    icon: "/sourcePhotos/about/principles/results.svg",
+    bg: "bg-[#5e4540]",
+    text: "text-white",
+  },
 ];
 
 const topoPatternStyle = {
