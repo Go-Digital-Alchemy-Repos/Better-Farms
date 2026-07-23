@@ -203,7 +203,7 @@ export const ForFarmers = (): JSX.Element => {
           />
         </section>
 
-        <section className="px-4 py-10 md:px-8 md:py-[140px]">
+        <section className="px-4 py-10 md:px-8 md:pb-12 md:pt-[140px]">
           <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2">
             <img
               className="h-[340px] w-full rounded-2xl object-cover grayscale"
@@ -218,7 +218,7 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative overflow-hidden pt-10 md:pt-[110px]">
+        <section className="relative overflow-hidden pt-10 md:pt-12">
           <div className="relative z-10 px-4 md:px-8">
             <h2 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">Fund a Farm Today</h2>
             <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#5e4540] md:text-xl">
