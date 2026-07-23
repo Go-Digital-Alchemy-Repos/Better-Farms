@@ -129,21 +129,21 @@ export const HomepageWhite = (): JSX.Element => {
   const teamCards: (TeamMember & { overlay: string })[] = [
     {
       image: "/figmaAssets/rectangle-88.webp",
-      overlay: "bg-[#7587ac]/30",
+      overlay: "rgba(117, 135, 172, 0.30)",
       name: "Full Name",
       credential: "One-line credential",
       bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-80.webp",
-      overlay: "bg-[#827b3e]/30",
+      overlay: "rgba(130, 123, 62, 0.36)",
       name: "Full Name",
       credential: "One-line credential",
       bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-87.webp",
-      overlay: "bg-[#bc623f]/30",
+      overlay: "rgba(188, 98, 63, 0.32)",
       name: "Full Name",
       credential: "One-line credential",
       bio: placeholderBio,
@@ -537,7 +537,8 @@ export const HomepageWhite = (): JSX.Element => {
                     src={member.image}
                   />
                   <div
-                    className={`absolute inset-0 rounded-2xl mix-blend-multiply ${member.overlay.replace("/30", "/40")}`}
+                    className="absolute inset-0 rounded-2xl mix-blend-multiply"
+                    style={{ backgroundColor: member.overlay }}
                   />
                 </div>
                 <div className="pt-4">
