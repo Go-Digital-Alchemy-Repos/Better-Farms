@@ -130,19 +130,21 @@ export const ForFarmers = (): JSX.Element => {
                 <article
                   key={card.title}
                   data-testid={`card-project-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="rounded-2xl bg-[#faf5e4] p-7"
+                  className="overflow-hidden rounded-2xl bg-[#faf5e4]"
                 >
                   <img
-                    className="h-[220px] w-full rounded-lg object-cover"
+                    className="h-[220px] w-full object-cover"
                     alt={card.title}
                     src={card.image}
                   />
-                  <h3 className="mt-6 text-[26px] font-bold text-[#5e4540]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-                    {card.body}
-                  </p>
+                  <div className="p-7">
+                    <h3 className="text-[26px] font-bold text-[#5e4540]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+                      {card.body}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>

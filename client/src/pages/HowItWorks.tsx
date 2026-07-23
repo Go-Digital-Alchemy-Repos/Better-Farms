@@ -173,19 +173,21 @@ export const HowItWorks = (): JSX.Element => {
                 <article
                   key={card.title}
                   data-testid={`card-foundation-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="rounded-2xl bg-[#faf5e4] p-6"
+                  className="overflow-hidden rounded-2xl bg-[#faf5e4]"
                 >
                   <img
-                    className="h-[190px] w-full rounded-lg object-cover"
+                    className="h-[190px] w-full object-cover"
                     alt={card.title}
                     src={card.image}
                   />
-                  <h3 className="mt-6 text-[26px] font-bold text-[#5e4540]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
-                    {card.body}
-                  </p>
+                  <div className="p-6">
+                    <h3 className="text-[26px] font-bold text-[#5e4540]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+                      {card.body}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
