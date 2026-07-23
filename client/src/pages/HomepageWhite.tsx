@@ -337,20 +337,20 @@ export const HomepageWhite = (): JSX.Element => {
             {workCards.map((card) => (
               <Card
                 key={card.title}
-                className={`overflow-hidden rounded-[20px] border-0 shadow-none md:min-h-[300px] lg:min-h-[342px] ${card.bg}`}
+                className={`overflow-hidden rounded-[20px] border-0 shadow-none md:h-[420px] lg:h-[380px] ${card.bg}`}
               >
                 <CardContent className="h-full p-0">
                   <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
                     {!card.reverse && (
                       <img
-                        className="h-[240px] w-full object-cover md:h-auto md:min-h-[300px] lg:min-h-[342px]"
+                        className="h-[240px] w-full object-cover md:h-full md:min-h-0"
                         alt="Img"
                         src={card.image}
                       />
                     )}
 
                     <div
-                      className="flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-[300px] md:p-10 lg:min-h-[342px] lg:px-[54px]"
+                      className="flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-0 md:p-10 lg:px-[54px]"
                     >
                       <h3
                         className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] md:text-[38px] lg:text-[40px] ${card.titleColor}`}
@@ -365,7 +365,7 @@ export const HomepageWhite = (): JSX.Element => {
                     </div>
                     {card.reverse && (
                       <img
-                        className="h-[240px] w-full object-cover md:h-auto md:min-h-[300px] lg:min-h-[342px]"
+                        className="h-[240px] w-full object-cover md:h-full md:min-h-0"
                         alt="Img"
                         src={card.image}
                       />
