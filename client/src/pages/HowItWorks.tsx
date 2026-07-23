@@ -346,11 +346,13 @@ export const HowItWorks = (): JSX.Element => {
                 — Name
               </footer>
             </blockquote>
-            <img
-              className="h-[360px] w-full rounded-2xl object-cover md:h-[500px]"
-              alt="Livestock grazing on pasture"
-              src="/figmaAssets/grazing_pasture.webp"
-            />
+            <div className="overflow-hidden rounded-2xl">
+              <img
+                className="h-[360px] w-full object-cover md:h-[500px]"
+                alt="Livestock grazing on pasture"
+                src="/figmaAssets/grazing_pasture.webp"
+              />
+            </div>
           </div>
         </section>
 
