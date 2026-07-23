@@ -197,7 +197,7 @@ export const ForFarmers = (): JSX.Element => {
             </div>
           </div>
           <img
-            className="hidden w-full object-cover md:mt-[430px] md:block md:h-[520px]"
+            className="hidden w-full object-cover md:-mt-6 md:block md:h-[520px]"
             alt="Farmers shaking hands in a field"
             src="/sourcePhotos/for-farmers/parallax.webp"
           />
