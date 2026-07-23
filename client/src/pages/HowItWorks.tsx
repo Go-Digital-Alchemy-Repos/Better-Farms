@@ -10,27 +10,27 @@ const foundationCards = [
   {
     title: "Climate Resilience",
     body: "Weather patterns keep shifting, putting harvests at risk. We fund drought-resistant infrastructure, water management systems, and diversified planting to help farms adapt. Operations gain the flexibility to thrive in any conditions.",
-    image: "/figmaAssets/drip_irrigation.webp",
+    image: "/sourcePhotos/for-farmers/irrigation.webp",
   },
   {
     title: "Sustainable Infrastructure",
     body: "Aging barns, old equipment, and worn fencing slow farms down. Our team funds physical upgrades that improve daily operations and cut long-term costs. Farms run more smoothly and are built for the future.",
-    image: "/figmaAssets/barn_infrastructure.webp",
+    image: "/sourcePhotos/for-farmers/barn.webp",
   },
   {
     title: "Regenerative Practices",
     body: "Healthy soil grows healthy farms, yet years of conventional methods have worn it down. We support cover cropping, agroforestry, composting, and pollinator habitat that bring soil back to life. Land rebuilds, carbon gets stored, and yields improve over time.",
-    image: "/figmaAssets/regenerative_practices.webp",
+    image: "/sourcePhotos/for-farmers/grass.webp",
   },
   {
     title: "Energy Independence",
     body: "Utility costs eat into already tight margins. We help farms lower expenses through solar, efficient equipment, and other upgrades. Savings stay with the producer, where they make the biggest difference.",
-    image: "/figmaAssets/solar_farm.webp",
+    image: "/sourcePhotos/for-farmers/solar.webp",
   },
   {
     title: "Local Food Systems",
     body: "Small farms grow great food, but often can't reach nearby buyers. We fund processing equipment, cold storage, and distribution hubs that connect fields to tables. Producers expand their reach, and communities get steady access to local food.",
-    image: "/figmaAssets/food_processing.webp",
+    image: "/sourcePhotos/for-farmers/food-processing.webp",
   },
 ];
 
@@ -175,14 +175,16 @@ export const HowItWorks = (): JSX.Element => {
                 <article
                   key={card.title}
                   data-testid={`card-foundation-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="overflow-hidden rounded-2xl bg-[#faf5e4]"
+                  className="rounded-2xl bg-[#faf5e4] p-6"
                 >
-                  <img
-                    className="h-[190px] w-full object-cover"
-                    alt={card.title}
-                    src={card.image}
-                  />
-                  <div className="p-6">
+                  <div className="overflow-hidden rounded-xl">
+                    <img
+                      className="h-[190px] w-full object-cover"
+                      alt={card.title}
+                      src={card.image}
+                    />
+                  </div>
+                  <div className="pt-6">
                     <h3 className="text-[26px] font-bold text-[#5e4540]">
                       {card.title}
                     </h3>
