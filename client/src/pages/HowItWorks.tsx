@@ -335,24 +335,25 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="relative mx-auto max-w-[1100px] pt-[120px] md:pt-[165px]">
+          <div className="relative mx-auto max-w-[1100px] pt-[120px] md:pt-14">
             <blockquote
-              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 -rotate-3 text-center text-[27px] leading-[1.12] text-[#bc623f] md:text-[38px]"
+              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 text-center text-[27px] leading-[1.08] text-[#bc623f] md:left-[68%] md:w-[560px] md:text-[32px]"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               &quot;Farmers don&apos;t need more research papers. They need someone
               to show up with a plan, the funding, and the know-how to make
               their operation stronger. That&apos;s the job.&quot;
-              <footer className="mt-5 rotate-3 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
+              <footer className="mt-4 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
                 — Name
               </footer>
             </blockquote>
-            <div className="overflow-hidden rounded-2xl">
+            <div className="relative z-0 h-[360px] overflow-hidden rounded-[20px] md:h-[420px]">
               <img
-                className="h-[360px] w-full object-cover md:h-[500px]"
+                className="absolute inset-x-0 top-0 h-[510px] w-full md:h-[596px]"
                 alt="Livestock grazing on pasture"
                 src="/figmaAssets/grazing_pasture.webp"
               />
+              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[180px] bg-gradient-to-b from-white via-white/70 to-transparent md:h-[210px]" />
             </div>
           </div>
         </section>
