@@ -92,11 +92,11 @@ export const ForFarmers = (): JSX.Element => {
             <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start Here
             </p>
-            <h1 className="mx-auto mt-6 max-w-[1040px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[68px] lg:text-[82px] xl:text-[96px]">
+            <h1 className="hero-title mx-auto mt-6 max-w-[1040px] text-center font-bold leading-[1.05] text-white">
               The Farm You&apos;ve Been Wanting to Build
             </h1>
             <img
-              className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover md:mt-[116px]"
+              className="hero-image-after-title h-auto max-h-[520px] w-full rounded-[20px] object-cover"
               alt="Red barn farm with silo and cornfields"
               src="/figmaAssets/red_barn_farm.webp"
             />

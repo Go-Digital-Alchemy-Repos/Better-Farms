@@ -67,6 +67,20 @@
   animation: var(--animate-spin);
 }
 
+.hero-title {
+  font-size: 42px;
+}
+
+.hero-image-after-title {
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 110px;
+  }
+}
+
 .tracking-cards-container {
   container-type: inline-size;
 }

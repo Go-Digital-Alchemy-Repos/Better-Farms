@@ -142,11 +142,11 @@ export const GetInvolved = (): JSX.Element => {
             <p className="text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
-            <h1 className="mx-auto mt-[38px] max-w-[1000px] text-center text-[44px] font-bold leading-[1.02] text-white md:text-[72px] lg:text-[92px] xl:text-[112px]">
+            <h1 className="hero-title mx-auto mt-[38px] max-w-[1000px] text-center font-bold leading-[1.02] text-white">
               Help Independent Farms Thrive
             </h1>
           <img
-            className="mt-[68px] h-auto w-full rounded-[20px] object-contain"
+            className="hero-image-after-title h-auto w-full rounded-[20px] object-contain"
             alt="Chickens roaming outside a mobile coop"
             src="/sourcePhotos/get-involved/chickens-roaming.webp"
           />

@@ -163,11 +163,11 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[80px] xl:text-[94px]">
+            <h1 className="hero-title mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] font-bold leading-[1.05] text-white">
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
-              className="mt-24 h-auto w-full rounded-[20px] object-cover"
+              className="hero-image-after-title h-auto w-full rounded-[20px] object-cover"
               alt="Rectangle"
               src="/sourcePhotos/homepage/farm-aerial.webp"
             />

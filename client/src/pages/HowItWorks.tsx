@@ -133,11 +133,11 @@ export const HowItWorks = (): JSX.Element => {
             <p className="text-center text-2xl font-bold text-white md:text-[28px]" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>
               Better Farms Start With a Better Process
             </p>
-            <h1 className="mx-auto mt-4 max-w-[900px] text-center text-[42px] font-bold leading-[1.1] text-white md:text-[64px] lg:text-[72px] xl:text-[76px]">
+            <h1 className="hero-title mx-auto mt-4 max-w-[900px] text-center font-bold leading-[1.1] text-white">
               Invest in Farm Projects for Future Generations
             </h1>
             <img
-              className="mt-8 h-auto max-h-[520px] w-full rounded-[20px] object-cover"
+              className="hero-image-after-title h-auto max-h-[520px] w-full rounded-[20px] object-cover"
               alt="Apple harvest in an orchard"
               src="/sourcePhotos/how-it-works/orchard.webp"
             />
