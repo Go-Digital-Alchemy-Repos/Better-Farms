@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import {
   TeamMemberDialog,
@@ -206,16 +207,15 @@ export const HomepageWhite = (): JSX.Element => {
               </p>
               <Button
                 asChild
-                className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90"
+                className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
                 <Link href="/fund-a-farm">
                   <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
                     Fund A Farm
                   </span>
-                  <img
-                    className="ml-2 h-6 w-6"
-                    alt=""
-                    src="/figmaAssets/keyboard-arrow-right-2.svg"
+                  <ChevronRight
+                    className="ml-2 h-6 w-6 text-[#5e4540]"
+                    aria-hidden="true"
                   />
                 </Link>
               </Button>
