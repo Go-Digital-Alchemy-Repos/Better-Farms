@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { Link } from "wouter";
-import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 const foundationCards = [
   {
@@ -123,7 +122,6 @@ const trackingColumns = [
 ];
 
 export const HowItWorks = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -199,58 +197,10 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-[29px]">
-          <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Farm with silo"
-              src="/figmaAssets/farm_silo.webp"
-            />
-            <div className="absolute inset-0 bg-[#8a4a35]/80" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center md:px-[60px] md:py-[64px]">
-              <div>
-                <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  data-testid="input-newsletter-name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
-                  <Input
-                    name="email"
-                    type="email"
-                    aria-label="Email address"
-                    required
-                    placeholder="Enter email"
-                    data-testid="input-newsletter-email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="submit"
-                    data-testid="button-newsletter-subscribe"
-                    className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+        <NewsletterSection
+          imageAlt="Farm with silo"
+          imageSrc="/figmaAssets/farm_silo.webp"
+        />
 
         <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />

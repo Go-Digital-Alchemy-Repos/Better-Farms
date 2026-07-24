@@ -14,14 +14,12 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { DonationSection } from "@/components/DonationSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 export const HomepageWhite = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -378,60 +376,10 @@ export const HomepageWhite = (): JSX.Element => {
             </Button>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-[39px] md:py-16">
-          <div className="relative mx-auto max-w-[1372px] overflow-hidden rounded-lg">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Rectangle"
-              src="/figmaAssets/rectangle-90.webp"
-            />
-            <div className="absolute inset-0 bg-[#4a4526] opacity-80 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="relative z-10 grid gap-10 px-6 py-10 md:px-[83px] md:py-[74px] lg:grid-cols-[minmax(0,1fr)_minmax(360px,500px)]">
-              <div>
-                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[529px] [font-family:'Inter',Helvetica] text-base font-normal leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
-                  <Input
-                    name="email"
-                    type="email"
-                    aria-label="Email address"
-                    required
-                    placeholder="Enter email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="submit"
-                    className="h-[52px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img
-                      className="ml-2 h-6 w-6"
-                      alt="Keyboard arrow right"
-                      src="/figmaAssets/keyboard-arrow-right-2.svg"
-                    />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+        <NewsletterSection
+          imageAlt="Rectangle"
+          imageSrc="/figmaAssets/rectangle-90.webp"
+        />
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div className="home-image-pair grid-cols-1 items-start">
             <img
