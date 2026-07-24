@@ -250,7 +250,7 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section>
+        <section className="border-t-[3px] border-white">
           <img
             className="h-auto w-full"
             alt="Rectangle"
