@@ -133,6 +133,10 @@
   width: 100%;
 }
 
+.foundation-layout {
+  padding-inline: 16px;
+}
+
 @media (min-width: 768px) {
   .hero-panel {
     padding-top: 72px;
@@ -144,6 +148,12 @@
 
   .hero-image-after-title {
     height: 520px;
+  }
+
+  .foundation-layout {
+    grid-template-columns: minmax(0, 1fr) 420px;
+    padding-left: 0;
+    padding-right: max(32px, calc((100vw - 1200px) / 2));
   }
 }
 

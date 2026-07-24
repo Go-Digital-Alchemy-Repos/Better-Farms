@@ -152,17 +152,19 @@ export const HowItWorks = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="px-4 pb-14 md:px-8">
-          <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
-            The Foundation of a Better Farm
-          </h2>
-          <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-            Every farm faces different challenges, but the barriers to success
-            fall into predictable categories. We focus our resources on the
-            five most critical threats to independent farms.
-          </p>
-          <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
-            <div className="hidden overflow-hidden rounded-2xl md:sticky md:top-28 md:block md:self-start">
+        <section className="pb-14">
+          <div className="px-4 md:px-8">
+            <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
+              The Foundation of a Better Farm
+            </h2>
+            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+              Every farm faces different challenges, but the barriers to success
+              fall into predictable categories. We focus our resources on the
+              five most critical threats to independent farms.
+            </p>
+          </div>
+          <div className="foundation-layout mt-12 grid gap-10">
+            <div className="hidden overflow-hidden rounded-r-2xl md:sticky md:top-28 md:block md:self-start">
               <img
                 className="h-[560px] w-full object-cover md:h-[891px]"
                 alt="Two farmers inspecting crops together in a field"
