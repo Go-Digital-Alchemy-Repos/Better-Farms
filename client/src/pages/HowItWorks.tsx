@@ -252,7 +252,7 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
+        <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />
           <div className="relative z-10 mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
