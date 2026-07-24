@@ -164,9 +164,9 @@ export const HowItWorks = (): JSX.Element => {
           <div className="mx-auto mt-12 grid max-w-[1200px] gap-10 md:grid-cols-[1fr_420px]">
             <div className="hidden overflow-hidden rounded-2xl md:sticky md:top-28 md:block md:self-start">
               <img
-                className="h-auto w-full object-cover"
-                alt="Farmers reviewing plans in a wheat field"
-                src="/figmaAssets/farmer_wheat_tablet.webp"
+                className="h-[560px] w-full object-cover md:h-[891px]"
+                alt="Two farmers inspecting crops together in a field"
+                src="/sourcePhotos/how-it-works/farmers-inspecting-field.png"
               />
             </div>
             <div className="flex flex-col gap-8">
