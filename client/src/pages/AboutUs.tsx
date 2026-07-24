@@ -111,15 +111,15 @@ export const AboutUs = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="px-4 pb-6 md:px-8">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-8 md:grid-cols-[1fr_460px]">
+        <section className="overflow-hidden pb-6">
+          <div className="edge-image-pair edge-image-pair--large-left grid-cols-1 items-start">
             <img
-              className="h-[380px] w-full rounded-2xl object-cover md:h-[520px]"
+              className="edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"
               src="/sourcePhotos/about/man-feeding-cows.webp"
             />
             <img
-              className="h-[260px] w-full rounded-2xl object-cover md:h-[340px]"
+              className="edge-image-pair-small rounded-lg"
               alt="Goats grazing on green pasture"
               src="/sourcePhotos/about/goats-grazing.webp"
             />

@@ -215,15 +215,15 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-8 md:pb-12 md:pt-[140px]">
-          <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2">
+        <section className="overflow-hidden py-10 md:pb-12 md:pt-[140px]">
+          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-start">
             <img
-              className="h-[340px] w-full rounded-2xl object-cover grayscale"
+              className="edge-image-pair-small rounded-lg grayscale"
               alt="Chickens in a coop"
               src="/sourcePhotos/for-farmers/chickens.webp"
             />
             <img
-              className="h-[340px] w-full rounded-2xl object-cover md:mt-20"
+              className="edge-image-pair-large rounded-lg lg:mt-20"
               alt="Cow closeup in pasture"
               src="/sourcePhotos/for-farmers/cow.webp"
             />

@@ -322,17 +322,15 @@ export const GetInvolved = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-8 md:py-16">
-          <div className="mx-auto grid max-w-[1200px] gap-8 md:grid-cols-[1fr_1fr] md:items-start md:gap-16">
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                className="h-[330px] w-full object-cover object-top md:h-[430px]"
-                alt="Goats gathered in a pasture"
-                src="/sourcePhotos/get-involved/goats.webp"
-              />
-            </div>
+        <section className="overflow-hidden py-10 md:py-16">
+          <div className="edge-image-pair edge-image-pair--large-left grid-cols-1 items-start">
             <img
-              className="h-[330px] w-full rounded-2xl object-cover md:mt-20 md:h-[390px]"
+              className="edge-image-pair-large rounded-lg object-top"
+              alt="Goats gathered in a pasture"
+              src="/sourcePhotos/get-involved/goats.webp"
+            />
+            <img
+              className="edge-image-pair-small rounded-lg lg:mt-20"
               alt="Fresh apples in a bushel"
               src="/sourcePhotos/get-involved/apples.webp"
             />
