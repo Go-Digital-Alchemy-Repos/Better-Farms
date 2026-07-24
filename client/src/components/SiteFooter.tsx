@@ -102,9 +102,9 @@ export const SiteFooter = (): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
 
   return (
-    <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 min-[1400px]:h-[461px] min-[1400px]:py-1">
-      <div className="relative mx-auto max-w-[1440px] min-[1400px]:h-full">
-        <div className="grid gap-y-10 min-[600px]:grid-cols-[auto_1fr] min-[600px]:items-start min-[600px]:gap-x-[100px] min-[1400px]:translate-y-[48px] min-[1400px]:grid-cols-[1fr_auto_430px] min-[1400px]:px-[102px]">
+    <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
+      <div className="relative mx-auto max-w-[1440px] xl:h-full">
+        <div className="grid gap-10 xl:translate-y-[48px] xl:grid-cols-[1fr_auto_430px] xl:items-start xl:px-[102px]">
           <div className="space-y-4">
             <img
               className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
@@ -117,10 +117,7 @@ export const SiteFooter = (): JSX.Element => {
               src="/figmaAssets/frame-37278.svg"
             />
           </div>
-          <nav
-            className="flex flex-col items-start gap-4 pt-1 min-[600px]:justify-self-end"
-            aria-label="Footer"
-          >
+          <nav className="flex flex-col items-start gap-4 pt-1" aria-label="Footer">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -132,7 +129,7 @@ export const SiteFooter = (): JSX.Element => {
               </Link>
             ))}
           </nav>
-          <div className="min-[600px]:col-span-2 min-[600px]:w-full min-[600px]:max-w-[430px] min-[600px]:justify-self-end min-[1400px]:col-span-1">
+          <div>
             <h2 className="text-center text-[30px] font-bold leading-[1.05] text-white xl:text-[40px]">
               Sign up for Our Newsletter, See What&apos;s Growing
             </h2>
@@ -169,14 +166,14 @@ export const SiteFooter = (): JSX.Element => {
             </form>
           </div>
         </div>
-        <div className="mt-5 min-[1400px]:mt-0">
+        <div className="mt-5 xl:mt-0">
           <img
             className="h-auto w-full max-w-[1423px] xl:h-[190px]"
             alt="Better farms"
             src="/figmaAssets/better-farms.svg"
           />
         </div>
-        <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 min-[1400px]:absolute min-[1400px]:inset-x-0 min-[1400px]:bottom-1 min-[1400px]:mt-0 min-[1400px]:flex-row min-[1400px]:items-center min-[1400px]:justify-between min-[1400px]:px-[102px]">
+        <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 xl:absolute xl:inset-x-0 xl:bottom-1 xl:mt-0 xl:flex-row xl:items-center xl:justify-between xl:px-[102px]">
           <div className="flex flex-wrap items-center gap-x-1 [font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
             <span>© 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp; </span>
             {legalDocuments.map((document, index) => (
