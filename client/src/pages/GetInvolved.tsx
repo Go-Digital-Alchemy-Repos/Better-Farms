@@ -280,7 +280,7 @@ export const GetInvolved = (): JSX.Element => {
               src="/sourcePhotos/get-involved/goats.webp"
             />
             <img
-              className="edge-image-pair-small rounded-lg lg:mt-20"
+              className="edge-image-pair-small rounded-lg"
               alt="Fresh apples in a bushel"
               src="/sourcePhotos/get-involved/apples.webp"
             />

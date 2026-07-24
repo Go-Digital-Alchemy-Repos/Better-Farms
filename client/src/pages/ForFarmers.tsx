@@ -225,7 +225,7 @@ export const ForFarmers = (): JSX.Element => {
               src="/sourcePhotos/for-farmers/chickens.webp"
             />
             <img
-              className="edge-image-pair-large rounded-lg lg:mt-20"
+              className="edge-image-pair-large rounded-lg"
               alt="Cow closeup in pasture"
               src="/sourcePhotos/for-farmers/cow.webp"
             />
