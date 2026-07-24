@@ -571,14 +571,14 @@ export const HomepageWhite = (): JSX.Element => {
             </Button>
           </div>
         </section>
-        <section className="relative overflow-hidden">
+        <section className="relative min-h-[820px] overflow-hidden">
           <div className="absolute inset-x-0 top-0 z-10 h-[320px] bg-[linear-gradient(180deg,#fff_0%,#fff_18%,rgba(255,255,255,0.92)_38%,rgba(255,255,255,0)_100%)]" />
           <img
-            className="block h-[760px] w-full object-cover md:h-[820px]"
+            className="absolute inset-0 h-full w-full object-cover"
             alt="Rectangle"
             src="/sourcePhotos/homepage/tractor-spraying.webp"
           />
-          <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[78px]">
+          <div className="relative z-20 px-4 pb-16 pt-16 md:px-8 md:pb-20 md:pt-[78px]">
             <div className="mx-auto max-w-[875px]">
               <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
                 Fund a Farm Today
@@ -650,7 +650,7 @@ export const HomepageWhite = (): JSX.Element => {
                   </div>
                 </div>
               </div>
-              <p className="mx-auto mt-4 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#2f2820]">
+              <p className="mx-auto mt-4 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-base font-bold leading-6 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)] lg:text-[#2f2820] lg:[text-shadow:none]">
                 501(c)(3) nonprofit
                 organization&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 100% of your
                 funds go to farm-level work&nbsp;&nbsp; |&nbsp;&nbsp; ESG impact
