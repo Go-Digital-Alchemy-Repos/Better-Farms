@@ -443,7 +443,7 @@ export const HomepageWhite = (): JSX.Element => {
               src="/sourcePhotos/homepage/crops.webp"
             />
             <img
-              className="h-auto w-full rounded-l-lg object-cover"
+              className="home-image-pair-right rounded-l-lg object-cover"
               alt="Rectangle"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
