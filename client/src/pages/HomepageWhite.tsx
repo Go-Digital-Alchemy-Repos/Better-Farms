@@ -435,15 +435,15 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-8 md:pb-[160px] md:pt-[128px]">
-          <div className="mx-auto grid max-w-[1317px] grid-cols-1 items-start gap-8 xl:grid-cols-[406px_603px] xl:justify-center">
+        <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
+          <div className="home-image-pair grid-cols-1 items-start">
             <img
               className="h-auto w-full max-w-[406px] rounded-lg object-cover"
               alt="Rectangle"
               src="/sourcePhotos/homepage/crops.webp"
             />
             <img
-              className="h-auto w-full max-w-[603px] rounded-lg object-cover"
+              className="h-auto w-full rounded-l-lg object-cover"
               alt="Rectangle"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />

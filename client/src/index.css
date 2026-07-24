@@ -96,6 +96,12 @@
   object-fit: cover;
 }
 
+.home-image-pair {
+  display: grid;
+  gap: 32px;
+  margin-left: 16px;
+}
+
 @media (min-width: 768px) {
   .hero-panel {
     padding-top: 72px;
@@ -107,6 +113,13 @@
 
   .hero-image-after-title {
     height: 520px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-image-pair {
+    grid-template-columns: 406px minmax(0, 1fr);
+    margin-left: max(122px, calc((100vw - 1372px) / 2 + 83px));
   }
 }
 
