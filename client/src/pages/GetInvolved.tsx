@@ -162,11 +162,11 @@ export const GetInvolved = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="px-4 pb-10 md:px-8">
+        <section className="px-4 pb-10 md:px-8 lg:pr-0">
           <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
-          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_440px] lg:pt-[108px]">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_clamp(440px,42vw,594px)] lg:pt-[108px]">
             <div className="flex flex-col gap-24 md:gap-0">
               {pathways.map((pathway, index) => (
                 <div
@@ -234,9 +234,9 @@ export const GetInvolved = (): JSX.Element => {
                 </div>
               ))}
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden w-full max-w-[594px] justify-self-end lg:block">
               <img
-                className="h-[520px] w-full rounded-[14px] object-cover"
+                className="aspect-square h-auto w-full rounded-l-none rounded-r-[14px] object-cover"
                 alt="Farmer harvesting fresh vegetables into a wooden crate"
                 src="/sourcePhotos/get-involved/vegetable-crate.webp"
               />
