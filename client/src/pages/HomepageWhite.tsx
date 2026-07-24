@@ -593,7 +593,7 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
               </p>
               <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
-                <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
+                <div className="p-6 md:p-[55px]">
                   <div className="grid gap-3 lg:grid-cols-[repeat(3,1fr)_1.15fr_170px] lg:items-end" role="group" aria-label="Donation amount">
                     {donationOptions.map((option) => (
                       <button
@@ -613,7 +613,7 @@ export const HomepageWhite = (): JSX.Element => {
                         {option}
                       </button>
                     ))}
-                    <div className="relative flex h-[58px] items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px]">
+                    <div className="relative mt-6 flex h-[58px] items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] lg:mt-0">
                       <span className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap [font-family:'Inter',Helvetica] text-xs font-semibold text-[#5e4540]">Enter Donation</span>
                       <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
                         $
