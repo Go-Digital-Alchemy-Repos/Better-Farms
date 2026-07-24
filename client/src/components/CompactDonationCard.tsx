@@ -9,7 +9,10 @@ export function CompactDonationCard(): JSX.Element {
   const [custom, setCustom] = useState("");
 
   return (
-    <div className="mx-auto mt-9 w-full max-w-[1000px] rounded-xl bg-white/90 p-5 shadow-[0_4px_14px_rgba(0,0,0,0.22)] backdrop-blur-md md:px-10 md:py-7">
+    <div
+      data-testid="compact-donation-card"
+      className="mx-auto mt-9 w-full max-w-[1000px] rounded-xl bg-white/90 p-5 shadow-[0_4px_14px_rgba(0,0,0,0.22)] backdrop-blur-md md:px-10 md:py-7"
+    >
       <div className="grid gap-3 md:grid-cols-[repeat(3,1fr)_1.25fr_auto] md:items-end">
         {amounts.map((amount) => (
           <button

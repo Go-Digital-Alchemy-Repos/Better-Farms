@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { CompactDonationCard } from "@/components/CompactDonationCard";
+import { DonationSection } from "@/components/DonationSection";
 import { Link } from "wouter";
 
 const projectCards = [
@@ -232,21 +232,11 @@ export const ForFarmers = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative overflow-hidden pt-10 md:pt-12">
-          <div className="relative z-10 px-4 md:px-8">
-            <h2 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">Fund a Farm Today</h2>
-            <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#5e4540] md:text-xl">
-              <span className="font-bold">Your contribution can strengthen a farm for decades. </span>
-              Put your dollars to work and get proof of what you&apos;ve built.
-            </p>
-            <CompactDonationCard />
-            <p className="mx-auto mt-6 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-sm font-bold leading-6 text-[#2f2820]">501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG impact reporting included</p>
-          </div>
-          <div className="relative mt-[-40px]">
-            <div className="absolute inset-x-0 top-0 z-[5] h-[180px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)]" />
-            <img className="h-[420px] w-full object-cover" alt="Chickens in tall grass at sunset" src="/sourcePhotos/for-farmers/hero.webp" />
-          </div>
-        </section>
+        <DonationSection
+          sectionClassName="pt-10 md:pt-12"
+          imageAlt="Chickens in tall grass at sunset"
+          imageSrc="/sourcePhotos/for-farmers/hero.webp"
+        />
       </main>
       <SiteFooter />
     </div>

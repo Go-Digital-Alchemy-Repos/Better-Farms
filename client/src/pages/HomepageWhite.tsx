@@ -15,14 +15,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { DonationSection } from "@/components/DonationSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 export const HomepageWhite = (): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
-  const [selectedDonation, setSelectedDonation] = useState("$30");
-  const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -149,8 +148,6 @@ export const HomepageWhite = (): JSX.Element => {
       bio: placeholderBio,
     },
   ];
-
-  const donationOptions = ["$25", "$30", "$100"];
 
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
@@ -573,94 +570,13 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section className="relative min-h-[820px] overflow-hidden">
-          <div className="absolute inset-x-0 top-0 z-10 h-[320px] bg-[linear-gradient(180deg,#fff_0%,#fff_18%,rgba(255,255,255,0.92)_38%,rgba(255,255,255,0)_100%)]" />
-          <img
-            className="absolute inset-0 h-full w-full object-cover"
-            alt="Rectangle"
-            src="/sourcePhotos/homepage/tractor-spraying.webp"
-          />
-          <div className="relative z-20 px-4 pb-16 pt-16 md:px-8 md:pb-20 md:pt-[78px]">
-            <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
-                Fund a Farm Today
-              </h2>
-              <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">
-                <span className="font-bold">
-                  Your contribution can strengthen a farm for decades.{" "}
-                </span>
-                <span>
-                  Put your dollars to work and get proof of what you&apos;ve
-                  built.
-                </span>
-              </p>
-              <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
-                <div className="p-6 md:p-[55px]">
-                  <div className="grid gap-3 lg:grid-cols-[repeat(3,1fr)_1.15fr_170px] lg:items-end" role="group" aria-label="Donation amount">
-                    {donationOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        aria-pressed={selectedDonation === option}
-                        onClick={() => {
-                          setSelectedDonation(option);
-                          setCustomAmount("");
-                        }}
-                        className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
-                          selectedDonation === option
-                            ? "border-[#d7d7d7] bg-[#434343] text-white"
-                            : "border-[#bcb9b9] bg-white text-[#434343]"
-                        }`}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                    <div className="relative mt-6 flex h-[58px] items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px] lg:mt-0">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap [font-family:'Inter',Helvetica] text-xs font-semibold text-[#5e4540]">Enter Donation</span>
-                      <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
-                        $
-                      </span>
-                      <input
-                        id="donation-other-amount"
-                        type="text"
-                        inputMode="numeric"
-                        aria-label="Other donation amount"
-                        placeholder="Other Amount"
-                        value={customAmount}
-                        onChange={(e) => {
-                          setCustomAmount(e.target.value);
-                          if (e.target.value) setSelectedDonation("");
-                        }}
-                        className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
-                      />
-                    </div>
-                    <Button
-                      asChild
-                      className="h-[58px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
-                    >
-                      <Link href="/contact">
-                        <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                          Donate Now
-                        </span>
-                        <img
-                          className="ml-2 h-6 w-6"
-                          alt=""
-                          src="/figmaAssets/keyboard-arrow-right-2.svg"
-                        />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <p className="mx-auto mt-4 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-base font-bold leading-6 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)] lg:text-[#2f2820] lg:[text-shadow:none]">
-                501(c)(3) nonprofit
-                organization&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 100% of your
-                funds go to farm-level work&nbsp;&nbsp; |&nbsp;&nbsp; ESG impact
-                reporting included
-              </p>
-            </div>
-          </div>
-        </section>
+        <DonationSection
+          sectionClassName="pt-16 md:pt-[78px]"
+          imageAlt="Rectangle"
+          imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
+          headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
+          descriptionClassName="text-xl md:text-2xl"
+        />
       </main>
       <TeamMemberDialog
         member={selectedMember}
