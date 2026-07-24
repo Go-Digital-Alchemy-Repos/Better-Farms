@@ -339,7 +339,7 @@ export const HowItWorks = (): JSX.Element => {
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="relative mx-auto max-w-[1100px] pt-[120px] md:pt-14">
             <blockquote
-              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 text-center text-[27px] leading-[1.08] text-[#bc623f] md:left-[68%] md:w-[560px] md:text-[32px]"
+              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 text-center text-[27px] leading-[1.08] text-[#bc623f] md:left-[72%] md:w-[560px] md:text-[32px]"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               &quot;Farmers don&apos;t need more research papers. They need someone
@@ -351,7 +351,7 @@ export const HowItWorks = (): JSX.Element => {
             </blockquote>
             <div className="relative z-0 h-[360px] overflow-hidden rounded-[20px] md:h-[420px]">
               <img
-                className="absolute inset-x-0 top-0 h-[510px] w-full md:h-[596px]"
+                className="absolute inset-0 h-full w-full object-cover object-center"
                 alt="Livestock grazing on pasture"
                 src="/figmaAssets/grazing_pasture.webp"
               />
