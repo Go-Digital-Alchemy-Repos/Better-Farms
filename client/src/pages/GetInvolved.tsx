@@ -301,7 +301,7 @@ export const GetInvolved = (): JSX.Element => {
           <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
             Why Partner With Better Farms
           </h2>
-          <div className="mx-auto mt-12 grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
+          <div className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
             {partnerBenefits.map((benefit, index) => (
               <div
                 key={index}
