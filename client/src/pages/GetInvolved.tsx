@@ -234,9 +234,9 @@ export const GetInvolved = (): JSX.Element => {
                 </div>
               ))}
             </div>
-            <div className="hidden w-full max-w-[594px] justify-self-end lg:block">
+            <div className="hidden w-full max-w-[594px] justify-self-end lg:sticky lg:top-28 lg:block lg:self-start">
               <img
-                className="aspect-square h-auto w-full rounded-l-none rounded-r-[14px] object-cover"
+                className="aspect-square h-auto w-full rounded-l-[14px] rounded-r-none object-cover"
                 alt="Farmer harvesting fresh vegetables into a wooden crate"
                 src="/sourcePhotos/get-involved/vegetable-crate.webp"
               />
