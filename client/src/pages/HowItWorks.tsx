@@ -337,9 +337,9 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="relative mx-auto max-w-[1100px] pt-[120px] md:pt-14">
+          <div className="relative mx-auto max-w-[1400px] pt-[270px] md:pt-[110px]">
             <blockquote
-              className="absolute left-1/2 top-0 z-20 w-[min(720px,90vw)] -translate-x-1/2 text-center text-[27px] leading-[1.08] text-[#bc623f] md:left-[72%] md:w-[560px] md:text-[32px]"
+              className="absolute left-1/2 top-0 z-20 w-[min(640px,80vw)] -translate-x-1/2 rotate-[10deg] text-center text-[27px] leading-[1.08] text-[#bc623f] md:left-[70%] md:w-[620px] md:text-[32px]"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               &quot;Farmers don&apos;t need more research papers. They need someone
@@ -349,13 +349,13 @@ export const HowItWorks = (): JSX.Element => {
                 — Name
               </footer>
             </blockquote>
-            <div className="relative z-0 h-[360px] overflow-hidden rounded-[20px] md:h-[420px]">
+            <div className="relative z-0 overflow-hidden rounded-[20px]">
               <img
-                className="absolute inset-0 h-full w-full object-cover object-center"
+                className="block h-auto w-full"
                 alt="Livestock grazing on pasture"
                 src="/figmaAssets/grazing_pasture.webp"
               />
-              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[180px] bg-gradient-to-b from-white via-white/70 to-transparent md:h-[210px]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[70px] bg-gradient-to-b from-white via-white/70 to-transparent sm:h-[100px] md:h-[210px]" />
             </div>
           </div>
         </section>
