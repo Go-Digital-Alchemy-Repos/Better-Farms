@@ -254,11 +254,11 @@ export const HowItWorks = (): JSX.Element => {
                 using a clear methodology.
               </p>
               <div className="tracking-cards-container">
-                <div className="tracking-card-connector relative mx-auto mt-20 h-[82px] max-w-[760px]" aria-hidden="true">
-                  <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/60" />
-                  <div className="absolute left-[15%] right-[15%] top-10 h-px bg-white/60" />
-                  <div className="absolute left-[15%] top-10 h-[62px] w-px bg-white/60" />
-                  <div className="absolute right-[15%] top-10 h-[62px] w-px bg-white/60" />
+                <div className="tracking-card-connector relative mt-20 h-[82px] w-full" aria-hidden="true">
+                  <div className="tracking-card-connector-horizontal absolute top-10 h-px bg-white/60" />
+                  <div className="tracking-card-connector-branch absolute bottom-0 top-10 w-px -translate-x-1/2 bg-white/60" />
+                  <div className="tracking-card-connector-branch absolute bottom-0 top-0 w-px -translate-x-1/2 bg-white/60" />
+                  <div className="tracking-card-connector-branch absolute bottom-0 top-10 w-px translate-x-1/2 bg-white/60" />
                 </div>
                 <div className="tracking-card-grid">
                   {trackingColumns.map((col) => (

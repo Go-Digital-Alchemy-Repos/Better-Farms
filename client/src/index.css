@@ -197,6 +197,7 @@
 
 .tracking-cards-container {
   container-type: inline-size;
+  --tracking-card-gap: 2rem;
 }
 
 .tracking-card-connector {
@@ -224,9 +225,26 @@
     display: block;
   }
 
+  .tracking-card-connector-horizontal {
+    left: calc((100% - (2 * var(--tracking-card-gap))) / 6);
+    right: calc((100% - (2 * var(--tracking-card-gap))) / 6);
+  }
+
+  .tracking-card-connector-branch:nth-child(2) {
+    left: calc((100% - (2 * var(--tracking-card-gap))) / 6);
+  }
+
+  .tracking-card-connector-branch:nth-child(3) {
+    left: 50%;
+  }
+
+  .tracking-card-connector-branch:nth-child(4) {
+    right: calc((100% - (2 * var(--tracking-card-gap))) / 6);
+  }
+
   .tracking-card-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+    gap: var(--tracking-card-gap);
     margin-top: 0;
   }
 
