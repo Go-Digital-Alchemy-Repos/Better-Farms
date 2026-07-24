@@ -315,7 +315,7 @@ export const HowItWorks = (): JSX.Element => {
                     <div
                       key={col.title}
                       data-testid={`card-tracking-${col.title.toLowerCase()}`}
-                      className="tracking-card rounded-xl bg-[#faf5e4] shadow-[0_14px_26px_rgba(47,40,32,0.28)]"
+                      className="tracking-card rounded-xl bg-[#F3EBD3] shadow-[0_14px_26px_rgba(47,40,32,0.28)]"
                     >
                       <h3 className="tracking-card-title font-bold text-[#5e4540]">
                         {col.title}
