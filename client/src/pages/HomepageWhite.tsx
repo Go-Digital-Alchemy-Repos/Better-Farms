@@ -448,7 +448,8 @@ export const HomepageWhite = (): JSX.Element => {
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
           </div>
-          <div className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]">
+          <div className="px-4 md:px-8">
+            <div className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]">
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -482,8 +483,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="mx-auto mt-8 flex w-fit items-center gap-[9px]">
+            </div>
+            <div className="mx-auto mt-8 flex w-fit items-center gap-[9px]">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -503,18 +504,18 @@ export const HomepageWhite = (): JSX.Element => {
                 />
               </button>
             ))}
-          </div>
-          <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
+            </div>
+            <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
               <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[52px]">
               Led by the People Who Built Organic Agriculture
             </h2>
-          </div>
-          <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
+            </div>
+            <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
             The people running Better Farms helped define organic standards,
             build national brands, and advise the USDA. They&apos;re putting
             that expertise to work for the farms that need it most.
-          </p>
-          <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
+            </p>
+            <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
@@ -551,8 +552,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </div>
               </article>
             ))}
-          </div>
-          <div className="mt-12 flex justify-center">
+            </div>
+            <div className="mt-12 flex justify-center">
             <Button
               asChild
               data-testid="button-meet-the-team"
@@ -569,6 +570,7 @@ export const HomepageWhite = (): JSX.Element => {
                 />
               </Link>
             </Button>
+            </div>
           </div>
         </section>
         <section className="relative min-h-[820px] overflow-hidden">
