@@ -79,7 +79,7 @@ const processSteps = [
     id: "06",
     title: "Impact Report",
     body: "Donors receive detailed impact reports featuring ESG metrics, carbon accounting, and verified operational outcomes.",
-    icon: "/sourcePhotos/about/principles/results.svg",
+    icon: "/sourcePhotos/for-farmers/impact-report-icon.png",
     bg: "bg-[#5e4540]",
     text: "text-white",
   },
