@@ -69,7 +69,7 @@ export const Contact = (): JSX.Element => {
             <h1 className="typography-exempt max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
               Take the First Step Towards Better Farms
             </h1>
-            <p className="mt-10 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+            <p className="mt-10 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] md:text-lg md:leading-[1.5]">
               Every partnership, project, and breakthrough starts with a simple
               conversation. Fill out the form below. Our team will be in touch.
             </p>

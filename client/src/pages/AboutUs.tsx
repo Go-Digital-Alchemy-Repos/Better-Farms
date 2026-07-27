@@ -106,7 +106,7 @@ export const AboutUs = (): JSX.Element => {
           <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Our Team Has Spent Careers Inside American Agriculture.
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>
@@ -198,7 +198,7 @@ export const AboutUs = (): JSX.Element => {
           <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
-          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             The difference is simple. We don&apos;t hand over a check and hope
             for the best. Here&apos;s how our approach stands apart.
           </p>
@@ -296,7 +296,7 @@ export const AboutUs = (): JSX.Element => {
           <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Ready to See How It Works?
           </h2>
-          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             Better Farms projects follow a clear process from funding to
             fieldwork to final reporting. See how we turn your investment into
             measurable results on a real farm.

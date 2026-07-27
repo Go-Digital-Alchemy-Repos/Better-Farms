@@ -157,7 +157,7 @@ export const HowItWorks = (): JSX.Element => {
             <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               The Foundation of a Better Farm
             </h2>
-            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
               Every farm faces different challenges, but the barriers to success
               fall into predictable categories. We focus our resources on the
               five most critical threats to independent farms.
