@@ -195,6 +195,17 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .esg-partnership-row {
+    grid-template-columns: 498px minmax(0, 440px) !important;
+    justify-content: start;
+    margin-left: max(122px, calc((100vw - 1372px) / 2 + 83px));
+    margin-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 .tracking-cards-container {
   container-type: inline-size;
   --tracking-card-gap: 2rem;
