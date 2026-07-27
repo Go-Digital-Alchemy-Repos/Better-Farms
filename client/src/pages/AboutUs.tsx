@@ -146,7 +146,7 @@ export const AboutUs = (): JSX.Element => {
             alt="Rolling hills and farmland"
             src="/sourcePhotos/about/landscape.webp"
           />
-          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-10 md:pt-12">
+          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-16 md:rounded-b-[30px] md:px-8">
             <div className="mx-auto max-w-[1000px]">
               <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[50px]">
                 The Principles Behind Every Project
