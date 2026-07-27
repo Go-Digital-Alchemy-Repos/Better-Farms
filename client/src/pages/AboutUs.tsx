@@ -130,9 +130,23 @@ export const AboutUs = (): JSX.Element => {
             style={{ fontFamily: '"Dancing Script", cursive' }}
             data-testid="text-quote"
           >
-            &quot;Farmers don&apos;t need more research papers. They need
-            someone to show up with a plan, the funding, and the know-how to
-            make their operation stronger. That&apos;s the job.&quot;
+            <span className="md:hidden">
+              &quot;Farmers don&apos;t need more research papers. They need
+              someone to show up with a plan, the funding, and the know-how to
+              make their operation stronger. That&apos;s the job.&quot;
+            </span>
+            <span className="hidden md:block">
+              <span className="block">
+                &quot;Farmers don&apos;t need more research papers. They need
+              </span>
+              <span className="block">
+                someone to show up with a plan, the funding, and the
+              </span>
+              <span className="block">
+                know-how to make their operation stronger.
+              </span>
+              <span className="block">That&apos;s the job.&quot;</span>
+            </span>
             <footer className="mt-4 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
               — Name
             </footer>
