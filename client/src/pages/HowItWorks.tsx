@@ -399,8 +399,12 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <DonationSection
+          sectionClassName="pt-16 md:pt-[78px]"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
           imageAlt="Tractor spraying crops in a field"
           imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
+          headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
+          descriptionClassName="text-xl md:text-2xl"
         />
       </main>
       <SiteFooter />
