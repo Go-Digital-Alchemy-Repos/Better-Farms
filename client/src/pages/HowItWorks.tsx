@@ -145,7 +145,7 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[110px]">
-          <p className="mx-auto max-w-[820px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[28px] md:leading-10">
+          <p className="mx-auto max-w-[820px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Your contribution builds farms ready for whatever comes next.
             Stronger soil, smarter systems, and lasting infrastructure give
             producers what they need to thrive for decades ahead.
@@ -154,10 +154,10 @@ export const HowItWorks = (): JSX.Element => {
 
         <section className="pb-14">
           <div className="px-4 md:px-8">
-            <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
+            <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               The Foundation of a Better Farm
             </h2>
-            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
               Every farm faces different challenges, but the barriers to success
               fall into predictable categories. We focus our resources on the
               five most critical threats to independent farms.
@@ -186,10 +186,10 @@ export const HowItWorks = (): JSX.Element => {
                     />
                   </div>
                   <div className="pt-6">
-                    <h3 className="text-[26px] font-bold text-[#5e4540]">
+                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                       {card.title}
                     </h3>
-                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                       {card.body}
                     </p>
                   </div>
@@ -208,7 +208,7 @@ export const HowItWorks = (): JSX.Element => {
         <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
           <div className="relative z-10 mx-auto max-w-[1100px]">
-            <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
+            <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               The 6-Step Process for Better Farms
             </h2>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -224,10 +224,10 @@ export const HowItWorks = (): JSX.Element => {
                     aria-hidden="true"
                     src={step.icon}
                   />
-                  <h3 className="text-[24px] font-bold">
+                  <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
                     {step.id}. {step.title}
                   </h3>
-                  <p className="mt-4 [font-family:'Inter',Helvetica] text-[15px] leading-6">
+                  <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
                     {step.body}
                   </p>
                 </article>
@@ -248,10 +248,10 @@ export const HowItWorks = (): JSX.Element => {
           <div className="relative w-full overflow-hidden rounded-b-[30px] bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-6 pb-20 pt-24 md:px-[80px] md:pb-[120px] md:pt-[105px]">
             <div className="pointer-events-none absolute inset-0 opacity-45" style={topoPatternStyle} />
             <div className="relative z-10">
-              <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[56px]">
+              <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 Tracking Everything From Carbon to Crop Yield
               </h2>
-              <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-8 text-white/90 md:text-lg">
+              <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90 md:text-lg">
                 Traditional nonprofit reporting leaves donors guessing about real
                 impact. Better Farms tracks ESG metrics throughout every project
                 using a clear methodology.
@@ -277,7 +277,7 @@ export const HowItWorks = (): JSX.Element => {
                         {col.items.map((item) => (
                           <li
                             key={item}
-                            className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] last:border-b-0 md:text-lg"
+                            className="border-b border-[#5e4540]/50 py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] last:border-b-0 md:text-lg"
                           >
                             {item}
                           </li>
@@ -340,10 +340,10 @@ export const HowItWorks = (): JSX.Element => {
         <section className="overflow-hidden py-12 md:py-16">
           <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-center">
             <div className="w-full max-w-[440px]">
-              <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
+              <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 Feeding Your ESG Goals
               </h2>
-              <p className="mt-6 max-w-[440px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+              <p className="mt-6 max-w-[440px] [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                 Numbers prove the work, but stories move people. Better Farms
                 delivers both. Every project comes with verified impact data
                 and the human stories behind it. This gives you reporting that
@@ -365,7 +365,7 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="edge-image-pair-large rounded-[10px]"
               alt="Farmer reviewing data in a wheat field"
-              src="/sourcePhotos/how-it-works/farmer-clipboard.webp"
+              src="/sourcePhotos/how-it-works/couple-reviewing-clipboard.jpg"
             />
           </div>
           <div className="esg-partnership-row mx-auto mt-12 grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
@@ -375,10 +375,10 @@ export const HowItWorks = (): JSX.Element => {
               src="/sourcePhotos/how-it-works/red-pig.webp"
             />
             <div className="esg-partnership-copy order-2">
-              <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
+              <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 Great Partnerships Produce Greater Impact
               </h2>
-              <p className="mt-6 max-w-[440px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+              <p className="mt-6 max-w-[440px] [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                 Real change happens where boots meet soil. Bring us your
                 boldest ideas for agriculture, and we&apos;ll put them to work
                 on farms that need them. Every project delivers outcomes you

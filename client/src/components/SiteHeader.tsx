@@ -75,7 +75,7 @@ export const SiteHeader = (): JSX.Element => {
             className="hidden h-auto whitespace-nowrap rounded-lg bg-[#7587ac] px-3 py-2.5 text-white hover:bg-[#6c7ea0] sm:inline-flex md:px-5"
           >
             <Link href="/fund-a-farm">
-              <span className="[font-family:'Inter',Helvetica] text-sm font-medium xl:text-base">
+              <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                 Fund a Farm
               </span>
               <img

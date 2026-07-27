@@ -169,7 +169,7 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="px-4 py-10 md:px-8 md:py-[120px]">
-          <div className="mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[32px] md:leading-10">
+          <div className="mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             <span className="font-bold">
               Better Farms Foundation bridges the gap{" "}
             </span>
@@ -183,10 +183,10 @@ export const HomepageWhite = (): JSX.Element => {
         <section className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white md:grid-cols-2">
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
             <div className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]">
                 Building Better Farms From the Ground Up
               </h2>
-              <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-white">
+              <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-white">
                 <span className="font-bold leading-9">
                   The majority of the U.S. food supply is grown by independent
                   family farms.
@@ -205,7 +205,7 @@ export const HomepageWhite = (): JSX.Element => {
                 className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
                 <Link href="/fund-a-farm">
-                  <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                     Fund A Farm
                   </span>
                   <ChevronRight
@@ -228,16 +228,16 @@ export const HomepageWhite = (): JSX.Element => {
                   key={stat.value}
                   className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3"
                 >
-                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-white md:text-base">
+                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-white md:text-base">
                     {stat.label}
                   </p>
-                  <p className="[font-family:'Inter',Helvetica] text-3xl font-bold leading-[normal] text-white md:text-[40px]">
+                  <div className="[font-family:'Inter',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal text-white md:text-[40px]">
                     {stat.value}
-                  </p>
+                  </div>
                 </div>
               ))}
 
-              <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-xs font-medium leading-[normal] text-[#2f3a56] md:text-sm">
+              <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-[#2f3a56] md:text-base">
                 Sources: <span className="underline">2022 Census of Agriculture</span>,{" "}
                 <span className="underline">USDA</span>,{" "}
                 <span className="underline">Farm Bureau</span>
@@ -254,7 +254,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[730px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
@@ -295,7 +295,7 @@ export const HomepageWhite = (): JSX.Element => {
                           }`}
                         />
                         <span
-                          className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[normal] md:text-[28px] ${
+                          className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
                             isOpen ? "text-white" : "text-[#5e4540]"
                           }`}
                         >
@@ -312,7 +312,7 @@ export const HomepageWhite = (): JSX.Element => {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="px-5 pb-8 pt-8 md:px-[125px]">
-                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-[1.125rem] font-normal leading-7 text-[#5e4540]">
+                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-[1.125rem] font-normal leading-[1.6] tracking-normal text-[#5e4540]">
                         {item.content}
                       </p>
                     </AccordionContent>
@@ -324,7 +324,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
@@ -348,12 +348,12 @@ export const HomepageWhite = (): JSX.Element => {
                       className="flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-0 md:p-10 lg:px-[54px]"
                     >
                       <h3
-                        className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] md:text-[38px] lg:text-[40px] ${card.titleColor}`}
+                        className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal md:text-[40px] ${card.titleColor}`}
                       >
                         {card.title}
                       </h3>
                       <p
-                        className={`[font-family:'Inter',Helvetica] text-base font-normal leading-6 md:text-lg md:leading-7 ${card.bodyColor}`}
+                        className={`[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal md:text-lg ${card.bodyColor}`}
                       >
                         {card.description}
                       </p>
@@ -452,11 +452,11 @@ export const HomepageWhite = (): JSX.Element => {
             ))}
             </div>
             <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[52px]">
+              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               Led by the People Who Built Organic Agriculture
             </h2>
             </div>
-            <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
+            <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]">
             The people running Better Farms helped define organic standards,
             build national brands, and advise the USDA. They&apos;re putting
             that expertise to work for the farms that need it most.
@@ -489,10 +489,10 @@ export const HomepageWhite = (): JSX.Element => {
                   />
                 </div>
                 <div className="pt-4">
-                  <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#5e4540]">
+                  <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {member.name}
                   </h3>
-                  <p className="[font-family:'Inter',Helvetica] text-base font-normal leading-6 text-[#5e4540]">
+                  <p className="[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal text-[#5e4540]">
                     {member.credential}
                   </p>
                 </div>
@@ -506,7 +506,7 @@ export const HomepageWhite = (): JSX.Element => {
               className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[19px] text-white hover:bg-[#6c7ea0]"
             >
               <Link href="/about#team">
-                <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                   Meet The Team
                 </span>
                 <img

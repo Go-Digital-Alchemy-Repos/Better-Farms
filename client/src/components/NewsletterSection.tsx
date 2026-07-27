@@ -31,10 +31,10 @@ export const NewsletterSection = ({
         />
         <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[138px]">
           <div>
-            <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
+            <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
               Sign up for Our Newsletter &amp; See What&apos;s Growing
             </h2>
-            <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
+            <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white">
               We cover projects, farmers, policy shifts, and the latest thinking
               on building a more resilient food system.
             </p>

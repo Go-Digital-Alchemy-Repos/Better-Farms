@@ -66,7 +66,7 @@ export const Contact = (): JSX.Element => {
       <main>
         <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 md:px-[29px] lg:pt-0 min-[1400px]:grid-cols-[560px_minmax(0,1fr)] min-[1400px]:gap-[86px] min-[1400px]:pb-[67px]">
           <div>
-            <h1 className="max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
+            <h1 className="typography-exempt max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
               Take the First Step Towards Better Farms
             </h1>
             <p className="mt-10 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">

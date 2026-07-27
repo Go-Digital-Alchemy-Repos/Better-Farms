@@ -103,10 +103,10 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[142px]">
-          <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.1] text-[#5e4540] md:text-[50px]">
+          <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Our Team Has Spent Careers Inside American Agriculture.
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>
@@ -164,7 +164,7 @@ export const AboutUs = (): JSX.Element => {
           />
           <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-16 md:rounded-b-[30px] md:px-8">
             <div className="mx-auto max-w-[1000px]">
-              <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[50px]">
+              <h2 className="mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 The Principles Behind Every Project
               </h2>
               <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
@@ -181,8 +181,8 @@ export const AboutUs = (): JSX.Element => {
                       aria-hidden="true"
                     />
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-[26px] font-bold text-white">{p.title}</h3>
-                      <p className="mt-3 [font-family:'Inter',Helvetica] text-[15px] leading-6 text-white/90">
+                      <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-white md:text-[24px]">{p.title}</h3>
+                      <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90">
                         {p.body}
                       </p>
                     </div>
@@ -195,23 +195,23 @@ export const AboutUs = (): JSX.Element => {
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
-          <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
+          <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
-          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             The difference is simple. We don&apos;t hand over a check and hope
             for the best. Here&apos;s how our approach stands apart.
           </p>
           <div className="relative z-10 mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
             <div className="rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022] md:-rotate-1 md:translate-y-[-10px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
+              <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#3a332b] md:text-[24px]">
                 What Others Do
               </h3>
               <ul className="mt-6">
                 {othersDo.map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base text-[#3a332b]"
+                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#3a332b]"
                   >
                     <span aria-hidden="true" className="text-lg font-bold">✕</span>
                     {item}
@@ -220,14 +220,14 @@ export const AboutUs = (): JSX.Element => {
               </ul>
             </div>
             <div className="rounded-2xl bg-[#faf5e4] p-8 shadow-[0px_4px_14px_#00000022] md:rotate-1 md:translate-y-[30px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
+              <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#3a332b] md:text-[24px]">
                 What We Do
               </h3>
               <ul className="mt-6">
                 {weDo.map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base text-[#3a332b]"
+                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#3a332b]"
                   >
                     <span aria-hidden="true" className="text-lg font-bold">✓</span>
                     {item}
@@ -245,10 +245,10 @@ export const AboutUs = (): JSX.Element => {
         />
 
         <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[84px]">
-          <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
+          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             Our board members helped create organic certification, served under
             presidential administrations, and built some of the largest
             operations in sustainable agriculture. They have the relationships,
@@ -281,10 +281,10 @@ export const AboutUs = (): JSX.Element => {
                     style={{ backgroundColor: member.overlay }}
                   />
                 </div>
-                <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold text-[#5e4540]">
+                <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                   {member.name}
                 </p>
-                <p className="mt-1 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
+                <p className="mt-1 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                   {member.credential}
                 </p>
               </div>
@@ -293,10 +293,10 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[720px] text-center text-[40px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
+          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Ready to See How It Works?
           </h2>
-          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             Better Farms projects follow a clear process from funding to
             fieldwork to final reporting. See how we turn your investment into
             measurable results on a real farm.

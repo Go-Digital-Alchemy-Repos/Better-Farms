@@ -152,7 +152,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[104px]">
-          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#2f2820] md:text-[28px] md:leading-10">
+          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#2f2820] md:text-[28px] md:leading-[1.5]">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
             in the way that works best for them. Explore them below and put
@@ -161,7 +161,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 pb-10 md:px-8 lg:pl-[max(32px,calc((100%-1100px)/2))] lg:pr-0">
-          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px] lg:hidden">
+          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_clamp(440px,42vw,594px)] lg:pt-[108px]">
@@ -172,34 +172,34 @@ export const GetInvolved = (): JSX.Element => {
                   data-testid={`section-pathway-${pathway.id}`}
                   className={index === 0 ? "" : "md:mt-20"}
                 >
-                  <h2 className="text-[32px] font-bold leading-[1.1] text-[#5e4540] md:text-[40px]">
+                  <h2 className="text-[32px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[40px]">
                     {pathway.title}
                   </h2>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                     <span className="font-bold">Who it&apos;s for: </span>
                     {pathway.whoItsFor}
                   </p>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-7 text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#2f2820]">
                     What you get:
                   </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                     {pathway.whatYouGet.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                   {pathway.extraLabel && (
                     <>
-                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-7 text-[#2f2820]">
+                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#2f2820]">
                         {pathway.extraLabel}
                       </p>
                       {pathway.extraBullets ? (
-                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                           {pathway.extraLines.map((line, index) => (
                             <li key={index}>{line}</li>
                           ))}
                         </ul>
                       ) : (
-                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                           {pathway.extraLines.map((line, index) => (
                             <p key={index}>{line}</p>
                           ))}
@@ -208,7 +208,7 @@ export const GetInvolved = (): JSX.Element => {
                     </>
                   )}
                   {pathway.note && (
-                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                       <span className="font-bold">{pathway.note.label}</span>
                       {pathway.note.text}
                     </p>
@@ -248,7 +248,7 @@ export const GetInvolved = (): JSX.Element => {
         />
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+          <h2 className="mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Why Partner With Better Farms
           </h2>
           <div className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
@@ -260,10 +260,10 @@ export const GetInvolved = (): JSX.Element => {
               >
                 <img className="h-12 w-12 shrink-0 object-contain" src={benefit.icon} alt="" />
                 <div>
-                  <h3 className="text-2xl font-bold text-[#5e4540] md:text-[28px]">
+                  <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {benefit.title}
                   </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-sm leading-6 text-[#2f2820]">
+                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
                     {benefit.text}
                   </p>
                 </div>

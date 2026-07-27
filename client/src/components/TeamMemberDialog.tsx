@@ -35,13 +35,13 @@ export const TeamMemberDialog = ({ member, onClose }: TeamMemberDialogProps) => 
               data-testid="img-team-modal-headshot"
             />
             <DialogTitle
-              className="mt-6 text-[36px] font-bold leading-[1.1] text-[#5e4540] md:text-[44px]"
+              className="mt-6 text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[40px]"
               data-testid="text-team-modal-name"
             >
               {member.name}
             </DialogTitle>
             <p
-              className="mt-3 [font-family:'Inter',Helvetica] text-base font-bold text-[#5e4540]"
+              className="mt-3 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]"
               data-testid="text-team-modal-title"
             >
               {member.credential}
@@ -51,7 +51,7 @@ export const TeamMemberDialog = ({ member, onClose }: TeamMemberDialogProps) => 
                 {member.bio.map((paragraph, index) => (
                   <p
                     key={index}
-                    className="[font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]"
+                    className="[font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
                     data-testid={`text-team-modal-bio-${index}`}
                   >
                     {paragraph}

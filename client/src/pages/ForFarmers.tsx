@@ -114,7 +114,7 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[100px]">
-          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#5e4540] md:text-[28px] md:leading-10">
+          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             <span className="font-bold">
               Every farmer has a project that could change everything.{" "}
             </span>
@@ -126,7 +126,7 @@ export const ForFarmers = (): JSX.Element => {
 
         <section className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] py-12 md:pb-[105px] md:pt-20">
           <div className="px-4 md:px-8">
-            <h2 className="mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
+            <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
               The Farm Projects We Fund
             </h2>
           </div>
@@ -153,10 +153,10 @@ export const ForFarmers = (): JSX.Element => {
                     />
                   </div>
                   <div className="pt-6">
-                    <h3 className="text-[26px] font-bold text-[#5e4540]">
+                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                       {card.title}
                     </h3>
-                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                       {card.body}
                     </p>
                   </div>
@@ -169,7 +169,7 @@ export const ForFarmers = (): JSX.Element => {
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:pb-0 md:pt-24">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
           <div className="relative z-10 mx-auto max-w-[1100px]">
-            <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
+            <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               The 6-Step Process for Better Farms
             </h2>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -185,10 +185,10 @@ export const ForFarmers = (): JSX.Element => {
                     aria-hidden="true"
                     src={step.icon}
                   />
-                  <h3 className="text-[24px] font-bold">
+                  <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
                     {step.id}. {step.title}
                   </h3>
-                  <p className="mt-4 [font-family:'Inter',Helvetica] text-[15px] leading-6">
+                  <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
                     {step.body}
                   </p>
                 </article>
