@@ -289,9 +289,9 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 pb-0 pt-12 md:pb-0 md:pt-16">
-          <div className="relative mx-auto max-w-[1400px] pt-[56px] md:pt-[66px]">
+          <div className="relative mx-auto max-w-[1400px] md:pt-[66px]">
             <blockquote
-              className="absolute left-1/2 top-0 z-20 w-[min(360px,88vw)] -translate-x-1/2 -translate-y-1/4 text-center text-[#bc623f] md:left-auto md:right-[15%] md:w-[570px] md:translate-x-0"
+              className="relative z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:top-0 md:mx-0 md:w-[570px] md:-translate-y-1/4"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
