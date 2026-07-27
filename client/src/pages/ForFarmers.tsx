@@ -84,7 +84,7 @@ const processSteps = [
 ];
 
 const topoPatternStyle = {
-  backgroundImage: "url('/figmaAssets/topographic-contours.svg')",
+  backgroundImage: "url('/figmaAssets/pattern.svg')",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat" as const,
   backgroundSize: "100% 100%",
