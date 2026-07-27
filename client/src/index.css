@@ -92,7 +92,7 @@
 
 .hero-image-after-title {
   height: 280px;
-  margin-top: 50px;
+  margin-top: 25px;
   object-fit: cover;
 }
 
@@ -134,6 +134,7 @@
 
   .hero-image-after-title {
     height: 520px;
+    margin-top: 50px;
   }
 
   .foundation-layout {
