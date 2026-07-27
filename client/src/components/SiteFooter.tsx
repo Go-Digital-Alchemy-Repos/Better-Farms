@@ -104,7 +104,7 @@ export const SiteFooter = (): JSX.Element => {
   return (
     <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
       <div className="relative mx-auto max-w-[1440px] xl:h-full">
-        <div className="grid gap-10 xl:translate-y-[48px] xl:grid-cols-[1fr_auto_430px] xl:items-start xl:px-[102px]">
+        <div className="grid gap-10 xl:translate-y-[48px] xl:grid-cols-[365px_minmax(0,1fr)_430px] xl:items-start xl:gap-0 xl:px-[102px]">
           <div className="space-y-4">
             <img
               className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
@@ -117,7 +117,7 @@ export const SiteFooter = (): JSX.Element => {
               src="/figmaAssets/frame-37278.svg"
             />
           </div>
-          <nav className="flex flex-col items-start gap-4 pt-1" aria-label="Footer">
+          <nav className="flex flex-col items-start gap-4 pt-1 xl:justify-self-center" aria-label="Footer">
             {navItems.map((item) => (
               <Link
                 key={item.label}
