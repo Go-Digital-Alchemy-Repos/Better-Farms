@@ -170,7 +170,7 @@ export const GetInvolved = (): JSX.Element => {
                 <div
                   key={pathway.id}
                   data-testid={`section-pathway-${pathway.id}`}
-                  className={index === 0 ? "" : index === 2 ? "md:mt-[190px]" : "md:mt-20"}
+                  className={index === 0 ? "" : "md:mt-20"}
                 >
                   <h2 className="text-[32px] font-bold leading-[1.1] text-[#5e4540] md:text-[40px]">
                     {pathway.title}
