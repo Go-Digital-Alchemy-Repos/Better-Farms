@@ -354,7 +354,7 @@ export const HowItWorks = (): JSX.Element => {
               <Button
                 asChild
                 data-testid="button-fund-a-farm-esg"
-                className="mt-8 h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
+                className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >
                 <Link href="/fund-a-farm">
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">
@@ -390,7 +390,7 @@ export const HowItWorks = (): JSX.Element => {
               <Button
                 asChild
                 data-testid="button-start-partnership"
-                className="mt-8 h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
+                className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >
                 <Link href="/contact">
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">

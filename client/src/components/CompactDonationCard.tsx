@@ -38,7 +38,10 @@ export function CompactDonationCard(): JSX.Element {
             />
           </span>
         </label>
-        <Button asChild className="h-[58px] rounded-lg bg-[#bc623f] px-6 text-white hover:bg-[#ab5838]">
+        <Button
+          asChild
+          className="h-auto rounded-lg bg-[#bc623f] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#ab5838]"
+        >
           <Link href="/contact">
             Donate Now
             <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />

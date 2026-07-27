@@ -202,7 +202,7 @@ export const HomepageWhite = (): JSX.Element => {
               </p>
               <Button
                 asChild
-                className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
+                className="mt-8 h-auto rounded-lg bg-white pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
                 <Link href="/fund-a-farm">
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">
@@ -371,7 +371,10 @@ export const HomepageWhite = (): JSX.Element => {
             ))}
           </div>
           <div className="mt-9 flex justify-center">
-            <Button asChild className="h-auto rounded-lg bg-[#7587ac] px-5 py-3.5 text-white hover:bg-[#6c7ea0]">
+            <Button
+              asChild
+              className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
+            >
               <Link href="/fund-a-farm">Fund A Farm<img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" /></Link>
             </Button>
           </div>
@@ -503,7 +506,7 @@ export const HomepageWhite = (): JSX.Element => {
             <Button
               asChild
               data-testid="button-meet-the-team"
-              className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[19px] text-white hover:bg-[#6c7ea0]"
+              className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
             >
               <Link href="/about#team">
                 <span className="[font-family:'Inter',Helvetica] text-base font-medium">

@@ -202,7 +202,7 @@ export const ForFarmers = (): JSX.Element => {
               <Button
                 asChild
                 data-testid="button-apply-now"
-                className="h-auto rounded-lg bg-[#7587ac] px-[24px] py-[15px] text-white hover:bg-[#6c7ea0]"
+                className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >
                 <Link href="/contact">
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">
