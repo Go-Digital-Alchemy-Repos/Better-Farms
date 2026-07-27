@@ -64,7 +64,7 @@ export const NewsletterSection = ({
               <Button
                 type="submit"
                 data-testid="button-newsletter-subscribe"
-                className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
+                className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
               >
                 <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                   Subscribe
