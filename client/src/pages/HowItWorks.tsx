@@ -291,7 +291,7 @@ export const HowItWorks = (): JSX.Element => {
         <section className="px-4 pb-0 pt-12 md:pb-0 md:pt-16">
           <div className="relative mx-auto max-w-[1400px] pt-[56px] md:pt-[66px]">
             <blockquote
-              className="absolute left-1/2 top-0 z-20 w-[min(360px,88vw)] -translate-x-1/2 text-center text-[#bc623f] md:left-auto md:right-[15%] md:w-[570px] md:translate-x-0"
+              className="absolute left-1/2 top-0 z-20 w-[min(360px,88vw)] -translate-x-1/2 -translate-y-1/4 text-center text-[#bc623f] md:left-auto md:right-[15%] md:w-[570px] md:translate-x-0"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
@@ -320,9 +320,12 @@ export const HowItWorks = (): JSX.Element => {
                 — Name
               </footer>
             </blockquote>
-            <div className="relative z-0 overflow-hidden rounded-[20px]">
+            <div
+              className="relative z-0 overflow-hidden rounded-[20px]"
+              style={{ aspectRatio: "3888 / 1264" }}
+            >
               <img
-                className="block h-auto w-full"
+                className="absolute inset-x-0 top-0 block h-auto w-full"
                 alt="Livestock grazing on pasture"
                 src="/sourcePhotos/how-it-works/grazing-pasture-hq.jpg"
               />
