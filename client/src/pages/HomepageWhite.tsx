@@ -521,6 +521,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <DonationSection
           sectionClassName="pt-16 md:pt-[78px]"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
           imageAlt="Rectangle"
           imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
           headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"

@@ -5,6 +5,7 @@ type DonationSectionProps = {
   imageAlt: string;
   headingLevel?: "h1" | "h2";
   sectionClassName?: string;
+  imageWrapperClassName?: string;
   imagePositionClassName?: string;
   headingClassName?: string;
   descriptionClassName?: string;
@@ -15,6 +16,7 @@ export function DonationSection({
   imageAlt,
   headingLevel = "h2",
   sectionClassName = "pt-10",
+  imageWrapperClassName = "mt-10",
   imagePositionClassName = "",
   headingClassName = "text-[44px] md:text-[72px]",
   descriptionClassName = "text-lg md:text-xl",
@@ -52,7 +54,7 @@ export function DonationSection({
           reporting included
         </p>
       </div>
-      <div className="relative mt-10">
+      <div className={`relative ${imageWrapperClassName}`}>
         <div className="absolute inset-x-0 -top-px z-[5] h-[161px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[221px]" />
         <img
           data-testid="donation-background-image"
