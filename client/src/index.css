@@ -96,6 +96,11 @@
   object-fit: cover;
 }
 
+.primary-nav-link--active::after {
+  transform: scaleX(1) !important;
+  transition: none !important;
+}
+
 .edge-image-pair {
   display: grid;
   gap: 32px;

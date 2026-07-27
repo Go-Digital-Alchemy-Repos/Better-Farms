@@ -60,7 +60,7 @@ export const SiteHeader = (): JSX.Element => {
               data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
               className={`relative whitespace-nowrap pb-1 [font-family:'Inter',Helvetica] text-[13px] font-bold leading-none text-[#5e4540] transition-colors duration-300 ease-out after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[#827b3e] after:transition-transform after:duration-300 after:ease-out hover:text-[#827b3e] hover:after:scale-x-100 xl:text-[15px] ${
                 item.href !== "/" && location === item.href
-                  ? "underline underline-offset-4"
+                  ? "primary-nav-link--active"
                   : ""
               }`}
             >
