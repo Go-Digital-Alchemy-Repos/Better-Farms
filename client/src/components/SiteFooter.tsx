@@ -174,63 +174,65 @@ export const SiteFooter = (): JSX.Element => {
           />
         </div>
         <div className="mt-2.5 flex flex-col gap-4 border-t border-white/0 pt-1 xl:absolute xl:inset-x-0 xl:bottom-1 xl:mt-0 xl:flex-row xl:items-center xl:justify-between xl:px-[102px]">
-          <div className="flex flex-wrap items-center gap-x-1 [font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
-            <span>© 2026 Better Farms Foundation&nbsp;&nbsp;&nbsp;&nbsp; </span>
-            {legalDocuments.map((document, index) => (
-              <span key={document.label}>
-                {index > 0 && <span> | </span>}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <button
-                      type="button"
-                      className="inline-flex min-h-6 items-center underline underline-offset-2 transition-colors hover:text-[#e6dfc9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
-                    >
-                      {document.label}
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent className="max-h-[88vh] max-w-[760px] overflow-hidden rounded-[20px] border-0 bg-[#f8f4e8] p-0 text-[#5e4540] shadow-2xl">
-                    <div className="border-b border-[#5e4540]/15 bg-white px-6 py-5 md:px-8">
-                      <DialogHeader className="space-y-4 text-left">
-                        <img
-                          className="h-auto w-[220px]"
-                          alt="Better Farms Foundation"
-                          src="/sourcePhotos/brand/logo.svg"
-                        />
-                        <div>
-                          <DialogTitle className="[font-family:'Playfair_Display',Helvetica] text-[34px] font-bold leading-[1.05] text-[#5e4540] md:text-[44px]">
-                            {document.title}
-                          </DialogTitle>
-                          <DialogDescription className="mt-3 max-w-[580px] [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]/80">
-                            {document.description}
-                          </DialogDescription>
+          <div className="flex flex-col items-start gap-1 [font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white xl:flex-row xl:items-center xl:gap-4">
+            <span>© 2026 Better Farms Foundation</span>
+            <div className="flex items-center whitespace-nowrap">
+              {legalDocuments.map((document, index) => (
+                <span key={document.label}>
+                  {index > 0 && <span> | </span>}
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        type="button"
+                        className="inline-flex min-h-6 items-center underline underline-offset-2 transition-colors hover:text-[#e6dfc9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
+                      >
+                        {document.label}
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-h-[88vh] max-w-[760px] overflow-hidden rounded-[20px] border-0 bg-[#f8f4e8] p-0 text-[#5e4540] shadow-2xl">
+                      <div className="border-b border-[#5e4540]/15 bg-white px-6 py-5 md:px-8">
+                        <DialogHeader className="space-y-4 text-left">
+                          <img
+                            className="h-auto w-[220px]"
+                            alt="Better Farms Foundation"
+                            src="/sourcePhotos/brand/logo.svg"
+                          />
+                          <div>
+                            <DialogTitle className="[font-family:'Playfair_Display',Helvetica] text-[34px] font-bold leading-[1.05] text-[#5e4540] md:text-[44px]">
+                              {document.title}
+                            </DialogTitle>
+                            <DialogDescription className="mt-3 max-w-[580px] [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]/80">
+                              {document.description}
+                            </DialogDescription>
+                          </div>
+                        </DialogHeader>
+                      </div>
+                      <div className="max-h-[56vh] overflow-y-auto px-6 py-6 md:px-8">
+                        <p className="[font-family:'Inter',Helvetica] text-xs font-semibold uppercase tracking-[0.12em] text-[#827b3e]">
+                          Last updated {document.updated}
+                        </p>
+                        <div className="mt-5 space-y-6">
+                          {document.sections.map((section) => (
+                            <section key={section.heading}>
+                              <h3 className="[font-family:'Playfair_Display',Helvetica] text-[24px] font-bold leading-tight text-[#5e4540]">
+                                {section.heading}
+                              </h3>
+                              <p className="mt-2 [font-family:'Inter',Helvetica] text-sm leading-7 text-[#5e4540] md:text-base">
+                                {section.body}
+                              </p>
+                            </section>
+                          ))}
                         </div>
-                      </DialogHeader>
-                    </div>
-                    <div className="max-h-[56vh] overflow-y-auto px-6 py-6 md:px-8">
-                      <p className="[font-family:'Inter',Helvetica] text-xs font-semibold uppercase tracking-[0.12em] text-[#827b3e]">
-                        Last updated {document.updated}
-                      </p>
-                      <div className="mt-5 space-y-6">
-                        {document.sections.map((section) => (
-                          <section key={section.heading}>
-                            <h3 className="[font-family:'Playfair_Display',Helvetica] text-[24px] font-bold leading-tight text-[#5e4540]">
-                              {section.heading}
-                            </h3>
-                            <p className="mt-2 [font-family:'Inter',Helvetica] text-sm leading-7 text-[#5e4540] md:text-base">
-                              {section.body}
-                            </p>
-                          </section>
-                        ))}
+                        <div className="mt-8 rounded-xl bg-[#e6dfc9] p-5 [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]">
+                          For questions about this document, please reach out through
+                          the Better Farms Foundation Contact page.
+                        </div>
                       </div>
-                      <div className="mt-8 rounded-xl bg-[#e6dfc9] p-5 [font-family:'Inter',Helvetica] text-sm leading-6 text-[#5e4540]">
-                        For questions about this document, please reach out through
-                        the Better Farms Foundation Contact page.
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </span>
-            ))}
+                    </DialogContent>
+                  </Dialog>
+                </span>
+              ))}
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <span className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
