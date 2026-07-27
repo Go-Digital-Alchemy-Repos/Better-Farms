@@ -104,6 +104,7 @@
 
 .edge-image-pair-small {
   aspect-ratio: 406 / 392;
+  display: none;
   height: auto;
   max-width: 406px;
   object-fit: cover;
@@ -145,6 +146,10 @@
 }
 
 @media (min-width: 1024px) {
+  .edge-image-pair-small {
+    display: block;
+  }
+
   .edge-image-pair--large-left {
     grid-template-columns: minmax(406px, 721px) 406px;
     justify-content: space-between;
