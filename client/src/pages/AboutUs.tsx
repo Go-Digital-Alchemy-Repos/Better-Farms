@@ -194,7 +194,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
           <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
