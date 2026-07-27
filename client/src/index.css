@@ -229,6 +229,7 @@
 
 .tracking-cards-container {
   container-type: inline-size;
+  container-name: tracking-layout;
   --tracking-card-gap: 2rem;
 }
 
@@ -244,16 +245,24 @@
 }
 
 .tracking-card {
+  container-type: inline-size;
+  container-name: tracking-card;
   padding: 2rem;
 }
 
 .tracking-card-title {
-  font-size: 1.5rem;
-  line-height: var(--heading-24-line-height);
+  font-size: 2.5rem;
+  line-height: var(--heading-40-line-height);
   letter-spacing: 0;
 }
 
-@container (min-width: 784px) {
+@container tracking-card (max-width: 341.999px) {
+  .tracking-card-title {
+    font-size: clamp(1.5rem, 11.7cqw, 2.5rem);
+  }
+}
+
+@container tracking-layout (min-width: 784px) {
   .tracking-card-connector {
     display: block;
   }
@@ -284,10 +293,6 @@
   .tracking-card {
     min-height: 330px;
     padding: clamp(1.5rem, 3.25cqw, 2.5rem);
-  }
-
-  .tracking-card-title {
-    font-size: 1.5rem;
   }
 }
 
