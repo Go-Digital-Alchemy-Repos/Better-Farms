@@ -197,6 +197,21 @@
   }
 }
 
+@media (min-width: 1602px) {
+  .edge-image-pair--large-left {
+    grid-template-columns: calc(50vw - 80px) 406px;
+  }
+
+  .edge-image-pair--large-right {
+    grid-template-columns: 406px calc(50vw - 80px);
+  }
+
+  .edge-image-pair-large {
+    max-height: none;
+    max-width: none;
+  }
+}
+
 @media (min-width: 1320px) {
   .esg-partnership-copy {
     transform: translateX(
