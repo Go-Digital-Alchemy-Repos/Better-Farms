@@ -9,7 +9,7 @@ export const FundAFarm = (): JSX.Element => {
       <main>
         <DonationSection
           headingLevel="h1"
-          sectionClassName="pt-10 md:pt-[123px] lg:pt-[200px]"
+          sectionClassName="pt-10 md:pt-[123px] lg:pt-[150px]"
           imageWrapperClassName="-mt-[152px] md:-mt-[236px]"
           imageAlt="Farmers reviewing plans in a field at sunset"
           imageSrc="/sourcePhotos/fund-a-farm/field-sunset.webp"
