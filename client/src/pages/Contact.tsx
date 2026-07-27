@@ -76,7 +76,7 @@ export const Contact = (): JSX.Element => {
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 max-w-[552px]">
-                <p className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                <p className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                   Personal Information
                 </p>
                 <div className="mt-3 space-y-4">
@@ -140,7 +140,7 @@ export const Contact = (): JSX.Element => {
                   name="role"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         I am a:
                       </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
@@ -170,7 +170,7 @@ export const Contact = (): JSX.Element => {
                   name="referral"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         How did you hear about Better Farms?
                       </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
@@ -200,7 +200,7 @@ export const Contact = (): JSX.Element => {
                   name="message"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         Leave us a message*
                       </FormLabel>
                       <FormControl>
