@@ -312,7 +312,7 @@ export const HomepageWhite = (): JSX.Element => {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="px-5 pb-8 pt-8 md:px-[125px]">
-                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-base font-normal leading-7 text-[#5e4540]">
+                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-[1.125rem] font-normal leading-7 text-[#5e4540]">
                         {item.content}
                       </p>
                     </AccordionContent>
