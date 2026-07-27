@@ -382,14 +382,14 @@ export const HomepageWhite = (): JSX.Element => {
           overlayColor="#827B3E"
         />
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
-          <div className="home-image-pair grid-cols-1 items-start">
+          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-start">
             <img
-              className="h-auto w-full max-w-[406px] rounded-lg object-cover"
+              className="edge-image-pair-small rounded-lg"
               alt="Rectangle"
               src="/sourcePhotos/homepage/crops.webp"
             />
             <img
-              className="home-image-pair-right rounded-l-lg object-cover"
+              className="edge-image-pair-large rounded-lg"
               alt="Rectangle"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />

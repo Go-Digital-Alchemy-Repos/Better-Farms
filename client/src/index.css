@@ -96,20 +96,6 @@
   object-fit: cover;
 }
 
-.home-image-pair {
-  display: grid;
-  gap: 32px;
-  margin-left: 16px;
-}
-
-.home-image-pair-right {
-  aspect-ratio: 603 / 602;
-  height: auto;
-  justify-self: end;
-  max-height: 720px;
-  width: min(100%, 721px);
-}
-
 .edge-image-pair {
   display: grid;
   gap: 32px;
@@ -158,12 +144,6 @@
 }
 
 @media (min-width: 1024px) {
-  .home-image-pair {
-    grid-template-columns: 406px minmax(406px, 721px);
-    justify-content: space-between;
-    margin-left: max(122px, calc((100vw - 1372px) / 2 + 83px));
-  }
-
   .edge-image-pair--large-left {
     grid-template-columns: minmax(406px, 721px) 406px;
     justify-content: space-between;
