@@ -13,27 +13,27 @@ import { SiteFooter } from "@/components/SiteFooter";
 const principles = [
   {
     title: "Results",
-    icon: "/sourcePhotos/about/principles/results.svg",
+    icon: "/sourcePhotos/about/principles/transparency.svg",
     body: "We fund projects through to completion. Donors see finished work and measurable change on the farm.",
   },
   {
     title: "Execution",
-    icon: "/sourcePhotos/about/principles/execution.svg",
+    icon: "/sourcePhotos/about/principles/multiplied-impact.svg",
     body: "Agricultural experts oversee each build. Projects get done right and hold up under real farm conditions.",
   },
   {
     title: "Transparency",
-    icon: "/sourcePhotos/about/principles/transparency.svg",
+    icon: "/sourcePhotos/about/principles/results.svg",
     body: "We track every dollar and document every outcome. Donors receive clear reports that show the full picture.",
   },
   {
     title: "Multiplied Impact",
-    icon: "/sourcePhotos/about/principles/multiplied-impact.svg",
+    icon: "/sourcePhotos/about/principles/farmer-centered.svg",
     body: "We combine contributions from corporations, foundations, and donor-advised funds. Farmers get fully funded projects, and every dollar goes further.",
   },
   {
     title: "Farmer-Centered",
-    icon: "/sourcePhotos/about/principles/farmer-centered.svg",
+    icon: "/sourcePhotos/about/principles/execution.svg",
     body: "Farmers shape each project from day one. Producers know what their land needs, and we build around that.",
   },
 ];
@@ -170,18 +170,20 @@ export const AboutUs = (): JSX.Element => {
                   <div
                     key={p.title}
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="border-b border-white/40 pb-6 text-center md:text-left"
+                    className="flex items-start gap-5 border-b border-white/40 pb-6 text-left"
                   >
                     <img
-                      className="mx-auto mb-3 h-11 w-11 object-contain md:mx-0"
+                      className="h-[77px] w-[77px] shrink-0 object-contain"
                       src={p.icon}
                       alt=""
                       aria-hidden="true"
                     />
-                    <h3 className="text-[26px] font-bold text-white">{p.title}</h3>
-                    <p className="mt-3 [font-family:'Inter',Helvetica] text-[15px] leading-6 text-white/90">
-                      {p.body}
-                    </p>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-[26px] font-bold text-white">{p.title}</h3>
+                      <p className="mt-3 [font-family:'Inter',Helvetica] text-[15px] leading-6 text-white/90">
+                        {p.body}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
