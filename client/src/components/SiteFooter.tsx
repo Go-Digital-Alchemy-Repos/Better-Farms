@@ -179,7 +179,7 @@ export const SiteFooter = (): JSX.Element => {
             <div className="flex items-center whitespace-nowrap">
               {legalDocuments.map((document, index) => (
                 <span key={document.label}>
-                  {index > 0 && <span> | </span>}
+                  {index > 0 && <span className="mx-[6px]">|</span>}
                   <Dialog>
                     <DialogTrigger asChild>
                       <button
