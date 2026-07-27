@@ -277,7 +277,7 @@ export const GetInvolved = (): JSX.Element => {
             <img
               className="edge-image-pair-large rounded-lg object-top"
               alt="Goats gathered in a pasture"
-              src="/sourcePhotos/get-involved/goats.webp"
+              src="/sourcePhotos/get-involved/goats-flipped.jpg"
             />
             <img
               className="edge-image-pair-small rounded-lg"
