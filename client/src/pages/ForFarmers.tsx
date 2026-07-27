@@ -234,6 +234,7 @@ export const ForFarmers = (): JSX.Element => {
 
         <DonationSection
           sectionClassName="pt-10 md:pt-12"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
           imageAlt="Chickens in tall grass at sunset"
           imageSrc="/sourcePhotos/for-farmers/hero.webp"
         />
