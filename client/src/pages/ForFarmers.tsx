@@ -167,7 +167,7 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:pb-0 md:pt-24">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] opacity-80" style={topoPatternStyle} />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[90%] opacity-80" style={topoPatternStyle} />
           <div className="relative z-10 mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms
