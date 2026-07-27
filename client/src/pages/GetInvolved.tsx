@@ -152,7 +152,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[104px]">
-          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#2f2820] md:text-[28px] md:leading-[1.5]">
+          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
             in the way that works best for them. Explore them below and put
@@ -175,31 +175,31 @@ export const GetInvolved = (): JSX.Element => {
                   <h2 className="text-[32px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[40px]">
                     {pathway.title}
                   </h2>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                     <span className="font-bold">Who it&apos;s for: </span>
                     {pathway.whoItsFor}
                   </p>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                     What you get:
                   </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                     {pathway.whatYouGet.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                   {pathway.extraLabel && (
                     <>
-                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#2f2820]">
+                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                         {pathway.extraLabel}
                       </p>
                       {pathway.extraBullets ? (
-                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                           {pathway.extraLines.map((line, index) => (
                             <li key={index}>{line}</li>
                           ))}
                         </ul>
                       ) : (
-                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                           {pathway.extraLines.map((line, index) => (
                             <p key={index}>{line}</p>
                           ))}
@@ -208,7 +208,7 @@ export const GetInvolved = (): JSX.Element => {
                     </>
                   )}
                   {pathway.note && (
-                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                       <span className="font-bold">{pathway.note.label}</span>
                       {pathway.note.text}
                     </p>
@@ -263,7 +263,7 @@ export const GetInvolved = (): JSX.Element => {
                   <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {benefit.title}
                   </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#2f2820]">
+                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                     {benefit.text}
                   </p>
                 </div>

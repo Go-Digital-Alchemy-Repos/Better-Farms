@@ -293,10 +293,10 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 pb-0 pt-12 md:pb-0 md:pt-16">
+        <section className="px-4 pb-0 pt-12 md:pb-0 md:pt-16 lg:pt-20">
           <div className="relative mx-auto max-w-[1400px] md:pt-[66px]">
             <blockquote
-              className="relative z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:top-0 md:mx-0 md:w-[570px] md:-translate-y-1/4"
+              className="relative z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:top-0 md:mx-0 md:w-[570px] md:-translate-y-[35%]"
               style={{ fontFamily: '"Dancing Script", cursive' }}
             >
               <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
