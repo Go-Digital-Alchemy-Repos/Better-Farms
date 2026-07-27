@@ -192,6 +192,18 @@
   }
 }
 
+@media (min-width: 1320px) {
+  .esg-partnership-copy {
+    transform: translateX(
+      calc(
+        50vw -
+          max(122px, calc((100vw - 1372px) / 2 + 83px)) -
+          538px
+      )
+    );
+  }
+}
+
 .tracking-cards-container {
   container-type: inline-size;
   --tracking-card-gap: 2rem;

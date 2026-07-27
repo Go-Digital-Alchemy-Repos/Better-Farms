@@ -371,7 +371,7 @@ export const HowItWorks = (): JSX.Element => {
               alt="Pig on pasture"
               src="/sourcePhotos/how-it-works/red-pig.webp"
             />
-            <div className="order-2">
+            <div className="esg-partnership-copy order-2">
               <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
                 Great Partnerships Produce Greater Impact
               </h2>
