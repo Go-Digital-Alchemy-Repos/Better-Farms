@@ -167,33 +167,37 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:pb-0 md:pt-24">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
-          <div className="relative z-10 mx-auto max-w-[1100px]">
-            <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
-              The 6-Step Process for Better Farms
-            </h2>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {processSteps.map((step) => (
-                <article
-                  key={step.id}
-                  data-testid={`card-step-${step.id}`}
-                  className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
-                >
-                  <img
-                    className="mb-7 h-16 w-20 object-contain object-left"
-                    alt=""
-                    aria-hidden="true"
-                    src={step.icon}
-                  />
-                  <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
-                    {step.id}. {step.title}
-                  </h3>
-                  <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
-                    {step.body}
-                  </p>
-                </article>
-              ))}
+          <div className="relative -mx-4 -mt-12 px-4 pt-12 md:-mx-8 md:-mt-24 md:px-8 md:pt-24">
+            <div className="pointer-events-none absolute inset-0 opacity-80" style={topoPatternStyle} />
+            <div className="relative z-10 mx-auto max-w-[1100px]">
+              <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+                The 6-Step Process for Better Farms
+              </h2>
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {processSteps.map((step) => (
+                  <article
+                    key={step.id}
+                    data-testid={`card-step-${step.id}`}
+                    className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
+                  >
+                    <img
+                      className="mb-7 h-16 w-20 object-contain object-left"
+                      alt=""
+                      aria-hidden="true"
+                      src={step.icon}
+                    />
+                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
+                      {step.id}. {step.title}
+                    </h3>
+                    <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
+                      {step.body}
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
+          </div>
+          <div className="relative z-10 mx-auto max-w-[1100px]">
             <div className="mt-12 flex justify-center">
               <Button
                 asChild
