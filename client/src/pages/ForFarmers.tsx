@@ -114,7 +114,7 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[100px]">
-          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
+          <p className="mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             <span className="font-bold">
               Every farmer has a project that could change everything.{" "}
             </span>

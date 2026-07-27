@@ -103,10 +103,10 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[142px]">
-          <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="mx-auto max-w-[1000px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Our Team Has Spent Careers Inside American Agriculture.
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+          <p className="mx-auto mt-8 max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>

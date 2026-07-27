@@ -145,7 +145,7 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[110px]">
-          <p className="mx-auto max-w-[820px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
+          <p className="mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Your contribution builds farms ready for whatever comes next.
             Stronger soil, smarter systems, and lasting infrastructure give
             producers what they need to thrive for decades ahead.
