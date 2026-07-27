@@ -367,7 +367,7 @@ export const HowItWorks = (): JSX.Element => {
           </div>
           <div className="esg-partnership-row mx-auto mt-12 grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
             <img
-              className="order-1 aspect-[50/48] w-full rounded-[10px] object-cover"
+              className="order-1 hidden aspect-[50/48] w-full rounded-[10px] object-cover md:block"
               alt="Pig on pasture"
               src="/sourcePhotos/how-it-works/red-pig.webp"
             />
