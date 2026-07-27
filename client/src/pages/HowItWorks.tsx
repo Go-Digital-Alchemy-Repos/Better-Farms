@@ -86,7 +86,7 @@ const processSteps = [
 
 const topoPatternStyle = {
   backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center top",
+  backgroundPosition: "center center",
   backgroundRepeat: "no-repeat" as const,
   backgroundSize: "cover",
   WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
@@ -206,7 +206,7 @@ export const HowItWorks = (): JSX.Element => {
         />
 
         <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[90%] opacity-80" style={topoPatternStyle} />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
           <div className="relative z-10 mx-auto max-w-[1100px]">
             <h2 className="max-w-[520px] text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]">
               The 6-Step Process for Better Farms

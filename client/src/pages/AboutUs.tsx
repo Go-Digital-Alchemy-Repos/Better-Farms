@@ -58,7 +58,7 @@ const weDo = [
 
 const topoPatternStyle = {
   backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center top",
+  backgroundPosition: "center center",
   backgroundRepeat: "no-repeat" as const,
   backgroundSize: "cover",
   WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
