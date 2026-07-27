@@ -85,9 +85,11 @@ const processSteps = [
 
 const topoPatternStyle = {
   backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center",
+  backgroundPosition: "center top",
   backgroundRepeat: "no-repeat" as const,
-  backgroundSize: "100% 100%",
+  backgroundSize: "cover",
+  WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
+  maskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
 };
 
 export const ForFarmers = (): JSX.Element => {
