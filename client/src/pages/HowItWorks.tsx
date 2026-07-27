@@ -405,6 +405,7 @@ export const HowItWorks = (): JSX.Element => {
 
         <DonationSection
           sectionClassName="pt-16 md:pt-[78px]"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
           imageAlt="Farmers reviewing a clipboard in a field"
           imageSrc="/sourcePhotos/how-it-works/couple-reviewing-clipboard.jpg"
           headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
