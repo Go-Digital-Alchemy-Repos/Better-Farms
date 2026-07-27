@@ -379,6 +379,7 @@ export const HomepageWhite = (): JSX.Element => {
         <NewsletterSection
           imageAlt="Rectangle"
           imageSrc="/figmaAssets/rectangle-90.webp"
+          overlayColor="#827B3E"
         />
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div className="home-image-pair grid-cols-1 items-start">

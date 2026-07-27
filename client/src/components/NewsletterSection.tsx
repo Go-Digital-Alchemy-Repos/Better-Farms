@@ -5,11 +5,13 @@ import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 interface NewsletterSectionProps {
   imageAlt: string;
   imageSrc: string;
+  overlayColor?: string;
 }
 
 export const NewsletterSection = ({
   imageAlt,
   imageSrc,
+  overlayColor = "#783f30",
 }: NewsletterSectionProps): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
 
@@ -21,7 +23,10 @@ export const NewsletterSection = ({
           alt={imageAlt}
           src={imageSrc}
         />
-        <div className="absolute inset-0 bg-[#783f30]/85 mix-blend-multiply" />
+        <div
+          className="absolute inset-0 opacity-[0.85] mix-blend-multiply"
+          style={{ backgroundColor: overlayColor }}
+        />
         <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[138px]">
           <div>
             <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
