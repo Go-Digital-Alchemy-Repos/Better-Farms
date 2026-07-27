@@ -241,6 +241,7 @@ export const AboutUs = (): JSX.Element => {
         <NewsletterSection
           imageAlt="Cornfield with farm buildings"
           imageSrc="/figmaAssets/cornfield_farm.webp"
+          overlayColor="#827B3E"
         />
 
         <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[84px]">
