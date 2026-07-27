@@ -334,9 +334,9 @@ export const HowItWorks = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
-            <div>
+        <section className="overflow-hidden py-12 md:py-16">
+          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-center">
+            <div className="w-full max-w-[440px]">
               <h2 className="text-[38px] font-bold leading-[1.1] text-[#5e4540] md:text-[48px]">
                 Feeding Your ESG Goals
               </h2>
@@ -360,12 +360,12 @@ export const HowItWorks = (): JSX.Element => {
               </Button>
             </div>
             <img
-              className="h-[420px] w-full rounded-[10px] object-cover"
+              className="edge-image-pair-large rounded-[10px]"
               alt="Farmer reviewing data in a wheat field"
               src="/sourcePhotos/how-it-works/farmer-clipboard.webp"
             />
           </div>
-          <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 md:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
             <img
               className="order-1 h-[400px] w-full rounded-[10px] object-cover"
               alt="Pig on pasture"
