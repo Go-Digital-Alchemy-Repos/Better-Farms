@@ -200,6 +200,7 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <NewsletterSection
+          flushBottom
           imageAlt="Farm with silo"
           imageSrc="/figmaAssets/farm_silo.webp"
         />

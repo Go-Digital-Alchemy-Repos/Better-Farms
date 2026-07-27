@@ -3,12 +3,14 @@ import { Input } from "@/components/ui/input";
 import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 interface NewsletterSectionProps {
+  flushBottom?: boolean;
   imageAlt: string;
   imageSrc: string;
   overlayColor?: string;
 }
 
 export const NewsletterSection = ({
+  flushBottom = false,
   imageAlt,
   imageSrc,
   overlayColor = "#783f30",
@@ -16,7 +18,7 @@ export const NewsletterSection = ({
   const handleNewsletterSignup = useNewsletterSignup();
 
   return (
-    <section className="px-4 py-10 md:px-[29px]">
+    <section className={`px-4 pt-10 md:px-[29px] ${flushBottom ? "pb-0" : "pb-10"}`}>
       <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
         <img
           className="absolute inset-0 h-full w-full object-cover"
