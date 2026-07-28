@@ -100,7 +100,7 @@
 }
 
 .hero-image-after-title {
-  animation: hero-breathe-zoom-out 24s ease-in-out infinite alternate;
+  animation: hero-breathe-zoom-out 18.5s ease-in-out infinite alternate;
   object-fit: cover;
   transform: scale(1.06);
   transform-origin: center;
