@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
@@ -16,12 +17,58 @@ export const NewsletterSection = ({
   overlayColor = "#783f30",
 }: NewsletterSectionProps): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const backgroundImageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    const backgroundImage = backgroundImageRef.current;
+    if (!frame || !backgroundImage) return;
+
+    let animationFrame = 0;
+
+    const updateParallax = () => {
+      animationFrame = 0;
+
+      const frameRect = frame.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const frameCenter = frameRect.top + frameRect.height / 2;
+      const maxOffset = frameRect.height * 0.18;
+      const offset = Math.min(
+        Math.max((viewportCenter - frameCenter) * 0.15, -maxOffset),
+        maxOffset,
+      );
+
+      backgroundImage.style.transform = `translate3d(0, ${offset}px, 0) scale(1.38)`;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestParallaxUpdate);
+      window.removeEventListener("resize", requestParallaxUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
 
   return (
     <section className={`px-4 pt-10 md:px-[29px] ${flushBottom ? "pb-0" : "pb-10"}`}>
-      <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
+      <div
+        ref={frameRef}
+        className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]"
+      >
         <img
-          className="absolute inset-0 h-full w-full object-cover"
+          ref={backgroundImageRef}
+          className="absolute inset-0 h-full w-full object-cover will-change-transform"
           alt={imageAlt}
           src={imageSrc}
         />
