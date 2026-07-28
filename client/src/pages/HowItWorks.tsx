@@ -180,27 +180,30 @@ export const HowItWorks = (): JSX.Element => {
             </div>
             <div className="flex flex-col gap-8">
               {foundationCards.map((card) => (
-                <article
-                  key={card.title}
-                  data-testid={`card-foundation-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="right-column-card-bottom-reveal rounded-2xl bg-[#faf5e4] p-6"
-                >
-                  <div className="overflow-hidden rounded-xl">
-                    <img
-                      className="h-[190px] w-full object-cover"
-                      alt={card.title}
-                      src={card.image}
-                    />
-                  </div>
-                  <div className="pt-6">
-                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
-                      {card.body}
-                    </p>
-                  </div>
-                </article>
+                <div key={card.title} data-scroll-reveal-anchor>
+                  <article
+                    data-scroll-reveal
+                    data-scroll-reveal-baseline
+                    data-testid={`card-foundation-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="right-column-card-bottom-reveal rounded-2xl bg-[#faf5e4] p-6"
+                  >
+                    <div className="overflow-hidden rounded-xl">
+                      <img
+                        className="h-[190px] w-full object-cover"
+                        alt={card.title}
+                        src={card.image}
+                      />
+                    </div>
+                    <div className="pt-6">
+                      <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+                        {card.body}
+                      </p>
+                    </div>
+                  </article>
+                </div>
               ))}
             </div>
           </div>

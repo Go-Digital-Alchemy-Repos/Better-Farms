@@ -4,6 +4,8 @@ const revealSelector = "[data-scroll-reveal]";
 const backgroundSelector = "[data-scroll-reveal-background]";
 const sequenceSelector = "[data-scroll-reveal-sequence]";
 const skipSelector = "[data-scroll-reveal-skip]";
+const baselineRevealSelector = "[data-scroll-reveal-baseline]";
+const baselineAnchorSelector = "[data-scroll-reveal-anchor]";
 const sequenceDelayMs = 140;
 const autoSequenceMaximumDelayMs = 560;
 const sameRowTolerancePx = 8;
@@ -139,6 +141,12 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
     const observedElements = Array.from(
       new Set([...elements, ...uniqueBackgroundElements]),
     );
+    const baselineElements = elements.filter((element) =>
+      element.matches(baselineRevealSelector),
+    );
+    const regularObservedElements = observedElements.filter(
+      (element) => !element.matches(baselineRevealSelector),
+    );
 
     elements.forEach((element) => {
       element.classList.add("scroll-reveal-pending");
@@ -208,6 +216,10 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
         });
       });
 
+    baselineElements.forEach((element) => {
+      element.style.setProperty("--scroll-reveal-delay", "0ms");
+    });
+
     if (!("IntersectionObserver" in window)) {
       observedElements.forEach((element) => {
         if (element.matches(revealSelector)) {
@@ -246,8 +258,41 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
       },
     );
 
-    observedElements.forEach((element) => observer.observe(element));
+    regularObservedElements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    const baselineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const target = entry.target.querySelector<HTMLElement>(
+            baselineRevealSelector,
+          );
+          if (!target) return;
+
+          target.classList.add("scroll-reveal-visible");
+          if (
+            target.classList.contains("scroll-reveal-background-pending")
+          ) {
+            target.classList.add("scroll-reveal-background-visible");
+          }
+          baselineObserver.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0,
+      },
+    );
+
+    baselineElements.forEach((element) => {
+      const anchor = element.closest<HTMLElement>(baselineAnchorSelector);
+      if (anchor) baselineObserver.observe(anchor);
+    });
+
+    return () => {
+      observer.disconnect();
+      baselineObserver.disconnect();
+    };
   }, [rootRef]);
 };
