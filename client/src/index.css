@@ -167,6 +167,23 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .edge-image-pair--esg-copy-aligned {
+    margin-inline: 0;
+    padding-inline: 2rem;
+  }
+
+  .edge-image-pair--esg-copy-aligned .how-it-works-esg-copy {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .edge-image-pair--esg-copy-aligned .edge-image-pair-large {
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .how-it-works-esg-copy {
     margin-left: 0;
