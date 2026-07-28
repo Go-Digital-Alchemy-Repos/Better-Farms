@@ -13,7 +13,7 @@ const pathways = [
     id: "corporate",
     title: "Corporate Partnership",
     whoItsFor:
-      "Companies with sustainability commitments, food and agriculture businesses, and corporations seeking meaningful ESG impact.",
+      "Companies with sustainability commitments, food and agriculture businesses, and corporations seeking meaningful ESG\u00a0impact.",
     whatYouGet: [
       "Projects aligned with your strategic priorities",
       "Impact reporting formatted for ESG requirements",
