@@ -28,6 +28,7 @@ export function DonationSection({
   return (
     <section
       data-testid="donation-section"
+      data-scroll-reveal-skip
       className={`relative overflow-hidden ${sectionClassName}`}
     >
       <div
