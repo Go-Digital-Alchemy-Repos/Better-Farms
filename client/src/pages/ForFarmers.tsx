@@ -1,8 +1,10 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 import { Link } from "wouter";
 
 const projectCards = [
@@ -94,6 +96,10 @@ const topoPatternStyle = {
 };
 
 export const ForFarmers = (): JSX.Element => {
+  const imagePairRef = useRef<HTMLDivElement>(null);
+  const smallImageRef = useRef<HTMLDivElement>(null);
+  useImagePairParallax(imagePairRef, smallImageRef);
+
   return (
     <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -228,13 +234,24 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden py-10 md:pb-12 md:pt-[140px]">
-          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start">
+          <div
+            ref={imagePairRef}
+            data-parallax-image-pair
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
+          >
+            <div
+              ref={smallImageRef}
+              data-parallax-image-role="small"
+              className="edge-image-pair-small will-change-transform grayscale"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Chickens in a coop"
+                src="/sourcePhotos/for-farmers/chickens.webp"
+              />
+            </div>
             <img
-              className="edge-image-pair-small rounded-lg grayscale"
-              alt="Chickens in a coop"
-              src="/sourcePhotos/for-farmers/chickens.webp"
-            />
-            <img
+              data-parallax-image-role="large"
               className="edge-image-pair-large rounded-lg"
               alt="Cow closeup in pasture"
               src="/sourcePhotos/for-farmers/cow.webp"

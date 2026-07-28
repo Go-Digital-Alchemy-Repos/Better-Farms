@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   TeamMemberDialog,
   type TeamMember,
@@ -10,6 +10,7 @@ import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 
 const principles = [
   {
@@ -76,7 +77,10 @@ const boardMembers: (TeamMember & { overlay: string })[] = [
 ];
 
 export const AboutUs = (): JSX.Element => {
+  const imagePairRef = useRef<HTMLDivElement>(null);
+  const smallImageRef = useRef<HTMLDivElement>(null);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  useImagePairParallax(imagePairRef, smallImageRef);
 
   useEffect(() => {
     if (window.location.hash === "#team") {
@@ -115,17 +119,28 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden pb-6">
-          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start">
+          <div
+            ref={imagePairRef}
+            data-parallax-image-pair
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start"
+          >
             <img
+              data-parallax-image-role="large"
               className="edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"
               src="/sourcePhotos/about/man-feeding-cows.webp"
             />
-            <img
-              className="edge-image-pair-small rounded-lg"
-              alt="Goats grazing on green pasture"
-              src="/sourcePhotos/about/goats-grazing.webp"
-            />
+            <div
+              ref={smallImageRef}
+              data-parallax-image-role="small"
+              className="edge-image-pair-small will-change-transform"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Goats grazing on green pasture"
+                src="/sourcePhotos/about/goats-grazing.webp"
+              />
+            </div>
           </div>
         </section>
 

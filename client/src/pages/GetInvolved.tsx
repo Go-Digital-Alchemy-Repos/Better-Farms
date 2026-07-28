@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -5,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 
 const pathways = [
   {
@@ -132,6 +134,10 @@ const partnerBenefits = [
 ];
 
 export const GetInvolved = (): JSX.Element => {
+  const imagePairRef = useRef<HTMLDivElement>(null);
+  const smallImageRef = useRef<HTMLDivElement>(null);
+  useImagePairParallax(imagePairRef, smallImageRef);
+
   return (
     <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -277,17 +283,28 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden py-10 md:py-16">
-          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start">
+          <div
+            ref={imagePairRef}
+            data-parallax-image-pair
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start"
+          >
             <img
+              data-parallax-image-role="large"
               className="edge-image-pair-large rounded-lg object-top"
               alt="Goats gathered in a pasture"
               src="/sourcePhotos/get-involved/goats-flipped.jpg"
             />
-            <img
-              className="edge-image-pair-small rounded-lg"
-              alt="Fresh apples in a bushel"
-              src="/sourcePhotos/get-involved/apples.webp"
-            />
+            <div
+              ref={smallImageRef}
+              data-parallax-image-role="small"
+              className="edge-image-pair-small will-change-transform"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Fresh apples in a bushel"
+                src="/sourcePhotos/get-involved/apples.webp"
+              />
+            </div>
           </div>
         </section>
 
