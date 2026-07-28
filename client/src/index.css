@@ -139,9 +139,21 @@
   --hero-load-delay: 540ms;
 }
 
+.hero-load-content--3 {
+  --hero-load-delay: 640ms;
+}
+
+.hero-load-content--4 {
+  --hero-load-delay: 740ms;
+}
+
 .hero-load-image {
   animation: hero-image-fade-in 900ms ease-out 740ms both;
   will-change: opacity;
+}
+
+.hero-load-image--after-content {
+  animation-delay: 860ms;
 }
 
 .hero-eyebrow,

@@ -16,6 +16,7 @@ export const FundAFarm = (): JSX.Element => {
           imageSrc="/sourcePhotos/fund-a-farm/field-sunset.webp"
           imagePositionClassName="object-bottom"
           breatheImage
+          heroEntryAnimation
           headingClassName="text-[44px] md:text-[72px] lg:text-[88px] xl:text-[100px]"
         />
       </main>
