@@ -740,7 +740,11 @@ export const HomepageWhite = (): JSX.Element => {
               </article>
             ))}
               </div>
-              <div data-scroll-reveal className="mt-12 flex justify-center">
+              <div
+                data-scroll-reveal
+                data-scroll-reveal-sequence
+                className="mt-12 flex justify-center"
+              >
             <Button
               asChild
               arrowMotion
