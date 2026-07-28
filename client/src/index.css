@@ -222,6 +222,21 @@
   .edge-image-pair-large {
     max-width: none;
   }
+
+  .get-involved-pathways-layout {
+    grid-template-columns: minmax(406px, 1fr) calc(50vw - 80px);
+  }
+
+  .get-involved-pathways-image {
+    max-width: none;
+  }
+
+  .get-involved-pathways-image .edge-image-pair-large {
+    aspect-ratio: auto;
+    height: 720px;
+    object-fit: cover;
+    width: 100%;
+  }
 }
 
 @media (min-width: 1320px) {
