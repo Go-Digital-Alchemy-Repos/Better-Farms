@@ -254,7 +254,11 @@ export const HowItWorks = (): JSX.Element => {
                 impact. Better Farms tracks ESG metrics throughout every project
                 using a clear methodology.
               </p>
-              <div className="tracking-cards-container">
+              <div
+                data-scroll-reveal
+                data-scroll-reveal-group
+                className="tracking-cards-container tracking-section-reveal"
+              >
                 <div className="tracking-card-connector relative mt-20 h-[82px] w-full" aria-hidden="true">
                   <div className="tracking-card-connector-horizontal absolute top-10 h-px bg-white/60" />
                   <div className="tracking-card-connector-branch absolute bottom-0 top-10 w-px -translate-x-1/2 bg-white/60" />
