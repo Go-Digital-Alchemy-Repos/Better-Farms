@@ -5,7 +5,39 @@ type AnimatedStatValueProps = {
   value: string;
 };
 
-const counterDurationMs = 800;
+const counterDurationMs = 2000;
+
+const getRandomValue = (
+  target: number,
+  progress: number,
+  previousValue?: number,
+): number => {
+  const digits = Math.max(String(Math.abs(target)).length, 1);
+  const minimum = digits === 1 ? 1 : 10 ** (digits - 1);
+  const maximum = 10 ** digits - 1;
+  const easedProgress = 1 - Math.pow(1 - progress, 3);
+  const spread = Math.max(
+    1,
+    Math.round((maximum - minimum) * Math.pow(1 - easedProgress, 1.25)),
+  );
+  const lowerBound = Math.max(minimum, target - spread);
+  const upperBound = Math.min(maximum, target + spread);
+
+  let nextValue = target;
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    nextValue =
+      lowerBound + Math.floor(Math.random() * (upperBound - lowerBound + 1));
+    if (nextValue !== target && nextValue !== previousValue) {
+      break;
+    }
+  }
+
+  if (nextValue === target) {
+    return target < upperBound ? target + 1 : target - 1;
+  }
+
+  return nextValue;
+};
 
 export const AnimatedStatValue = ({
   className = "",
@@ -21,7 +53,9 @@ export const AnimatedStatValue = ({
       suffix: match?.[3] ?? "",
     };
   }, [value]);
-  const [currentValue, setCurrentValue] = useState(0);
+  const [currentValue, setCurrentValue] = useState(() =>
+    getRandomValue(parsedValue.target, 0),
+  );
 
   useEffect(() => {
     const element = elementRef.current;
@@ -48,21 +82,36 @@ export const AnimatedStatValue = ({
 
       startTimer = window.setTimeout(() => {
         const startTime = window.performance.now();
+        let nextShuffleTime = startTime;
+        let displayedValue = getRandomValue(parsedValue.target, 0);
+
+        setCurrentValue(displayedValue);
 
         const updateCounter = (currentTime: number) => {
           const progress = Math.min(
             (currentTime - startTime) / counterDurationMs,
             1,
           );
-          const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-          setCurrentValue(
-            Math.round(parsedValue.target * easedProgress),
-          );
-
-          if (progress < 1) {
-            animationFrame = window.requestAnimationFrame(updateCounter);
+          if (progress >= 1) {
+            setCurrentValue(parsedValue.target);
+            return;
           }
+
+          if (currentTime >= nextShuffleTime) {
+            displayedValue = getRandomValue(
+              parsedValue.target,
+              progress,
+              displayedValue,
+            );
+            setCurrentValue(displayedValue);
+
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            nextShuffleTime =
+              currentTime + 45 + 260 * Math.pow(easedProgress, 2);
+          }
+
+          animationFrame = window.requestAnimationFrame(updateCounter);
         };
 
         animationFrame = window.requestAnimationFrame(updateCounter);
