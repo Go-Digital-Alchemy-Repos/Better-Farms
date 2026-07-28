@@ -215,7 +215,10 @@ export const ForFarmers = (): JSX.Element => {
               </Button>
             </div>
           </div>
-          <div className="relative z-0 hidden overflow-hidden rounded-b-[20px] md:-mx-8 md:-mt-6 md:block md:w-[calc(100%+4rem)]">
+          <div
+            data-scroll-reveal-skip
+            className="relative z-0 hidden overflow-hidden rounded-b-[20px] md:-mx-8 md:-mt-6 md:block md:w-[calc(100%+4rem)]"
+          >
             <img
               className="h-[520px] w-full object-cover"
               alt="Farmers shaking hands in a field"

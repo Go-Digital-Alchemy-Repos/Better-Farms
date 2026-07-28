@@ -232,7 +232,10 @@ export const HowItWorks = (): JSX.Element => {
               </div>
             </div>
           </div>
-          <div className="relative z-20 -mx-4 mt-14 md:-mx-[29px]">
+          <div
+            data-scroll-reveal-skip
+            className="relative z-20 -mx-4 mt-14 md:-mx-[29px]"
+          >
             <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[170px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.94)_44%,rgba(255,255,255,0)_100%)] md:h-[230px]" />
             <img
               className="h-[320px] w-full rounded-b-[30px] object-cover md:h-[420px]"
