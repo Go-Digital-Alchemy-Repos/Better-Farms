@@ -408,9 +408,14 @@ export const HowItWorks = (): JSX.Element => {
             </div>
           </div>
           <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-stretch gap-10 px-4 md:grid-cols-2 md:px-8">
-            <div className="relative order-1 hidden min-h-full w-full overflow-hidden rounded-[10px] md:block">
+            <div
+              className="relative order-1 hidden min-h-full w-full rounded-[10px] md:block"
+              data-scroll-reveal-anchor
+            >
               <img
-                className="absolute inset-0 h-full w-full object-cover"
+                data-scroll-reveal
+                data-scroll-reveal-baseline
+                className="screen-left-image-reveal absolute inset-0 h-full w-full rounded-[10px] object-cover"
                 alt="Pig on pasture"
                 src="/sourcePhotos/how-it-works/red-pig.webp"
               />
