@@ -14,6 +14,7 @@ export const FundAFarm = (): JSX.Element => {
           imageAlt="Farmers reviewing plans in a field at sunset"
           imageSrc="/sourcePhotos/fund-a-farm/field-sunset.webp"
           imagePositionClassName="object-bottom"
+          breatheImage
           headingClassName="text-[44px] md:text-[72px] lg:text-[88px] xl:text-[100px]"
         />
       </main>

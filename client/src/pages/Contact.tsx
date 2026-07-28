@@ -230,9 +230,9 @@ export const Contact = (): JSX.Element => {
               </form>
             </Form>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden overflow-hidden rounded-lg md:block">
             <img
-              className="h-[520px] w-full rounded-lg object-cover min-[1400px]:h-[900px]"
+              className="hero-image-after-title h-[520px] w-full rounded-lg object-cover min-[1400px]:h-[900px]"
               alt="Two farmers inspecting crops at dusk"
               src="/sourcePhotos/contact/farmers.webp"
             />

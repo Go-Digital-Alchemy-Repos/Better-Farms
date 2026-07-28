@@ -7,6 +7,7 @@ type DonationSectionProps = {
   sectionClassName?: string;
   imageWrapperClassName?: string;
   imagePositionClassName?: string;
+  breatheImage?: boolean;
   headingClassName?: string;
   descriptionClassName?: string;
 };
@@ -18,6 +19,7 @@ export function DonationSection({
   sectionClassName = "pt-10",
   imageWrapperClassName = "mt-10",
   imagePositionClassName = "",
+  breatheImage = false,
   headingClassName = "text-[44px] md:text-[72px]",
   descriptionClassName = "text-lg md:text-xl",
 }: DonationSectionProps): JSX.Element {
@@ -58,7 +60,7 @@ export function DonationSection({
         <div className="absolute inset-x-0 -top-px z-[5] h-[161px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[221px]" />
         <img
           data-testid="donation-background-image"
-          className={`h-[380px] w-full object-cover md:h-[590px] ${imagePositionClassName}`}
+          className={`h-[380px] w-full object-cover md:h-[590px] ${breatheImage ? "hero-image-after-title" : ""} ${imagePositionClassName}`}
           alt={imageAlt}
           src={imageSrc}
         />
