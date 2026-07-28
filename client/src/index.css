@@ -841,6 +841,14 @@
   transform: translate3d(0, 0, 0);
 }
 
+.screen-right-image-reveal.scroll-reveal-pending {
+  transform: translate3d(100vw, 0, 0);
+}
+
+.screen-right-image-reveal.scroll-reveal-pending.scroll-reveal-visible {
+  transform: translate3d(0, 0, 0);
+}
+
 .scroll-reveal-background-pending {
   background-color: transparent;
 }

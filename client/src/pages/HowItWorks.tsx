@@ -394,11 +394,18 @@ export const HowItWorks = (): JSX.Element => {
                 </Link>
               </Button>
             </div>
-            <img
-              className="edge-image-pair-large rounded-[10px]"
-              alt="Farmer reviewing data in a wheat field"
-              src="/figmaAssets/farmer_wheat_tablet.webp"
-            />
+            <div
+              className="edge-image-pair-large"
+              data-scroll-reveal-anchor
+            >
+              <img
+                data-scroll-reveal
+                data-scroll-reveal-baseline
+                className="screen-right-image-reveal edge-image-pair-large block rounded-[10px]"
+                alt="Farmer reviewing data in a wheat field"
+                src="/figmaAssets/farmer_wheat_tablet.webp"
+              />
+            </div>
           </div>
           <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-stretch gap-10 px-4 md:grid-cols-2 md:px-8">
             <div className="relative order-1 hidden min-h-full w-full overflow-hidden rounded-[10px] md:block">
