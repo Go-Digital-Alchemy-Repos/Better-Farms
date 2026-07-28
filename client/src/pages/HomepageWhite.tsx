@@ -186,6 +186,17 @@ export const HomepageWhite = (): JSX.Element => {
     },
   ];
 
+  useEffect(() => {
+    const autoplayInterval = window.setInterval(() => {
+      setActiveTestimonial(
+        (currentTestimonial) =>
+          (currentTestimonial + 1) % testimonials.length,
+      );
+    }, 8000);
+
+    return () => window.clearInterval(autoplayInterval);
+  }, []);
+
   const impactStats = [
     {
       label: "The average age of American farmers today.",
