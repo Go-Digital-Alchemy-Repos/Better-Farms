@@ -273,7 +273,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden py-10 md:py-16">
-          <div className="edge-image-pair edge-image-pair--large-left grid-cols-1 items-start">
+          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start">
             <img
               className="edge-image-pair-large rounded-lg object-top"
               alt="Goats gathered in a pasture"

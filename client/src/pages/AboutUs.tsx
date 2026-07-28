@@ -112,7 +112,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden pb-6">
-          <div className="edge-image-pair edge-image-pair--large-left grid-cols-1 items-start">
+          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start">
             <img
               className="edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"

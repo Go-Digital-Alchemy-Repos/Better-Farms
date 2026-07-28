@@ -129,6 +129,15 @@
   width: 100%;
 }
 
+@media (max-width: 1023px) {
+  .edge-image-pair--images .edge-image-pair-large {
+    aspect-ratio: auto;
+    height: min(720px, calc(100vw - 32px));
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
 .foundation-layout {
   padding-inline: 16px;
 }

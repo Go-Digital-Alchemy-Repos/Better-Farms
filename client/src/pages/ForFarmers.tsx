@@ -224,7 +224,7 @@ export const ForFarmers = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden py-10 md:pb-12 md:pt-[140px]">
-          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-start">
+          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start">
             <img
               className="edge-image-pair-small rounded-lg grayscale"
               alt="Chickens in a coop"

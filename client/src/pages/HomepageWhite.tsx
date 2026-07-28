@@ -385,7 +385,7 @@ export const HomepageWhite = (): JSX.Element => {
           overlayColor="#827B3E"
         />
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
-          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-start">
+          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start">
             <img
               className="edge-image-pair-small rounded-lg"
               alt="Rectangle"
