@@ -4,6 +4,7 @@ const revealSelector = "[data-scroll-reveal]";
 const backgroundSelector = "[data-scroll-reveal-background]";
 const sequenceSelector = "[data-scroll-reveal-sequence]";
 const sequenceDelayMs = 140;
+const sameRowTolerancePx = 8;
 const sequenceTargetSelector = `${revealSelector}, ${backgroundSelector}`;
 
 const hasVisibleBackground = (backgroundColor: string): boolean =>
@@ -59,9 +60,29 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
           ...Array.from(
             sequence.querySelectorAll<HTMLElement>(sequenceTargetSelector),
           ),
-        ].filter(
-          (element) => element.closest(sequenceSelector) === sequence,
-        );
+        ]
+          .filter(
+            (element) => element.closest(sequenceSelector) === sequence,
+          )
+          .sort((firstElement, secondElement) => {
+            const firstIsVisible = firstElement.getClientRects().length > 0;
+            const secondIsVisible = secondElement.getClientRects().length > 0;
+
+            if (firstIsVisible !== secondIsVisible) {
+              return firstIsVisible ? -1 : 1;
+            }
+            if (!firstIsVisible) return 0;
+
+            const firstRect = firstElement.getBoundingClientRect();
+            const secondRect = secondElement.getBoundingClientRect();
+            const verticalDifference = firstRect.top - secondRect.top;
+
+            if (Math.abs(verticalDifference) > sameRowTolerancePx) {
+              return verticalDifference;
+            }
+
+            return firstRect.left - secondRect.left;
+          });
 
         let currentDelay = 0;
 
