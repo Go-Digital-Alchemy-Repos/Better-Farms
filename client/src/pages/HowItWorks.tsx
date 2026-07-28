@@ -136,11 +136,13 @@ export const HowItWorks = (): JSX.Element => {
             <h1 className="hero-title mx-auto text-center font-bold text-white">
               Invest in Farm Projects for Future Generations
             </h1>
-            <img
-              className="hero-image-after-title w-full rounded-[20px]"
-              alt="Apple harvest in an orchard"
-              src="/sourcePhotos/how-it-works/orchard.webp"
-            />
+            <div className="hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Apple harvest in an orchard"
+                src="/sourcePhotos/how-it-works/orchard.webp"
+              />
+            </div>
           </div>
         </section>
 

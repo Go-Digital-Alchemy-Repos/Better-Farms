@@ -143,11 +143,13 @@ export const GetInvolved = (): JSX.Element => {
             <h1 className="hero-title mx-auto text-center font-bold text-white">
               Help Independent <span className="whitespace-nowrap">Farms Thrive</span>
             </h1>
-          <img
-            className="hero-image-after-title w-full rounded-[20px]"
-            alt="Chickens roaming outside a mobile coop"
-            src="/sourcePhotos/get-involved/chickens-roaming.webp"
-          />
+            <div className="hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Chickens roaming outside a mobile coop"
+                src="/sourcePhotos/get-involved/chickens-roaming.webp"
+              />
+            </div>
           </div>
         </section>
 

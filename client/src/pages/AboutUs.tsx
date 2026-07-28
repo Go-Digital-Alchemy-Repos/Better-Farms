@@ -94,11 +94,13 @@ export const AboutUs = (): JSX.Element => {
             <h1 className="hero-title mx-auto text-center font-bold text-white">
               Better Farms Start With Better Partners
             </h1>
-            <img
-              className="hero-image-after-title w-full rounded-[20px]"
-              alt="Sheep feeding at a wooden trough"
-              src="/sourcePhotos/about/sheep-feeding.webp"
-            />
+            <div className="hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Sheep feeding at a wooden trough"
+                src="/sourcePhotos/about/sheep-feeding.webp"
+              />
+            </div>
           </div>
         </section>
 

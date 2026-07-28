@@ -56,7 +56,9 @@ export function DonationSection({
           reporting included
         </p>
       </div>
-      <div className={`relative ${imageWrapperClassName}`}>
+      <div
+        className={`relative ${breatheImage ? "overflow-hidden" : ""} ${imageWrapperClassName}`}
+      >
         <div className="absolute inset-x-0 -top-px z-[5] h-[161px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[221px]" />
         <img
           data-testid="donation-background-image"

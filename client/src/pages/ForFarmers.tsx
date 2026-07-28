@@ -105,11 +105,13 @@ export const ForFarmers = (): JSX.Element => {
             <h1 className="hero-title mx-auto text-center font-bold text-white">
               The Farm You&apos;ve Been Wanting to Build
             </h1>
-            <img
-              className="hero-image-after-title w-full rounded-[20px]"
-              alt="Red barn farm with silo and cornfields"
-              src="/figmaAssets/red_barn_farm.webp"
-            />
+            <div className="hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Red barn farm with silo and cornfields"
+                src="/figmaAssets/red_barn_farm.webp"
+              />
+            </div>
           </div>
         </section>
 
