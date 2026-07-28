@@ -144,7 +144,7 @@ export const ForFarmers = (): JSX.Element => {
                 <article
                   key={card.title}
                   data-testid={`card-project-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="rounded-2xl bg-[#faf5e4] p-6"
+                  className="right-column-card-bottom-reveal rounded-2xl bg-[#faf5e4] p-6"
                 >
                   <div className="overflow-hidden rounded-xl">
                     <img
