@@ -477,7 +477,7 @@ export const HomepageWhite = (): JSX.Element => {
                     className={`border-none ${isOpen ? "mb-8" : ""}`}
                   >
                     <AccordionTrigger
-                      className={`border border-[#5e4540] px-5 py-5 hover:no-underline md:px-[27px] md:py-[19px] [&>svg]:hidden ${
+                      className={`group border border-[#5e4540] px-5 py-5 hover:no-underline md:px-[27px] md:py-[19px] [&>svg]:hidden ${
                         isOpen
                           ? "bg-[#8396be] text-white"
                           : "-mt-px bg-white/90 text-[#5e4540]"
@@ -497,7 +497,7 @@ export const HomepageWhite = (): JSX.Element => {
                           }`}
                         />
                         <span
-                          className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
+                          className={`transition-transform duration-300 ease-out group-hover:-translate-x-3 [font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
                             isOpen ? "text-white" : "text-[#5e4540]"
                           }`}
                         >
