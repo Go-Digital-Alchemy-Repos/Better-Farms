@@ -12,6 +12,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
+import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
 
 const principles = [
   {
@@ -71,8 +72,24 @@ const boardMembers: (TeamMember & { overlay: string })[] = [
 export const AboutUs = (): JSX.Element => {
   const imagePairRef = useRef<HTMLDivElement>(null);
   const smallImageRef = useRef<HTMLDivElement>(null);
+  const quoteFrameRef = useRef<HTMLDivElement>(null);
+  const quoteParallaxRef = useRef<HTMLDivElement>(null);
+  const landscapeFrameRef = useRef<HTMLDivElement>(null);
+  const landscapeParallaxRef = useRef<HTMLImageElement>(null);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   useImagePairParallax(imagePairRef, smallImageRef);
+  useSlowerScrollParallax(
+    quoteFrameRef,
+    quoteParallaxRef,
+    0.3,
+    240,
+  );
+  useSlowerScrollParallax(
+    landscapeFrameRef,
+    landscapeParallaxRef,
+    0.15,
+    90,
+  );
 
   useEffect(() => {
     if (window.location.hash === "#team") {
@@ -137,41 +154,54 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="relative z-20 px-4 pb-0 pt-12 md:-mb-8 md:px-8 md:pt-16">
-          <blockquote
-            className="mx-auto max-w-[640px] translate-y-8 text-center text-[26px] leading-[1.5] text-[#5e4540] md:translate-y-16 md:text-[32px]"
-            style={{ fontFamily: '"Dancing Script", cursive' }}
-            data-testid="text-quote"
+          <div
+            ref={quoteFrameRef}
+            className="translate-y-8 md:translate-y-16"
           >
-            <span className="md:hidden">
-              &quot;Farmers don&apos;t need more research papers. They need
-              someone to show up with a plan, the funding, and the know-how to
-              make their operation stronger. That&apos;s the job.&quot;
-            </span>
-            <span className="hidden md:block">
-              <span className="block">
-                &quot;Farmers don&apos;t need more research papers. They need
-              </span>
-              <span className="block">
-                someone to show up with a plan, the funding, and the
-              </span>
-              <span className="block">
-                know-how to make their operation stronger.
-              </span>
-              <span className="block">That&apos;s the job.&quot;</span>
-            </span>
-            <footer className="mt-4 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
-              — Name
-            </footer>
-          </blockquote>
+            <div ref={quoteParallaxRef} className="will-change-transform">
+              <blockquote
+                className="mx-auto max-w-[640px] text-center text-[26px] leading-[1.5] text-[#5e4540] md:text-[32px]"
+                style={{ fontFamily: '"Dancing Script", cursive' }}
+                data-testid="text-quote"
+              >
+                <span className="md:hidden">
+                  &quot;Farmers don&apos;t need more research papers. They need
+                  someone to show up with a plan, the funding, and the know-how
+                  to make their operation stronger. That&apos;s the job.&quot;
+                </span>
+                <span className="hidden md:block">
+                  <span className="block">
+                    &quot;Farmers don&apos;t need more research papers. They need
+                  </span>
+                  <span className="block">
+                    someone to show up with a plan, the funding, and the
+                  </span>
+                  <span className="block">
+                    know-how to make their operation stronger.
+                  </span>
+                  <span className="block">That&apos;s the job.&quot;</span>
+                </span>
+                <footer className="mt-4 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
+                  — Name
+                </footer>
+              </blockquote>
+            </div>
+          </div>
         </section>
 
         <section className="relative">
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[26%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)] md:h-[30%]" />
-          <img
-            className="h-[300px] w-full object-cover md:h-[420px]"
-            alt="Rolling hills and farmland"
-            src="/sourcePhotos/about/landscape.webp"
-          />
+          <div
+            ref={landscapeFrameRef}
+            className="relative h-[300px] overflow-hidden md:h-[420px]"
+          >
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)]" />
+            <img
+              ref={landscapeParallaxRef}
+              className="absolute inset-x-0 -top-[30%] h-[160%] w-full object-cover will-change-transform"
+              alt="Rolling hills and farmland"
+              src="/sourcePhotos/about/landscape.webp"
+            />
+          </div>
           <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-16 md:rounded-b-[30px] md:px-8">
             <div className="mx-auto max-w-[1000px]">
               <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
