@@ -375,7 +375,7 @@ export const HowItWorks = (): JSX.Element => {
           <div className="esg-top-row edge-image-pair grid-cols-1 items-center">
             <div className="how-it-works-esg-copy w-full max-w-[440px]">
               <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
-                Feeding Your ESG Goals
+                Feeding Your <span className="whitespace-nowrap">ESG Goals</span>
               </h2>
               <p className="mt-6 max-w-[440px] [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                 Numbers prove the work, but stories move people. Better Farms
