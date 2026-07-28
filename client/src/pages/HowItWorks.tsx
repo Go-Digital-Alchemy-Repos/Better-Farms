@@ -324,35 +324,37 @@ export const HowItWorks = (): JSX.Element => {
                 textShadow: "0 2px 6px rgba(255, 255, 255, 0.98)",
               }}
             >
-              <div ref={quoteParallaxRef}>
-                <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
-                  <span className="md:hidden">
-                    &quot;Farmers don&apos;t need more research papers. They
-                    need someone to show up with a plan, the funding, and the
-                    know-how to make their operation stronger. That&apos;s the
-                    job.&quot;
-                  </span>
-                  <span className="hidden md:block">
-                    <span className="block">
-                      &quot;Farmers don&apos;t need more research
+              <div className="-translate-y-10">
+                <div ref={quoteParallaxRef}>
+                  <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
+                    <span className="md:hidden">
+                      &quot;Farmers don&apos;t need more research papers. They
+                      need someone to show up with a plan, the funding, and the
+                      know-how to make their operation stronger. That&apos;s the
+                      job.&quot;
                     </span>
-                    <span className="block">
-                      papers. They need someone to show up
+                    <span className="hidden md:block">
+                      <span className="block">
+                        &quot;Farmers don&apos;t need more research
+                      </span>
+                      <span className="block">
+                        papers. They need someone to show up
+                      </span>
+                      <span className="block">
+                        with a plan, the funding, and the know-
+                      </span>
+                      <span className="block">
+                        how to make their operation stronger.
+                      </span>
+                      <span className="block">
+                        That&apos;s the job.&quot;
+                      </span>
                     </span>
-                    <span className="block">
-                      with a plan, the funding, and the know-
-                    </span>
-                    <span className="block">
-                      how to make their operation stronger.
-                    </span>
-                    <span className="block">
-                      That&apos;s the job.&quot;
-                    </span>
-                  </span>
+                  </div>
+                  <footer className="mt-5 rotate-0 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
+                    — Name
+                  </footer>
                 </div>
-                <footer className="mt-5 rotate-0 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
-                  — Name
-                </footer>
               </div>
             </blockquote>
             <div
