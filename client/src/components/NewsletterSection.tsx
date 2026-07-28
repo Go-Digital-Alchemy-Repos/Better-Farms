@@ -29,7 +29,7 @@ export const NewsletterSection = ({
           className="absolute inset-0 opacity-[0.85] mix-blend-multiply"
           style={{ backgroundColor: overlayColor }}
         />
-        <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[138px]">
+        <div className="relative z-10 grid gap-10 px-6 py-6 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[69px]">
           <div>
             <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
               Sign up for Our Newsletter &amp; See What&apos;s Growing

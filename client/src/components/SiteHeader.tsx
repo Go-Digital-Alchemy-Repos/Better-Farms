@@ -14,8 +14,22 @@ export const navItems = [
 export const SiteHeader = (): JSX.Element => {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      setHasScrolled(window.scrollY > 16);
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -40,7 +54,13 @@ export const SiteHeader = (): JSX.Element => {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-transparent bg-white">
+    <header
+      className={`sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
+        hasScrolled
+          ? "shadow-[0_4px_12px_rgba(94,69,64,0.07)]"
+          : "shadow-none"
+      }`}
+    >
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 lg:py-[6px] xl:px-[37px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img
