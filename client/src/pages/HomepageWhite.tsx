@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import {
@@ -18,11 +18,14 @@ import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const HomepageWhite = (): JSX.Element => {
+  const pageRef = useRef<HTMLDivElement>(null);
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  useScrollReveal(pageRef);
 
   const testimonials = [
     {
@@ -148,20 +151,25 @@ export const HomepageWhite = (): JSX.Element => {
   ];
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <div ref={pageRef} className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4 lg:pt-0">
           <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
             <img
+              data-scroll-reveal
               className="hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white">
+            <h1
+              data-scroll-reveal
+              className="hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white"
+            >
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <img
+              data-scroll-reveal
               className="hero-image-after-title w-full rounded-[20px]"
               alt="Rectangle"
               src="/sourcePhotos/homepage/farm-aerial.webp"
@@ -169,7 +177,10 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="px-4 py-10 md:px-8 md:py-[120px]">
-          <div className="desktop-text-balance mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
+          <div
+            data-scroll-reveal
+            className="desktop-text-balance mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]"
+          >
             <span className="font-bold">
               Better Farms Foundation bridges the gap{" "}
             </span>
@@ -183,7 +194,7 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2">
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
-            <div className="max-w-[565px]">
+            <div data-scroll-reveal className="max-w-[565px]">
               <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]">
                 Building Better Farms From the Ground Up
               </h2>
@@ -219,13 +230,15 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
           <div className="flex flex-col gap-[3px] bg-white">
             <img
+              data-scroll-reveal
               className="h-[240px] w-full object-cover object-left grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
-            <div className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8">
+            <div className="scroll-reveal-stagger flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8">
               {impactStats.map((stat) => (
                 <div
+                  data-scroll-reveal
                   key={stat.value}
                   className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3"
                 >
@@ -238,7 +251,10 @@ export const HomepageWhite = (): JSX.Element => {
                 </div>
               ))}
 
-              <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-[#2f3a56] md:text-base">
+              <p
+                data-scroll-reveal
+                className="pt-1 text-center [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-[#2f3a56] md:text-base"
+              >
                 Sources: <span className="underline">2022 Census of Agriculture</span>,{" "}
                 <span className="underline">USDA</span>,{" "}
                 <span className="underline">Farm Bureau</span>
@@ -248,18 +264,19 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section className="border-t-[3px] border-white">
           <img
+            data-scroll-reveal
             className="h-auto w-full"
             alt="Rectangle"
             src="/figmaAssets/rectangle-44.webp"
           />
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-[730px]">
+          <div data-scroll-reveal className="mx-auto max-w-[730px]">
             <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
-          <div className="mx-auto mt-10 max-w-[1099px]">
+          <div data-scroll-reveal className="mx-auto mt-10 max-w-[1099px]">
             <Accordion
               type="single"
               collapsible
@@ -324,14 +341,15 @@ export const HomepageWhite = (): JSX.Element => {
           </div>
         </section>
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-[861px]">
+          <div data-scroll-reveal className="mx-auto max-w-[861px]">
             <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
-          <div className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
+          <div className="scroll-reveal-stagger mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
             {workCards.map((card) => (
               <Card
+                data-scroll-reveal
                 key={card.title}
                 className={`overflow-hidden rounded-[20px] border-0 shadow-none md:h-[420px] lg:h-[380px] ${card.bg}`}
               >
@@ -371,7 +389,7 @@ export const HomepageWhite = (): JSX.Element => {
               </Card>
             ))}
           </div>
-          <div className="mt-9 flex justify-center">
+          <div data-scroll-reveal className="mt-9 flex justify-center">
             <Button
               asChild
               className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
@@ -380,13 +398,18 @@ export const HomepageWhite = (): JSX.Element => {
             </Button>
           </div>
         </section>
-        <NewsletterSection
-          imageAlt="Rectangle"
-          imageSrc="/figmaAssets/rectangle-90.webp"
-          overlayColor="#827B3E"
-        />
+        <div data-scroll-reveal>
+          <NewsletterSection
+            imageAlt="Rectangle"
+            imageSrc="/figmaAssets/rectangle-90.webp"
+            overlayColor="#827B3E"
+          />
+        </div>
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
-          <div className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start">
+          <div
+            data-scroll-reveal
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
+          >
             <img
               className="edge-image-pair-small rounded-lg"
               alt="Rectangle"
@@ -399,7 +422,10 @@ export const HomepageWhite = (): JSX.Element => {
             />
           </div>
           <div className="px-4 md:px-8">
-            <div className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]">
+            <div
+              data-scroll-reveal
+              className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]"
+            >
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -455,23 +481,30 @@ export const HomepageWhite = (): JSX.Element => {
               </button>
             ))}
             </div>
-            <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
+            <div
+              data-scroll-reveal
+              className="mx-auto mt-16 max-w-[844px] md:mt-24"
+            >
               <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
               Led by the People Who Built Organic Agriculture
             </h2>
             </div>
-            <p className="desktop-text-balance mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]">
+            <p
+              data-scroll-reveal
+              className="desktop-text-balance mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]"
+            >
             The people running Better Farms helped define organic standards,
             build national brands, and advise the USDA. They&apos;re putting
             that expertise to work for the farms that need it most.
             </p>
-            <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
+            <div className="scroll-reveal-stagger mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
                 role="button"
                 tabIndex={0}
                 data-testid={`card-team-member-${index}`}
+                data-scroll-reveal
                 onClick={() => setSelectedMember(member)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -503,7 +536,7 @@ export const HomepageWhite = (): JSX.Element => {
               </article>
             ))}
             </div>
-            <div className="mt-12 flex justify-center">
+            <div data-scroll-reveal className="mt-12 flex justify-center">
             <Button
               asChild
               data-testid="button-meet-the-team"
@@ -523,14 +556,16 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <DonationSection
-          sectionClassName="pt-16 md:pt-[78px]"
-          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
-          imageAlt="Rectangle"
-          imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
-          headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
-          descriptionClassName="text-xl md:text-2xl"
-        />
+        <div data-scroll-reveal>
+          <DonationSection
+            sectionClassName="pt-16 md:pt-[78px]"
+            imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
+            imageAlt="Rectangle"
+            imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
+            headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
+            descriptionClassName="text-xl md:text-2xl"
+          />
+        </div>
       </main>
       <TeamMemberDialog
         member={selectedMember}
