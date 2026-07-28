@@ -94,10 +94,26 @@
   line-height: var(--eyebrow-line-height);
 }
 
-.hero-image-after-title {
+.hero-image-frame {
   height: 280px;
   margin-top: 25px;
+}
+
+.hero-image-after-title {
+  animation: hero-breathe-zoom-out 24s ease-in-out infinite alternate;
   object-fit: cover;
+  transform: scale(1.06);
+  transform-origin: center;
+}
+
+@keyframes hero-breathe-zoom-out {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
 .primary-nav-link--active::after {
@@ -155,7 +171,7 @@
     font-size: 110px;
   }
 
-  .hero-image-after-title {
+  .hero-image-frame {
     height: 520px;
     margin-top: 50px;
   }

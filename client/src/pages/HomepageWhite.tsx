@@ -168,12 +168,16 @@ export const HomepageWhite = (): JSX.Element => {
             >
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
-            <img
+            <div
               data-scroll-reveal
-              className="hero-image-after-title w-full rounded-[20px]"
-              alt="Rectangle"
-              src="/sourcePhotos/homepage/farm-aerial.webp"
-            />
+              className="hero-image-frame w-full overflow-hidden rounded-[20px]"
+            >
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Aerial view of farmland"
+                src="/sourcePhotos/homepage/farm-aerial.webp"
+              />
+            </div>
           </div>
         </section>
         <section className="px-4 py-10 md:px-8 md:py-[120px]">
