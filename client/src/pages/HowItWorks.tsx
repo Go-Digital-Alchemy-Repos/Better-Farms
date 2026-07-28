@@ -127,6 +127,7 @@ export const HowItWorks = (): JSX.Element => {
     quoteParallaxRef,
     0.15,
     120,
+    300,
   );
 
   return (

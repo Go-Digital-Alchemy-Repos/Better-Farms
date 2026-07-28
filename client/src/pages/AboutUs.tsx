@@ -83,6 +83,7 @@ export const AboutUs = (): JSX.Element => {
     quoteParallaxRef,
     0.3,
     240,
+    300,
   );
   useSlowerScrollParallax(
     landscapeFrameRef,

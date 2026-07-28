@@ -5,6 +5,7 @@ export const useSlowerScrollParallax = (
   movingElementRef: RefObject<HTMLElement>,
   slowdown: number,
   maximumOffset: number,
+  easeOutDurationMs = 0,
 ): void => {
   useEffect(() => {
     const frame = frameRef.current;
@@ -12,6 +13,8 @@ export const useSlowerScrollParallax = (
     if (!frame || !movingElement) return;
 
     let animationFrame = 0;
+    let transitionFrame = 0;
+    const originalTransition = movingElement.style.transition;
 
     const updatePosition = () => {
       const rect = frame.getBoundingClientRect();
@@ -35,7 +38,19 @@ export const useSlowerScrollParallax = (
       }
     };
 
+    if (easeOutDurationMs > 0) {
+      movingElement.style.transition = "none";
+    }
+
     updatePosition();
+
+    if (easeOutDurationMs > 0) {
+      transitionFrame = window.requestAnimationFrame(() => {
+        movingElement.style.transition =
+          `transform ${easeOutDurationMs}ms ease-out`;
+      });
+    }
+
     window.addEventListener("scroll", requestPositionUpdate, { passive: true });
     window.addEventListener("resize", requestPositionUpdate);
 
@@ -43,6 +58,14 @@ export const useSlowerScrollParallax = (
       window.removeEventListener("scroll", requestPositionUpdate);
       window.removeEventListener("resize", requestPositionUpdate);
       window.cancelAnimationFrame(animationFrame);
+      window.cancelAnimationFrame(transitionFrame);
+      movingElement.style.transition = originalTransition;
     };
-  }, [frameRef, movingElementRef, maximumOffset, slowdown]);
+  }, [
+    easeOutDurationMs,
+    frameRef,
+    movingElementRef,
+    maximumOffset,
+    slowdown,
+  ]);
 };
