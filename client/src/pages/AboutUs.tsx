@@ -104,11 +104,11 @@ export const AboutUs = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
-          <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
-            <h1 className="hero-title mx-auto text-center font-bold text-white">
+          <div className="hero-load-sequence hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
+            <h1 className="hero-load-content hero-load-content--1 hero-title mx-auto text-center font-bold text-white">
               Better Farms Start With Better Partners
             </h1>
-            <div className="hero-image-frame w-full overflow-hidden rounded-[20px]">
+            <div className="hero-load-image hero-image-frame w-full overflow-hidden rounded-[20px]">
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Sheep feeding at a wooden trough"

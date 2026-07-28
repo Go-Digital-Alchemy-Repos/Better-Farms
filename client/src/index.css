@@ -107,6 +107,29 @@
   padding-top: 40px;
 }
 
+.hero-load-sequence {
+  animation: hero-background-fade-in 420ms ease-out both;
+}
+
+.hero-load-content {
+  animation: hero-content-reveal 900ms cubic-bezier(0.33, 1, 0.68, 1) both;
+  animation-delay: var(--hero-load-delay, 420ms);
+  will-change: filter, opacity, transform;
+}
+
+.hero-load-content--1 {
+  --hero-load-delay: 440ms;
+}
+
+.hero-load-content--2 {
+  --hero-load-delay: 540ms;
+}
+
+.hero-load-image {
+  animation: hero-image-fade-in 900ms ease-out 740ms both;
+  will-change: opacity;
+}
+
 .hero-eyebrow,
 .hero-eyebrow-mark {
   margin-bottom: 24px;
@@ -135,6 +158,40 @@
 
   to {
     transform: scale(1);
+  }
+}
+
+@keyframes hero-background-fade-in {
+  from {
+    background-color: rgb(130 123 62 / 0%);
+  }
+
+  to {
+    background-color: #827b3e;
+  }
+}
+
+@keyframes hero-content-reveal {
+  from {
+    filter: blur(5px);
+    opacity: 0;
+    transform: translate3d(0, 0.7em, 0);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-image-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

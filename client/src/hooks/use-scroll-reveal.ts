@@ -39,8 +39,11 @@ const transformControlledImageSelector = [
   ".hero-image-after-title",
   ".will-change-transform",
 ].join(", ");
-const autoRevealExcludedSelector =
-  '[data-testid="donation-background-image"]';
+const autoRevealExcludedSelector = [
+  '[data-testid="donation-background-image"]',
+  ".hero-load-sequence",
+  ".hero-load-sequence *",
+].join(", ");
 
 const hasVisibleBackground = (backgroundColor: string): boolean =>
   backgroundColor !== "transparent" &&
@@ -94,6 +97,12 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
       root
         .querySelectorAll<HTMLElement>(autoBackgroundCandidateSelector)
         .forEach((candidate) => {
+          if (
+            candidate.matches(".hero-load-sequence") ||
+            candidate.closest(".hero-load-sequence")
+          ) {
+            return;
+          }
           if (candidate.closest("[data-scroll-reveal-group]")) return;
           if (
             hasVisibleBackground(

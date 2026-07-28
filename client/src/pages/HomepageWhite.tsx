@@ -305,25 +305,20 @@ export const HomepageWhite = (): JSX.Element => {
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4 lg:pt-0">
           <div
-            data-scroll-reveal-background
-            data-scroll-reveal-sequence
-            className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]"
+            className="hero-load-sequence hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]"
           >
             <img
-              data-scroll-reveal
-              className="hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
+              className="hero-load-content hero-load-content--1 hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
               alt="Group"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
             <h1
-              data-scroll-reveal
-              className="hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white"
+              className="hero-load-content hero-load-content--2 hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white"
             >
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
             <div
-              data-scroll-reveal
-              className="hero-image-frame w-full overflow-hidden rounded-[20px]"
+              className="hero-load-image hero-image-frame w-full overflow-hidden rounded-[20px]"
             >
               <img
                 className="hero-image-after-title h-full w-full object-cover"
