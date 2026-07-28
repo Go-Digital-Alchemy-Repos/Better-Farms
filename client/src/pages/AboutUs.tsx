@@ -318,13 +318,18 @@ export const AboutUs = (): JSX.Element => {
             operations in sustainable agriculture. They have the relationships,
             credibility, and track record to make Better Farms a great success.
           </p>
-          <div className="mx-auto mt-14 grid max-w-[1100px] gap-x-10 gap-y-14 md:grid-cols-3">
+          <div
+            data-scroll-reveal-sequence
+            className="mx-auto mt-14 grid max-w-[1100px] gap-x-10 gap-y-14 md:grid-cols-3"
+          >
             {boardMembers.map((member, index) => (
               <div
                 key={index}
                 role="button"
                 tabIndex={0}
                 data-testid={`card-board-member-${index}`}
+                data-scroll-reveal
+                data-scroll-reveal-group
                 onClick={() => setSelectedMember(member)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
