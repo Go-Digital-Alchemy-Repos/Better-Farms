@@ -479,11 +479,11 @@ export const HomepageWhite = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className="flex cursor-pointer flex-col"
+                className="group flex cursor-pointer flex-col"
               >
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
-                    className={`w-full object-cover grayscale ${index === 1 ? "h-[375px]" : "h-[303px]"}`}
+                    className={`w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] ${index === 1 ? "h-[375px]" : "h-[303px]"}`}
                     alt="Rectangle"
                     src={member.image}
                   />

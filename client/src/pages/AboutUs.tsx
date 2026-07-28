@@ -268,11 +268,11 @@ export const AboutUs = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className={`cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
+                className={`group cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
               >
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
-                    className="h-[330px] w-full object-cover grayscale"
+                    className="h-[330px] w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08]"
                     alt={member.name}
                     src={member.image}
                   />
