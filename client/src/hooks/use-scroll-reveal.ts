@@ -4,8 +4,39 @@ const revealSelector = "[data-scroll-reveal]";
 const backgroundSelector = "[data-scroll-reveal-background]";
 const sequenceSelector = "[data-scroll-reveal-sequence]";
 const sequenceDelayMs = 140;
+const autoSequenceMaximumDelayMs = 560;
 const sameRowTolerancePx = 8;
 const sequenceTargetSelector = `${revealSelector}, ${backgroundSelector}`;
+const autoRevealCandidateSelector = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "p",
+  "blockquote",
+  "article",
+  "form",
+  "figure",
+  "picture",
+  "img",
+  "button",
+  "main a",
+  "footer nav a",
+].join(", ");
+const autoBackgroundCandidateSelector = [
+  "main section",
+  'main [class*="bg-"]',
+  "footer",
+  'footer [class*="bg-"]',
+].join(", ");
+const groupedRevealSelector = "article, form, figure, picture, button, a";
+const transformControlledImageSelector = [
+  ".hero-image-after-title",
+  ".will-change-transform",
+  '[data-testid="donation-section"] img',
+].join(", ");
 
 const hasVisibleBackground = (backgroundColor: string): boolean =>
   backgroundColor !== "transparent" &&
@@ -15,6 +46,48 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+
+    if (root.hasAttribute("data-scroll-reveal-auto")) {
+      root
+        .querySelectorAll<HTMLElement>("main section, footer")
+        .forEach((sequence) => {
+          sequence.setAttribute("data-scroll-reveal-sequence", "");
+          sequence.dataset.scrollRevealAutoSequence = "true";
+        });
+
+      root
+        .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
+        .forEach((candidate) => {
+          if (!candidate.closest("main, footer")) return;
+
+          const groupedParent = candidate.parentElement?.closest(
+            groupedRevealSelector,
+          );
+          if (groupedParent && groupedParent !== candidate) return;
+
+          let revealTarget = candidate;
+          if (
+            candidate instanceof HTMLImageElement &&
+            candidate.matches(transformControlledImageSelector)
+          ) {
+            revealTarget = candidate.parentElement ?? candidate;
+          }
+
+          revealTarget.setAttribute("data-scroll-reveal", "");
+        });
+
+      root
+        .querySelectorAll<HTMLElement>(autoBackgroundCandidateSelector)
+        .forEach((candidate) => {
+          if (
+            hasVisibleBackground(
+              window.getComputedStyle(candidate).backgroundColor,
+            )
+          ) {
+            candidate.setAttribute("data-scroll-reveal-background", "");
+          }
+        });
+    }
 
     const elements = Array.from(
       root.querySelectorAll<HTMLElement>(revealSelector),
@@ -92,9 +165,15 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
             `${currentDelay}ms`,
           );
 
-          currentDelay +=
-            Number.parseFloat(element.dataset.scrollRevealGap ?? "") ||
-            sequenceDelayMs;
+          const nextDelay =
+            currentDelay +
+            (Number.parseFloat(element.dataset.scrollRevealGap ?? "") ||
+              sequenceDelayMs);
+
+          currentDelay =
+            sequence.dataset.scrollRevealAutoSequence === "true"
+              ? Math.min(nextDelay, autoSequenceMaximumDelayMs)
+              : nextDelay;
         });
       });
 

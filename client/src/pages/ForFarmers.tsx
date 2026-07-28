@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { Link } from "wouter";
 
 const projectCards = [
@@ -94,7 +95,7 @@ const topoPatternStyle = {
 
 export const ForFarmers = (): JSX.Element => {
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
@@ -249,6 +250,6 @@ export const ForFarmers = (): JSX.Element => {
         />
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

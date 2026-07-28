@@ -9,6 +9,7 @@ import { Link } from "wouter";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 
 const principles = [
   {
@@ -86,7 +87,7 @@ export const AboutUs = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
@@ -333,6 +334,6 @@ export const AboutUs = (): JSX.Element => {
         onClose={() => setSelectedMember(null)}
       />
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

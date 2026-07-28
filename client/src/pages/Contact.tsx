@@ -22,6 +22,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 
 const contactSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -61,7 +62,7 @@ export const Contact = (): JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 md:px-[29px] lg:pt-0 min-[1400px]:grid-cols-[560px_minmax(0,1fr)] min-[1400px]:gap-[86px] min-[1400px]:pb-[67px]">
@@ -240,6 +241,6 @@ export const Contact = (): JSX.Element => {
         </section>
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

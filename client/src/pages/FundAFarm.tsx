@@ -1,10 +1,11 @@
 import { DonationSection } from "@/components/DonationSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 
 export const FundAFarm = (): JSX.Element => {
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <DonationSection
@@ -19,6 +20,6 @@ export const FundAFarm = (): JSX.Element => {
         />
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };
