@@ -156,7 +156,7 @@ export const AboutUs = (): JSX.Element => {
         <section className="relative z-20 px-4 pb-0 pt-12 md:-mb-8 md:px-8 md:pt-16">
           <div
             ref={quoteFrameRef}
-            className="translate-y-8 md:translate-y-16"
+            className="translate-y-[112px] md:translate-y-[144px]"
           >
             <div ref={quoteParallaxRef} className="will-change-transform">
               <blockquote
