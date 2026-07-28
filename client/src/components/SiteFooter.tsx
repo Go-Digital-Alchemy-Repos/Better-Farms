@@ -1,4 +1,12 @@
 import { Link } from "wouter";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -98,6 +106,15 @@ const legalDocuments = [
   },
 ];
 
+const socialIcons = [
+  { label: "YouTube", Icon: FaYoutube },
+  { label: "LinkedIn", Icon: FaLinkedin },
+  { label: "Instagram", Icon: FaInstagram },
+  { label: "Facebook", Icon: FaFacebook },
+  { label: "X", Icon: FaXTwitter },
+  { label: "TikTok", Icon: FaTiktok },
+];
+
 export const SiteFooter = (): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
 
@@ -106,16 +123,32 @@ export const SiteFooter = (): JSX.Element => {
       <div className="relative mx-auto max-w-[1440px] xl:h-full">
         <div className="site-footer-layout grid gap-10 xl:translate-y-[48px] xl:grid-cols-[365px_minmax(0,1fr)_430px] xl:items-start xl:gap-0 xl:px-[102px]">
           <div className="site-footer-brand space-y-4">
-            <img
-              className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
-              alt="Better Farms Foundation"
-              src="/sourcePhotos/brand/footer-logo.svg"
-            />
-            <img
-              className="h-5 w-[150px] xl:h-7 xl:w-[204px]"
-              alt="Social media"
-              src="/figmaAssets/frame-37278.svg"
-            />
+            <Link
+              href="/"
+              aria-label="Go to the Better Farms Foundation homepage"
+              className="inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#5e4540]"
+            >
+              <img
+                className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
+                alt="Better Farms Foundation"
+                src="/sourcePhotos/brand/footer-logo.svg"
+              />
+            </Link>
+            <div
+              className="flex h-7 w-fit items-center gap-3 text-white"
+              aria-label="Social media"
+            >
+              {socialIcons.map(({ label, Icon }) => (
+                <span
+                  key={label}
+                  role="img"
+                  aria-label={label}
+                  className="inline-flex h-7 w-6 items-center justify-center transition-colors duration-300 ease-out hover:text-[#827b3e]"
+                >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+              ))}
+            </div>
           </div>
           <nav className="site-footer-nav flex flex-col items-start gap-4 pt-1 xl:justify-self-center" aria-label="Footer">
             {navItems.map((item) => (
