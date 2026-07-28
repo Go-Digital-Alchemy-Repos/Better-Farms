@@ -156,6 +156,7 @@ export const HomepageWhite = (): JSX.Element => {
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4 lg:pt-0">
           <div
+            data-scroll-reveal-background
             data-scroll-reveal-sequence
             className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]"
           >
@@ -203,7 +204,10 @@ export const HomepageWhite = (): JSX.Element => {
           data-scroll-reveal-sequence
           className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2"
         >
-          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
+          <div
+            data-scroll-reveal-background
+            className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]"
+          >
             <div className="max-w-[565px]">
               <h2
                 data-scroll-reveal
@@ -252,7 +256,10 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Cattle in a barn"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
-            <div className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8">
+            <div
+              data-scroll-reveal-background
+              className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8"
+            >
               {impactStats.map((stat) => (
                 <div
                   data-scroll-reveal

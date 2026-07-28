@@ -623,10 +623,25 @@
   transition:
     opacity 780ms ease-out var(--scroll-reveal-delay, 0ms),
     transform 780ms cubic-bezier(0.22, 1, 0.36, 1)
+      var(--scroll-reveal-delay, 0ms),
+    background-color 780ms ease-out
       var(--scroll-reveal-delay, 0ms);
 }
 
 .scroll-reveal-pending.scroll-reveal-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+.scroll-reveal-background-pending {
+  background-color: transparent;
+}
+
+.scroll-reveal-background-pending:not(.scroll-reveal-pending) {
+  transition: background-color 780ms ease-out
+    var(--scroll-reveal-delay, 0ms);
+}
+
+.scroll-reveal-background-pending.scroll-reveal-background-visible {
+  background-color: var(--scroll-reveal-background);
 }
