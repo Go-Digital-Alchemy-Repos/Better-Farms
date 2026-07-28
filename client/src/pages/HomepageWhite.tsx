@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import {
@@ -23,10 +23,70 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
+  const parallaxPairRef = useRef<HTMLDivElement>(null);
+  const parallaxSmallImageRef = useRef<HTMLDivElement>(null);
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   useScrollReveal(pageRef);
+
+  useEffect(() => {
+    const pair = parallaxPairRef.current;
+    const smallImage = parallaxSmallImageRef.current;
+    if (!pair || !smallImage) return;
+
+    let animationFrame = 0;
+
+    const updateParallax = () => {
+      animationFrame = 0;
+
+      if (window.innerWidth < 1024) {
+        smallImage.style.removeProperty("transform");
+        return;
+      }
+
+      const largeImage = pair.querySelector<HTMLElement>(
+        ".edge-image-pair-large",
+      );
+      if (!largeImage) return;
+
+      const pairRect = pair.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const largeHeight = largeImage.offsetHeight;
+      const smallHeight = smallImage.offsetHeight;
+      const progress = Math.min(
+        Math.max(
+          (viewportHeight - pairRect.top) / (viewportHeight + largeHeight),
+          0,
+        ),
+        1,
+      );
+      const entryOffset = 48;
+      const exitOffset = Math.max(entryOffset, largeHeight - smallHeight);
+      const easedProgress = progress * progress * (3 - 2 * progress);
+      const offset =
+        entryOffset + (exitOffset - entryOffset) * easedProgress;
+
+      smallImage.style.transform = `translate3d(0, ${offset}px, 0)`;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestParallaxUpdate);
+      window.removeEventListener("resize", requestParallaxUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
 
   const testimonials = [
     {
@@ -447,21 +507,28 @@ export const HomepageWhite = (): JSX.Element => {
         </div>
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div
+            ref={parallaxPairRef}
             data-scroll-reveal-sequence
             className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
           >
             <img
               data-scroll-reveal
-              className="edge-image-pair-small rounded-lg"
-              alt="Rectangle"
-              src="/sourcePhotos/homepage/crops.webp"
-            />
-            <img
-              data-scroll-reveal
-              className="edge-image-pair-large rounded-lg"
-              alt="Rectangle"
+              data-scroll-reveal-gap="180"
+              className="edge-image-pair-large rounded-lg lg:col-start-2 lg:row-start-1"
+              alt="Farmer carrying freshly harvested vegetables"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
+            <div
+              ref={parallaxSmallImageRef}
+              className="edge-image-pair-small will-change-transform lg:col-start-1 lg:row-start-1"
+            >
+              <img
+                data-scroll-reveal
+                className="h-full w-full rounded-lg object-cover"
+                alt="Rows of crops stretching toward the horizon"
+                src="/sourcePhotos/homepage/crops.webp"
+              />
+            </div>
           </div>
           <div data-scroll-reveal-sequence className="px-4 md:px-8">
             <div
