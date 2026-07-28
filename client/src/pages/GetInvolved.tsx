@@ -289,6 +289,7 @@ export const GetInvolved = (): JSX.Element => {
 
         <DonationSection
           sectionClassName="pt-16 md:pt-[78px]"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
           imageAlt="Cattle grazing in a wide pasture"
           imageSrc="/sourcePhotos/get-involved/cows-grazing.webp"
         />
