@@ -119,7 +119,10 @@ export const SiteFooter = (): JSX.Element => {
   const handleNewsletterSignup = useNewsletterSignup();
 
   return (
-    <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
+    <footer
+      data-scroll-reveal-skip
+      className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1"
+    >
       <div className="relative mx-auto max-w-[1440px] xl:h-full">
         <div className="site-footer-layout grid gap-10 xl:translate-y-[48px] xl:grid-cols-[365px_minmax(0,1fr)_430px] xl:items-start xl:gap-0 xl:px-[102px]">
           <div className="site-footer-brand space-y-4">

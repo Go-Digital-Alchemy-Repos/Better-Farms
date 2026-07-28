@@ -3,6 +3,7 @@ import { useLayoutEffect, type RefObject } from "react";
 const revealSelector = "[data-scroll-reveal]";
 const backgroundSelector = "[data-scroll-reveal-background]";
 const sequenceSelector = "[data-scroll-reveal-sequence]";
+const skipSelector = "[data-scroll-reveal-skip]";
 const sequenceDelayMs = 140;
 const autoSequenceMaximumDelayMs = 560;
 const sameRowTolerancePx = 8;
@@ -60,6 +61,7 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
       root
         .querySelectorAll<HTMLElement>("main section, footer")
         .forEach((sequence) => {
+          if (sequence.closest(skipSelector)) return;
           sequence.setAttribute("data-scroll-reveal-sequence", "");
           sequence.dataset.scrollRevealAutoSequence = "true";
         });
@@ -68,6 +70,7 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
         .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
         .forEach((candidate) => {
           if (!candidate.closest("main, footer")) return;
+          if (candidate.closest(skipSelector)) return;
           if (candidate.matches(autoRevealExcludedSelector)) return;
           const revealGroup = candidate.closest<HTMLElement>(
             "[data-scroll-reveal-group]",
@@ -99,6 +102,7 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
       root
         .querySelectorAll<HTMLElement>(autoBackgroundCandidateSelector)
         .forEach((candidate) => {
+          if (candidate.closest(skipSelector)) return;
           if (
             candidate.matches(".hero-load-sequence") ||
             candidate.closest(".hero-load-sequence")
