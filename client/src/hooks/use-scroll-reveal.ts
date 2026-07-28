@@ -16,6 +16,7 @@ const autoRevealCandidateSelector = [
   "h6",
   "p",
   "blockquote",
+  "li",
   "article",
   "form",
   "figure",
@@ -23,7 +24,9 @@ const autoRevealCandidateSelector = [
   "img",
   "button",
   "main a",
-  "footer nav a",
+  "footer a",
+  'footer [role="img"]',
+  "footer span",
 ].join(", ");
 const autoBackgroundCandidateSelector = [
   "main section",
@@ -31,7 +34,7 @@ const autoBackgroundCandidateSelector = [
   "footer",
   'footer [class*="bg-"]',
 ].join(", ");
-const groupedRevealSelector = "article, form, figure, picture, button, a";
+const groupedRevealSelector = "article, form, figure, picture, li, button, a";
 const transformControlledImageSelector = [
   ".hero-image-after-title",
   ".will-change-transform",
@@ -59,6 +62,12 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
         .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
         .forEach((candidate) => {
           if (!candidate.closest("main, footer")) return;
+          if (
+            candidate.matches("footer span") &&
+            candidate.parentElement?.matches("footer span")
+          ) {
+            return;
+          }
 
           const groupedParent = candidate.parentElement?.closest(
             groupedRevealSelector,
