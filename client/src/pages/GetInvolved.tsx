@@ -136,7 +136,7 @@ export const GetInvolved = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
-        <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pb-6 md:px-[42px] md:pb-[42px]">
+        <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
             <p className="hero-eyebrow text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
