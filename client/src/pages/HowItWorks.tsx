@@ -370,7 +370,7 @@ export const HowItWorks = (): JSX.Element => {
               src="/figmaAssets/farmer_wheat_tablet.webp"
             />
           </div>
-          <div className="esg-partnership-row mx-auto mt-12 grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
+          <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
             <img
               className="order-1 hidden aspect-[50/48] w-full rounded-[10px] object-cover md:block"
               alt="Pig on pasture"
