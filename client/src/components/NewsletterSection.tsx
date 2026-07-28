@@ -71,6 +71,7 @@ export const NewsletterSection = ({
           className="absolute inset-0 h-full w-full object-cover will-change-transform"
           alt={imageAlt}
           src={imageSrc}
+          style={{ objectPosition: "center 35%" }}
         />
         <div
           className="absolute inset-0 opacity-[0.85] mix-blend-multiply"
