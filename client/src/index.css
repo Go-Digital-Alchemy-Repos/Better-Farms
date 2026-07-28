@@ -280,6 +280,7 @@
 
   .get-involved-pathways-image {
     max-width: none;
+    width: calc(50vw - 80px);
   }
 
   .get-involved-pathways-image .edge-image-pair-large {
