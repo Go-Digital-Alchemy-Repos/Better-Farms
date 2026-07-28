@@ -588,13 +588,11 @@ export const HomepageWhite = (): JSX.Element => {
             </Button>
           </div>
         </section>
-        <div data-scroll-reveal>
-          <NewsletterSection
-            imageAlt="Rectangle"
-            imageSrc="/figmaAssets/rectangle-90.webp"
-            overlayColor="#827B3E"
-          />
-        </div>
+        <NewsletterSection
+          imageAlt="Cornfield with farm buildings"
+          imageSrc="/figmaAssets/cornfield_farm.webp"
+          overlayColor="#827B3E"
+        />
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div
             ref={parallaxPairRef}
