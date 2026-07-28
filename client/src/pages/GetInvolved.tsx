@@ -161,7 +161,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 pb-10 md:px-8 lg:pl-[max(32px,calc((100%-1100px)/2))] lg:pr-0">
-          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:hidden">
+          <h2 className="mb-12 max-w-[720px] text-left text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
           <div className="grid gap-12 lg:grid-cols-[minmax(406px,1fr)_minmax(406px,721px)] lg:pt-[108px]">
