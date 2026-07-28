@@ -141,7 +141,7 @@ export const GetInvolved = (): JSX.Element => {
               Better Farms Start With the Right Support
             </p>
             <h1 className="hero-title mx-auto text-center font-bold text-white">
-              Help Independent Farms Thrive
+              Help Independent <span className="whitespace-nowrap">Farms Thrive</span>
             </h1>
           <img
             className="hero-image-after-title w-full rounded-[20px]"
