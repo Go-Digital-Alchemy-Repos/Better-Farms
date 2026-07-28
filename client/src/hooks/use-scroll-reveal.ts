@@ -63,11 +63,17 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
           (element) => element.closest(sequenceSelector) === sequence,
         );
 
-        sequenceElements.forEach((element, index) => {
+        let currentDelay = 0;
+
+        sequenceElements.forEach((element) => {
           element.style.setProperty(
             "--scroll-reveal-delay",
-            `${index * sequenceDelayMs}ms`,
+            `${currentDelay}ms`,
           );
+
+          currentDelay +=
+            Number.parseFloat(element.dataset.scrollRevealGap ?? "") ||
+            sequenceDelayMs;
         });
       });
 

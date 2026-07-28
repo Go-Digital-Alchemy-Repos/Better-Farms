@@ -18,6 +18,7 @@ import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { AnimatedStatValue } from "@/components/AnimatedStatValue";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const HomepageWhite = (): JSX.Element => {
@@ -263,15 +264,17 @@ export const HomepageWhite = (): JSX.Element => {
               {impactStats.map((stat) => (
                 <div
                   data-scroll-reveal
+                  data-scroll-reveal-gap="300"
                   key={stat.value}
                   className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3"
                 >
                   <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-white md:text-base">
                     {stat.label}
                   </p>
-                  <div className="[font-family:'Inter',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal text-white md:text-[40px]">
-                    {stat.value}
-                  </div>
+                  <AnimatedStatValue
+                    value={stat.value}
+                    className="[font-family:'Inter',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal text-white md:text-[40px]"
+                  />
                 </div>
               ))}
 
