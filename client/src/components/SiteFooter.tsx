@@ -130,7 +130,7 @@ export const SiteFooter = (): JSX.Element => {
             ))}
           </nav>
           <div>
-            <h2 className="text-center text-[30px] font-bold leading-[1.05] text-white xl:text-[40px]">
+            <h2 className="text-left text-[30px] font-bold leading-[1.05] text-white xl:text-center xl:text-[40px]">
               Sign up for Our Newsletter, See What&apos;s Growing
             </h2>
             <form className="mt-6 space-y-4" onSubmit={handleNewsletterSignup}>
