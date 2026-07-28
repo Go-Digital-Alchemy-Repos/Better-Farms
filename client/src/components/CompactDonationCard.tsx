@@ -33,6 +33,7 @@ export function CompactDonationCard(): JSX.Element {
               value={custom}
               onChange={(event) => { setCustom(event.target.value.replace(/\D/g, "")); setSelected(""); }}
               inputMode="numeric"
+              placeholder="Other Amount"
               aria-label="Enter another donation amount"
               className="min-w-0 flex-1 bg-transparent pl-2 text-xl outline-none"
             />
