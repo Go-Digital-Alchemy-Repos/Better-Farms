@@ -154,6 +154,7 @@ export const SiteFooter = (): JSX.Element => {
                 />
                 <Button
                   type="submit"
+                  arrowMotion
                   data-testid="button-footer-subscribe"
                   className="h-11 rounded-lg bg-[#7587ac] px-4 py-0 text-[#e6dfc9] hover:bg-[#6c7ea0]"
                 >

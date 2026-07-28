@@ -353,6 +353,7 @@ export const HowItWorks = (): JSX.Element => {
               </p>
               <Button
                 asChild
+                arrowMotion
                 data-testid="button-fund-a-farm-esg"
                 className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >
@@ -391,6 +392,7 @@ export const HowItWorks = (): JSX.Element => {
               </p>
               <Button
                 asChild
+                arrowMotion
                 data-testid="button-start-partnership"
                 className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >

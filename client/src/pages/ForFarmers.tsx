@@ -201,6 +201,7 @@ export const ForFarmers = (): JSX.Element => {
             <div className="mt-12 flex justify-center">
               <Button
                 asChild
+                arrowMotion
                 data-testid="button-apply-now"
                 className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
               >

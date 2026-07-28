@@ -4,6 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+.button-arrow-motion {
+  overflow: hidden;
+  transition:
+    background-color 300ms ease-out,
+    box-shadow 300ms ease-out,
+    color 300ms ease-out;
+}
+
+.button-arrow-motion > span,
+.button-arrow-motion > svg,
+.button-arrow-motion > img {
+  transition: transform 300ms ease-out;
+}
+
+.button-arrow-motion:hover {
+  box-shadow: inset 0 0 0 9999px rgb(0 0 0 / 7%);
+}
+
+.button-arrow-motion:hover > span {
+  transform: translateX(-6px);
+}
+
+.button-arrow-motion:hover > svg,
+.button-arrow-motion:hover > img {
+  transform: translateX(8px);
+}
+
 @layer base {
   .all-unset {
     all: unset;

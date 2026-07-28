@@ -218,6 +218,7 @@ export const Contact = (): JSX.Element => {
 
                 <Button
                   type="submit"
+                  arrowMotion
                   data-testid="button-send-message"
                   className="mt-8 h-auto rounded-lg bg-[#bc623f] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#ab5838]"
                 >

@@ -63,6 +63,7 @@ export const NewsletterSection = ({
               />
               <Button
                 type="submit"
+                arrowMotion
                 data-testid="button-newsletter-subscribe"
                 className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
               >

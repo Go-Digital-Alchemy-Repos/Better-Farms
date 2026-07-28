@@ -91,6 +91,7 @@ export const SiteHeader = (): JSX.Element => {
         <div className="flex items-center gap-2">
           <Button
             asChild
+            arrowMotion
             data-testid="button-fund-a-farm-header"
             className="hidden h-auto whitespace-nowrap rounded-lg bg-[#7587ac] pb-4 pl-6 pr-[18px] pt-4 text-white hover:bg-[#6c7ea0] sm:inline-flex"
           >
@@ -212,13 +213,13 @@ export const SiteHeader = (): JSX.Element => {
                 ? `${120 + navItems.length * 60}ms`
                 : "0ms",
             }}
-            className={`mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#7587ac] pb-4 pl-6 pr-[18px] pt-4 [font-family:'Inter',Helvetica] text-base font-medium text-white transition-all duration-500 hover:bg-[#6c7ea0] ${
+            className={`button-arrow-motion mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#7587ac] pb-4 pl-6 pr-[18px] pt-4 [font-family:'Inter',Helvetica] text-base font-medium text-white transition-all duration-500 hover:bg-[#6c7ea0] ${
               mobileOpen
                 ? "translate-x-0 opacity-100"
                 : "translate-x-8 opacity-0"
             }`}
           >
-            Fund a Farm
+            <span>Fund a Farm</span>
             <img
               className="h-5 w-5"
               alt=""

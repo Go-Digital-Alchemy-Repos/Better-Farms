@@ -236,6 +236,7 @@ export const HomepageWhite = (): JSX.Element => {
               <Button
                 data-scroll-reveal
                 asChild
+                arrowMotion
                 className="mt-8 h-auto rounded-lg bg-white pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
                 <Link href="/fund-a-farm">
@@ -427,9 +428,13 @@ export const HomepageWhite = (): JSX.Element => {
           <div data-scroll-reveal className="mt-9 flex justify-center">
             <Button
               asChild
+              arrowMotion
               className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
             >
-              <Link href="/fund-a-farm">Fund A Farm<img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" /></Link>
+              <Link href="/fund-a-farm">
+                <span>Fund A Farm</span>
+                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+              </Link>
             </Button>
           </div>
         </section>
@@ -577,6 +582,7 @@ export const HomepageWhite = (): JSX.Element => {
               <div data-scroll-reveal className="mt-12 flex justify-center">
             <Button
               asChild
+              arrowMotion
               data-testid="button-meet-the-team"
               className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
             >

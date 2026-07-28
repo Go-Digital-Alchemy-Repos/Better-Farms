@@ -215,6 +215,7 @@ export const GetInvolved = (): JSX.Element => {
                   )}
                   <Button
                     asChild={pathway.id === "individual" || pathway.id === "corporate" || pathway.id === "foundation" || pathway.id === "daf"}
+                    arrowMotion
                     data-testid={`button-cta-${pathway.id}`}
                     className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
                   >
