@@ -486,3 +486,53 @@
     line-height: var(--heading-line-height) !important;
   }
 }
+/* Footer layout: keep the brand and newsletter together at intermediate widths,
+   then place navigation beneath them before the fully stacked mobile layout. */
+.site-footer-layout {
+  grid-template-areas:
+    "brand"
+    "nav"
+    "newsletter";
+}
+
+.site-footer-brand {
+  grid-area: brand;
+}
+
+.site-footer-nav {
+  grid-area: nav;
+}
+
+.site-footer-newsletter {
+  grid-area: newsletter;
+}
+
+@media (min-width: 900px) and (max-width: 1279px) {
+  .site-footer-layout {
+    grid-template-areas:
+      "brand newsletter"
+      "nav nav";
+    grid-template-columns: minmax(300px, max-content) minmax(0, 1fr);
+    column-gap: 100px;
+    row-gap: 40px;
+  }
+
+  .site-footer-nav {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 44px;
+    padding-top: 0;
+  }
+
+  .site-footer-newsletter h2 {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-footer-layout {
+    grid-template-areas: "brand nav newsletter";
+  }
+}
