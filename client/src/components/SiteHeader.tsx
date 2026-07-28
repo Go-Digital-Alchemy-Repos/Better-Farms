@@ -55,7 +55,7 @@ export const SiteHeader = (): JSX.Element => {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
+      className={`site-header-load sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
         hasScrolled
           ? "shadow-[0_4px_12px_rgba(94,69,64,0.07)]"
           : "shadow-none"
