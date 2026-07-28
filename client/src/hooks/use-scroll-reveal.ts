@@ -43,6 +43,8 @@ const autoRevealExcludedSelector = [
   '[data-testid="donation-background-image"]',
   ".hero-load-sequence",
   ".hero-load-sequence *",
+  ".edge-image-pair--images",
+  ".edge-image-pair--images *",
 ].join(", ");
 
 const hasVisibleBackground = (backgroundColor: string): boolean =>
