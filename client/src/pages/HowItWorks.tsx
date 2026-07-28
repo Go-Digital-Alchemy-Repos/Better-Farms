@@ -232,7 +232,7 @@ export const HowItWorks = (): JSX.Element => {
                     className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
                   >
                     <img
-                      className="mb-7 h-16 w-20 object-contain object-left"
+                      className="continuous-icon-wiggle mb-7 h-16 w-20 object-contain object-left"
                       alt=""
                       aria-hidden="true"
                       src={step.icon}
