@@ -244,14 +244,14 @@ export const Contact = (): JSX.Element => {
           </div>
           <div
             ref={contactImageFrameRef}
-            className="relative hidden h-[520px] overflow-hidden rounded-lg rounded-b-[20px] md:block min-[1400px]:h-[900px]"
+            className="relative hidden h-[520px] overflow-hidden rounded-[20px] md:block min-[1400px]:h-[900px]"
           >
             <div
               ref={contactImageParallaxRef}
               className="absolute inset-x-0 -bottom-[35%] -top-[35%] will-change-transform"
             >
               <img
-                className="h-full w-full rounded-lg rounded-b-[20px] object-cover"
+                className="h-full w-full object-cover"
                 alt="Two farmers inspecting crops at dusk"
                 src="/sourcePhotos/contact/farmers.webp"
               />
