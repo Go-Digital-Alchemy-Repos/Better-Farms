@@ -938,8 +938,8 @@
 .impact-comparison-reveal.scroll-reveal-pending .impact-comparison-card {
   opacity: 0;
   transition:
-    opacity 400ms ease-in var(--scroll-reveal-delay, 0ms),
-    transform 400ms ease-in var(--scroll-reveal-delay, 0ms);
+    opacity 400ms ease-out var(--scroll-reveal-delay, 0ms),
+    transform 400ms ease-out var(--scroll-reveal-delay, 0ms);
   will-change: opacity, transform;
 }
 
