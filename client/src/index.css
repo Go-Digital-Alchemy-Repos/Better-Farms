@@ -243,6 +243,14 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .get-involved-pathways-copy {
+    max-width: calc(
+      50vw - max(32px, calc((100vw - 1100px) / 2))
+    );
+  }
+}
+
 @media (min-width: 1602px) {
   .edge-image-pair--large-left {
     grid-template-columns: calc(50vw - 80px) 406px;

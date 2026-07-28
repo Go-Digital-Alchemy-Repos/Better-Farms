@@ -165,7 +165,7 @@ export const GetInvolved = (): JSX.Element => {
             Choose the Path That Fits Your Organization
           </h2>
           <div className="get-involved-pathways-layout grid gap-12 lg:grid-cols-[minmax(406px,1fr)_minmax(406px,721px)] lg:pt-[108px]">
-            <div className="flex flex-col gap-24 md:gap-0">
+            <div className="get-involved-pathways-copy flex w-full flex-col gap-24 md:gap-0">
               {pathways.map((pathway, index) => (
                 <div
                   key={pathway.id}
