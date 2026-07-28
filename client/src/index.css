@@ -143,6 +143,10 @@
 }
 
 @media (min-width: 768px) {
+  .how-it-works-esg-copy {
+    margin-left: 16px;
+  }
+
   .hero-panel {
     padding-top: 72px;
   }
@@ -164,6 +168,14 @@
 }
 
 @media (min-width: 1024px) {
+  .how-it-works-esg-copy {
+    margin-left: 0;
+  }
+
+  .edge-image-pair--esg-copy-aligned {
+    margin-left: max(32px, calc((100vw - 1100px) / 2 + 32px));
+  }
+
   .edge-image-pair-small {
     display: block;
   }
@@ -200,6 +212,10 @@
 }
 
 @media (min-width: 1200px) {
+  .edge-image-pair--esg-copy-aligned {
+    margin-left: max(122px, calc((100vw - 1372px) / 2 + 83px));
+  }
+
   .esg-partnership-row {
     grid-template-columns: 498px minmax(0, 440px) !important;
     justify-content: start;

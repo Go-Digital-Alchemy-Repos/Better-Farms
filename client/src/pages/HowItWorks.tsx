@@ -340,8 +340,8 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="overflow-hidden py-12 md:py-16">
-          <div className="edge-image-pair edge-image-pair--large-right grid-cols-1 items-center">
-            <div className="w-full max-w-[440px]">
+          <div className="edge-image-pair edge-image-pair--large-right edge-image-pair--esg-copy-aligned grid-cols-1 items-center">
+            <div className="how-it-works-esg-copy w-full max-w-[440px]">
               <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 Feeding Your ESG Goals
               </h2>
