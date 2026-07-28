@@ -176,7 +176,8 @@ export const HomepageWhite = (): JSX.Element => {
             <span>
               between donors who want to make a real impact and the farmers who
               need it most. We manage every project on the ground, handling
-              everything from planning to execution.
+              everything from{" "}
+              <span className="whitespace-nowrap">planning to execution.</span>
             </span>
           </div>
         </section>
