@@ -155,7 +155,10 @@ export const HomepageWhite = (): JSX.Element => {
       <SiteHeader />
       <main>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4 lg:pt-0">
-          <div className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
+          <div
+            data-scroll-reveal-sequence
+            className="hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]"
+          >
             <img
               data-scroll-reveal
               className="hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
@@ -196,13 +199,22 @@ export const HomepageWhite = (): JSX.Element => {
             </span>
           </div>
         </section>
-        <section className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2">
+        <section
+          data-scroll-reveal-sequence
+          className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2"
+        >
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
-            <div data-scroll-reveal className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]">
+            <div className="max-w-[565px]">
+              <h2
+                data-scroll-reveal
+                className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]"
+              >
                 Building Better Farms From the Ground Up
               </h2>
-              <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-white">
+              <p
+                data-scroll-reveal
+                className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-white"
+              >
                 <span className="font-bold leading-9">
                   The majority of the U.S. food supply is grown by independent
                   family farms.
@@ -217,6 +229,7 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
               </p>
               <Button
+                data-scroll-reveal
                 asChild
                 className="mt-8 h-auto rounded-lg bg-white pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
@@ -239,7 +252,7 @@ export const HomepageWhite = (): JSX.Element => {
               alt="Cattle in a barn"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
-            <div className="scroll-reveal-stagger flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8">
+            <div className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8">
               {impactStats.map((stat) => (
                 <div
                   data-scroll-reveal
@@ -274,13 +287,16 @@ export const HomepageWhite = (): JSX.Element => {
             src="/figmaAssets/rectangle-44.webp"
           />
         </section>
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section
+          data-scroll-reveal-sequence
+          className="px-4 py-12 md:px-8 md:py-16"
+        >
           <div data-scroll-reveal className="mx-auto max-w-[730px]">
             <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
-          <div data-scroll-reveal className="mx-auto mt-10 max-w-[1099px]">
+          <div className="mx-auto mt-10 max-w-[1099px]">
             <Accordion
               type="single"
               collapsible
@@ -292,6 +308,7 @@ export const HomepageWhite = (): JSX.Element => {
                 const isOpen = openChallenge === item.id;
                 return (
                   <AccordionItem
+                    data-scroll-reveal
                     key={item.id}
                     value={item.id}
                     className={`border-none ${isOpen ? "mb-8" : ""}`}
@@ -344,13 +361,16 @@ export const HomepageWhite = (): JSX.Element => {
             </Accordion>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-8 md:py-16">
+        <section
+          data-scroll-reveal-sequence
+          className="px-4 py-12 md:px-8 md:py-16"
+        >
           <div data-scroll-reveal className="mx-auto max-w-[861px]">
             <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
-          <div className="scroll-reveal-stagger mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
+          <div className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
             {workCards.map((card) => (
               <Card
                 data-scroll-reveal
@@ -411,21 +431,23 @@ export const HomepageWhite = (): JSX.Element => {
         </div>
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div
-            data-scroll-reveal
+            data-scroll-reveal-sequence
             className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
           >
             <img
+              data-scroll-reveal
               className="edge-image-pair-small rounded-lg"
               alt="Rectangle"
               src="/sourcePhotos/homepage/crops.webp"
             />
             <img
+              data-scroll-reveal
               className="edge-image-pair-large rounded-lg"
               alt="Rectangle"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
           </div>
-          <div className="px-4 md:px-8">
+          <div data-scroll-reveal-sequence className="px-4 md:px-8">
             <div
               data-scroll-reveal
               className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]"
@@ -485,23 +507,24 @@ export const HomepageWhite = (): JSX.Element => {
               </button>
             ))}
             </div>
-            <div
-              data-scroll-reveal
-              className="mx-auto mt-16 max-w-[844px] md:mt-24"
-            >
-              <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
-              Led by the People Who Built Organic Agriculture
-            </h2>
-            </div>
-            <p
-              data-scroll-reveal
-              className="desktop-text-balance mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]"
-            >
-            The people running Better Farms helped define organic standards,
-            build national brands, and advise the USDA. They&apos;re putting
-            that expertise to work for the farms that need it most.
-            </p>
-            <div className="scroll-reveal-stagger mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
+            <div data-scroll-reveal-sequence>
+              <div
+                data-scroll-reveal
+                className="mx-auto mt-16 max-w-[844px] md:mt-24"
+              >
+                <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+                Led by the People Who Built Organic Agriculture
+              </h2>
+              </div>
+              <p
+                data-scroll-reveal
+                className="desktop-text-balance mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]"
+              >
+              The people running Better Farms helped define organic standards,
+              build national brands, and advise the USDA. They&apos;re putting
+              that expertise to work for the farms that need it most.
+              </p>
+              <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
@@ -539,8 +562,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </div>
               </article>
             ))}
-            </div>
-            <div data-scroll-reveal className="mt-12 flex justify-center">
+              </div>
+              <div data-scroll-reveal className="mt-12 flex justify-center">
             <Button
               asChild
               data-testid="button-meet-the-team"
@@ -557,6 +580,7 @@ export const HomepageWhite = (): JSX.Element => {
                 />
               </Link>
             </Button>
+              </div>
             </div>
           </div>
         </section>

@@ -1,6 +1,8 @@
 import { useLayoutEffect, type RefObject } from "react";
 
 const revealSelector = "[data-scroll-reveal]";
+const sequenceSelector = "[data-scroll-reveal-sequence]";
+const sequenceDelayMs = 140;
 
 export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
   useLayoutEffect(() => {
@@ -14,6 +16,23 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
     elements.forEach((element) => {
       element.classList.add("scroll-reveal-pending");
     });
+
+    root
+      .querySelectorAll<HTMLElement>(sequenceSelector)
+      .forEach((sequence) => {
+        const sequenceElements = Array.from(
+          sequence.querySelectorAll<HTMLElement>(revealSelector),
+        ).filter(
+          (element) => element.closest(sequenceSelector) === sequence,
+        );
+
+        sequenceElements.forEach((element, index) => {
+          element.style.setProperty(
+            "--scroll-reveal-delay",
+            `${index * sequenceDelayMs}ms`,
+          );
+        });
+      });
 
     if (!("IntersectionObserver" in window)) {
       elements.forEach((element) => {
