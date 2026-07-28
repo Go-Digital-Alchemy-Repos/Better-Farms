@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { CompactDonationCard } from "@/components/CompactDonationCard";
 
 type DonationSectionProps = {
@@ -25,48 +24,6 @@ export function DonationSection({
   descriptionClassName = "text-lg md:text-xl",
 }: DonationSectionProps): JSX.Element {
   const Heading = headingLevel;
-  const imageFrameRef = useRef<HTMLDivElement>(null);
-  const parallaxLayerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const imageFrame = imageFrameRef.current;
-    const parallaxLayer = parallaxLayerRef.current;
-    if (!imageFrame || !parallaxLayer) return;
-
-    let animationFrame = 0;
-
-    const updateParallax = () => {
-      animationFrame = 0;
-
-      const frameRect = imageFrame.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
-      const frameCenter = frameRect.top + frameRect.height / 2;
-      const maxOffset = frameRect.height * 0.25;
-      const offset = Math.min(
-        Math.max((frameCenter - viewportCenter) * 0.2, -maxOffset),
-        maxOffset,
-      );
-
-      parallaxLayer.style.transform = `translate3d(0, ${offset}px, 0) scale(1.52)`;
-    };
-
-    const requestParallaxUpdate = () => {
-      if (animationFrame) return;
-      animationFrame = window.requestAnimationFrame(updateParallax);
-    };
-
-    updateParallax();
-    window.addEventListener("scroll", requestParallaxUpdate, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestParallaxUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestParallaxUpdate);
-      window.removeEventListener("resize", requestParallaxUpdate);
-      window.cancelAnimationFrame(animationFrame);
-    };
-  }, []);
 
   return (
     <section
@@ -100,21 +57,15 @@ export function DonationSection({
         </p>
       </div>
       <div
-        ref={imageFrameRef}
-        className={`relative overflow-hidden ${imageWrapperClassName}`}
+        className={`relative ${breatheImage ? "overflow-hidden" : ""} ${imageWrapperClassName}`}
       >
         <div className="absolute inset-x-0 -top-px z-[5] h-[161px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[221px]" />
-        <div
-          ref={parallaxLayerRef}
-          className="h-[380px] w-full will-change-transform md:h-[590px]"
-        >
-          <img
-            data-testid="donation-background-image"
-            className={`h-full w-full object-cover ${breatheImage ? "hero-image-after-title" : ""} ${imagePositionClassName}`}
-            alt={imageAlt}
-            src={imageSrc}
-          />
-        </div>
+        <img
+          data-testid="donation-background-image"
+          className={`h-[380px] w-full object-cover md:h-[590px] ${breatheImage ? "hero-image-after-title" : ""} ${imagePositionClassName}`}
+          alt={imageAlt}
+          src={imageSrc}
+        />
       </div>
     </section>
   );
