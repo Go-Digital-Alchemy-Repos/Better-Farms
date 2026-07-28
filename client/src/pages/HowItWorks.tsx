@@ -125,8 +125,8 @@ export const HowItWorks = (): JSX.Element => {
   useSlowerScrollParallax(
     quoteFrameRef,
     quoteParallaxRef,
-    0.25,
-    200,
+    0.15,
+    120,
   );
 
   return (
