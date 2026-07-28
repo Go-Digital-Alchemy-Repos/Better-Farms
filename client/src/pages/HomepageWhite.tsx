@@ -139,18 +139,15 @@ export const HomepageWhite = (): JSX.Element => {
       animationFrame = 0;
 
       const frameRect = frame.getBoundingClientRect();
-      const progress = Math.min(
-        Math.max(
-          (window.innerHeight - frameRect.top) /
-            (window.innerHeight + frameRect.height),
-          0,
-        ),
-        1,
+      const viewportCenter = window.innerHeight / 2;
+      const frameCenter = frameRect.top + frameRect.height / 2;
+      const maxOffset = frameRect.height * 0.09;
+      const offset = Math.min(
+        Math.max((viewportCenter - frameCenter) * 0.1, -maxOffset),
+        maxOffset,
       );
-      const travel = Math.min(44, frameRect.height * 0.05);
-      const offset = (progress - 0.5) * travel;
 
-      image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
+      image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.2)`;
     };
 
     const requestParallaxUpdate = () => {
@@ -435,11 +432,11 @@ export const HomepageWhite = (): JSX.Element => {
         </section>
         <section
           data-scroll-reveal
-          className="overflow-hidden border-t-[3px] border-white"
+          className="relative aspect-[1442/520] overflow-hidden rounded-b-[40px] border-t-[3px] border-white md:rounded-b-[64px]"
         >
           <img
             ref={fieldParallaxImageRef}
-            className="h-auto w-full will-change-transform"
+            className="absolute inset-0 h-full w-full object-cover will-change-transform"
             alt="Agricultural specialists walking through a wheat field"
             src="/figmaAssets/rectangle-44.webp"
           />
