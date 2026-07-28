@@ -20,7 +20,7 @@ export function CompactDonationCard(): JSX.Element {
             type="button"
             aria-pressed={selected === amount}
             onClick={() => { setSelected(amount); setCustom(""); }}
-            className={`h-[58px] rounded-[10px] border [font-family:'Inter',Helvetica] text-base font-bold ${selected === amount ? "border-[#434343] bg-[#434343] text-white" : "border-[#bcb9b9] bg-white text-[#434343]"}`}
+            className={`h-[58px] min-w-[100px] rounded-[10px] border [font-family:'Inter',Helvetica] text-base font-bold ${selected === amount ? "border-[#434343] bg-[#434343] text-white" : "border-[#bcb9b9] bg-white text-[#434343]"}`}
           >
             {amount}
           </button>
