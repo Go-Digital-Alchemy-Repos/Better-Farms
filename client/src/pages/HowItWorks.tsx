@@ -125,8 +125,8 @@ export const HowItWorks = (): JSX.Element => {
   useSlowerScrollParallax(
     quoteFrameRef,
     quoteParallaxRef,
-    0.15,
-    120,
+    0.25,
+    200,
   );
 
   return (
@@ -317,7 +317,7 @@ export const HowItWorks = (): JSX.Element => {
             className="relative mx-auto max-w-[1400px] md:pt-[116px]"
           >
             <blockquote
-              className="relative -top-[50px] z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:mx-0 md:w-[570px] md:-translate-y-[35%]"
+              className="relative z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:mx-0 md:w-[570px] md:-translate-y-[35%]"
               style={{
                 fontFamily: '"Dancing Script", cursive',
                 textShadow: "0 2px 6px rgba(255, 255, 255, 0.98)",
