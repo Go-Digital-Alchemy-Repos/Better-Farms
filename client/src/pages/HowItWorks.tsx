@@ -370,12 +370,14 @@ export const HowItWorks = (): JSX.Element => {
               src="/figmaAssets/farmer_wheat_tablet.webp"
             />
           </div>
-          <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-center gap-10 px-4 md:grid-cols-2 md:px-8">
-            <img
-              className="order-1 hidden aspect-[50/48] w-full rounded-[10px] object-cover md:block"
-              alt="Pig on pasture"
-              src="/sourcePhotos/how-it-works/red-pig.webp"
-            />
+          <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-stretch gap-10 px-4 md:grid-cols-2 md:px-8">
+            <div className="relative order-1 hidden min-h-full w-full overflow-hidden rounded-[10px] md:block">
+              <img
+                className="absolute inset-0 h-full w-full object-cover"
+                alt="Pig on pasture"
+                src="/sourcePhotos/how-it-works/red-pig.webp"
+              />
+            </div>
             <div className="esg-partnership-copy order-2">
               <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 Great Partnerships Produce Greater Impact
