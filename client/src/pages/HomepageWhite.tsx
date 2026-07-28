@@ -319,6 +319,7 @@ export const HomepageWhite = (): JSX.Element => {
                 return (
                   <AccordionItem
                     data-scroll-reveal
+                    data-scroll-reveal-gap="300"
                     key={item.id}
                     value={item.id}
                     className={`border-none ${isOpen ? "mb-8" : ""}`}
