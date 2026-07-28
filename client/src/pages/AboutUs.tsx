@@ -208,18 +208,25 @@ export const AboutUs = (): JSX.Element => {
                 The Principles Behind Every Project
               </h2>
               <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
-                {principles.map((p) => (
+                {principles.map((p, index) => (
                   <div
                     key={p.title}
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
                     className="flex items-start gap-5 border-b border-white/40 pb-6 text-left"
                   >
-                    <img
-                      className="h-[77px] w-[77px] shrink-0 object-contain"
-                      src={p.icon}
-                      alt=""
-                      aria-hidden="true"
-                    />
+                    <div
+                      data-scroll-reveal
+                      data-scroll-reveal-group
+                      className="h-[77px] w-[77px] shrink-0"
+                    >
+                      <img
+                        className="continuous-icon-wiggle h-full w-full object-contain"
+                        src={p.icon}
+                        alt=""
+                        aria-hidden="true"
+                        style={{ animationDelay: `${index * -0.55}s` }}
+                      />
+                    </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-white md:text-[24px]">{p.title}</h3>
                       <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90">

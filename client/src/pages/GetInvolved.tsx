@@ -268,7 +268,19 @@ export const GetInvolved = (): JSX.Element => {
                 data-testid={`card-benefit-${index}`}
                 className="flex gap-6 border-b border-[#d9d4c8] pb-10"
               >
-                <img className="h-12 w-12 shrink-0 object-contain" src={benefit.icon} alt="" />
+                <div
+                  data-scroll-reveal
+                  data-scroll-reveal-group
+                  className="h-12 w-12 shrink-0"
+                >
+                  <img
+                    className="continuous-icon-wiggle h-full w-full object-contain"
+                    src={benefit.icon}
+                    alt=""
+                    aria-hidden="true"
+                    style={{ animationDelay: `${index * -0.55}s` }}
+                  />
+                </div>
                 <div>
                   <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {benefit.title}

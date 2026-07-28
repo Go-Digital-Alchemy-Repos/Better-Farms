@@ -138,6 +138,39 @@
   }
 }
 
+.continuous-icon-wiggle {
+  animation: continuous-icon-wiggle 5.5s ease-in-out infinite;
+  transform-origin: 50% 65%;
+  will-change: transform;
+}
+
+@keyframes continuous-icon-wiggle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  16% {
+    transform: translate3d(-1px, 1px, 0) rotate(-2.5deg);
+  }
+
+  33% {
+    transform: translate3d(1.5px, -1px, 0) rotate(2deg);
+  }
+
+  50% {
+    transform: translate3d(-1px, 0, 0) rotate(-1.5deg);
+  }
+
+  68% {
+    transform: translate3d(1px, 1px, 0) rotate(2.5deg);
+  }
+
+  84% {
+    transform: translate3d(-0.5px, -1px, 0) rotate(-1deg);
+  }
+}
+
 .primary-nav-link--active::after {
   transform: scaleX(1) !important;
   transition: none !important;
