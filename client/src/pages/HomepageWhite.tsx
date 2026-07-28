@@ -25,6 +25,7 @@ export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
   const parallaxPairRef = useRef<HTMLDivElement>(null);
   const parallaxSmallImageRef = useRef<HTMLDivElement>(null);
+  const fieldParallaxImageRef = useRef<HTMLImageElement>(null);
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -68,6 +69,49 @@ export const HomepageWhite = (): JSX.Element => {
         entryOffset + (exitOffset - entryOffset) * easedProgress;
 
       smallImage.style.transform = `translate3d(0, ${offset}px, 0)`;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestParallaxUpdate);
+      window.removeEventListener("resize", requestParallaxUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const image = fieldParallaxImageRef.current;
+    const frame = image?.parentElement;
+    if (!image || !frame) return;
+
+    let animationFrame = 0;
+
+    const updateParallax = () => {
+      animationFrame = 0;
+
+      const frameRect = frame.getBoundingClientRect();
+      const progress = Math.min(
+        Math.max(
+          (window.innerHeight - frameRect.top) /
+            (window.innerHeight + frameRect.height),
+          0,
+        ),
+        1,
+      );
+      const travel = Math.min(44, frameRect.height * 0.05);
+      const offset = (progress - 0.5) * travel;
+
+      image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`;
     };
 
     const requestParallaxUpdate = () => {
@@ -350,11 +394,14 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <section className="border-t-[3px] border-white">
+        <section
+          data-scroll-reveal
+          className="overflow-hidden border-t-[3px] border-white"
+        >
           <img
-            data-scroll-reveal
-            className="h-auto w-full"
-            alt="Rectangle"
+            ref={fieldParallaxImageRef}
+            className="h-auto w-full will-change-transform"
+            alt="Agricultural specialists walking through a wheat field"
             src="/figmaAssets/rectangle-44.webp"
           />
         </section>
