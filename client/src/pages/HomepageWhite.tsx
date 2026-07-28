@@ -180,7 +180,7 @@ export const HomepageWhite = (): JSX.Element => {
             </span>
           </div>
         </section>
-        <section className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white md:grid-cols-2">
+        <section className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2">
           <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
             <div className="max-w-[565px]">
               <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]">
