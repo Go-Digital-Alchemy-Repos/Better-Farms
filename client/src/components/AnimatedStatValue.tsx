@@ -1,42 +1,34 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 
 type AnimatedStatValueProps = {
   className?: string;
   value: string;
 };
 
-const counterDurationMs = 2000;
+const reelStopIndex = 34;
+const reelSlowdownIndex = 31;
 
-const getRandomValue = (
-  target: number,
-  progress: number,
-  previousValue?: number,
-): number => {
-  const digits = Math.max(String(Math.abs(target)).length, 1);
-  const minimum = digits === 1 ? 1 : 10 ** (digits - 1);
-  const maximum = 10 ** digits - 1;
-  const easedProgress = 1 - Math.pow(1 - progress, 3);
-  const spread = Math.max(
-    1,
-    Math.round((maximum - minimum) * Math.pow(1 - easedProgress, 1.25)),
-  );
-  const lowerBound = Math.max(minimum, target - spread);
-  const upperBound = Math.min(maximum, target + spread);
+const buildReel = (targetDigit: number): number[] => {
+  const digits: number[] = [];
 
-  let nextValue = target;
-  for (let attempt = 0; attempt < 8; attempt += 1) {
-    nextValue =
-      lowerBound + Math.floor(Math.random() * (upperBound - lowerBound + 1));
-    if (nextValue !== target && nextValue !== previousValue) {
-      break;
+  for (let index = 0; index < reelStopIndex; index += 1) {
+    let digit = Math.floor(Math.random() * 10);
+
+    if (digit === digits.at(-1)) {
+      digit = (digit + 1 + Math.floor(Math.random() * 8)) % 10;
     }
+
+    digits.push(digit);
   }
 
-  if (nextValue === target) {
-    return target < upperBound ? target + 1 : target - 1;
-  }
-
-  return nextValue;
+  digits.push(targetDigit);
+  return digits;
 };
 
 export const AnimatedStatValue = ({
@@ -49,23 +41,28 @@ export const AnimatedStatValue = ({
 
     return {
       prefix: match?.[1] ?? "",
-      target: Number(match?.[2] ?? 0),
+      targetDigits: match?.[2] ?? "0",
       suffix: match?.[3] ?? "",
     };
   }, [value]);
-  const [currentValue, setCurrentValue] = useState(() =>
-    getRandomValue(parsedValue.target, 0),
+  const reels = useMemo(
+    () =>
+      parsedValue.targetDigits
+        .split("")
+        .map((digit) => buildReel(Number(digit))),
+    [parsedValue.targetDigits],
   );
+  const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
-    let animationFrame = 0;
     let startTimer = 0;
+    let observer: IntersectionObserver | null = null;
     let hasStarted = false;
 
-    const startCounter = () => {
+    const startReels = () => {
       if (hasStarted) return;
       hasStarted = true;
 
@@ -81,70 +78,36 @@ export const AnimatedStatValue = ({
         : 0;
 
       startTimer = window.setTimeout(() => {
-        const startTime = window.performance.now();
-        let nextShuffleTime = startTime;
-        let displayedValue = getRandomValue(parsedValue.target, 0);
-
-        setCurrentValue(displayedValue);
-
-        const updateCounter = (currentTime: number) => {
-          const progress = Math.min(
-            (currentTime - startTime) / counterDurationMs,
-            1,
-          );
-
-          if (progress >= 1) {
-            setCurrentValue(parsedValue.target);
-            return;
-          }
-
-          if (currentTime >= nextShuffleTime) {
-            displayedValue = getRandomValue(
-              parsedValue.target,
-              progress,
-              displayedValue,
-            );
-            setCurrentValue(displayedValue);
-
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
-            nextShuffleTime =
-              currentTime + 45 + 260 * Math.pow(easedProgress, 2);
-          }
-
-          animationFrame = window.requestAnimationFrame(updateCounter);
-        };
-
-        animationFrame = window.requestAnimationFrame(updateCounter);
+        setIsSpinning(true);
       }, revealDelay);
     };
 
     if (!("IntersectionObserver" in window)) {
-      startCounter();
+      startReels();
     } else {
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           if (!entries.some((entry) => entry.isIntersecting)) return;
 
-          startCounter();
-          observer.disconnect();
+          startReels();
+          observer?.disconnect();
         },
         { threshold: 0.2 },
       );
 
       observer.observe(element);
-
-      return () => {
-        observer.disconnect();
-        window.clearTimeout(startTimer);
-        window.cancelAnimationFrame(animationFrame);
-      };
     }
 
     return () => {
+      observer?.disconnect();
       window.clearTimeout(startTimer);
-      window.cancelAnimationFrame(animationFrame);
     };
   }, [parsedValue]);
+
+  const reelStyle = {
+    "--slot-cruise-offset": `-${reelSlowdownIndex}em`,
+    "--slot-final-offset": `-${reelStopIndex}em`,
+  } as CSSProperties;
 
   return (
     <div
@@ -152,10 +115,28 @@ export const AnimatedStatValue = ({
       aria-label={value}
       className={`tabular-nums ${className}`}
     >
-      <span aria-hidden="true">
-        {parsedValue.prefix}
-        {currentValue}
-        {parsedValue.suffix}
+      <span aria-hidden="true" className="slot-machine-value">
+        <span>{parsedValue.prefix}</span>
+        {reels.map((reel, reelIndex) => (
+          <span className="slot-reel" key={reelIndex}>
+            <span
+              className={`slot-reel-track ${
+                isSpinning ? "slot-reel-track--spinning" : ""
+              }`}
+              style={reelStyle}
+            >
+              {reel.map((digit, digitIndex) => (
+                <span
+                  className="slot-reel-digit"
+                  key={`${digitIndex}-${digit}`}
+                >
+                  {digit}
+                </span>
+              ))}
+            </span>
+          </span>
+        ))}
+        <span>{parsedValue.suffix}</span>
       </span>
     </div>
   );

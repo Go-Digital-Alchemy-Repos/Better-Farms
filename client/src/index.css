@@ -667,3 +667,49 @@
 .scroll-reveal-background-pending.scroll-reveal-background-visible {
   background-color: var(--scroll-reveal-background);
 }
+
+.slot-machine-value {
+  align-items: baseline;
+  display: inline-flex;
+}
+
+.slot-reel {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  width: 1ch;
+}
+
+.slot-reel-track {
+  display: block;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.slot-reel-track--spinning {
+  animation: slot-reel-spin 2000ms forwards;
+}
+
+.slot-reel-digit {
+  align-items: center;
+  display: flex;
+  height: 1em;
+  justify-content: center;
+  line-height: 1;
+}
+
+@keyframes slot-reel-spin {
+  0% {
+    animation-timing-function: linear;
+    transform: translate3d(0, 0, 0);
+  }
+
+  85% {
+    animation-timing-function: cubic-bezier(0.3, 0.55, 0.6, 1);
+    transform: translate3d(0, var(--slot-cruise-offset), 0);
+  }
+
+  100% {
+    transform: translate3d(0, var(--slot-final-offset), 0);
+  }
+}
