@@ -206,37 +206,54 @@ export const AboutUs = (): JSX.Element => {
             for the best. Here&apos;s how our approach stands apart.
           </p>
           <div className="relative z-10 mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
-            <div className="rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022] md:-rotate-1 md:translate-y-[-10px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
-                What Others Do
-              </h3>
-              <ul className="mt-6">
-                {othersDo.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
-                  >
-                    <span aria-hidden="true" className="text-lg font-bold">✕</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div
+              data-scroll-reveal
+              data-scroll-reveal-gap="200"
+              className="impact-comparison-reveal"
+            >
+              <div
+                data-scroll-reveal-group
+                className="impact-comparison-card impact-comparison-card--left rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022]"
+              >
+                <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                  What Others Do
+                </h3>
+                <ul className="mt-6">
+                  {othersDo.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
+                    >
+                      <span aria-hidden="true" className="text-lg font-bold">✕</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="rounded-2xl bg-[#faf5e4] p-8 shadow-[0px_4px_14px_#00000022] md:rotate-1 md:translate-y-[30px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
-                What We Do
-              </h3>
-              <ul className="mt-6">
-                {weDo.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
-                  >
-                    <span aria-hidden="true" className="text-lg font-bold">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div
+              data-scroll-reveal
+              className="impact-comparison-reveal"
+            >
+              <div
+                data-scroll-reveal-group
+                className="impact-comparison-card impact-comparison-card--right rounded-2xl bg-[#faf5e4] p-8 shadow-[0px_4px_14px_#00000022]"
+              >
+                <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                  What We Do
+                </h3>
+                <ul className="mt-6">
+                  {weDo.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
+                    >
+                      <span aria-hidden="true" className="text-lg font-bold">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>

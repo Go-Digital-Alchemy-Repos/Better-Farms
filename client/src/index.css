@@ -668,6 +668,58 @@
   background-color: var(--scroll-reveal-background);
 }
 
+.impact-comparison-reveal.scroll-reveal-pending {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.impact-comparison-reveal.scroll-reveal-pending .impact-comparison-card {
+  opacity: 0;
+  transition:
+    opacity 300ms ease-out var(--scroll-reveal-delay, 0ms),
+    transform 300ms ease-out var(--scroll-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.impact-comparison-reveal.scroll-reveal-pending
+  .impact-comparison-card--left {
+  transform: translate3d(0, 100vh, 0);
+}
+
+.impact-comparison-reveal.scroll-reveal-pending
+  .impact-comparison-card--right {
+  transform: translate3d(100vw, 0, 0);
+}
+
+.impact-comparison-reveal.scroll-reveal-pending.scroll-reveal-visible
+  .impact-comparison-card {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .impact-comparison-reveal.scroll-reveal-pending
+    .impact-comparison-card--left {
+    transform: translate3d(0, 100vh, 0) rotate(-1deg);
+  }
+
+  .impact-comparison-reveal.scroll-reveal-pending
+    .impact-comparison-card--right {
+    transform: translate3d(100vw, 30px, 0) rotate(1deg);
+  }
+
+  .impact-comparison-reveal.scroll-reveal-pending.scroll-reveal-visible
+    .impact-comparison-card--left {
+    transform: translate3d(0, -10px, 0) rotate(-1deg);
+  }
+
+  .impact-comparison-reveal.scroll-reveal-pending.scroll-reveal-visible
+    .impact-comparison-card--right {
+    transform: translate3d(0, 30px, 0) rotate(1deg);
+  }
+}
+
 .slot-machine-value {
   align-items: baseline;
   display: inline-flex;

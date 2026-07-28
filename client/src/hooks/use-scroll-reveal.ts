@@ -62,6 +62,10 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
         .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
         .forEach((candidate) => {
           if (!candidate.closest("main, footer")) return;
+          const revealGroup = candidate.closest<HTMLElement>(
+            "[data-scroll-reveal-group]",
+          );
+          if (revealGroup && revealGroup !== candidate) return;
           if (
             candidate.matches("footer span") &&
             candidate.parentElement?.matches("footer span")
@@ -88,6 +92,7 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
       root
         .querySelectorAll<HTMLElement>(autoBackgroundCandidateSelector)
         .forEach((candidate) => {
+          if (candidate.closest("[data-scroll-reveal-group]")) return;
           if (
             hasVisibleBackground(
               window.getComputedStyle(candidate).backgroundColor,
