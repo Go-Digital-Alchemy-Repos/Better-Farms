@@ -145,7 +145,7 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[110px]">
-          <p className="mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
+          <p className="desktop-text-balance mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Your contribution builds farms ready for whatever comes next.
             Stronger soil, smarter systems, and lasting infrastructure give
             producers what they need to thrive for decades ahead.
@@ -154,10 +154,10 @@ export const HowItWorks = (): JSX.Element => {
 
         <section className="pb-14">
           <div className="px-4 md:px-8">
-            <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:max-w-none lg:whitespace-nowrap">
+            <h2 className="desktop-text-balance mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:max-w-none lg:whitespace-nowrap">
               The Foundation of a Better Farm
             </h2>
-            <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+            <p className="desktop-text-balance mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
               Every farm faces different challenges, but the barriers to success
               fall into predictable categories. We focus our resources on the
               five most critical threats to independent farms.
@@ -250,10 +250,10 @@ export const HowItWorks = (): JSX.Element => {
           <div className="relative w-full overflow-hidden rounded-b-[30px] bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-6 pb-20 pt-24 md:px-[80px] md:pb-[120px] md:pt-[105px]">
             <div className="pointer-events-none absolute inset-0 opacity-45" style={topoPatternStyle} />
             <div className="relative z-10">
-              <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
+              <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 Tracking Everything From Carbon to Crop Yield
               </h2>
-              <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90 md:text-lg">
+              <p className="desktop-text-balance mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90 md:text-lg">
                 Traditional nonprofit reporting leaves donors guessing about real
                 impact. Better Farms tracks ESG metrics throughout every project
                 using a clear methodology.

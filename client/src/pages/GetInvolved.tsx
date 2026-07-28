@@ -152,7 +152,7 @@ export const GetInvolved = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[104px]">
-          <p className="mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
+          <p className="desktop-text-balance mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
             in the way that works best for them. Explore them below and put
@@ -248,7 +248,7 @@ export const GetInvolved = (): JSX.Element => {
         />
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Why Partner With Better Farms
           </h2>
           <div className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">

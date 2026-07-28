@@ -591,3 +591,11 @@
     grid-template-areas: "brand nav newsletter";
   }
 }
+
+/* Keep short, centered display copy from leaving a single orphan word on its
+   final line at desktop widths without changing the flow of regular body copy. */
+@media (min-width: 1024px) {
+  .desktop-text-balance {
+    text-wrap: balance;
+  }
+}

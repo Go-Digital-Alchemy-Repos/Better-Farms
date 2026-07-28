@@ -103,10 +103,10 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[142px]">
-          <h2 className="mx-auto max-w-[1000px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="desktop-text-balance mx-auto max-w-[1000px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Our Team Has Spent Careers Inside American Agriculture.
           </h2>
-          <p className="mx-auto mt-8 max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+          <p className="desktop-text-balance mx-auto mt-8 max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>
@@ -164,7 +164,7 @@ export const AboutUs = (): JSX.Element => {
           />
           <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-16 md:rounded-b-[30px] md:px-8">
             <div className="mx-auto max-w-[1000px]">
-              <h2 className="mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
+              <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 The Principles Behind Every Project
               </h2>
               <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
@@ -195,10 +195,10 @@ export const AboutUs = (): JSX.Element => {
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
-          <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="desktop-text-balance relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
-          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+          <p className="desktop-text-balance relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             The difference is simple. We don&apos;t hand over a check and hope
             for the best. Here&apos;s how our approach stands apart.
           </p>
@@ -245,10 +245,10 @@ export const AboutUs = (): JSX.Element => {
         />
 
         <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[84px]">
-          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+          <p className="desktop-text-balance mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             Our board members helped create organic certification, served under
             presidential administrations, and built some of the largest
             operations in sustainable agriculture. They have the relationships,
@@ -293,10 +293,10 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+          <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Ready to See How It Works?
           </h2>
-          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+          <p className="desktop-text-balance mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             Better Farms projects follow a clear process from funding to
             fieldwork to final reporting. See how we turn your investment into
             measurable results on a real farm.
