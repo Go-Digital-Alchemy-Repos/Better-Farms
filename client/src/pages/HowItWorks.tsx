@@ -211,6 +211,7 @@ export const HowItWorks = (): JSX.Element => {
         <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
           <div className="relative -mx-4 -mt-12 px-4 pt-12 md:-mx-[29px] md:-mt-16 md:px-[29px] md:pt-16">
             <div className="pointer-events-none absolute inset-0 opacity-80" style={topoPatternStyle} />
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[3%] bg-gradient-to-b from-white via-white/80 to-transparent" />
             <div className="relative z-10 mx-auto max-w-[1100px]">
               <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 The 6-Step Process for Better Farms
