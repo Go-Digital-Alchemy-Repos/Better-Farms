@@ -497,7 +497,7 @@ export const HomepageWhite = (): JSX.Element => {
                           }`}
                         />
                         <span
-                          className={`transition-transform duration-300 ease-out group-hover:-translate-x-3 [font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
+                          className={`transition-transform duration-300 ease-out group-hover:translate-x-3 [font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
                             isOpen ? "text-white" : "text-[#5e4540]"
                           }`}
                         >
