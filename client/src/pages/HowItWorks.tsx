@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -5,6 +6,7 @@ import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
+import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
 import { Link } from "wouter";
 
 const foundationCards = [
@@ -117,6 +119,16 @@ const trackingColumns = [
 ];
 
 export const HowItWorks = (): JSX.Element => {
+  const quoteFrameRef = useRef<HTMLDivElement>(null);
+  const quoteParallaxRef = useRef<HTMLDivElement>(null);
+
+  useSlowerScrollParallax(
+    quoteFrameRef,
+    quoteParallaxRef,
+    0.15,
+    120,
+  );
+
   return (
     <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -297,39 +309,50 @@ export const HowItWorks = (): JSX.Element => {
         </section>
 
         <section className="px-4 pb-0 pt-12 md:pb-0 md:pt-16 lg:pt-20">
-          <div className="relative mx-auto max-w-[1400px] md:pt-[66px]">
+          <div
+            ref={quoteFrameRef}
+            className="relative mx-auto max-w-[1400px] md:pt-[116px]"
+          >
             <blockquote
-              className="relative z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:top-0 md:mx-0 md:w-[570px] md:-translate-y-[35%]"
-              style={{ fontFamily: '"Dancing Script", cursive' }}
+              className="relative -top-[50px] z-20 mx-auto w-[min(360px,88vw)] text-center text-[#bc623f] md:absolute md:right-[15%] md:mx-0 md:w-[570px] md:-translate-y-[35%]"
+              style={{
+                fontFamily: '"Dancing Script", cursive',
+                textShadow: "0 2px 6px rgba(255, 255, 255, 0.98)",
+              }}
             >
-              <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
-                <span className="md:hidden">
-                  &quot;Farmers don&apos;t need more research papers. They need
-                  someone to show up with a plan, the funding, and the know-how
-                  to make their operation stronger. That&apos;s the job.&quot;
-                </span>
-                <span className="hidden md:block">
-                  <span className="block">
-                    &quot;Farmers don&apos;t need more research
+              <div ref={quoteParallaxRef}>
+                <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
+                  <span className="md:hidden">
+                    &quot;Farmers don&apos;t need more research papers. They
+                    need someone to show up with a plan, the funding, and the
+                    know-how to make their operation stronger. That&apos;s the
+                    job.&quot;
                   </span>
-                  <span className="block">
-                    papers. They need someone to show up
+                  <span className="hidden md:block">
+                    <span className="block">
+                      &quot;Farmers don&apos;t need more research
+                    </span>
+                    <span className="block">
+                      papers. They need someone to show up
+                    </span>
+                    <span className="block">
+                      with a plan, the funding, and the know-
+                    </span>
+                    <span className="block">
+                      how to make their operation stronger.
+                    </span>
+                    <span className="block">
+                      That&apos;s the job.&quot;
+                    </span>
                   </span>
-                  <span className="block">
-                    with a plan, the funding, and the know-
-                  </span>
-                  <span className="block">
-                    how to make their operation stronger.
-                  </span>
-                  <span className="block">That&apos;s the job.&quot;</span>
-                </span>
+                </div>
+                <footer className="mt-5 rotate-0 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
+                  — Name
+                </footer>
               </div>
-              <footer className="mt-5 rotate-0 [font-family:'Inter',Helvetica] text-sm text-[#bc623f] md:text-base">
-                — Name
-              </footer>
             </blockquote>
             <div
-              className="relative z-0 overflow-hidden rounded-[20px]"
+              className="relative z-0 mt-[50px] overflow-hidden rounded-[20px] md:mt-0"
               style={{ aspectRatio: "3888 / 1264" }}
             >
               <img
