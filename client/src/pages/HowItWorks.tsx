@@ -154,7 +154,7 @@ export const HowItWorks = (): JSX.Element => {
 
         <section className="pb-14">
           <div className="px-4 md:px-8">
-            <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+            <h2 className="mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:max-w-none lg:whitespace-nowrap">
               The Foundation of a Better Farm
             </h2>
             <p className="mx-auto mt-6 max-w-[770px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
