@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 import { Link } from "wouter";
 
@@ -85,15 +86,6 @@ const processSteps = [
     text: "text-white",
   },
 ];
-
-const topoPatternStyle = {
-  backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat" as const,
-  backgroundSize: "cover",
-  WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-  maskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-};
 
 export const ForFarmers = (): JSX.Element => {
   const imagePairRef = useRef<HTMLDivElement>(null);
@@ -177,7 +169,7 @@ export const ForFarmers = (): JSX.Element => {
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:pb-0 md:pt-24">
           <div className="relative -mx-4 -mt-12 px-4 pt-12 md:-mx-8 md:-mt-24 md:px-8 md:pt-24">
-            <div className="pointer-events-none absolute inset-0 opacity-80" style={topoPatternStyle} />
+            <PatternParallaxLayer className="absolute inset-0 opacity-80" />
             <div className="relative z-10 mx-auto max-w-[1100px]">
               <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 The 6-Step Process for Better Farms

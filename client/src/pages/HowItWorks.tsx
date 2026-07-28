@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { Link } from "wouter";
 
 const foundationCards = [
@@ -84,15 +85,6 @@ const processSteps = [
     text: "text-white",
   },
 ];
-
-const topoPatternStyle = {
-  backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat" as const,
-  backgroundSize: "cover",
-  WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-  maskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-};
 
 const trackingColumns = [
   {
@@ -210,7 +202,7 @@ export const HowItWorks = (): JSX.Element => {
 
         <section className="relative overflow-hidden px-4 pb-0 pt-12 md:px-[29px] md:pb-0 md:pt-16">
           <div className="relative -mx-4 -mt-12 px-4 pt-12 md:-mx-[29px] md:-mt-16 md:px-[29px] md:pt-16">
-            <div className="pointer-events-none absolute inset-0 opacity-80" style={topoPatternStyle} />
+            <PatternParallaxLayer className="absolute inset-0 opacity-80" />
             <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[3%] bg-gradient-to-b from-white via-white/80 to-transparent" />
             <div className="relative z-10 mx-auto max-w-[1100px]">
               <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
@@ -252,7 +244,7 @@ export const HowItWorks = (): JSX.Element => {
 
         <section className="relative z-10 mt-[-30px] pb-14">
           <div className="relative w-full overflow-hidden rounded-b-[30px] bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-6 pb-20 pt-24 md:px-[80px] md:pb-[120px] md:pt-[105px]">
-            <div className="pointer-events-none absolute inset-0 opacity-45" style={topoPatternStyle} />
+            <PatternParallaxLayer className="absolute inset-0 opacity-45" />
             <div className="relative z-10">
               <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 Tracking Everything From Carbon to Crop Yield

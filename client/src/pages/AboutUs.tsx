@@ -10,6 +10,7 @@ import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 
 const principles = [
@@ -57,15 +58,6 @@ const weDo = [
   "Aggregate funding from multiple sources",
   "Solve problems",
 ];
-
-const topoPatternStyle = {
-  backgroundImage: "url('/figmaAssets/pattern.svg')",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat" as const,
-  backgroundSize: "cover",
-  WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-  maskImage: "linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%)",
-};
 
 const boardMembers: (TeamMember & { overlay: string })[] = [
   { image: "/figmaAssets/portrait_woman_farmer.webp", overlay: "rgba(117, 135, 172, 0.30)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
@@ -212,7 +204,7 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[70%] opacity-80" style={topoPatternStyle} />
+          <PatternParallaxLayer className="absolute inset-x-0 top-0 h-[70%] opacity-80" />
           <h2 className="desktop-text-balance relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
