@@ -66,11 +66,8 @@ export const HomepageWhite = (): JSX.Element => {
         1,
       );
       const exitOffset = Math.max(0, largeHeight - smallHeight);
-      const entryDelay = Math.min(160, largeHeight * 0.22);
-      const entryOffset = exitOffset + entryDelay;
-      const travelProgress = 1 - Math.pow(1 - progress, 2);
 
-      return entryOffset + (exitOffset - entryOffset) * travelProgress;
+      return exitOffset * progress;
     };
 
     const animateToTarget = (time: number) => {
