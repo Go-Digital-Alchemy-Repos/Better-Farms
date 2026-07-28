@@ -37,19 +37,22 @@ export const HomepageWhite = (): JSX.Element => {
     if (!pair || !smallImage) return;
 
     let animationFrame = 0;
+    let currentOffset = 0;
+    let targetOffset = 0;
+    let lastFrameTime = 0;
 
-    const updateParallax = () => {
-      animationFrame = 0;
-
+    const calculateTargetOffset = () => {
       if (window.innerWidth < 1024) {
+        currentOffset = 0;
+        targetOffset = 0;
         smallImage.style.removeProperty("transform");
-        return;
+        return 0;
       }
 
       const largeImage = pair.querySelector<HTMLElement>(
         ".edge-image-pair-large",
       );
-      if (!largeImage) return;
+      if (!largeImage) return currentOffset;
 
       const pairRect = pair.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
@@ -62,29 +65,65 @@ export const HomepageWhite = (): JSX.Element => {
         ),
         1,
       );
-      const entryOffset = 48;
-      const exitOffset = Math.max(entryOffset, largeHeight - smallHeight);
-      const easedProgress = progress * progress * (3 - 2 * progress);
-      const offset =
-        entryOffset + (exitOffset - entryOffset) * easedProgress;
+      const exitOffset = Math.max(0, largeHeight - smallHeight);
+      const entryDelay = Math.min(160, largeHeight * 0.22);
+      const entryOffset = exitOffset + entryDelay;
+      const travelProgress = 1 - Math.pow(1 - progress, 2);
 
-      smallImage.style.transform = `translate3d(0, ${offset}px, 0)`;
+      return entryOffset + (exitOffset - entryOffset) * travelProgress;
     };
 
-    const requestParallaxUpdate = () => {
-      if (animationFrame) return;
-      animationFrame = window.requestAnimationFrame(updateParallax);
+    const animateToTarget = (time: number) => {
+      const deltaTime = lastFrameTime ? Math.min(time - lastFrameTime, 64) : 16;
+      lastFrameTime = time;
+      const ease = 1 - Math.exp(-deltaTime / 220);
+
+      currentOffset += (targetOffset - currentOffset) * ease;
+      smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+
+      if (Math.abs(targetOffset - currentOffset) > 0.1) {
+        animationFrame = window.requestAnimationFrame(animateToTarget);
+      } else {
+        currentOffset = targetOffset;
+        smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+        animationFrame = 0;
+        lastFrameTime = 0;
+      }
     };
 
-    updateParallax();
-    window.addEventListener("scroll", requestParallaxUpdate, {
+    const updateParallaxTarget = (snap = false) => {
+      targetOffset = calculateTargetOffset();
+
+      if (window.innerWidth < 1024) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        lastFrameTime = 0;
+        return;
+      }
+
+      if (snap) {
+        currentOffset = targetOffset;
+        smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+        return;
+      }
+
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(animateToTarget);
+      }
+    };
+
+    const handleScroll = () => updateParallaxTarget();
+    const handleResize = () => updateParallaxTarget(true);
+
+    updateParallaxTarget(true);
+    window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
-    window.addEventListener("resize", requestParallaxUpdate);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("scroll", requestParallaxUpdate);
-      window.removeEventListener("resize", requestParallaxUpdate);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
       window.cancelAnimationFrame(animationFrame);
     };
   }, []);
