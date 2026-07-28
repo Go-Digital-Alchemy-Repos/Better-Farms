@@ -410,7 +410,7 @@ export const HowItWorks = (): JSX.Element => {
           </div>
           <div className="esg-partnership-row mx-auto mt-[100px] grid max-w-[1100px] items-stretch gap-10 px-4 md:grid-cols-2 md:px-8">
             <div
-              className="relative order-1 hidden min-h-full w-full rounded-[10px] md:block"
+              className="relative order-1 hidden min-h-full w-full rounded-[10px] md:-top-10 md:block"
               data-scroll-reveal-anchor
             >
               <img
