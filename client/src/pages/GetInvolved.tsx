@@ -164,7 +164,7 @@ export const GetInvolved = (): JSX.Element => {
           <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_clamp(440px,calc(50vw-80px),721px)] lg:pt-[108px]">
+          <div className="grid gap-12 lg:grid-cols-[minmax(406px,1fr)_minmax(406px,721px)] lg:pt-[108px]">
             <div className="flex flex-col gap-24 md:gap-0">
               {pathways.map((pathway, index) => (
                 <div
