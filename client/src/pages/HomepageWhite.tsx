@@ -579,7 +579,11 @@ export const HomepageWhite = (): JSX.Element => {
               </Card>
             ))}
           </div>
-          <div data-scroll-reveal className="mt-9 flex justify-center">
+          <div
+            data-scroll-reveal
+            data-scroll-reveal-sequence
+            className="mt-9 flex justify-center"
+          >
             <Button
               asChild
               arrowMotion
