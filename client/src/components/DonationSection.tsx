@@ -30,7 +30,11 @@ export function DonationSection({
       data-testid="donation-section"
       className={`relative overflow-hidden ${sectionClassName}`}
     >
-      <div className="relative z-10 px-4 md:px-8">
+      <div
+        data-scroll-reveal
+        data-scroll-reveal-group
+        className="relative z-10 px-4 md:px-8"
+      >
         <Heading
           className={`text-center font-bold leading-[1.05] text-[#5e4540] ${headingClassName}`}
         >

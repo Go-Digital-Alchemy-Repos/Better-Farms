@@ -767,7 +767,7 @@ export const HomepageWhite = (): JSX.Element => {
             </div>
           </div>
         </section>
-        <div data-scroll-reveal>
+        <div>
           <DonationSection
             sectionClassName="pt-16 md:pt-[78px]"
             imageWrapperClassName="-mt-[114px] md:-mt-[177px]"

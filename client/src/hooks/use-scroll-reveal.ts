@@ -38,8 +38,9 @@ const groupedRevealSelector = "article, form, figure, picture, li, button, a";
 const transformControlledImageSelector = [
   ".hero-image-after-title",
   ".will-change-transform",
-  '[data-testid="donation-section"] img',
 ].join(", ");
+const autoRevealExcludedSelector =
+  '[data-testid="donation-background-image"]';
 
 const hasVisibleBackground = (backgroundColor: string): boolean =>
   backgroundColor !== "transparent" &&
@@ -62,6 +63,7 @@ export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
         .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
         .forEach((candidate) => {
           if (!candidate.closest("main, footer")) return;
+          if (candidate.matches(autoRevealExcludedSelector)) return;
           const revealGroup = candidate.closest<HTMLElement>(
             "[data-scroll-reveal-group]",
           );
