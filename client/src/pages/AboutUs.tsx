@@ -102,43 +102,44 @@ export const AboutUs = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const principleItems = Array.from(
+    const principleAnchors = Array.from(
       principlesRef.current?.querySelectorAll<HTMLElement>(
-        "[data-principle-reveal]",
+        "[data-principle-reveal-anchor]",
       ) ?? [],
     );
-    if (!principleItems.length) return;
+    if (!principleAnchors.length) return;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
     const eligibleItems = new Set<HTMLElement>();
     let nextPrincipleIndex = 0;
     let sequenceTimer = 0;
 
+    const revealPrinciple = (anchor: HTMLElement) => {
+      anchor
+        .querySelector<HTMLElement>("[data-principle-reveal]")
+        ?.classList.add("principle-reveal-visible");
+    };
+
     const revealAllPrinciples = () => {
-      principleItems.forEach((item) => {
-        item.classList.add("principle-reveal-visible");
-      });
-      nextPrincipleIndex = principleItems.length;
+      principleAnchors.forEach(revealPrinciple);
+      nextPrincipleIndex = principleAnchors.length;
     };
 
     const revealNextEligiblePrinciple = () => {
       sequenceTimer = 0;
-      const nextPrinciple = principleItems[nextPrincipleIndex];
+      const nextPrinciple = principleAnchors[nextPrincipleIndex];
       if (!nextPrinciple || !eligibleItems.has(nextPrinciple)) return;
 
-      nextPrinciple.classList.add("principle-reveal-visible");
+      revealPrinciple(nextPrinciple);
       nextPrincipleIndex += 1;
       sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 160);
     };
 
     const queueEligiblePrinciples = () => {
-      if (sequenceTimer || nextPrincipleIndex >= principleItems.length) return;
+      if (sequenceTimer || nextPrincipleIndex >= principleAnchors.length) return;
       sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 0);
     };
 
-    if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+    if (!("IntersectionObserver" in window)) {
       revealAllPrinciples();
       return;
     }
@@ -157,12 +158,12 @@ export const AboutUs = (): JSX.Element => {
         queueEligiblePrinciples();
       },
       {
-        rootMargin: "0px",
-        threshold: 0,
+        rootMargin: "0px 0px -4% 0px",
+        threshold: 0.08,
       },
     );
 
-    principleItems.forEach((item) => observer.observe(item));
+    principleAnchors.forEach((anchor) => observer.observe(anchor));
 
     return () => {
       observer.disconnect();
@@ -286,6 +287,7 @@ export const AboutUs = (): JSX.Element => {
                 {principles.map((p, index) => (
                   <div
                     key={p.title}
+                    data-principle-reveal-anchor
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
                     className="overflow-hidden border-b border-white/40 pb-6 text-left"
                   >
