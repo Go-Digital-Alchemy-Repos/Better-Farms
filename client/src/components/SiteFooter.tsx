@@ -134,6 +134,10 @@ export const SiteFooter = (): JSX.Element => {
               <img
                 className="h-auto w-[240px] md:w-[300px] xl:w-[365px]"
                 alt="Better Farms Foundation"
+                loading="lazy"
+                decoding="async"
+                width="341"
+                height="90"
                 src="/sourcePhotos/brand/footer-logo.svg"
               />
             </Link>
@@ -206,7 +210,12 @@ export const SiteFooter = (): JSX.Element => {
         <div className="mt-5 xl:mt-0">
           <img
             className="h-auto w-full max-w-[1423px] xl:h-[190px]"
-            alt="Better farms"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            width="1423"
+            height="201"
             src="/figmaAssets/better-farms.svg"
           />
         </div>
@@ -232,6 +241,10 @@ export const SiteFooter = (): JSX.Element => {
                           <img
                             className="h-auto w-[220px]"
                             alt="Better Farms Foundation"
+                            loading="lazy"
+                            decoding="async"
+                            width="341"
+                            height="90"
                             src="/sourcePhotos/brand/logo.svg"
                           />
                           <div>
@@ -275,7 +288,15 @@ export const SiteFooter = (): JSX.Element => {
             <span className="[font-family:'Montserrat',Helvetica] text-xs font-normal leading-[normal] text-white">
               Made by
             </span>
-            <img className="h-[21px] w-auto" alt="Digital Alchemy" src="/figmaAssets/da-logo.svg" />
+            <img
+              className="h-[21px] w-auto"
+              alt="Digital Alchemy"
+              loading="lazy"
+              decoding="async"
+              width="124"
+              height="22"
+              src="/figmaAssets/da-logo.svg"
+            />
           </div>
         </div>
       </div>

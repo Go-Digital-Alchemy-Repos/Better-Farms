@@ -31,6 +31,8 @@ export const TeamMemberDialog = ({ member, onClose }: TeamMemberDialogProps) => 
             <img
               className="h-[280px] w-[280px] max-w-full rounded-2xl object-cover grayscale"
               alt={member.name}
+              loading="lazy"
+              decoding="async"
               src={member.image}
               data-testid="img-team-modal-headshot"
             />

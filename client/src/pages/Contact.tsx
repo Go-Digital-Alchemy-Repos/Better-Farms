@@ -253,6 +253,10 @@ export const Contact = (): JSX.Element => {
               <img
                 className="h-full w-full object-cover"
                 alt="Two farmers inspecting crops at dusk"
+                decoding="async"
+                fetchPriority="high"
+                width="642"
+                height="900"
                 src="/sourcePhotos/contact/farmers.webp"
               />
             </div>

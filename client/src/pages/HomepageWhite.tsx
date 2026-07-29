@@ -268,16 +268,24 @@ export const HomepageWhite = (): JSX.Element => {
 
   const impactStats = [
     {
-      label: "The average age of American farmers today.",
+      label: "Average age of U.S. farm producers in 2022.",
       value: "58",
+      sourceName: "2022 Census of Agriculture",
+      sourceUrl: "https://data.nass.usda.gov/Newsroom/2024/02-13-2024.php",
     },
     {
-      label: "Farms lost in the U.S. in just seven years.",
+      label: "U.S. farms lost between 2017 and 2024.",
       value: "160K+",
+      sourceName: "USDA Economic Research Service",
+      sourceUrl: "https://ers.usda.gov/data-products/charts-of-note/111304",
     },
     {
-      label: "Disaster losses farmers absorbed without insurance since 2022.",
+      label:
+        "Crop losses left uncovered by insurance and prior disaster aid, 2022–2024.",
       value: "$26B",
+      sourceName: "American Farm Bureau Federation",
+      sourceUrl:
+        "https://www.fb.org/market-intel/hurricanes-heat-and-hardship-counting-2024s-crop-losses",
     },
   ];
 
@@ -381,7 +389,11 @@ export const HomepageWhite = (): JSX.Element => {
           >
             <img
               className="hero-load-content hero-load-content--1 hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
-              alt="Group"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              width="107"
+              height="107"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
             <h1
@@ -395,6 +407,12 @@ export const HomepageWhite = (): JSX.Element => {
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Aerial view of farmland"
+                decoding="async"
+                fetchPriority="high"
+                width="1314"
+                height="608"
+                srcSet="/sourcePhotos/homepage/farm-aerial-768.jpg 768w, /sourcePhotos/homepage/farm-aerial.webp 1314w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
                 src="/sourcePhotos/homepage/farm-aerial.webp"
               />
             </div>
@@ -471,6 +489,8 @@ export const HomepageWhite = (): JSX.Element => {
               data-scroll-reveal
               className="h-[240px] w-full object-cover object-left grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
             <div
@@ -478,11 +498,15 @@ export const HomepageWhite = (): JSX.Element => {
               className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8"
             >
               {impactStats.map((stat) => (
-                <div
+                <a
                   data-scroll-reveal
                   data-scroll-reveal-gap="300"
                   key={stat.value}
-                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3"
+                  href={stat.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${stat.label} ${stat.value}. View source: ${stat.sourceName}`}
+                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3 transition-colors duration-300 ease-out hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#7587ac]"
                 >
                   <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-white md:text-base">
                     {stat.label}
@@ -491,16 +515,27 @@ export const HomepageWhite = (): JSX.Element => {
                     value={stat.value}
                     className="[font-family:'Inter',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal text-white md:text-[40px]"
                   />
-                </div>
+                </a>
               ))}
 
               <p
                 data-scroll-reveal
                 className="pt-1 text-center [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-[#2f3a56] md:text-base"
               >
-                Sources: <span className="underline">2022 Census of Agriculture</span>,{" "}
-                <span className="underline">USDA</span>,{" "}
-                <span className="underline">Farm Bureau</span>
+                Sources:{" "}
+                {impactStats.map((stat, index) => (
+                  <span key={stat.sourceName}>
+                    {index > 0 && ", "}
+                    <a
+                      className="underline underline-offset-2 hover:text-white focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      href={stat.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {stat.sourceName}
+                    </a>
+                  </span>
+                ))}
               </p>
             </div>
           </div>
@@ -513,6 +548,8 @@ export const HomepageWhite = (): JSX.Element => {
             ref={fieldParallaxImageRef}
             className="absolute inset-0 h-full w-full object-cover will-change-transform"
             alt="Agricultural specialists walking through a wheat field"
+            loading="lazy"
+            decoding="async"
             src="/figmaAssets/rectangle-44.webp"
           />
         </section>
@@ -538,7 +575,6 @@ export const HomepageWhite = (): JSX.Element => {
                 return (
                   <AccordionItem
                     data-scroll-reveal
-                    data-scroll-reveal-gap="300"
                     key={item.id}
                     value={item.id}
                     className={`border-none ${isOpen ? "mb-8" : ""}`}
@@ -621,7 +657,9 @@ export const HomepageWhite = (): JSX.Element => {
                       {!card.reverse && (
                         <img
                           className="h-[240px] w-full object-cover md:h-full md:min-h-0"
-                          alt="Img"
+                          alt={card.title}
+                          loading="lazy"
+                          decoding="async"
                           src={card.image}
                         />
                       )}
@@ -644,7 +682,9 @@ export const HomepageWhite = (): JSX.Element => {
                       {card.reverse && (
                         <img
                           className="h-[240px] w-full object-cover md:h-full md:min-h-0"
-                          alt="Img"
+                          alt={card.title}
+                          loading="lazy"
+                          decoding="async"
                           src={card.image}
                         />
                       )}
@@ -687,6 +727,8 @@ export const HomepageWhite = (): JSX.Element => {
               data-scroll-reveal-baseline
               className="image-pair-large-reveal edge-image-pair-large rounded-lg lg:col-start-2 lg:row-start-1"
               alt="Farmer carrying freshly harvested vegetables"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
             <div
@@ -696,6 +738,8 @@ export const HomepageWhite = (): JSX.Element => {
               <img
                 className="h-full w-full rounded-lg object-cover"
                 alt="Rows of crops stretching toward the horizon"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/homepage/crops.webp"
               />
             </div>
@@ -797,7 +841,9 @@ export const HomepageWhite = (): JSX.Element => {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
                     className={`h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] ${index === 1 ? "md:h-[375px]" : "md:h-[303px]"}`}
-                    alt="Rectangle"
+                    alt={`${member.name} portrait`}
+                    loading="lazy"
+                    decoding="async"
                     src={member.image}
                   />
                   <div
@@ -833,7 +879,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
                 <img
                   className="ml-2 h-6 w-6"
-                  alt="Keyboard arrow right"
+                  alt=""
+                  aria-hidden="true"
                   src="/figmaAssets/keyboard-arrow-right-2.svg"
                 />
               </Link>
@@ -846,7 +893,7 @@ export const HomepageWhite = (): JSX.Element => {
           <DonationSection
             sectionClassName="pt-16 md:pt-[78px]"
             imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
-            imageAlt="Rectangle"
+            imageAlt="Tractor applying crop protection in a farm field"
             imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
             headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
             descriptionClassName="text-xl md:text-2xl"

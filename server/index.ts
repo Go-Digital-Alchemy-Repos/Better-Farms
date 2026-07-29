@@ -10,6 +10,7 @@ const httpServer = createServer(app);
 const isProduction = process.env.NODE_ENV === "production";
 
 app.disable("x-powered-by");
+app.enable("strict routing");
 if (isProduction) app.set("trust proxy", 1);
 
 app.use(

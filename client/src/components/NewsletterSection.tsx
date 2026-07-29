@@ -70,6 +70,8 @@ export const NewsletterSection = ({
           ref={backgroundImageRef}
           className="absolute inset-0 h-full w-full object-cover will-change-transform"
           alt={imageAlt}
+          loading="lazy"
+          decoding="async"
           src={imageSrc}
           style={{ objectPosition: "center 35%" }}
         />
@@ -121,6 +123,7 @@ export const NewsletterSection = ({
                 <img
                   className="ml-2 h-5 w-5"
                   alt=""
+                  aria-hidden="true"
                   src="/figmaAssets/keyboard-arrow-right-2.svg"
                 />
               </Button>

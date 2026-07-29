@@ -66,6 +66,9 @@ export const SiteHeader = (): JSX.Element => {
           <img
             className="block h-auto w-[224px] md:w-[200px] xl:w-[240px]"
             alt="Better Farms Foundation"
+            decoding="async"
+            width="341"
+            height="90"
             src="/sourcePhotos/brand/logo.svg"
           />
         </Link>
@@ -168,6 +171,9 @@ export const SiteHeader = (): JSX.Element => {
             <img
               className="block h-auto w-full"
               alt="Better Farms Foundation"
+              decoding="async"
+              width="341"
+              height="90"
               src="/sourcePhotos/brand/logo.svg"
             />
           </Link>

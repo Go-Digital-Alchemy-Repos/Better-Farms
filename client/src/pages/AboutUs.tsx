@@ -185,6 +185,12 @@ export const AboutUs = (): JSX.Element => {
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Sheep feeding at a wooden trough"
+                decoding="async"
+                fetchPriority="high"
+                width="2614"
+                height="1166"
+                srcSet="/sourcePhotos/about/sheep-feeding-768.jpg 768w, /sourcePhotos/about/sheep-feeding-1280.jpg 1280w, /sourcePhotos/about/sheep-feeding.webp 2614w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
                 src="/sourcePhotos/about/sheep-feeding.webp"
               />
             </div>
@@ -213,6 +219,8 @@ export const AboutUs = (): JSX.Element => {
               data-scroll-reveal-baseline
               className="image-pair-large-reveal edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/about/man-feeding-cows.webp"
             />
             <div
@@ -223,6 +231,8 @@ export const AboutUs = (): JSX.Element => {
               <img
                 className="h-full w-full rounded-lg object-cover"
                 alt="Goats grazing on green pasture"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/about/goats-grazing.webp"
               />
             </div>
@@ -276,6 +286,8 @@ export const AboutUs = (): JSX.Element => {
               ref={landscapeParallaxRef}
               className="absolute inset-x-0 -top-[calc(30%+2px)] h-[calc(160%+4px)] w-full object-cover will-change-transform"
               alt="Rolling hills and farmland"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/about/landscape.webp"
             />
           </div>
@@ -426,6 +438,8 @@ export const AboutUs = (): JSX.Element => {
                   <img
                     className="h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] md:h-[330px]"
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     src={member.image}
                   />
                   <div
@@ -477,6 +491,8 @@ export const AboutUs = (): JSX.Element => {
             data-scroll-reveal-skip
             className="h-[360px] w-full object-cover md:h-[460px]"
             alt="Rancher with cattle at sunset"
+            loading="lazy"
+            decoding="async"
             src="/figmaAssets/cattle_rancher_field.webp"
           />
         </div>

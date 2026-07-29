@@ -79,6 +79,8 @@ export function DonationSection({
           data-testid="donation-background-image"
           className={`h-[380px] w-full object-cover md:h-[590px] ${breatheImage ? "hero-image-after-title" : ""} ${imagePositionClassName}`}
           alt={imageAlt}
+          loading="lazy"
+          decoding="async"
           src={imageSrc}
         />
       </div>

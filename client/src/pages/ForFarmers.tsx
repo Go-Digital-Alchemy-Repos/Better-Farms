@@ -117,6 +117,12 @@ export const ForFarmers = (): JSX.Element => {
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Red barn farm with silo and cornfields"
+                decoding="async"
+                fetchPriority="high"
+                width="1920"
+                height="1080"
+                srcSet="/figmaAssets/red_barn_farm-768.jpg 768w, /figmaAssets/red_barn_farm-1280.jpg 1280w, /figmaAssets/red_barn_farm.webp 1920w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
                 src="/figmaAssets/red_barn_farm.webp"
               />
             </div>
@@ -145,6 +151,8 @@ export const ForFarmers = (): JSX.Element => {
               <img
                 className="h-[560px] w-full object-cover object-bottom md:h-[891px]"
                 alt="Family walking through a livestock barn"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/for-farmers/walking-barn.webp"
               />
             </div>
@@ -161,6 +169,8 @@ export const ForFarmers = (): JSX.Element => {
                       <img
                         className="h-[190px] w-full object-cover"
                         alt={card.title}
+                        loading="lazy"
+                        decoding="async"
                         src={card.image}
                       />
                     </div>
@@ -244,6 +254,8 @@ export const ForFarmers = (): JSX.Element => {
             <img
               className="h-[520px] w-full object-cover"
               alt="Farmers shaking hands in a field"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/for-farmers/parallax.webp"
             />
             <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[180px] bg-gradient-to-b from-white via-white/70 to-transparent" />
@@ -265,6 +277,8 @@ export const ForFarmers = (): JSX.Element => {
               <img
                 className="h-full w-full rounded-lg object-cover"
                 alt="Chickens in a coop"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/for-farmers/chickens.webp"
               />
             </div>
@@ -274,6 +288,8 @@ export const ForFarmers = (): JSX.Element => {
               data-scroll-reveal-baseline
               className="image-pair-large-reveal edge-image-pair-large rounded-lg"
               alt="Cow closeup in pasture"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/for-farmers/cow.webp"
             />
           </div>

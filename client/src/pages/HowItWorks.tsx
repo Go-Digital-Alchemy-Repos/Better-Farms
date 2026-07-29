@@ -163,6 +163,12 @@ export const HowItWorks = (): JSX.Element => {
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Apple harvest in an orchard"
+                decoding="async"
+                fetchPriority="high"
+                width="1307"
+                height="583"
+                srcSet="/sourcePhotos/how-it-works/orchard-768.jpg 768w, /sourcePhotos/how-it-works/orchard.webp 1307w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
                 src="/sourcePhotos/how-it-works/orchard.webp"
               />
             </div>
@@ -193,7 +199,11 @@ export const HowItWorks = (): JSX.Element => {
               <img
                 className="h-[560px] w-full object-cover md:h-[891px]"
                 alt="Two farmers inspecting crops together in a field"
-                src="/sourcePhotos/how-it-works/farmers-inspecting-field.png"
+                loading="lazy"
+                decoding="async"
+                width="972"
+                height="1619"
+                src="/sourcePhotos/how-it-works/farmers-inspecting-field.jpg"
               />
             </div>
             <div className="flex flex-col gap-8">
@@ -209,6 +219,8 @@ export const HowItWorks = (): JSX.Element => {
                       <img
                         className="h-[190px] w-full object-cover"
                         alt={card.title}
+                        loading="lazy"
+                        decoding="async"
                         src={card.image}
                       />
                     </div>
@@ -283,6 +295,8 @@ export const HowItWorks = (): JSX.Element => {
             <img
               className="h-[320px] w-full rounded-b-[30px] object-cover md:h-[420px]"
               alt="Farmers shaking hands in a field"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/how-it-works/parallax.webp"
             />
           </div>
@@ -391,7 +405,11 @@ export const HowItWorks = (): JSX.Element => {
               <img
                 className="absolute inset-x-0 top-0 block h-auto w-full"
                 alt="Livestock grazing on pasture"
-                src="/sourcePhotos/how-it-works/grazing-pasture-hq.jpg"
+                loading="lazy"
+                decoding="async"
+                width="1920"
+                height="832"
+                src="/sourcePhotos/how-it-works/grazing-pasture.jpg"
               />
               <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[10%] bg-gradient-to-b from-white via-white/50 to-transparent" />
             </div>
@@ -433,6 +451,8 @@ export const HowItWorks = (): JSX.Element => {
                 data-scroll-reveal-baseline
                 className="screen-right-image-reveal edge-image-pair-large block rounded-[10px]"
                 alt="Farmer reviewing data in a wheat field"
+                loading="lazy"
+                decoding="async"
                 src="/figmaAssets/farmer_wheat_tablet.webp"
               />
             </div>
@@ -452,6 +472,8 @@ export const HowItWorks = (): JSX.Element => {
                   ref={pigParallaxRef}
                   className="absolute inset-x-0 -top-[17%] h-[134%] w-full object-cover will-change-transform"
                   alt="Pig on pasture"
+                  loading="lazy"
+                  decoding="async"
                   src="/sourcePhotos/how-it-works/red-pig.webp"
                 />
               </div>

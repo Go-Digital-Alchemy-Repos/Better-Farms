@@ -163,6 +163,12 @@ export const GetInvolved = (): JSX.Element => {
               <img
                 className="hero-image-after-title h-full w-full object-cover"
                 alt="Chickens roaming outside a mobile coop"
+                decoding="async"
+                fetchPriority="high"
+                width="2614"
+                height="1166"
+                srcSet="/sourcePhotos/get-involved/chickens-roaming-768.jpg 768w, /sourcePhotos/get-involved/chickens-roaming-1280.jpg 1280w, /sourcePhotos/get-involved/chickens-roaming.webp 2614w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
                 src="/sourcePhotos/get-involved/chickens-roaming.webp"
               />
             </div>
@@ -255,6 +261,8 @@ export const GetInvolved = (): JSX.Element => {
               <img
                 className="edge-image-pair-large rounded-l-[14px] rounded-r-none"
                 alt="Farmer harvesting fresh vegetables into a wooden crate"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/get-involved/vegetable-crate.webp"
               />
             </div>
@@ -322,6 +330,8 @@ export const GetInvolved = (): JSX.Element => {
               data-scroll-reveal-baseline
               className="image-pair-large-reveal edge-image-pair-large rounded-lg object-top"
               alt="Goats gathered in a pasture"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/get-involved/goats-flipped.jpg"
             />
             <div
@@ -332,6 +342,8 @@ export const GetInvolved = (): JSX.Element => {
               <img
                 className="h-full w-full rounded-lg object-cover"
                 alt="Fresh apples in a bushel"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/get-involved/apples.webp"
               />
             </div>
