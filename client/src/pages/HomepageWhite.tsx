@@ -167,9 +167,6 @@ export const HomepageWhite = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
     let animationFrame = 0;
 
     const setCardProgress = (
@@ -205,11 +202,6 @@ export const HomepageWhite = (): JSX.Element => {
       workCardRefs.current.forEach((cardFrame) => {
         if (!cardFrame) return;
 
-        if (reducedMotion.matches) {
-          setCardProgress(cardFrame, 1, 1);
-          return;
-        }
-
         const cardRect = cardFrame.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
         const revealStart = viewportHeight * 0.96;
@@ -236,13 +228,11 @@ export const HomepageWhite = (): JSX.Element => {
     window.addEventListener("scroll", requestCardUpdate, { passive: true });
     window.addEventListener("resize", requestCardUpdate);
     window.addEventListener("load", requestCardUpdate);
-    reducedMotion.addEventListener("change", requestCardUpdate);
 
     return () => {
       window.removeEventListener("scroll", requestCardUpdate);
       window.removeEventListener("resize", requestCardUpdate);
       window.removeEventListener("load", requestCardUpdate);
-      reducedMotion.removeEventListener("change", requestCardUpdate);
       window.cancelAnimationFrame(animationFrame);
     };
   }, []);
@@ -610,7 +600,10 @@ export const HomepageWhite = (): JSX.Element => {
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
-          <div className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
+          <div
+            data-scroll-reveal-skip
+            className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7"
+          >
             {workCards.map((card, index) => (
               <div
                 ref={(cardElement) => {
