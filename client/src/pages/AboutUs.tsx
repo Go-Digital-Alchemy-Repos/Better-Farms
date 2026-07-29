@@ -420,9 +420,9 @@ export const AboutUs = (): JSX.Element => {
                 }}
                 className={`group cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
               >
-                <div className="relative overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
-                    className="h-[330px] w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08]"
+                    className="h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] md:h-[330px]"
                     alt={member.name}
                     src={member.image}
                   />
