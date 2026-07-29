@@ -85,6 +85,7 @@ export const AboutUs = (): JSX.Element => {
     0.3,
     240,
     300,
+    0.1,
   );
   useSlowerScrollParallax(
     landscapeFrameRef,

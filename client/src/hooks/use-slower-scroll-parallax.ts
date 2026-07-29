@@ -6,6 +6,7 @@ export const useSlowerScrollParallax = (
   slowdown: number,
   maximumOffset: number,
   easeOutDurationMs = 0,
+  mobileSlowdown = slowdown,
 ): void => {
   useEffect(() => {
     const frame = frameRef.current;
@@ -20,11 +21,13 @@ export const useSlowerScrollParallax = (
       const rect = frame.getBoundingClientRect();
       const viewportCenter = window.innerHeight / 2;
       const frameCenter = rect.top + rect.height / 2;
+      const activeSlowdown =
+        window.innerWidth < 768 ? mobileSlowdown : slowdown;
       const offset = Math.max(
         -maximumOffset,
         Math.min(
           maximumOffset,
-          (viewportCenter - frameCenter) * slowdown,
+          (viewportCenter - frameCenter) * activeSlowdown,
         ),
       );
 
@@ -66,6 +69,7 @@ export const useSlowerScrollParallax = (
     frameRef,
     movingElementRef,
     maximumOffset,
+    mobileSlowdown,
     slowdown,
   ]);
 };
