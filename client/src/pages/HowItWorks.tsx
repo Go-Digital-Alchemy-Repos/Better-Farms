@@ -122,6 +122,8 @@ const trackingColumns = [
 export const HowItWorks = (): JSX.Element => {
   const quoteFrameRef = useRef<HTMLDivElement>(null);
   const quoteParallaxRef = useRef<HTMLDivElement>(null);
+  const pigFrameRef = useRef<HTMLDivElement>(null);
+  const pigParallaxRef = useRef<HTMLImageElement>(null);
   const processCardsRef = useRef<HTMLDivElement>(null);
 
   useSlowerScrollParallax(
@@ -130,6 +132,12 @@ export const HowItWorks = (): JSX.Element => {
     0.1,
     120,
     300,
+  );
+  useSlowerScrollParallax(
+    pigFrameRef,
+    pigParallaxRef,
+    0.15,
+    60,
   );
   useOrderedViewportReveal(
     processCardsRef,
@@ -431,16 +439,22 @@ export const HowItWorks = (): JSX.Element => {
           </div>
           <div className="esg-partnership-row mx-auto mt-[50px] grid max-w-[1100px] items-stretch gap-10 px-4 md:mt-[100px] md:grid-cols-2 md:px-8">
             <div
-              className="relative order-1 hidden min-h-full w-full rounded-[10px] md:block"
+              ref={pigFrameRef}
+              className="relative order-1 hidden min-h-full w-full overflow-hidden rounded-[10px] md:block"
               data-scroll-reveal-anchor
             >
-              <img
+              <div
                 data-scroll-reveal
                 data-scroll-reveal-baseline
-                className="screen-left-image-reveal absolute inset-0 h-full w-full rounded-[10px] object-cover"
-                alt="Pig on pasture"
-                src="/sourcePhotos/how-it-works/red-pig.webp"
-              />
+                className="screen-left-image-reveal absolute inset-0 overflow-hidden rounded-[10px]"
+              >
+                <img
+                  ref={pigParallaxRef}
+                  className="absolute inset-x-0 -top-[17%] h-[134%] w-full object-cover will-change-transform"
+                  alt="Pig on pasture"
+                  src="/sourcePhotos/how-it-works/red-pig.webp"
+                />
+              </div>
             </div>
             <div className="esg-partnership-copy order-2">
               <h2 className="text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
