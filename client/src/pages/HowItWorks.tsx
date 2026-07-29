@@ -343,7 +343,7 @@ export const HowItWorks = (): JSX.Element => {
                 textShadow: "0 2px 6px rgba(255, 255, 255, 0.98)",
               }}
             >
-              <div className="-translate-y-10">
+              <div className="translate-y-0 md:-translate-y-20">
                 <div ref={quoteParallaxRef}>
                   <div className="rotate-[5deg] text-[27px] leading-[1.08] md:text-[32px]">
                     <span className="md:hidden">
