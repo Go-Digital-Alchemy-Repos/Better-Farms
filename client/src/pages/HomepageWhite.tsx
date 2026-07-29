@@ -26,6 +26,7 @@ export const HomepageWhite = (): JSX.Element => {
   const parallaxPairRef = useRef<HTMLDivElement>(null);
   const parallaxSmallImageRef = useRef<HTMLDivElement>(null);
   const fieldParallaxImageRef = useRef<HTMLImageElement>(null);
+  const workCardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -161,6 +162,87 @@ export const HomepageWhite = (): JSX.Element => {
     return () => {
       window.removeEventListener("scroll", requestParallaxUpdate);
       window.removeEventListener("resize", requestParallaxUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    let animationFrame = 0;
+
+    const setCardProgress = (
+      cardFrame: HTMLDivElement,
+      cardProgress: number,
+      copyProgress: number,
+    ) => {
+      const easedCardProgress =
+        cardProgress * cardProgress * (3 - 2 * cardProgress);
+      const easedCopyProgress =
+        copyProgress * copyProgress * (3 - 2 * copyProgress);
+      const card = cardFrame.querySelector<HTMLElement>(
+        "[data-work-card-surface]",
+      );
+      const copy = cardFrame.querySelector<HTMLElement>("[data-work-card-copy]");
+
+      if (card) {
+        card.style.opacity = `${cardProgress}`;
+        card.style.transform = `scale(${0.84 + easedCardProgress * 0.16})`;
+      }
+
+      if (copy) {
+        copy.style.opacity = `${copyProgress}`;
+        copy.style.transform = `translate3d(0, ${
+          36 * (1 - easedCopyProgress)
+        }px, 0)`;
+      }
+    };
+
+    const updateCardProgress = () => {
+      animationFrame = 0;
+
+      workCardRefs.current.forEach((cardFrame) => {
+        if (!cardFrame) return;
+
+        if (reducedMotion.matches) {
+          setCardProgress(cardFrame, 1, 1);
+          return;
+        }
+
+        const cardRect = cardFrame.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const revealStart = viewportHeight * 0.96;
+        const revealDistance = Math.max(viewportHeight * 0.58, 280);
+        const cardProgress = Math.min(
+          Math.max((revealStart - cardRect.top) / revealDistance, 0),
+          1,
+        );
+        const copyProgress = Math.min(
+          Math.max((cardProgress - 0.22) / 0.68, 0),
+          1,
+        );
+
+        setCardProgress(cardFrame, cardProgress, copyProgress);
+      });
+    };
+
+    const requestCardUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateCardProgress);
+    };
+
+    updateCardProgress();
+    window.addEventListener("scroll", requestCardUpdate, { passive: true });
+    window.addEventListener("resize", requestCardUpdate);
+    window.addEventListener("load", requestCardUpdate);
+    reducedMotion.addEventListener("change", requestCardUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestCardUpdate);
+      window.removeEventListener("resize", requestCardUpdate);
+      window.removeEventListener("load", requestCardUpdate);
+      reducedMotion.removeEventListener("change", requestCardUpdate);
       window.cancelAnimationFrame(animationFrame);
     };
   }, []);
@@ -529,46 +611,54 @@ export const HomepageWhite = (): JSX.Element => {
             </h2>
           </div>
           <div className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
-            {workCards.map((card) => (
-              <Card
-                data-scroll-reveal
+            {workCards.map((card, index) => (
+              <div
+                ref={(cardElement) => {
+                  workCardRefs.current[index] = cardElement;
+                }}
                 key={card.title}
-                className={`overflow-hidden rounded-[20px] border-0 shadow-none md:h-[420px] lg:h-[380px] ${card.bg}`}
+                className="md:h-[420px] lg:h-[380px]"
               >
-                <CardContent className="h-full p-0">
-                  <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
-                    {!card.reverse && (
-                      <img
-                        className="h-[240px] w-full object-cover md:h-full md:min-h-0"
-                        alt="Img"
-                        src={card.image}
-                      />
-                    )}
+                <Card
+                  data-work-card-surface
+                  className={`work-card-scroll-progress h-full overflow-hidden rounded-[20px] border-0 shadow-none ${card.bg}`}
+                >
+                  <CardContent className="h-full p-0">
+                    <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
+                      {!card.reverse && (
+                        <img
+                          className="h-[240px] w-full object-cover md:h-full md:min-h-0"
+                          alt="Img"
+                          src={card.image}
+                        />
+                      )}
 
-                    <div
-                      className="flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-0 md:p-10 lg:px-[54px]"
-                    >
-                      <h3
-                        className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal md:text-[40px] ${card.titleColor}`}
+                      <div
+                        data-work-card-copy
+                        className="work-card-scroll-copy flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-0 md:p-10 lg:px-[54px]"
                       >
-                        {card.title}
-                      </h3>
-                      <p
-                        className={`[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal md:text-lg ${card.bodyColor}`}
-                      >
-                        {card.description}
-                      </p>
+                        <h3
+                          className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal md:text-[40px] ${card.titleColor}`}
+                        >
+                          {card.title}
+                        </h3>
+                        <p
+                          className={`[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal md:text-lg ${card.bodyColor}`}
+                        >
+                          {card.description}
+                        </p>
+                      </div>
+                      {card.reverse && (
+                        <img
+                          className="h-[240px] w-full object-cover md:h-full md:min-h-0"
+                          alt="Img"
+                          src={card.image}
+                        />
+                      )}
                     </div>
-                    {card.reverse && (
-                      <img
-                        className="h-[240px] w-full object-cover md:h-full md:min-h-0"
-                        alt="Img"
-                        src={card.image}
-                      />
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
           <div
