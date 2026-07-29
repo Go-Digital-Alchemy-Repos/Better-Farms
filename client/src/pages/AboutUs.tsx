@@ -270,6 +270,7 @@ export const AboutUs = (): JSX.Element => {
             ref={landscapeFrameRef}
             className="relative h-[300px] overflow-hidden md:h-[420px]"
           >
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 bg-white" />
             <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)]" />
             <img
               ref={landscapeParallaxRef}
