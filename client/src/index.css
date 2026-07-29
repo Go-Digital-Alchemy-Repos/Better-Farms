@@ -53,6 +53,20 @@
   transform: translate3d(0, 0, 0);
 }
 
+.process-card-reveal {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0) scale(0.96);
+  transition:
+    opacity 560ms ease-out,
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.process-card-reveal.process-card-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 @keyframes site-header-slide-down {
   from {
     transform: translate3d(0, -100%, 0);

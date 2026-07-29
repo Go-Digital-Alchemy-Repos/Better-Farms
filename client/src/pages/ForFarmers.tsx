@@ -6,6 +6,7 @@ import { DonationSection } from "@/components/DonationSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
+import { useOrderedViewportReveal } from "@/hooks/use-ordered-viewport-reveal";
 import { Link } from "wouter";
 
 const projectCards = [
@@ -90,7 +91,15 @@ const processSteps = [
 export const ForFarmers = (): JSX.Element => {
   const imagePairRef = useRef<HTMLDivElement>(null);
   const smallImageRef = useRef<HTMLDivElement>(null);
+  const processCardsRef = useRef<HTMLDivElement>(null);
   useImagePairParallax(imagePairRef, smallImageRef);
+  useOrderedViewportReveal(
+    processCardsRef,
+    "[data-process-card-anchor]",
+    "[data-process-card-reveal]",
+    "process-card-reveal-visible",
+    180,
+  );
 
   return (
     <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
@@ -177,26 +186,36 @@ export const ForFarmers = (): JSX.Element => {
               <h2 className="max-w-[520px] text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
                 The 6-Step Process for Better Farms
               </h2>
-              <div className="mt-10 grid gap-6 md:grid-cols-3">
+              <div
+                ref={processCardsRef}
+                data-scroll-reveal-skip
+                className="mt-10 grid gap-6 md:grid-cols-3"
+              >
                 {processSteps.map((step) => (
-                  <article
+                  <div
                     key={step.id}
-                    data-testid={`card-step-${step.id}`}
-                    className={`rounded-2xl p-7 ${step.bg} ${step.text}`}
+                    data-process-card-anchor
+                    className="h-full"
                   >
-                    <img
-                      className="continuous-icon-wiggle mb-7 h-16 w-20 object-contain object-left"
-                      alt=""
-                      aria-hidden="true"
-                      src={step.icon}
-                    />
-                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
-                      {step.id}. {step.title}
-                    </h3>
-                    <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
-                      {step.body}
-                    </p>
-                  </article>
+                    <article
+                      data-process-card-reveal
+                      data-testid={`card-step-${step.id}`}
+                      className={`process-card-reveal h-full rounded-2xl p-7 ${step.bg} ${step.text}`}
+                    >
+                      <img
+                        className="continuous-icon-wiggle mb-7 h-16 w-20 object-contain object-left"
+                        alt=""
+                        aria-hidden="true"
+                        src={step.icon}
+                      />
+                      <h3 className="text-xl font-bold leading-[1.25] tracking-normal md:text-[24px]">
+                        {step.id}. {step.title}
+                      </h3>
+                      <p className="mt-4 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal">
+                        {step.body}
+                      </p>
+                    </article>
+                  </div>
                 ))}
               </div>
             </div>
