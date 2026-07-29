@@ -203,11 +203,14 @@ export const AboutUs = (): JSX.Element => {
           <div
             ref={imagePairRef}
             data-parallax-image-pair
+            data-scroll-reveal-anchor
             className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start"
           >
             <img
               data-parallax-image-role="large"
-              className="edge-image-pair-large rounded-lg"
+              data-scroll-reveal
+              data-scroll-reveal-baseline
+              className="image-pair-large-reveal edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"
               src="/sourcePhotos/about/man-feeding-cows.webp"
             />

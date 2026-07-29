@@ -679,10 +679,13 @@ export const HomepageWhite = (): JSX.Element => {
         <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
           <div
             ref={parallaxPairRef}
+            data-scroll-reveal-anchor
             className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
           >
             <img
-              className="edge-image-pair-large rounded-lg lg:col-start-2 lg:row-start-1"
+              data-scroll-reveal
+              data-scroll-reveal-baseline
+              className="image-pair-large-reveal edge-image-pair-large rounded-lg lg:col-start-2 lg:row-start-1"
               alt="Farmer carrying freshly harvested vegetables"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
