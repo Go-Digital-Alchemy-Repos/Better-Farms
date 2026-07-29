@@ -69,8 +69,8 @@
 
 .image-pair-large-reveal.scroll-reveal-pending {
   transition:
-    opacity 400ms ease-out,
-    transform 400ms ease-out;
+    opacity 800ms ease-out,
+    transform 800ms ease-out;
 }
 
 .edge-image-pair--large-left
