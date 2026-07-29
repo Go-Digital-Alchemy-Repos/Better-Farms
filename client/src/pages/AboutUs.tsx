@@ -272,7 +272,7 @@ export const AboutUs = (): JSX.Element => {
             <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)]" />
             <img
               ref={landscapeParallaxRef}
-              className="absolute inset-x-0 -top-[30%] h-[160%] w-full object-cover will-change-transform"
+              className="absolute inset-x-0 -top-[calc(30%+2px)] h-[calc(160%+4px)] w-full object-cover will-change-transform"
               alt="Rolling hills and farmland"
               src="/sourcePhotos/about/landscape.webp"
             />
