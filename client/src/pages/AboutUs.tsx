@@ -443,27 +443,29 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
-            Ready to See How It Works?
-          </h2>
-          <p className="desktop-text-balance mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
-            Better Farms projects follow a clear process from funding to
-            fieldwork to final reporting. See how we turn your investment into
-            measurable results on a real farm.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Button
-              asChild
-              arrowMotion
-              className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
-            >
-              <Link href="/how-it-works" data-testid="link-how-it-works">
-                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  How It Works
-                </span>
-                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-              </Link>
-            </Button>
+          <div data-scroll-reveal data-scroll-reveal-group>
+            <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+              Ready to See How It Works?
+            </h2>
+            <p className="desktop-text-balance mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+              Better Farms projects follow a clear process from funding to
+              fieldwork to final reporting. See how we turn your investment into
+              measurable results on a real farm.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Button
+                asChild
+                arrowMotion
+                className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
+              >
+                <Link href="/how-it-works" data-testid="link-how-it-works">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
+                    How It Works
+                  </span>
+                  <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
 
