@@ -7,6 +7,7 @@ import { DonationSection } from "@/components/DonationSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
+import { useOrderedViewportReveal } from "@/hooks/use-ordered-viewport-reveal";
 
 const pathways = [
   {
@@ -136,7 +137,15 @@ const partnerBenefits = [
 export const GetInvolved = (): JSX.Element => {
   const imagePairRef = useRef<HTMLDivElement>(null);
   const smallImageRef = useRef<HTMLDivElement>(null);
+  const partnerBenefitsRef = useRef<HTMLDivElement>(null);
   useImagePairParallax(imagePairRef, smallImageRef);
+  useOrderedViewportReveal(
+    partnerBenefitsRef,
+    "[data-partner-benefit-reveal-anchor]",
+    "[data-partner-benefit-reveal]",
+    "principle-reveal-visible",
+    160,
+  );
 
   return (
     <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
@@ -261,33 +270,39 @@ export const GetInvolved = (): JSX.Element => {
           <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Why Partner With Better Farms
           </h2>
-          <div className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
+          <div
+            ref={partnerBenefitsRef}
+            data-scroll-reveal-skip
+            className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2"
+          >
             {partnerBenefits.map((benefit, index) => (
               <div
                 key={index}
+                data-partner-benefit-reveal-anchor
                 data-testid={`card-benefit-${index}`}
-                className="flex gap-6 border-b border-[#d9d4c8] pb-10"
+                className="overflow-hidden border-b border-[#d9d4c8]"
               >
                 <div
-                  data-scroll-reveal
-                  data-scroll-reveal-group
-                  className="h-12 w-12 shrink-0"
+                  data-partner-benefit-reveal
+                  className="principle-reveal flex gap-6 pb-10"
                 >
-                  <img
-                    className="continuous-icon-wiggle h-full w-full object-contain"
-                    src={benefit.icon}
-                    alt=""
-                    aria-hidden="true"
-                    style={{ animationDelay: `${index * -0.55}s` }}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
-                    {benefit.text}
-                  </p>
+                  <div className="h-12 w-12 shrink-0">
+                    <img
+                      className="continuous-icon-wiggle h-full w-full object-contain"
+                      src={benefit.icon}
+                      alt=""
+                      aria-hidden="true"
+                      style={{ animationDelay: `${index * -0.55}s` }}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                      {benefit.title}
+                    </h3>
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+                      {benefit.text}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
