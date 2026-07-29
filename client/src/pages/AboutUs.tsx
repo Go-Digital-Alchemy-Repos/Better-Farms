@@ -76,6 +76,7 @@ export const AboutUs = (): JSX.Element => {
   const quoteParallaxRef = useRef<HTMLDivElement>(null);
   const landscapeFrameRef = useRef<HTMLDivElement>(null);
   const landscapeParallaxRef = useRef<HTMLImageElement>(null);
+  const principlesRef = useRef<HTMLDivElement>(null);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   useImagePairParallax(imagePairRef, smallImageRef);
   useSlowerScrollParallax(
@@ -98,6 +99,75 @@ export const AboutUs = (): JSX.Element => {
         document.getElementById("team")?.scrollIntoView({ behavior: "smooth" });
       });
     }
+  }, []);
+
+  useEffect(() => {
+    const principleItems = Array.from(
+      principlesRef.current?.querySelectorAll<HTMLElement>(
+        "[data-principle-reveal]",
+      ) ?? [],
+    );
+    if (!principleItems.length) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    const eligibleItems = new Set<HTMLElement>();
+    let nextPrincipleIndex = 0;
+    let sequenceTimer = 0;
+
+    const revealAllPrinciples = () => {
+      principleItems.forEach((item) => {
+        item.classList.add("principle-reveal-visible");
+      });
+      nextPrincipleIndex = principleItems.length;
+    };
+
+    const revealNextEligiblePrinciple = () => {
+      sequenceTimer = 0;
+      const nextPrinciple = principleItems[nextPrincipleIndex];
+      if (!nextPrinciple || !eligibleItems.has(nextPrinciple)) return;
+
+      nextPrinciple.classList.add("principle-reveal-visible");
+      nextPrincipleIndex += 1;
+      sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 160);
+    };
+
+    const queueEligiblePrinciples = () => {
+      if (sequenceTimer || nextPrincipleIndex >= principleItems.length) return;
+      sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 0);
+    };
+
+    if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+      revealAllPrinciples();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) {
+            return;
+          }
+
+          eligibleItems.add(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        });
+
+        queueEligiblePrinciples();
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0,
+      },
+    );
+
+    principleItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(sequenceTimer);
+    };
   }, []);
 
   return (
@@ -208,31 +278,36 @@ export const AboutUs = (): JSX.Element => {
               <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 The Principles Behind Every Project
               </h2>
-              <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
+              <div
+                ref={principlesRef}
+                data-scroll-reveal-skip
+                className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2"
+              >
                 {principles.map((p, index) => (
                   <div
                     key={p.title}
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="flex items-start gap-5 border-b border-white/40 pb-6 text-left"
+                    className="overflow-hidden border-b border-white/40 pb-6 text-left"
                   >
                     <div
-                      data-scroll-reveal
-                      data-scroll-reveal-group
-                      className="h-[77px] w-[77px] shrink-0"
+                      data-principle-reveal
+                      className="principle-reveal flex items-start gap-5"
                     >
-                      <img
-                        className="continuous-icon-wiggle h-full w-full object-contain"
-                        src={p.icon}
-                        alt=""
-                        aria-hidden="true"
-                        style={{ animationDelay: `${index * -0.55}s` }}
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-white md:text-[24px]">{p.title}</h3>
-                      <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90">
-                        {p.body}
-                      </p>
+                      <div className="h-[77px] w-[77px] shrink-0">
+                        <img
+                          className="continuous-icon-wiggle h-full w-full object-contain"
+                          src={p.icon}
+                          alt=""
+                          aria-hidden="true"
+                          style={{ animationDelay: `${index * -0.55}s` }}
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-white md:text-[24px]">{p.title}</h3>
+                        <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90">
+                          {p.body}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
