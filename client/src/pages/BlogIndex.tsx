@@ -78,11 +78,11 @@ export function BlogIndex(): JSX.Element {
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
               <div>
                 {featuredPost && (
-                  <article className="mb-8 overflow-hidden rounded-[20px] bg-[#bc623f] text-white">
+                  <article className="mb-8 overflow-hidden rounded-[20px] bg-[#f4ecd3] text-[#5e4540]">
                     <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
                       <Link
                         href={`/blog/${featuredPost.slug}`}
-                        className="block min-h-[300px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset lg:min-h-[480px]"
+                        className="block min-h-[300px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-inset lg:min-h-[480px]"
                         aria-label={`Read featured story: ${featuredPost.title}`}
                       >
                         <img
@@ -95,29 +95,34 @@ export function BlogIndex(): JSX.Element {
                         />
                       </Link>
                       <div className="flex flex-col justify-center p-7 md:p-10 lg:p-12">
-                        <p className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.16em] text-[#f4ecd3]">
-                          Featured · {featuredPost.category}
+                        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.16em] text-[#827b3e]">
+                          <span>Featured</span>
+                          <span
+                            aria-hidden="true"
+                            className="h-1 w-1 rounded-full bg-[#bc623f]"
+                          />
+                          <span>{featuredPost.category}</span>
                         </p>
                         <h2 className="mt-5 text-[34px] font-bold leading-[1.08] md:text-[44px]">
                           <Link
                             href={`/blog/${featuredPost.slug}`}
-                            className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                            className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e]"
                           >
                             {featuredPost.title}
                           </Link>
                         </h2>
-                        <p className="mt-5 [font-family:'Inter',Helvetica] text-base text-white md:text-lg">
+                        <p className="mt-5 [font-family:'Inter',Helvetica] text-base text-[#5e4540] md:text-lg">
                           {featuredPost.excerpt}
                         </p>
                         <div className="mt-8 flex flex-wrap items-center gap-4">
                           <Link
                             href={`/blog/${featuredPost.slug}`}
-                            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-5 py-3 [font-family:'Inter',Helvetica] text-sm font-bold text-[#5e4540] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f4ecd3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#bc623f]"
+                            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-5 py-3 [font-family:'Inter',Helvetica] text-sm font-bold text-[#5e4540] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4ecd3]"
                           >
                             Read featured story
                             <ArrowRight className="h-4 w-4" aria-hidden="true" />
                           </Link>
-                          <span className="[font-family:'Inter',Helvetica] text-sm text-[#f4ecd3]">
+                          <span className="[font-family:'Inter',Helvetica] text-sm font-medium text-[#746762]">
                             {featuredPost.readTime}
                           </span>
                         </div>
