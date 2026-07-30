@@ -144,56 +144,58 @@ export function BlogArticle(): JSX.Element {
       <main>
         <article>
           <header className="px-4 pt-4 md:px-[29px] lg:pt-0">
-            <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-10 text-center md:px-[42px] md:pb-[42px] md:pt-[72px]">
-              <nav
-                aria-label="Breadcrumb"
-                className="flex flex-wrap items-center justify-center gap-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white"
-              >
-                <Link
-                  href="/"
-                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                >
-                  Home
-                </Link>
-                <span aria-hidden="true">/</span>
-                <Link
-                  href="/blog"
-                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                >
-                  Journal
-                </Link>
-                <span aria-hidden="true">/</span>
-                <span aria-current="page">
-                  {post.category}
-                </span>
-              </nav>
+            <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] p-4 md:p-[42px]">
+              <div className="grid gap-8 md:grid-cols-[3fr_2fr] md:items-stretch md:gap-10">
+                <div className="flex flex-col justify-center text-left">
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="flex flex-wrap items-center justify-start gap-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white"
+                  >
+                    <Link
+                      href="/"
+                      className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    >
+                      Home
+                    </Link>
+                    <span aria-hidden="true">/</span>
+                    <Link
+                      href="/blog"
+                      className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    >
+                      Journal
+                    </Link>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">{post.category}</span>
+                  </nav>
 
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <span className="rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
-                  {post.category}
-                </span>
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white">
-                  <span>{post.author}</span>
-                  <span aria-hidden="true">•</span>
-                  <time dateTime={post.isoDate}>{post.publishedAt}</time>
-                  <span aria-hidden="true">•</span>
-                  <span>{post.readTime}</span>
+                  <div className="mt-8 flex flex-wrap items-center justify-start gap-x-4 gap-y-2">
+                    <span className="rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
+                      {post.category}
+                    </span>
+                    <div className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white">
+                      <span>{post.author}</span>
+                      <span aria-hidden="true">•</span>
+                      <time dateTime={post.isoDate}>{post.publishedAt}</time>
+                      <span aria-hidden="true">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+
+                  <h1 className="mt-7 text-[42px] font-bold leading-[1.04] text-white md:text-[52px]">
+                    {post.title}
+                  </h1>
                 </div>
+                <figure className="min-h-[280px] overflow-hidden rounded-[20px] bg-[#e6dfc9] md:min-h-0">
+                  <img
+                    src={post.image}
+                    alt={post.imageAlt}
+                    decoding="async"
+                    width={post.imageWidth}
+                    height={post.imageHeight}
+                    className="h-full w-full object-cover"
+                  />
+                </figure>
               </div>
-
-              <h1 className="mx-auto mt-7 max-w-[1120px] text-[44px] font-bold leading-[1.02] text-white md:text-[64px] lg:text-[76px]">
-                {post.title}
-              </h1>
-              <figure className="mt-8 overflow-hidden rounded-[20px] bg-[#e6dfc9] md:mt-12">
-                <img
-                  src={post.image}
-                  alt={post.imageAlt}
-                  decoding="async"
-                  width={post.imageWidth}
-                  height={post.imageHeight}
-                  className="aspect-[16/9] w-full object-cover"
-                />
-              </figure>
             </div>
           </header>
 
