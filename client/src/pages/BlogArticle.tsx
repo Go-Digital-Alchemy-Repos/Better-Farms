@@ -256,7 +256,7 @@ export function BlogArticle(): JSX.Element {
                     )}
                     {index === 1 && post.quote && (
                       <blockquote className="my-12 border-l-4 border-[#bc623f] py-2 pl-6 md:pl-8">
-                        <p className="text-[28px] font-bold italic leading-[1.2] text-[#5e4540] md:text-[36px]">
+                        <p className="text-[24px] font-bold italic leading-[1.2] text-[#5e4540]">
                           “{post.quote}”
                         </p>
                       </blockquote>
