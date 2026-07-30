@@ -4,11 +4,23 @@ import type { BlogPost } from "@/data/blog";
 
 type BlogPostCardProps = {
   post: BlogPost;
+  orientation?: "vertical" | "horizontal";
 };
 
-export function BlogPostCard({ post }: BlogPostCardProps): JSX.Element {
+export function BlogPostCard({
+  post,
+  orientation = "vertical",
+}: BlogPostCardProps): JSX.Element {
+  const isHorizontal = orientation === "horizontal";
+
   return (
-    <article className="overflow-hidden rounded-[18px] bg-[#f4ecd3]">
+    <article
+      className={`overflow-hidden rounded-[18px] bg-[#f4ecd3] ${
+        isHorizontal
+          ? "sm:grid sm:grid-cols-[180px_minmax(0,1fr)]"
+          : ""
+      }`}
+    >
       <Link
         href={`/blog/${post.slug}`}
         className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-inset"
@@ -21,10 +33,18 @@ export function BlogPostCard({ post }: BlogPostCardProps): JSX.Element {
           height={post.imageHeight}
           loading="lazy"
           decoding="async"
-          className="aspect-[16/10] w-full object-cover"
+          className={
+            isHorizontal
+              ? "aspect-[16/10] h-full min-h-[220px] w-full object-cover sm:aspect-auto"
+              : "aspect-[16/10] w-full object-cover"
+          }
         />
       </Link>
-      <div className="flex min-h-[310px] flex-col p-6 md:p-7">
+      <div
+        className={`flex flex-col p-6 ${
+          isHorizontal ? "min-h-[300px]" : "min-h-[310px] md:p-7"
+        }`}
+      >
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 [font-family:'Inter',Helvetica] text-xs font-semibold uppercase tracking-[0.12em] text-[#827b3e]">
           <span>{post.category}</span>
           <span

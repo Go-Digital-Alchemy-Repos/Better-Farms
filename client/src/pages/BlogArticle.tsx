@@ -336,7 +336,11 @@ export function BlogArticle(): JSX.Element {
               </div>
               <div className="mt-9 grid gap-7 md:grid-cols-2">
                 {relatedPosts.map((related) => (
-                  <BlogPostCard key={related.slug} post={related} />
+                  <BlogPostCard
+                    key={related.slug}
+                    post={related}
+                    orientation="horizontal"
+                  />
                 ))}
               </div>
             </div>
