@@ -55,7 +55,7 @@ function ShareLinks({ title, url }: ShareLinksProps) {
       <p className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.16em] text-[#bc623f]">
         Share this story
       </p>
-      <div className="mt-4 flex flex-wrap gap-2 lg:grid lg:grid-cols-2">
+      <div className="mt-4 flex flex-wrap gap-2 lg:grid lg:grid-cols-[44px_44px] lg:gap-x-10 lg:gap-y-2">
         {links.map(({ label, href, Icon }) => (
           <a
             key={label}
