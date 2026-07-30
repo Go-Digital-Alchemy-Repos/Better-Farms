@@ -172,8 +172,8 @@ export function BlogIndex(): JSX.Element {
                   )}
                 </div>
 
-                <fieldset className="mt-7" aria-label="Categories">
-                  <div className="mt-3 divide-y divide-white/30">
+                <fieldset className="mt-4" aria-label="Categories">
+                  <div className="divide-y divide-white/30">
                     {["All", ...blogCategories].map((category) => {
                       const count =
                         category === "All"
