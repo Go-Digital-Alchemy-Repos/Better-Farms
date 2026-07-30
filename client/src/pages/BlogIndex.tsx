@@ -35,7 +35,7 @@ export function BlogIndex(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-[#fbfaf7]">
+    <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader animateOnLoad={false} />
       <main>
         <section className="px-4 pb-12 pt-4 md:px-8 md:pb-20 lg:pt-0">
