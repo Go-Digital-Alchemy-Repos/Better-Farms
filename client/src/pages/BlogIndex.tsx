@@ -115,12 +115,9 @@ export function BlogIndex(): JSX.Element {
           <div className="mx-auto max-w-[1240px]">
             <div className="mb-10 flex flex-col justify-between gap-4 border-b border-[#d9cfb5] pb-6 sm:flex-row sm:items-end">
               <div>
-                <p className="[font-family:'Inter',Helvetica] text-sm font-bold uppercase tracking-[0.16em] text-[#bc623f]">
-                  Field notes and resources
-                </p>
                 <h2
                   id="journal-heading"
-                  className="mt-2 text-[40px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]"
+                  className="text-[40px] font-bold leading-[1.1] text-[#5e4540] md:text-[52px]"
                 >
                   Latest stories
                 </h2>
