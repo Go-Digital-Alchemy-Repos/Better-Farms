@@ -57,7 +57,7 @@ export function BlogIndex(): JSX.Element {
           aria-labelledby="journal-heading"
         >
           <div className="mx-auto max-w-[1240px]">
-            <div className="mb-10 flex flex-col justify-between gap-4 border-b border-[#d9cfb5] pb-6 sm:flex-row sm:items-end">
+            <div className="mb-10 flex flex-col justify-between gap-4 border-b border-[#5e4540] pb-6 sm:flex-row sm:items-end">
               <div>
                 <h2
                   id="journal-heading"
