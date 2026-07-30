@@ -211,9 +211,9 @@ export function BlogArticle(): JSX.Element {
                 </div>
 
                 <aside className="my-10">
-                  <h2 className="text-[28px] font-bold text-[#5e4540]">
+                  <h3 className="text-[28px] font-bold text-[#5e4540]">
                     Key takeaways
-                  </h2>
+                  </h3>
                   <ul className="mt-5 space-y-3 pl-5 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
                     {post.takeaways.map((takeaway) => (
                       <li key={takeaway} className="list-disc pl-1">
@@ -229,12 +229,12 @@ export function BlogArticle(): JSX.Element {
                     aria-labelledby={`article-section-${index}`}
                     className="mt-12"
                   >
-                    <h2
+                    <h3
                       id={`article-section-${index}`}
-                      className="text-[34px] font-bold leading-[1.12] text-[#5e4540] md:text-[42px]"
+                      className="text-[28px] font-bold leading-[1.12] text-[#5e4540]"
                     >
                       {section.heading}
-                    </h2>
+                    </h3>
                     <div className="mt-5 space-y-5">
                       {section.paragraphs.map((paragraph) => (
                         <p
