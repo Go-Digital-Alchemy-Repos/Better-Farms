@@ -154,18 +154,18 @@ export function BlogIndex(): JSX.Element {
               </div>
 
               <aside
-                className="rounded-[18px] bg-[#f4ecd3] p-6 md:p-7 lg:sticky lg:top-[100px]"
+                className="rounded-[18px] bg-[#7587ac] p-6 md:p-7 lg:sticky lg:top-[100px]"
                 aria-label="Filter journal stories"
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h2 className="text-[28px] font-bold text-[#5e4540]">
+                  <h2 className="text-[28px] font-bold text-white">
                     Categories
                   </h2>
                   {hasFilters && (
                     <button
                       type="button"
                       onClick={resetFilters}
-                      className="min-h-11 rounded-md px-2 [font-family:'Inter',Helvetica] text-xs font-bold text-[#827b3e] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e]"
+                      className="min-h-11 rounded-md px-2 [font-family:'Inter',Helvetica] text-xs font-bold text-white underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       Reset
                     </button>
@@ -173,7 +173,7 @@ export function BlogIndex(): JSX.Element {
                 </div>
 
                 <fieldset className="mt-7" aria-label="Categories">
-                  <div className="mt-3 divide-y divide-[#d9cfb5]">
+                  <div className="mt-3 divide-y divide-white/30">
                     {["All", ...blogCategories].map((category) => {
                       const count =
                         category === "All"
@@ -188,8 +188,8 @@ export function BlogIndex(): JSX.Element {
                           type="button"
                           aria-pressed={selected}
                           onClick={() => setSelectedCategory(category)}
-                          className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] ${
-                            selected ? "text-[#bc623f]" : "text-[#5e4540]"
+                          className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                            selected ? "text-[#f4ecd3]" : "text-white"
                           }`}
                         >
                           <span>{category}</span>
@@ -210,7 +210,7 @@ export function BlogIndex(): JSX.Element {
 
                 <fieldset className="mt-8">
                   <legend
-                    className="text-[28px] font-bold text-[#5e4540]"
+                    className="text-[28px] font-bold text-white"
                     style={{
                       fontFamily: '"Playfair Display", Georgia, serif',
                     }}
@@ -230,7 +230,7 @@ export function BlogIndex(): JSX.Element {
                               current === tag ? null : tag,
                             )
                           }
-                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4ecd3] ${
+                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#7587ac] ${
                             selected
                               ? "border-[#827b3e] bg-[#827b3e] text-white"
                               : "border-[#b9ad90] bg-white text-[#5e4540]"
