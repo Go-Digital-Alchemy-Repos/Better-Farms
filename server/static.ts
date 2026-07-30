@@ -1,16 +1,14 @@
 import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
+import {
+  prerenderSeoRoutes,
+  type SeoConfig,
+} from "../client/src/lib/seo";
 
-const publicRoutes = [
-  "/",
-  "/how-it-works",
-  "/about",
-  "/contact",
-  "/for-farmers",
-  "/fund-a-farm",
-  "/get-involved",
-] as const;
+const publicRoutes = prerenderSeoRoutes.map(
+  ({ path: routePath }: SeoConfig) => routePath,
+);
 
 export function serveStatic(app: Express) {
   const distPath = path.resolve(process.cwd(), "dist", "public");

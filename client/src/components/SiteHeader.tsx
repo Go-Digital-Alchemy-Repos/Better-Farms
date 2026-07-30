@@ -11,7 +11,13 @@ export const navItems = [
   { label: "CONTACT", href: "/contact" },
 ];
 
-export const SiteHeader = (): JSX.Element => {
+type SiteHeaderProps = {
+  animateOnLoad?: boolean;
+};
+
+export const SiteHeader = ({
+  animateOnLoad = true,
+}: SiteHeaderProps): JSX.Element => {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -55,7 +61,7 @@ export const SiteHeader = (): JSX.Element => {
 
   return (
     <header
-      className={`site-header-load sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
+      className={`${animateOnLoad ? "site-header-load" : ""} sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
         hasScrolled
           ? "shadow-[0_4px_12px_rgba(94,69,64,0.07)]"
           : "shadow-none"

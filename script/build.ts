@@ -9,6 +9,7 @@ import {
   DEFAULT_SITE_URL,
   normalizeSiteUrl,
   notFoundSeo,
+  prerenderSeoRoutes,
   seoRoutes,
   type SeoConfig,
 } from "../client/src/lib/seo";
@@ -121,7 +122,7 @@ async function prerenderRoutes() {
     render: (pathname: string) => Promise<string>;
   };
 
-  for (const seo of [...seoRoutes, notFoundSeo]) {
+  for (const seo of [...prerenderSeoRoutes, notFoundSeo]) {
     const renderedApp = await render(seo.path);
     const html = template
       .replace(

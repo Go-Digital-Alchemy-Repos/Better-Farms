@@ -1,3 +1,5 @@
+import { blogPosts, getBlogPost } from "../data/blog";
+
 export const DEFAULT_SITE_URL =
   "https://better-farms-production.up.railway.app";
 
@@ -131,6 +133,44 @@ export const seoRoutes: SeoConfig[] = [
   },
 ];
 
+export const previewSeoRoutes: SeoConfig[] = [
+  {
+    path: "/blog",
+    title: "Better Farms Journal | Stories From the Field",
+    description:
+      "Preview practical stories and resources for farmers, funders, and partners working toward more resilient farms and food systems.",
+    ogTitle: "Stories From the Field | Better Farms Journal",
+    ogDescription:
+      "Farm resilience, sustainable practices, project management, and impact reporting from the Better Farms editorial preview.",
+    image: "/sourcePhotos/for-farmers/irrigation.webp",
+    imageAlt: "Drip irrigation delivering water to young crops",
+    imageWidth: 884,
+    imageHeight: 382,
+    heading: "Stories From the Field",
+    summary:
+      "The Better Farms Journal shares practical ideas for farmers, funders, and partners building resilient food systems.",
+    robots: "noindex, nofollow",
+  },
+  ...blogPosts.map(
+    (post): SeoConfig => ({
+      path: `/blog/${post.slug}`,
+      title: `${post.title} | Better Farms`,
+      description: post.excerpt,
+      ogTitle: post.title,
+      ogDescription: post.excerpt,
+      image: post.image,
+      imageAlt: post.imageAlt,
+      imageWidth: post.imageWidth,
+      imageHeight: post.imageHeight,
+      heading: post.title,
+      summary: post.excerpt,
+      robots: "noindex, nofollow",
+    }),
+  ),
+];
+
+export const prerenderSeoRoutes = [...seoRoutes, ...previewSeoRoutes];
+
 export const notFoundSeo: SeoConfig = {
   path: "/404",
   title: "Page Not Found | Better Farms",
@@ -156,7 +196,8 @@ export function getSeoConfig(pathname: string) {
   const normalizedPath =
     pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
   return (
-    seoRoutes.find((route) => route.path === normalizedPath) ?? notFoundSeo
+    prerenderSeoRoutes.find((route) => route.path === normalizedPath) ??
+    notFoundSeo
   );
 }
 
@@ -237,23 +278,88 @@ export function buildBreadcrumbJsonLd(
   if (seo.path === "/" || seo.path === "/404") return null;
 
   const baseUrl = normalizeSiteUrl(siteUrl);
+  const blogPost = seo.path.startsWith("/blog/")
+    ? getBlogPost(seo.path.replace("/blog/", ""))
+    : undefined;
+  const itemListElement = blogPost
+    ? [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Better Farms Journal",
+          item: absoluteUrl("/blog", baseUrl),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: blogPost.title,
+          item: absoluteUrl(seo.path, baseUrl),
+        },
+      ]
+    : [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: seo.heading,
+          item: absoluteUrl(seo.path, baseUrl),
+        },
+      ];
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: baseUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: seo.heading,
-        item: absoluteUrl(seo.path, baseUrl),
-      },
-    ],
+    itemListElement,
+  };
+}
+
+export function buildBlogPostingJsonLd(
+  seo: SeoConfig,
+  siteUrl = DEFAULT_SITE_URL,
+) {
+  if (!seo.path.startsWith("/blog/")) return null;
+  const post = getBlogPost(seo.path.replace("/blog/", ""));
+  if (!post) return null;
+
+  const baseUrl = normalizeSiteUrl(siteUrl);
+  const pageUrl = absoluteUrl(seo.path, baseUrl);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${pageUrl}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.isoDate,
+    dateModified: post.isoDate,
+    image: {
+      "@type": "ImageObject",
+      url: absoluteUrl(post.image, baseUrl),
+      caption: post.imageAlt,
+      width: post.imageWidth,
+      height: post.imageHeight,
+    },
+    author: {
+      "@type": "Organization",
+      name: post.author,
+    },
+    publisher: {
+      "@id": `${baseUrl}/#organization`,
+    },
+    mainEntityOfPage: {
+      "@id": `${pageUrl}#webpage`,
+    },
   };
 }
 
@@ -263,6 +369,7 @@ export function buildStructuredData(
 ) {
   const pageData = buildWebPageJsonLd(seo, siteUrl);
   const breadcrumbData = buildBreadcrumbJsonLd(seo, siteUrl);
+  const blogPostingData = buildBlogPostingJsonLd(seo, siteUrl);
 
   return [
     ...(seo.path === "/"
@@ -270,5 +377,6 @@ export function buildStructuredData(
       : []),
     pageData,
     ...(breadcrumbData ? [breadcrumbData] : []),
+    ...(blogPostingData ? [blogPostingData] : []),
   ];
 }

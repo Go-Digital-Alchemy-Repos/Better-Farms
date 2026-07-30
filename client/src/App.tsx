@@ -27,6 +27,12 @@ const FundAFarm = lazy(() =>
 const GetInvolved = lazy(() =>
   import("@/pages/GetInvolved").then((module) => ({ default: module.GetInvolved })),
 );
+const BlogIndex = lazy(() =>
+  import("@/pages/BlogIndex").then((module) => ({ default: module.BlogIndex })),
+);
+const BlogArticle = lazy(() =>
+  import("@/pages/BlogArticle").then((module) => ({ default: module.BlogArticle })),
+);
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -51,6 +57,8 @@ function Router() {
         <Route path="/for-farmers" component={ForFarmers} />
         <Route path="/fund-a-farm" component={FundAFarm} />
         <Route path="/get-involved" component={GetInvolved} />
+        <Route path="/blog" component={BlogIndex} />
+        <Route path="/blog/:slug" component={BlogArticle} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
