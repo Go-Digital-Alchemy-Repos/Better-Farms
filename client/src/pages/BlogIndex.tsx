@@ -194,14 +194,14 @@ export function BlogIndex(): JSX.Element {
                           aria-pressed={selected}
                           onClick={() => setSelectedCategory(category)}
                           className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-                            selected ? "text-[#f4ecd3]" : "text-white"
+                            selected ? "text-[#827b3e]" : "text-white"
                           }`}
                         >
                           <span>{category}</span>
                           <span
                             className={`inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs ${
                               selected
-                                ? "bg-[#bc623f] text-white"
+                                ? "bg-[#827b3e] text-white"
                                 : "bg-white text-[#746762]"
                             }`}
                           >
