@@ -218,7 +218,7 @@ export function BlogIndex(): JSX.Element {
               >
                 <div className="flex items-center justify-between gap-3">
                   <h2 className="text-[28px] font-bold text-[#5e4540]">
-                    Explore
+                    Categories
                   </h2>
                   {hasFilters && (
                     <button
@@ -231,10 +231,7 @@ export function BlogIndex(): JSX.Element {
                   )}
                 </div>
 
-                <fieldset className="mt-7">
-                  <legend className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.15em] text-[#bc623f]">
-                    Categories
-                  </legend>
+                <fieldset className="mt-7" aria-label="Categories">
                   <div className="mt-3 divide-y divide-[#d9cfb5]">
                     {["All", ...blogCategories].map((category) => {
                       const count =
@@ -270,8 +267,13 @@ export function BlogIndex(): JSX.Element {
                   </div>
                 </fieldset>
 
-                <fieldset className="mt-8 border-t border-[#d9cfb5] pt-7">
-                  <legend className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.15em] text-[#bc623f]">
+                <fieldset className="mt-8">
+                  <legend
+                    className="text-[28px] font-bold text-[#5e4540]"
+                    style={{
+                      fontFamily: '"Playfair Display", Georgia, serif',
+                    }}
+                  >
                     Tags
                   </legend>
                   <div className="mt-4 flex flex-wrap gap-2">
