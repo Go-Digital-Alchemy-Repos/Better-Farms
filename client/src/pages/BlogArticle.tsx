@@ -210,11 +210,11 @@ export function BlogArticle(): JSX.Element {
                   ))}
                 </div>
 
-                <aside className="my-10 rounded-[18px] bg-[#7587ac] px-6 py-7 text-white md:px-8 md:py-8">
-                  <h2 className="text-[28px] font-bold text-white">
+                <aside className="my-10">
+                  <h2 className="text-[28px] font-bold text-[#5e4540]">
                     Key takeaways
                   </h2>
-                  <ul className="mt-5 space-y-3 pl-5 [font-family:'Inter',Helvetica] text-base">
+                  <ul className="mt-5 space-y-3 pl-5 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
                     {post.takeaways.map((takeaway) => (
                       <li key={takeaway} className="list-disc pl-1">
                         {takeaway}
