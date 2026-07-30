@@ -3,6 +3,7 @@ import { Link, useParams } from "wouter";
 import { Check, Copy, Mail, ArrowLeft, ArrowRight } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { BlogPostCard } from "@/components/BlogPostCard";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { blogPosts, getBlogPost } from "@/data/blog";
@@ -333,42 +334,7 @@ export function BlogArticle(): JSX.Element {
               </div>
               <div className="mt-9 grid gap-7 md:grid-cols-2">
                 {relatedPosts.map((related) => (
-                  <article
-                    key={related.slug}
-                    className="grid overflow-hidden rounded-[18px] bg-[#f4ecd3] sm:grid-cols-[180px_minmax(0,1fr)]"
-                  >
-                    <Link
-                      href={`/blog/${related.slug}`}
-                      className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-inset"
-                      aria-label={`Read ${related.title}`}
-                    >
-                      <img
-                        src={related.image}
-                        alt={related.imageAlt}
-                        width={related.imageWidth}
-                        height={related.imageHeight}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full min-h-[180px] w-full object-cover"
-                      />
-                    </Link>
-                    <div className="p-6">
-                      <p className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-[#827b3e]">
-                        {related.category}
-                      </p>
-                      <h3 className="mt-3 text-[24px] font-bold leading-[1.15] text-[#5e4540]">
-                        <Link
-                          href={`/blog/${related.slug}`}
-                          className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e]"
-                        >
-                          {related.title}
-                        </Link>
-                      </h3>
-                      <p className="mt-4 [font-family:'Inter',Helvetica] text-sm font-semibold text-[#746762]">
-                        {related.readTime}
-                      </p>
-                    </div>
-                  </article>
+                  <BlogPostCard key={related.slug} post={related} />
                 ))}
               </div>
             </div>
