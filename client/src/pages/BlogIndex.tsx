@@ -237,8 +237,8 @@ export function BlogIndex(): JSX.Element {
                           }
                           className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#7587ac] ${
                             selected
-                              ? "border-[#827b3e] bg-[#827b3e] text-white"
-                              : "border-[#b9ad90] bg-white text-[#5e4540]"
+                              ? "border-white bg-transparent text-[#827b3e]"
+                              : "border-white bg-transparent text-white"
                           }`}
                         >
                           {tag}
