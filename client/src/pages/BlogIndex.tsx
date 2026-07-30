@@ -95,24 +95,16 @@ export function BlogIndex(): JSX.Element {
       <SiteHeader animateOnLoad={false} />
       <main>
         <section className="px-4 pb-12 pt-4 md:px-8 md:pb-20 lg:pt-0">
-          <div className="mx-auto grid max-w-[1386px] gap-8 overflow-hidden rounded-[20px] bg-[#7587ac] px-6 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-end lg:px-[72px] lg:py-[78px]">
-            <div>
-              <p className="[font-family:'Inter',Helvetica] text-sm font-bold uppercase tracking-[0.18em] text-[#f4ecd3]">
-                Better Farms Journal
-              </p>
-              <h1 className="mt-5 max-w-[820px] text-[48px] font-bold leading-[1.03] text-white md:text-[72px] lg:text-[88px]">
-                Stories From the Field
-              </h1>
-            </div>
-            <div className="border-l-0 border-white/40 lg:border-l lg:pl-10">
-              <span className="inline-flex rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
-                Editorial preview
-              </span>
-              <p className="mt-5 [font-family:'Inter',Helvetica] text-lg text-white md:text-xl">
-                Practical ideas for farmers, funders, and anyone working toward
-                a more resilient food system.
-              </p>
-            </div>
+          <div className="hero-panel mx-auto max-w-[1386px] overflow-hidden rounded-[20px] bg-[#827b3e] px-4 pb-12 md:px-[42px] md:pb-[72px]">
+            <p
+              className="hero-eyebrow text-center text-2xl font-bold text-white md:text-[28px]"
+              style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+            >
+              Better Farms Journal
+            </p>
+            <h1 className="hero-title mx-auto text-center font-bold text-white">
+              Stories From the Field
+            </h1>
           </div>
         </section>
 
