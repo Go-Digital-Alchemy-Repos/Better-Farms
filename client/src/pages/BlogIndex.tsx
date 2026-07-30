@@ -210,7 +210,7 @@ export function BlogIndex(): JSX.Element {
 
                 <fieldset className="mt-8">
                   <legend
-                    className="text-[28px] font-bold text-white"
+                    className="flex w-full items-center gap-2 text-[28px] font-bold text-white after:h-px after:flex-1 after:bg-white/30 after:content-['']"
                     style={{
                       fontFamily: '"Playfair Display", Georgia, serif',
                     }}
