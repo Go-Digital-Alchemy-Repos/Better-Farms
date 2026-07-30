@@ -344,7 +344,7 @@ export function BlogArticle(): JSX.Element {
                 {relatedPosts.map((related) => (
                   <article
                     key={related.slug}
-                    className="grid overflow-hidden rounded-[18px] border border-[#d9cfb5] bg-white sm:grid-cols-[180px_minmax(0,1fr)]"
+                    className="grid overflow-hidden rounded-[18px] bg-[#f4ecd3] sm:grid-cols-[180px_minmax(0,1fr)]"
                   >
                     <Link
                       href={`/blog/${related.slug}`}

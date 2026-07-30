@@ -12,7 +12,7 @@ import {
 
 function ArticleCard({ post }: { post: BlogPost }) {
   return (
-    <article className="overflow-hidden rounded-[18px] border border-[#d9cfb5] bg-white">
+    <article className="overflow-hidden rounded-[18px] bg-[#f4ecd3]">
       <Link
         href={`/blog/${post.slug}`}
         className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e] focus-visible:ring-inset"
