@@ -142,74 +142,65 @@ export function BlogArticle(): JSX.Element {
       <SiteHeader animateOnLoad={false} />
       <main>
         <article>
-          <header className="bg-[#f4ecd3] px-4 pb-14 pt-10 md:px-8 md:pb-20 md:pt-16">
-            <div className="mx-auto max-w-[1080px]">
+          <header className="px-4 pt-4 md:px-[29px] lg:pt-0">
+            <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 pt-10 text-center md:px-[42px] md:pb-[42px] md:pt-[72px]">
               <nav
                 aria-label="Breadcrumb"
-                className="flex flex-wrap items-center gap-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-[#746762]"
+                className="flex flex-wrap items-center justify-center gap-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white"
               >
                 <Link
                   href="/"
-                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e]"
+                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   Home
                 </Link>
                 <span aria-hidden="true">/</span>
                 <Link
                   href="/blog"
-                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#827b3e]"
+                  className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   Journal
                 </Link>
                 <span aria-hidden="true">/</span>
-                <span aria-current="page" className="text-[#5e4540]">
+                <span aria-current="page">
                   {post.category}
                 </span>
               </nav>
 
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-[#827b3e] px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+                <span className="rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
                   {post.category}
                 </span>
-                <span className="rounded-full border border-[#b9ad90] px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-[#5e4540]">
-                  Editorial preview
-                </span>
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white">
+                  <span>{post.author}</span>
+                  <span aria-hidden="true">•</span>
+                  <time dateTime={post.isoDate}>{post.publishedAt}</time>
+                  <span aria-hidden="true">•</span>
+                  <span>{post.readTime}</span>
+                </div>
               </div>
 
-              <h1 className="mt-7 max-w-[1020px] text-[44px] font-bold leading-[1.02] text-[#5e4540] md:text-[64px] lg:text-[76px]">
+              <h1 className="mx-auto mt-7 max-w-[1120px] text-[44px] font-bold leading-[1.02] text-white md:text-[64px] lg:text-[76px]">
                 {post.title}
               </h1>
-              <p className="mt-7 max-w-[820px] [font-family:'Inter',Helvetica] text-xl text-[#5e4540] md:text-[24px]">
-                {post.excerpt}
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-[#746762]">
-                <span>{post.author}</span>
-                <span aria-hidden="true">•</span>
-                <time dateTime={post.isoDate}>{post.publishedAt}</time>
-                <span aria-hidden="true">•</span>
-                <span>{post.readTime}</span>
-              </div>
+              <figure className="mt-8 overflow-hidden rounded-[20px] bg-[#e6dfc9] md:mt-12">
+                <img
+                  src={post.image}
+                  alt={post.imageAlt}
+                  decoding="async"
+                  width={post.imageWidth}
+                  height={post.imageHeight}
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              </figure>
             </div>
           </header>
-
-          <div className="px-4 md:px-8">
-            <figure className="mx-auto -mt-1 max-w-[1240px] overflow-hidden rounded-[20px] bg-[#e6dfc9]">
-              <img
-                src={post.image}
-                alt={post.imageAlt}
-                decoding="async"
-                width={post.imageWidth}
-                height={post.imageHeight}
-                className="aspect-[16/9] w-full object-cover"
-              />
-            </figure>
-          </div>
 
           <div className="px-4 py-14 md:px-8 md:py-20">
             <div className="mx-auto grid max-w-[1080px] gap-12 lg:grid-cols-[minmax(0,760px)_220px] lg:items-start lg:gap-[80px]">
               <div>
                 <div className="space-y-5">
-                  {post.introduction.map((paragraph) => (
+                  {[post.excerpt, ...post.introduction].map((paragraph) => (
                     <p
                       key={paragraph}
                       className="[font-family:'Inter',Helvetica] text-lg text-[#5e4540] md:text-xl"
