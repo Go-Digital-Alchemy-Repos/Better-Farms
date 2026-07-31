@@ -159,7 +159,7 @@ export function BlogIndex(): JSX.Element {
               </div>
 
               <aside
-                className="rounded-[18px] bg-[#7587ac] p-6 md:p-7 lg:sticky lg:top-[100px]"
+                className="rounded-[18px] bg-[#bc623f] p-6 md:p-7 lg:sticky lg:top-[100px]"
                 aria-label="Filter journal stories"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -235,7 +235,7 @@ export function BlogIndex(): JSX.Element {
                               current === tag ? null : tag,
                             )
                           }
-                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#7587ac] ${
+                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#bc623f] ${
                             selected
                               ? "border-white bg-transparent text-[#827b3e]"
                               : "border-white bg-transparent text-white"
