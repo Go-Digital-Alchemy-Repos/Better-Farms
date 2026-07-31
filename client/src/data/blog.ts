@@ -37,10 +37,11 @@ export const blogPosts: BlogPost[] = [
     isoDate: "2026-07-24",
     readTime: "6 min read",
     author: "Better Farms Editorial Team",
-    image: "/sourcePhotos/for-farmers/irrigation.webp",
-    imageAlt: "Drip irrigation delivering water to young crops",
-    imageWidth: 884,
-    imageHeight: 382,
+    image: "/sourcePhotos/blog/farm-resilience-water-infrastructure.jpg",
+    imageAlt:
+      "Farmer adjusting a water storage and irrigation system beside healthy crop rows",
+    imageWidth: 1536,
+    imageHeight: 1024,
     featured: true,
     introduction: [
       "Resilience is rarely one dramatic investment. More often, it is a series of practical improvements that give a farm more options when conditions change.",
