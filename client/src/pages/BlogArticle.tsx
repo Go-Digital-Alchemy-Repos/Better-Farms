@@ -149,18 +149,18 @@ export function BlogArticle(): JSX.Element {
                 <div className="flex flex-col justify-center text-left">
                   <nav
                     aria-label="Breadcrumb"
-                    className="flex flex-wrap items-center justify-start gap-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white"
+                    className="flex flex-wrap items-center justify-start gap-2 [font-family:'Inter',Helvetica] text-sm font-normal text-white"
                   >
                     <Link
                       href="/"
-                      className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      className="rounded-sm underline decoration-1 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       Home
                     </Link>
                     <span aria-hidden="true">/</span>
                     <Link
                       href="/blog"
-                      className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      className="rounded-sm underline decoration-1 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       Journal
                     </Link>
