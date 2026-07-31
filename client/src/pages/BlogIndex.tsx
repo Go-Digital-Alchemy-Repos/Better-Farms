@@ -193,7 +193,7 @@ export function BlogIndex(): JSX.Element {
                           type="button"
                           aria-pressed={selected}
                           onClick={() => setSelectedCategory(category)}
-                          className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                          className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
                             selected ? "text-[#827b3e]" : "text-white"
                           }`}
                         >
@@ -235,7 +235,7 @@ export function BlogIndex(): JSX.Element {
                               current === tag ? null : tag,
                             )
                           }
-                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#bc623f] ${
+                          className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#bc623f] ${
                             selected
                               ? "border-white bg-transparent text-[#827b3e]"
                               : "border-white bg-transparent text-white"
