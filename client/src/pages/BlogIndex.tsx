@@ -178,7 +178,7 @@ export function BlogIndex(): JSX.Element {
                 </div>
 
                 <fieldset className="mt-4" aria-label="Categories">
-                  <div className="divide-y divide-white/30">
+                  <div className="space-y-1">
                     {["All", ...blogCategories].map((category) => {
                       const count =
                         category === "All"
@@ -193,8 +193,10 @@ export function BlogIndex(): JSX.Element {
                           type="button"
                           aria-pressed={selected}
                           onClick={() => setSelectedCategory(category)}
-                          className={`flex min-h-12 w-full items-center justify-between gap-3 py-3 text-left [font-family:'Inter',Helvetica] text-sm font-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
-                            selected ? "text-[#827b3e]" : "text-white"
+                          className={`flex min-h-12 w-full items-center justify-between gap-3 border-b py-3 text-left [font-family:'Inter',Helvetica] text-sm font-normal last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                            selected
+                              ? "rounded-[10px] border-transparent bg-[#f4ecd3] px-3 text-[#827b3e]"
+                              : "border-white/30 text-white"
                           }`}
                         >
                           <span>{category}</span>
