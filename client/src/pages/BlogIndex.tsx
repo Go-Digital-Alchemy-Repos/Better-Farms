@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import { BlogPostCard } from "@/components/BlogPostCard";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { blogCategories, blogPosts, blogTags } from "@/data/blog";
@@ -35,7 +36,7 @@ export function BlogIndex(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
         <section className="px-4 pb-12 pt-4 md:px-[29px] md:pb-20 lg:pt-0">
@@ -89,7 +90,11 @@ export function BlogIndex(): JSX.Element {
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
               <div>
                 {featuredPost && (
-                  <article className="blog-featured-load mb-8 overflow-hidden rounded-[20px] bg-[#f4ecd3] text-[#5e4540]">
+                  <article
+                    data-scroll-reveal
+                    data-scroll-reveal-group
+                    className="mb-8 overflow-hidden rounded-[20px] bg-[#f4ecd3] text-[#5e4540]"
+                  >
                     <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
                       <Link
                         href={`/blog/${featuredPost.slug}`}
@@ -143,19 +148,27 @@ export function BlogIndex(): JSX.Element {
                 )}
 
                 {gridPosts.length > 0 ? (
-                  <div className="grid gap-8 md:grid-cols-2">
-                    {gridPosts.map((post, index) => (
+                  <div
+                    data-scroll-reveal-sequence
+                    className="grid gap-8 md:grid-cols-2"
+                  >
+                    {gridPosts.map((post) => (
                       <div
                         key={post.slug}
-                        className="blog-card-load h-full"
-                        style={{ animationDelay: `${1080 + index * 130}ms` }}
+                        data-scroll-reveal
+                        data-scroll-reveal-group
+                        className="h-full"
                       >
                         <BlogPostCard post={post} />
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="rounded-[18px] border border-dashed border-[#b9ad90] bg-white px-6 py-16 text-center">
+                  <div
+                    data-scroll-reveal
+                    data-scroll-reveal-group
+                    className="rounded-[18px] border border-dashed border-[#b9ad90] bg-white px-6 py-16 text-center"
+                  >
                     <h3 className="text-[30px] font-bold text-[#5e4540]">
                       No stories match those filters
                     </h3>
@@ -175,10 +188,14 @@ export function BlogIndex(): JSX.Element {
                 )}
               </div>
 
-              <aside
-                className="blog-sidebar-load rounded-[18px] bg-[#bc623f] p-6 md:p-7 lg:sticky lg:top-[100px]"
-                aria-label="Filter journal stories"
-              >
+              <div data-scroll-reveal-anchor className="lg:sticky lg:top-[100px]">
+                <aside
+                  data-scroll-reveal
+                  data-scroll-reveal-baseline
+                  data-scroll-reveal-group
+                  className="blog-sidebar-reveal rounded-[18px] bg-[#bc623f] p-6 md:p-7"
+                  aria-label="Filter journal stories"
+                >
                 <div className="flex items-center justify-between gap-3">
                   <h2 className="text-[28px] font-bold text-white">
                     Categories
@@ -266,12 +283,13 @@ export function BlogIndex(): JSX.Element {
                     })}
                   </div>
                 </fieldset>
-              </aside>
+                </aside>
+              </div>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 }
