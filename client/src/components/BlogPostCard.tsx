@@ -15,10 +15,10 @@ export function BlogPostCard({
 
   return (
     <article
-      className={`overflow-hidden rounded-[18px] bg-[#f4ecd3] ${
+      className={`h-full overflow-hidden rounded-[18px] bg-[#f4ecd3] ${
         isHorizontal
           ? "sm:grid sm:grid-cols-[180px_minmax(0,1fr)]"
-          : ""
+          : "flex flex-col"
       }`}
     >
       <Link
@@ -41,7 +41,7 @@ export function BlogPostCard({
         />
       </Link>
       <div
-        className={`flex flex-col p-6 ${
+        className={`flex flex-1 flex-col p-6 ${
           isHorizontal ? "min-h-[300px]" : "min-h-[310px] md:p-7"
         }`}
       >

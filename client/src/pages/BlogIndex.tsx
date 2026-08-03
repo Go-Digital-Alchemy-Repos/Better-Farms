@@ -147,7 +147,7 @@ export function BlogIndex(): JSX.Element {
                     {gridPosts.map((post, index) => (
                       <div
                         key={post.slug}
-                        className="blog-card-load"
+                        className="blog-card-load h-full"
                         style={{ animationDelay: `${1080 + index * 130}ms` }}
                       >
                         <BlogPostCard post={post} />
