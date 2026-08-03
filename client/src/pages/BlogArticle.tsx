@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "wouter";
 import { Check, Copy, Mail, ArrowLeft, ArrowRight } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
@@ -13,6 +13,35 @@ type ShareLinksProps = {
   title: string;
   url: string;
 };
+
+function useViewportReveal<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+
+    if (!element || isVisible) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  return { ref, isVisible };
+}
 
 function ShareLinks({ title, url }: ShareLinksProps) {
   const [copied, setCopied] = useState(false);
@@ -97,11 +126,13 @@ function ShareLinks({ title, url }: ShareLinksProps) {
 export function BlogArticle(): JSX.Element {
   const { slug } = useParams<{ slug: string }>();
   const post = getBlogPost(slug);
+  const articleReveal = useViewportReveal<HTMLDivElement>();
+  const sidebarReveal = useViewportReveal<HTMLElement>();
 
   if (!post) {
     return (
       <div className="min-h-screen bg-[#fbfaf7]">
-        <SiteHeader animateOnLoad={false} />
+        <SiteHeader />
         <main className="px-4 py-20 md:px-8 md:py-28">
           <section className="mx-auto max-w-[760px] rounded-[20px] bg-[#f4ecd3] px-6 py-16 text-center md:px-12">
             <p className="[font-family:'Inter',Helvetica] text-sm font-bold uppercase tracking-[0.16em] text-[#bc623f]">
@@ -140,16 +171,16 @@ export function BlogArticle(): JSX.Element {
 
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
-      <SiteHeader animateOnLoad={false} />
+      <SiteHeader />
       <main>
         <article>
           <header className="px-4 pt-4 md:px-[29px] lg:pt-0">
-            <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] p-4 md:p-[42px]">
+            <div className="hero-load-sequence mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] p-4 md:p-[42px]">
               <div className="grid gap-8 md:grid-cols-[3fr_2fr] md:items-stretch md:gap-10">
                 <div className="flex flex-col justify-center text-left">
                   <nav
                     aria-label="Breadcrumb"
-                    className="flex flex-wrap items-center justify-start gap-2 [font-family:'Inter',Helvetica] text-sm font-normal text-white"
+                    className="hero-load-content hero-load-content--1 flex flex-wrap items-center justify-start gap-2 [font-family:'Inter',Helvetica] text-sm font-normal text-white"
                   >
                     <Link
                       href="/"
@@ -168,14 +199,14 @@ export function BlogArticle(): JSX.Element {
                     <span aria-current="page">{post.category}</span>
                   </nav>
 
-                  <span className="mt-8 w-fit rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
+                  <span className="hero-load-content hero-load-content--2 mt-8 w-fit rounded-full border border-white/70 px-4 py-2 [font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.12em] text-white">
                     {post.category}
                   </span>
 
-                  <h1 className="mt-7 text-[42px] font-bold leading-[1.04] text-white md:text-[52px]">
+                  <h1 className="hero-load-content hero-load-content--3 mt-7 text-[42px] font-bold leading-[1.04] text-white md:text-[52px]">
                     {post.title}
                   </h1>
-                  <div className="mt-6 flex flex-wrap items-center justify-start gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white">
+                  <div className="hero-load-content hero-load-content--4 mt-6 flex flex-wrap items-center justify-start gap-x-4 gap-y-2 [font-family:'Inter',Helvetica] text-sm font-semibold text-white">
                     <span>{post.author}</span>
                     <span aria-hidden="true">•</span>
                     <time dateTime={post.isoDate}>{post.publishedAt}</time>
@@ -183,7 +214,7 @@ export function BlogArticle(): JSX.Element {
                     <span>{post.readTime}</span>
                   </div>
                 </div>
-                <figure className="min-h-[280px] overflow-hidden rounded-[20px] bg-[#e6dfc9] md:min-h-0">
+                <figure className="hero-load-image min-h-[280px] overflow-hidden rounded-[20px] bg-[#e6dfc9] md:min-h-0">
                   <img
                     src={post.image}
                     alt={post.imageAlt}
@@ -199,7 +230,10 @@ export function BlogArticle(): JSX.Element {
 
           <div className="px-4 py-14 md:px-8 md:py-20">
             <div className="mx-auto grid max-w-[1080px] gap-12 lg:grid-cols-[minmax(0,760px)_220px] lg:items-start lg:gap-[80px]">
-              <div>
+              <div
+                ref={articleReveal.ref}
+                className={`blog-article-reveal${articleReveal.isVisible ? " is-visible" : ""}`}
+              >
                 <div className="space-y-5">
                   {[post.excerpt, ...post.introduction].map((paragraph) => (
                     <p
@@ -283,7 +317,10 @@ export function BlogArticle(): JSX.Element {
                 </footer>
               </div>
 
-              <aside className="border-t border-[#d9cfb5] pt-7 lg:sticky lg:top-[110px] lg:border-t-0 lg:pt-0">
+              <aside
+                ref={sidebarReveal.ref}
+                className={`blog-article-sidebar-fade border-t border-[#d9cfb5] pt-7 lg:sticky lg:top-[110px] lg:border-t-0 lg:pt-0${sidebarReveal.isVisible ? " is-visible" : ""}`}
+              >
                 <ShareLinks title={post.title} url={articleUrl} />
                 <div className="mt-7 border-t border-[#d9cfb5] pt-7">
                   <p className="[font-family:'Inter',Helvetica] text-xs font-bold uppercase tracking-[0.16em] text-[#bc623f]">

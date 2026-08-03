@@ -36,19 +36,30 @@ export function BlogIndex(): JSX.Element {
 
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
-      <SiteHeader animateOnLoad={false} />
+      <SiteHeader />
       <main>
-        <section className="px-4 pb-12 pt-4 md:px-8 md:pb-20 lg:pt-0">
-          <div className="hero-panel mx-auto max-w-[1386px] overflow-hidden rounded-[20px] bg-[#827b3e] px-4 pb-12 md:px-[42px] md:pb-[72px]">
+        <section className="px-4 pb-12 pt-4 md:px-[29px] md:pb-20 lg:pt-0">
+          <div className="hero-load-sequence hero-panel mx-auto max-w-[1386px] overflow-hidden rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
             <p
-              className="hero-eyebrow text-center text-2xl font-bold text-white md:text-[28px]"
+              className="hero-load-content hero-load-content--1 hero-eyebrow text-center text-2xl font-bold text-white md:text-[28px]"
               style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
             >
               Better Farms Journal
             </p>
-            <h1 className="hero-title mx-auto text-center font-bold text-white">
+            <h1 className="hero-load-content hero-load-content--2 hero-title mx-auto text-center font-bold text-white">
               Stories From the Field
             </h1>
+            <div className="hero-load-image hero-image-frame blog-hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                src="/sourcePhotos/blog/notebook-field-hero-v2.png"
+                alt="A closed notebook viewed from the side on a wooden surface overlooking a softly blurred farm field"
+                width="1664"
+                height="553"
+                decoding="async"
+                fetchPriority="high"
+                className="hero-image-after-title h-full w-full object-cover"
+              />
+            </div>
           </div>
         </section>
 
@@ -78,7 +89,7 @@ export function BlogIndex(): JSX.Element {
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
               <div>
                 {featuredPost && (
-                  <article className="mb-8 overflow-hidden rounded-[20px] bg-[#f4ecd3] text-[#5e4540]">
+                  <article className="blog-featured-load mb-8 overflow-hidden rounded-[20px] bg-[#f4ecd3] text-[#5e4540]">
                     <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
                       <Link
                         href={`/blog/${featuredPost.slug}`}
@@ -133,8 +144,14 @@ export function BlogIndex(): JSX.Element {
 
                 {gridPosts.length > 0 ? (
                   <div className="grid gap-8 md:grid-cols-2">
-                    {gridPosts.map((post) => (
-                      <BlogPostCard key={post.slug} post={post} />
+                    {gridPosts.map((post, index) => (
+                      <div
+                        key={post.slug}
+                        className="blog-card-load"
+                        style={{ animationDelay: `${1080 + index * 130}ms` }}
+                      >
+                        <BlogPostCard post={post} />
+                      </div>
                     ))}
                   </div>
                 ) : (
@@ -159,7 +176,7 @@ export function BlogIndex(): JSX.Element {
               </div>
 
               <aside
-                className="rounded-[18px] bg-[#bc623f] p-6 md:p-7 lg:sticky lg:top-[100px]"
+                className="blog-sidebar-load rounded-[18px] bg-[#bc623f] p-6 md:p-7 lg:sticky lg:top-[100px]"
                 aria-label="Filter journal stories"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -195,7 +212,7 @@ export function BlogIndex(): JSX.Element {
                           onClick={() => setSelectedCategory(category)}
                           className={`relative flex min-h-12 w-full items-center justify-between gap-3 border-b py-3 text-left [font-family:'Inter',Helvetica] text-sm font-normal last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
                             selected
-                              ? "border-transparent text-[#827b3e] before:pointer-events-none before:absolute before:-inset-x-3 before:inset-y-0 before:rounded-[10px] before:bg-[#f4ecd3] before:content-['']"
+                              ? "border-transparent text-white before:pointer-events-none before:absolute before:-inset-x-3 before:inset-y-0 before:rounded-[10px] before:border before:border-white before:bg-transparent before:content-['']"
                               : "border-white/30 text-white"
                           }`}
                         >
@@ -203,7 +220,7 @@ export function BlogIndex(): JSX.Element {
                           <span
                             className={`relative inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs ${
                               selected
-                                ? "bg-[#827b3e] text-white"
+                                ? "bg-[#7587ac] text-white"
                                 : "bg-white text-[#746762]"
                             }`}
                           >
@@ -239,7 +256,7 @@ export function BlogIndex(): JSX.Element {
                           }
                           className={`min-h-10 rounded-full border px-3 py-2 [font-family:'Inter',Helvetica] text-xs font-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#bc623f] ${
                             selected
-                              ? "border-white bg-transparent text-[#827b3e]"
+                              ? "border-white bg-white text-[#5e4540]"
                               : "border-white bg-transparent text-white"
                           }`}
                         >

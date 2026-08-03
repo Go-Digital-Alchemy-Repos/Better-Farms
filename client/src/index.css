@@ -28,6 +28,45 @@
   animation: site-header-slide-down 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.blog-featured-load,
+.blog-card-load {
+  animation: blog-card-reveal 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+.blog-featured-load {
+  animation-delay: 720ms;
+}
+
+.blog-sidebar-load {
+  animation: blog-sidebar-slide-in 400ms ease-out 720ms both;
+  will-change: opacity, transform;
+}
+
+.blog-article-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.blog-article-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blog-article-sidebar-fade {
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+  will-change: opacity;
+}
+
+.blog-article-sidebar-fade.is-visible {
+  opacity: 1;
+}
+
 .work-card-scroll-progress {
   transform-origin: center;
   will-change: opacity, transform;
@@ -95,6 +134,45 @@
 
   to {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes blog-card-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes blog-sidebar-slide-in {
+  from {
+    opacity: 0;
+    transform: translate3d(100vw, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-featured-load,
+  .blog-card-load,
+  .blog-sidebar-load {
+    animation: none;
+  }
+
+  .blog-article-reveal,
+  .blog-article-sidebar-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
@@ -226,6 +304,15 @@
 .hero-image-frame {
   height: 280px;
   margin-top: 25px;
+}
+
+.hero-image-frame.blog-hero-image-frame {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.blog-hero-image-frame img {
+  object-position: center bottom;
 }
 
 .hero-image-after-title {
@@ -370,6 +457,10 @@
   .hero-image-frame {
     height: 520px;
     margin-top: 50px;
+  }
+
+  .hero-image-frame.blog-hero-image-frame {
+    height: 350px;
   }
 
   .foundation-layout {
