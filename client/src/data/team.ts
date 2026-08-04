@@ -35,3 +35,12 @@ export const tracyFavre: TeamMember = {
     "An accomplished communicator and leader, Tracy also oversees marketing, public relations, and stakeholder engagement initiatives that elevate organizational visibility and credibility. She believes that meaningful sustainability requires measurable action, strong partnerships, and a clear long-term vision. Her commitment to advancing organic agriculture and creating resilient, sustainable supply chains continues to drive positive impact for businesses, communities, and the environment.",
   ],
 };
+
+export const moniqueSantos: TeamMember = {
+  image: "/sourcePhotos/team/monique-santos.jpg",
+  name: "Monique Santos",
+  credential: "Food Systems Practitioner\nEptimizo LLC",
+  bio: [
+    "Monique Santos is a food systems practitioner with experience at every scale of the sector, from planting seeds and tending to livestock to international food policy. Her consulting practice, Eptimizo LLC, provides strategic services to food and agriculture businesses, governments, and non-profits to build a more resilient and just food system. Monique has implemented food systems work in over 40 countries around the world. Monique holds degrees from Yale University and New York University, and received her permaculture design certification from the Central Rocky Mountain Permaculture Institute.",
+  ],
+};
