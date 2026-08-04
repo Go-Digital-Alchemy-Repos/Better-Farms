@@ -43,7 +43,7 @@ export const TeamMemberDialog = ({ member, onClose }: TeamMemberDialogProps) => 
               {member.name}
             </DialogTitle>
             <p
-              className="mt-3 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]"
+              className="mt-3 whitespace-pre-line [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]"
               data-testid="text-team-modal-title"
             >
               {member.credential}

@@ -20,6 +20,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedStatValue } from "@/components/AnimatedStatValue";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { stevenWray } from "@/data/team";
 
 export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -357,11 +358,8 @@ export const HomepageWhite = (): JSX.Element => {
 
   const teamCards: (TeamMember & { overlay: string })[] = [
     {
-      image: "/figmaAssets/rectangle-88.webp",
+      ...stevenWray,
       overlay: "rgba(117, 135, 172, 0.30)",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-80.webp",
@@ -855,7 +853,7 @@ export const HomepageWhite = (): JSX.Element => {
                   <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {member.name}
                   </h3>
-                  <p className="[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal text-[#5e4540]">
+                  <p className="whitespace-pre-line [font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal text-[#5e4540]">
                     {member.credential}
                   </p>
                 </div>
