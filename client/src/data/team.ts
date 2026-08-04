@@ -11,7 +11,7 @@ export const stevenWray: TeamMember = {
 };
 
 export const johnFoster: TeamMember = {
-  image: "/sourcePhotos/team/john-foster.jpg",
+  image: "/sourcePhotos/team/john-foster-2.jpg",
   name: "John Foster",
   credential: "President\nWolf & Associates",
   bio: [
