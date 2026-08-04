@@ -20,7 +20,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedStatValue } from "@/components/AnimatedStatValue";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { stevenWray } from "@/data/team";
+import { johnFoster, stevenWray } from "@/data/team";
 
 export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -362,11 +362,8 @@ export const HomepageWhite = (): JSX.Element => {
       overlay: "rgba(117, 135, 172, 0.30)",
     },
     {
-      image: "/figmaAssets/rectangle-80.webp",
+      ...johnFoster,
       overlay: "rgba(130, 123, 62, 0.36)",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
     },
     {
       image: "/figmaAssets/rectangle-87.webp",

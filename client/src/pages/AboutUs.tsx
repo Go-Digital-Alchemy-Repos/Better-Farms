@@ -13,7 +13,7 @@ import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
-import { stevenWray } from "@/data/team";
+import { johnFoster, stevenWray } from "@/data/team";
 
 const principles = [
   {
@@ -63,7 +63,7 @@ const weDo = [
 
 const boardMembers: (TeamMember & { overlay: string })[] = [
   { ...stevenWray, overlay: "rgba(117, 135, 172, 0.30)" },
-  { image: "/figmaAssets/portrait_elderly_woman.webp", overlay: "rgba(130, 123, 62, 0.36)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+  { ...johnFoster, overlay: "rgba(130, 123, 62, 0.36)" },
   { image: "/figmaAssets/portrait_man_farmer.webp", overlay: "rgba(188, 98, 63, 0.32)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
   { image: "/figmaAssets/portrait_elderly_woman.webp", overlay: "rgba(188, 98, 63, 0.32)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
   { image: "/figmaAssets/portrait_man_farmer.webp", overlay: "rgba(117, 135, 172, 0.30)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
