@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   TeamMemberDialog,
   type TeamMember,
-  placeholderBio,
 } from "@/components/TeamMemberDialog";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -66,8 +65,6 @@ const boardMembers: (TeamMember & { overlay: string })[] = [
   { ...johnFoster, overlay: "rgba(130, 123, 62, 0.36)" },
   { ...tracyFavre, overlay: "rgba(188, 98, 63, 0.32)" },
   { ...moniqueSantos, overlay: "rgba(188, 98, 63, 0.32)" },
-  { image: "/figmaAssets/portrait_man_farmer.webp", overlay: "rgba(117, 135, 172, 0.30)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_woman_farmer.webp", overlay: "rgba(130, 123, 62, 0.36)", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
 ];
 
 export const AboutUs = (): JSX.Element => {
@@ -416,7 +413,7 @@ export const AboutUs = (): JSX.Element => {
           </p>
           <div
             data-scroll-reveal-sequence
-            className="mx-auto mt-14 grid max-w-[1100px] gap-x-10 gap-y-14 md:grid-cols-3"
+            className="mx-auto mt-14 grid max-w-[760px] gap-x-10 gap-y-14 md:grid-cols-2"
           >
             {boardMembers.map((member, index) => (
               <div
@@ -433,7 +430,7 @@ export const AboutUs = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className={`group cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
+                className="group cursor-pointer"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
