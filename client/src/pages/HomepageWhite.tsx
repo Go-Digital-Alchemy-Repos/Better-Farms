@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import {
   TeamMemberDialog,
   type TeamMember,
-  placeholderBio,
 } from "@/components/TeamMemberDialog";
 import {
   Accordion,
@@ -20,7 +19,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedStatValue } from "@/components/AnimatedStatValue";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { johnFoster, stevenWray } from "@/data/team";
+import { johnFoster, stevenWray, tracyFavre } from "@/data/team";
 
 export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -366,11 +365,8 @@ export const HomepageWhite = (): JSX.Element => {
       overlay: "rgba(130, 123, 62, 0.36)",
     },
     {
-      image: "/figmaAssets/rectangle-87.webp",
+      ...tracyFavre,
       overlay: "rgba(188, 98, 63, 0.32)",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
     },
   ];
 
