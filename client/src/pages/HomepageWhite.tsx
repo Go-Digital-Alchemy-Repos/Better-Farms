@@ -370,7 +370,7 @@ export const HomepageWhite = (): JSX.Element => {
     },
     {
       ...moniqueSantos,
-      overlay: "rgba(188, 98, 63, 0.32)",
+      overlay: "rgba(117, 135, 172, 0.30)",
     },
   ];
 

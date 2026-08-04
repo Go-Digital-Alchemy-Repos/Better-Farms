@@ -64,7 +64,7 @@ const boardMembers: (TeamMember & { overlay: string })[] = [
   { ...stevenWray, overlay: "rgba(117, 135, 172, 0.30)" },
   { ...johnFoster, overlay: "rgba(130, 123, 62, 0.36)" },
   { ...tracyFavre, overlay: "rgba(188, 98, 63, 0.32)" },
-  { ...moniqueSantos, overlay: "rgba(188, 98, 63, 0.32)" },
+  { ...moniqueSantos, overlay: "rgba(117, 135, 172, 0.30)" },
 ];
 
 export const AboutUs = (): JSX.Element => {
