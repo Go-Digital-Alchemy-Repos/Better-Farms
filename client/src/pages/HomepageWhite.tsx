@@ -836,7 +836,6 @@ export const HomepageWhite = (): JSX.Element => {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
                     className="h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] md:h-[330px]"
-                    style={member.name === "Monique Santos" ? { filter: "grayscale(1) contrast(0.75)" } : undefined}
                     alt={`${member.name} portrait`}
                     loading="lazy"
                     decoding="async"
