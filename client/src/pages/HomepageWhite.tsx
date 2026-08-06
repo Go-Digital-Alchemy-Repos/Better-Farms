@@ -19,7 +19,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedStatValue } from "@/components/AnimatedStatValue";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { johnFoster, moniqueSantos, stevenWray, tracyFavre } from "@/data/team";
+import { johnFoster, stevenWray, tracyFavre } from "@/data/team";
 
 export const HomepageWhite = (): JSX.Element => {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -367,10 +367,6 @@ export const HomepageWhite = (): JSX.Element => {
     {
       ...tracyFavre,
       overlay: "rgba(188, 98, 63, 0.32)",
-    },
-    {
-      ...moniqueSantos,
-      overlay: "rgba(117, 135, 172, 0.30)",
     },
   ];
 
@@ -816,7 +812,7 @@ export const HomepageWhite = (): JSX.Element => {
               build national brands, and advise the USDA. They&apos;re putting
               that expertise to work for the farms that need it most.
               </p>
-              <div className="mx-auto mt-12 grid max-w-[760px] gap-x-6 gap-y-14 md:grid-cols-2">
+              <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
@@ -835,7 +831,7 @@ export const HomepageWhite = (): JSX.Element => {
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
-                    className="h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] md:h-[330px]"
+                    className={`h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] ${index === 1 ? "md:h-[375px]" : "md:h-[303px]"}`}
                     alt={`${member.name} portrait`}
                     loading="lazy"
                     decoding="async"
