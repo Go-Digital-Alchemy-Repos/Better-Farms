@@ -357,12 +357,12 @@ export const HomepageWhite = (): JSX.Element => {
 
   const teamCards: (TeamMember & { overlay: string })[] = [
     {
-      ...stevenWray,
-      overlay: "rgba(117, 135, 172, 0.30)",
-    },
-    {
       ...johnFoster,
       overlay: "rgba(130, 123, 62, 0.36)",
+    },
+    {
+      ...stevenWray,
+      overlay: "rgba(117, 135, 172, 0.30)",
     },
     {
       ...tracyFavre,
