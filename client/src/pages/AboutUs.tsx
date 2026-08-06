@@ -12,7 +12,7 @@ import { ScrollRevealPage } from "@/components/ScrollRevealPage";
 import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
 import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
-import { johnFoster, moniqueSantos, stevenWray, tracyFavre } from "@/data/team";
+import { bobAnderson, joeDickson, marniKarlin } from "@/data/team";
 
 const principles = [
   {
@@ -61,10 +61,9 @@ const weDo = [
 ];
 
 const boardMembers: (TeamMember & { overlay: string })[] = [
-  { ...stevenWray, overlay: "rgba(117, 135, 172, 0.30)" },
-  { ...johnFoster, overlay: "rgba(130, 123, 62, 0.36)" },
-  { ...tracyFavre, overlay: "rgba(188, 98, 63, 0.32)" },
-  { ...moniqueSantos, overlay: "rgba(117, 135, 172, 0.30)" },
+  { ...bobAnderson, overlay: "rgba(117, 135, 172, 0.30)" },
+  { ...joeDickson, overlay: "rgba(130, 123, 62, 0.36)" },
+  { ...marniKarlin, overlay: "rgba(188, 98, 63, 0.32)" },
 ];
 
 export const AboutUs = (): JSX.Element => {
