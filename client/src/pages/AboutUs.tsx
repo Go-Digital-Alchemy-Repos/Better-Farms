@@ -456,7 +456,7 @@ export const AboutUs = (): JSX.Element => {
                     style={{ backgroundColor: member.overlay }}
                   />
                 </div>
-                <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
+                <p className="mt-4 [font-family:'Inter',Helvetica] text-[24px] font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                   {member.name}
                 </p>
               </div>

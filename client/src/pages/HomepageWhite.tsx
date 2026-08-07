@@ -843,7 +843,7 @@ export const HomepageWhite = (): JSX.Element => {
                   />
                 </div>
                 <div className="pt-4">
-                  <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                  <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold leading-[1.25] tracking-normal text-[#5e4540]">
                     {member.name}
                   </h3>
                 </div>
