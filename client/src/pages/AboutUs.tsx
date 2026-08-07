@@ -459,9 +459,6 @@ export const AboutUs = (): JSX.Element => {
                 <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                   {member.name}
                 </p>
-                <p className="mt-1 whitespace-pre-line [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
-                  {member.credential}
-                </p>
               </div>
             ))}
           </div>

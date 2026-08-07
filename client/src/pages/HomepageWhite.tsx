@@ -846,9 +846,6 @@ export const HomepageWhite = (): JSX.Element => {
                   <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
                     {member.name}
                   </h3>
-                  <p className="whitespace-pre-line [font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal text-[#5e4540]">
-                    {member.credential}
-                  </p>
                 </div>
               </article>
             ))}

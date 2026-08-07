@@ -3,7 +3,7 @@ import type { TeamMember } from "@/components/TeamMemberDialog";
 export const stevenWray: TeamMember = {
   image: "/sourcePhotos/team/steven-wray.png",
   name: "Steven Wray",
-  credential: "President/CEO\nSupply Expeditors",
+  credential: "President/CEO, Supply Expeditors",
   bio: [
     "Steve’s passion for helping mission-driven organizations make the world a better place grew from more than 30 years of leadership and consulting in the global nonprofit sector. He has founded a global nonprofit providing supply chain services and resources all over the world, held operational and financial executive roles with some of the world’s largest nonprofits, served as a corporate strategic consultant, and co-founded a company focused on innovation management and group culture assessment. A quiet leader and entrepreneur with an innovative spirit, Steve uses his broad expertise to help nonprofits and social enterprises improve efficiency, strengthen effectiveness, and reduce program and administrative costs.",
     "Steve earned a Bachelor’s degree in Philosophy from Furman University and an MBA from Winthrop University, and studied German in Vienna, Austria. Outside of work, he enjoys music, tiki bars, cooking, traveling, spending time with his adult daughters, and exercising “Granddad Privilege” by spoiling his grandson.",
@@ -13,7 +13,7 @@ export const stevenWray: TeamMember = {
 export const johnFoster: TeamMember = {
   image: "/sourcePhotos/team/john-foster-2.jpg",
   name: "John Foster",
-  credential: "President\nWolf & Associates",
+  credential: "President, Wolf & Associates",
   bio: [
     "John Foster is President of Wolf & Associates, where he leads one of the organic sector's most experienced strategic advisory firms. His more than three decades in organic agriculture span farming, inspection, certification review, corporate organic integrity, supply-chain leadership, standards policy, program development, and business strategy. He approaches organic requirements as parts of a living operational system connecting production, management, markets, institutional judgment, and public trust.",
     "John began in agricultural research, horticultural instruction, organic production, and farming. From 1995 through 2007, he conducted roughly 1,200 organic inspections and reviewed approximately 2,500 certification files across all major scopes. At Earthbound Farm, he later built and led integrated organic integrity, supplier approval, audit, food-safety, and quality systems covering approximately 500 suppliers and 180 annual audits. He grew the department from five to 22 employees, then managed four supply-chain departments comprising 125 employees and an $8 million budget. This field-to-enterprise experience enables him to connect technical compliance with organizational capacity, commercial reality, and durable performance.",
@@ -25,7 +25,7 @@ export const johnFoster: TeamMember = {
 export const tracyFavre: TeamMember = {
   image: "/sourcePhotos/team/tracy-favre.jpg",
   name: "Tracy Favre",
-  credential: "Senior Vice President\nSustainability and Organic Strategies\nHandsome Brook Farms",
+  credential: "Senior Vice President, Sustainability and Organic Strategies, Handsome Brook Farms",
   bio: [
     "Tracy Favre has built a career advancing environmentally responsible growth while creating lasting value across the food and agriculture industries. With expertise spanning sustainability strategy, supply chain development, and organizational leadership, Tracy excels at translating ambitious environmental goals into practical business outcomes.",
     "Throughout her career, Tracy has led initiatives that strengthen organic supply chains, foster strategic partnerships, and position organizations for long-term success. She has extensive experience developing sustainability roadmaps, establishing measurable performance indicators, and overseeing environmental impact reporting that supports transparency and continuous improvement. Her collaborative leadership style enables her to work effectively with executive teams, producers, industry organizations, government agencies, and nonprofit partners to achieve shared objectives.",
@@ -39,7 +39,7 @@ export const tracyFavre: TeamMember = {
 export const moniqueSantos: TeamMember = {
   image: "/sourcePhotos/team/monique-santos.jpg",
   name: "Monique Santos",
-  credential: "Food Systems Practitioner\nEptimizo LLC",
+  credential: "Food Systems Practitioner, Eptimizo LLC",
   bio: [
     "Monique Santos is a food systems practitioner with experience at every scale of the sector, from planting seeds and tending to livestock to international food policy. Her consulting practice, Eptimizo LLC, provides strategic services to food and agriculture businesses, governments, and non-profits to build a more resilient and just food system. Monique has implemented food systems work in over 40 countries around the world. Monique holds degrees from Yale University and New York University, and received her permaculture design certification from the Central Rocky Mountain Permaculture Institute.",
   ],
@@ -48,7 +48,7 @@ export const moniqueSantos: TeamMember = {
 export const bobAnderson: TeamMember = {
   image: "/sourcePhotos/team/bob-anderson.jpeg",
   name: "Bob Anderson",
-  credential: "Founder and Strategic Advisor\nSustainable Strategies LLC",
+  credential: "Founder and Strategic Advisor, Sustainable Strategies LLC",
   bio: [
     "Bob Anderson is a nationally recognized strategic advisor whose career spans organic agriculture, international trade, food manufacturing, market development, and board governance. Through Sustainable Strategies LLC, he advises food and agriculture businesses, trade associations, certifiers, and public agencies on certification strategy, market access, value-added growth, regulatory positioning, and long-term business development in highly regulated and globally connected markets.",
     "He served for 31 years as President and CEO of Walnut Acres Organic Farms and chaired the National Organic Standards Board during the period leading to the final U.S. organic rule. He has also held senior leadership roles with the Organic Trade Association and USDA trade advisory bodies, and is widely trusted for translating policy, governance, operations, and market strategy into practical action for organizations navigating growth, complexity, and change.",
