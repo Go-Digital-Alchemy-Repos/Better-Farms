@@ -1,40 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   TeamMemberDialog,
   type TeamMember,
-  placeholderBio,
 } from "@/components/TeamMemberDialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { PatternParallaxLayer } from "@/components/PatternParallaxLayer";
+import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
+import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
+import {
+  bobAnderson,
+  chrisAnderson,
+  joeDickson,
+  johnFoster,
+  marniKarlin,
+  moniqueSantos,
+  stevenWray,
+  tracyFavre,
+} from "@/data/team";
 
 const principles = [
   {
     title: "Results",
-    icon: "/sourcePhotos/about/principles/results.svg",
+    icon: "/sourcePhotos/about/principles/transparency.svg",
     body: "We fund projects through to completion. Donors see finished work and measurable change on the farm.",
   },
   {
     title: "Execution",
-    icon: "/sourcePhotos/about/principles/execution.svg",
+    icon: "/sourcePhotos/about/principles/multiplied-impact.svg",
     body: "Agricultural experts oversee each build. Projects get done right and hold up under real farm conditions.",
   },
   {
     title: "Transparency",
-    icon: "/sourcePhotos/about/principles/transparency.svg",
+    icon: "/sourcePhotos/about/principles/results.svg",
     body: "We track every dollar and document every outcome. Donors receive clear reports that show the full picture.",
   },
   {
     title: "Multiplied Impact",
-    icon: "/sourcePhotos/about/principles/multiplied-impact.svg",
+    icon: "/sourcePhotos/about/principles/farmer-centered.svg",
     body: "We combine contributions from corporations, foundations, and donor-advised funds. Farmers get fully funded projects, and every dollar goes further.",
   },
   {
     title: "Farmer-Centered",
-    icon: "/sourcePhotos/about/principles/farmer-centered.svg",
+    icon: "/sourcePhotos/about/principles/execution.svg",
     body: "Farmers shape each project from day one. Producers know what their land needs, and we build around that.",
   },
 ];
@@ -57,24 +69,41 @@ const weDo = [
   "Solve problems",
 ];
 
-const topoPatternStyle = {
-  backgroundImage:
-    "url(\"data:image/svg+xml,%3Csvg width='720' height='460' viewBox='0 0 720 460' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235e4540' stroke-opacity='.1' stroke-width='1.8'%3E%3Cpath d='M-70 96c75-41 151-42 228-4 64 31 120 34 168 10 68-34 137-27 207 21 60 41 134 44 224 7'/%3E%3Cpath d='M-64 126c78-37 151-36 221 4 62 36 118 39 169 9 70-42 142-35 216 20 57 43 126 48 206 16'/%3E%3Cpath d='M-58 158c78-33 149-28 213 13 62 40 121 42 176 4 68-47 144-38 226 24 53 40 117 46 193 20'/%3E%3Cpath d='M-52 192c74-30 143-24 207 20 66 45 131 43 196-7 58-45 131-34 219 33 50 37 108 43 174 20'/%3E%3Cpath d='M-46 228c77-29 149-20 216 28 60 43 121 39 184-11 60-48 134-35 221 39 45 38 98 44 160 20'/%3E%3Cpath d='M-39 266c83-31 161-22 233 29 56 40 112 36 169-13 60-52 137-39 230 41 39 34 86 40 141 19'/%3E%3Cpath d='M-31 304c84-30 162-20 236 30 57 38 110 33 161-14 62-57 143-42 241 46 35 31 76 36 124 18'/%3E%3Cpath d='M33 80c21-35 54-56 98-56 52-3 95 20 130 67 38 51 85 66 140 45 64-24 126-12 186 37 43 35 96 47 158 35'/%3E%3Cpath d='M38 47c37-32 82-46 136-42 51 4 93 31 127 80 31 45 72 57 123 35 64-28 129-18 194 31 37 28 80 40 130 36'/%3E%3Cpath d='M106 372c48-40 99-47 153-20 55 28 102 22 142-16 51-48 105-54 163-18 62 39 123 38 184-2'/%3E%3Cpath d='M84 414c60-48 121-54 183-18 50 30 94 24 132-16 52-56 111-62 176-19 56 37 112 35 169-5'/%3E%3C/g%3E%3C/svg%3E\")",
-  backgroundSize: "720px 460px",
-};
-
-const boardMembers: TeamMember[] = [
-  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_elderly_woman.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_man_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
-  { image: "/figmaAssets/portrait_woman_farmer.webp", name: "Full Name", credential: "One-line credential", bio: placeholderBio },
+const boardMembers: (TeamMember & { overlay: string })[] = [
+  { ...stevenWray, overlay: "rgba(117, 135, 172, 0.30)" },
+  { ...johnFoster, overlay: "rgba(130, 123, 62, 0.36)" },
+  { ...tracyFavre, overlay: "rgba(188, 98, 63, 0.32)" },
+  { ...moniqueSantos, overlay: "rgba(117, 135, 172, 0.30)" },
+  { ...bobAnderson, overlay: "rgba(117, 135, 172, 0.30)" },
+  { ...joeDickson, overlay: "rgba(130, 123, 62, 0.36)" },
+  { ...marniKarlin, overlay: "rgba(188, 98, 63, 0.32)" },
+  { ...chrisAnderson, overlay: "rgba(117, 135, 172, 0.30)" },
 ];
 
 export const AboutUs = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
+  const imagePairRef = useRef<HTMLDivElement>(null);
+  const smallImageRef = useRef<HTMLDivElement>(null);
+  const quoteFrameRef = useRef<HTMLDivElement>(null);
+  const quoteParallaxRef = useRef<HTMLDivElement>(null);
+  const landscapeFrameRef = useRef<HTMLDivElement>(null);
+  const landscapeParallaxRef = useRef<HTMLImageElement>(null);
+  const principlesRef = useRef<HTMLDivElement>(null);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  useImagePairParallax(imagePairRef, smallImageRef);
+  useSlowerScrollParallax(
+    quoteFrameRef,
+    quoteParallaxRef,
+    0.3,
+    240,
+    300,
+    0.1,
+  );
+  useSlowerScrollParallax(
+    landscapeFrameRef,
+    landscapeParallaxRef,
+    0.15,
+    90,
+  );
 
   useEffect(() => {
     if (window.location.hash === "#team") {
@@ -84,91 +113,232 @@ export const AboutUs = (): JSX.Element => {
     }
   }, []);
 
+  useEffect(() => {
+    const principleAnchors = Array.from(
+      principlesRef.current?.querySelectorAll<HTMLElement>(
+        "[data-principle-reveal-anchor]",
+      ) ?? [],
+    );
+    if (!principleAnchors.length) return;
+
+    const eligibleItems = new Set<HTMLElement>();
+    let nextPrincipleIndex = 0;
+    let sequenceTimer = 0;
+
+    const revealPrinciple = (anchor: HTMLElement) => {
+      anchor
+        .querySelector<HTMLElement>("[data-principle-reveal]")
+        ?.classList.add("principle-reveal-visible");
+    };
+
+    const revealAllPrinciples = () => {
+      principleAnchors.forEach(revealPrinciple);
+      nextPrincipleIndex = principleAnchors.length;
+    };
+
+    const revealNextEligiblePrinciple = () => {
+      sequenceTimer = 0;
+      const nextPrinciple = principleAnchors[nextPrincipleIndex];
+      if (!nextPrinciple || !eligibleItems.has(nextPrinciple)) return;
+
+      revealPrinciple(nextPrinciple);
+      nextPrincipleIndex += 1;
+      sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 160);
+    };
+
+    const queueEligiblePrinciples = () => {
+      if (sequenceTimer || nextPrincipleIndex >= principleAnchors.length) return;
+      sequenceTimer = window.setTimeout(revealNextEligiblePrinciple, 0);
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      revealAllPrinciples();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) {
+            return;
+          }
+
+          eligibleItems.add(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        });
+
+        queueEligiblePrinciples();
+      },
+      {
+        rootMargin: "0px 0px -4% 0px",
+        threshold: 0.08,
+      },
+    );
+
+    principleAnchors.forEach((anchor) => observer.observe(anchor));
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(sequenceTimer);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="px-4 pt-4 md:px-[29px]">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-8 pt-10 md:px-[42px] md:pb-12 md:pt-[88px]">
-            <h1 className="mx-auto max-w-[1000px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[88px] xl:text-[104px]">
+        <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
+          <div className="hero-load-sequence hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
+            <h1 className="hero-load-content hero-load-content--1 hero-title mx-auto text-center font-bold text-white">
               Better Farms Start With Better Partners
             </h1>
-            <img
-              className="mt-16 h-auto max-h-[560px] w-full rounded-[20px] object-cover md:h-[610px] md:max-h-none"
-              alt="Sheep feeding at a wooden trough"
-              src="/sourcePhotos/about/sheep-feeding.webp"
-            />
+            <div className="hero-load-image hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Sheep feeding at a wooden trough"
+                decoding="async"
+                fetchPriority="high"
+                width="2614"
+                height="1166"
+                srcSet="/sourcePhotos/about/sheep-feeding-768.jpg 768w, /sourcePhotos/about/sheep-feeding-1280.jpg 1280w, /sourcePhotos/about/sheep-feeding.webp 2614w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
+                src="/sourcePhotos/about/sheep-feeding.webp"
+              />
+            </div>
           </div>
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[142px]">
-          <h2 className="mx-auto max-w-[830px] text-center text-[36px] font-bold leading-[1.1] text-[#5e4540] md:text-[50px]">
+          <h2 className="desktop-text-balance mx-auto max-w-[1000px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Our Team Has Spent Careers Inside American Agriculture.
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="desktop-text-balance mx-auto mt-8 max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             We&apos;ve served on federal advisory boards, built companies in organic farming, and helped shape the standards this industry runs on. That work gave us a clear view of what farmers are up against and what actually helps them succeed. The Better Farms Foundation is our answer. We identify the problem on the farm, design the solution, and fund the work to get it done.
           </p>
         </section>
 
-        <section className="px-4 pb-6 md:px-8">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-8 md:grid-cols-[1fr_460px]">
+        <section className="overflow-hidden pb-6">
+          <div
+            ref={imagePairRef}
+            data-parallax-image-pair
+            data-scroll-reveal-anchor
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start"
+          >
             <img
-              className="h-[380px] w-full rounded-2xl object-cover md:h-[520px]"
+              data-parallax-image-role="large"
+              data-scroll-reveal
+              data-scroll-reveal-baseline
+              className="image-pair-large-reveal edge-image-pair-large rounded-lg"
               alt="Farmer pitching hay in a dairy barn"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/about/man-feeding-cows.webp"
             />
-            <img
-              className="h-[260px] w-full rounded-2xl object-cover md:h-[340px]"
-              alt="Goats grazing on green pasture"
-              src="/sourcePhotos/about/goats-grazing.webp"
-            />
+            <div
+              ref={smallImageRef}
+              data-parallax-image-role="small"
+              className="edge-image-pair-small will-change-transform"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Goats grazing on green pasture"
+                loading="lazy"
+                decoding="async"
+                src="/sourcePhotos/about/goats-grazing.webp"
+              />
+            </div>
           </div>
         </section>
 
         <section className="relative z-20 px-4 pb-0 pt-12 md:-mb-8 md:px-8 md:pt-16">
-          <blockquote
-            className="mx-auto max-w-[640px] translate-y-8 text-center text-[26px] leading-[1.5] text-[#5e4540] md:translate-y-16 md:text-[32px]"
-            style={{ fontFamily: '"Dancing Script", cursive' }}
-            data-testid="text-quote"
+          <div
+            ref={quoteFrameRef}
+            className="translate-y-[112px] md:translate-y-[144px]"
           >
-            &quot;Farmers don&apos;t need more research papers. They need
-            someone to show up with a plan, the funding, and the know-how to
-            make their operation stronger. That&apos;s the job.&quot;
-            <footer className="mt-4 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
-              — Name
-            </footer>
-          </blockquote>
+            <div ref={quoteParallaxRef} className="will-change-transform">
+              <blockquote
+                className="mx-auto max-w-[640px] text-center text-[26px] leading-[1.5] text-[#5e4540] md:text-[32px]"
+                style={{ fontFamily: '"Dancing Script", cursive' }}
+                data-testid="text-quote"
+              >
+                <span className="md:hidden">
+                  &quot;Farmers don&apos;t need more research papers. They need
+                  someone to show up with a plan, the funding, and the know-how
+                  to make their operation stronger. That&apos;s the job.&quot;
+                </span>
+                <span className="hidden md:block">
+                  <span className="block">
+                    &quot;Farmers don&apos;t need more research papers. They need
+                  </span>
+                  <span className="block">
+                    someone to show up with a plan, the funding, and the
+                  </span>
+                  <span className="block">
+                    know-how to make their operation stronger.
+                  </span>
+                  <span className="block">That&apos;s the job.&quot;</span>
+                </span>
+                <footer className="mt-4 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
+                  — Name
+                </footer>
+              </blockquote>
+            </div>
+          </div>
         </section>
 
         <section className="relative">
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[26%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)] md:h-[30%]" />
-          <img
-            className="h-[300px] w-full object-cover md:h-[420px]"
-            alt="Rolling hills and farmland"
-            src="/sourcePhotos/about/landscape.webp"
-          />
-          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 pb-12 pt-10 md:rounded-b-[30px] md:px-8 md:pb-10 md:pt-12">
+          <div
+            ref={landscapeFrameRef}
+            className="relative h-[300px] overflow-hidden md:h-[420px]"
+          >
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 bg-white" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.74)_42%,rgba(255,255,255,0)_100%)]" />
+            <img
+              ref={landscapeParallaxRef}
+              className="absolute inset-x-0 -top-[calc(30%+2px)] h-[calc(160%+4px)] w-full object-cover will-change-transform"
+              alt="Rolling hills and farmland"
+              loading="lazy"
+              decoding="async"
+              src="/sourcePhotos/about/landscape.webp"
+            />
+          </div>
+          <div className="bg-gradient-to-b from-[#7587ac] to-[#4d5b78] px-4 py-16 md:rounded-b-[30px] md:px-8">
             <div className="mx-auto max-w-[1000px]">
-              <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-white md:text-[50px]">
+              <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-white md:text-[52px] md:leading-[1.1]">
                 The Principles Behind Every Project
               </h2>
-              <div className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2">
-                {principles.map((p) => (
+              <div
+                ref={principlesRef}
+                data-scroll-reveal-skip
+                className="mt-10 grid gap-x-16 gap-y-8 md:grid-cols-2"
+              >
+                {principles.map((p, index) => (
                   <div
                     key={p.title}
+                    data-principle-reveal-anchor
                     data-testid={`item-principle-${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="border-b border-white/40 pb-6 text-center md:text-left"
+                    className="overflow-hidden border-b border-white/40 pb-6 text-left"
                   >
-                    <img
-                      className="mx-auto mb-3 h-11 w-11 object-contain md:mx-0"
-                      src={p.icon}
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-[26px] font-bold text-white">{p.title}</h3>
-                    <p className="mt-3 [font-family:'Inter',Helvetica] text-[15px] leading-6 text-white/90">
-                      {p.body}
-                    </p>
+                    <div
+                      data-principle-reveal
+                      className="principle-reveal flex items-start gap-5"
+                    >
+                      <div className="h-[77px] w-[77px] shrink-0">
+                        <img
+                          className="continuous-icon-wiggle h-full w-full object-contain"
+                          src={p.icon}
+                          alt=""
+                          aria-hidden="true"
+                          style={{ animationDelay: `${index * -0.55}s` }}
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-white md:text-[24px]">{p.title}</h3>
+                        <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-white/90">
+                          {p.body}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -177,120 +347,95 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="relative overflow-hidden px-4 py-12 md:px-8 md:py-16">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] opacity-80" style={topoPatternStyle} />
-          <h2 className="relative z-10 mx-auto max-w-[640px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
+          <PatternParallaxLayer className="absolute inset-x-0 top-0 h-[70%] opacity-80" />
+          <h2 className="desktop-text-balance relative z-10 mx-auto max-w-[640px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Measuring Impact in Outcomes, Not Intentions
           </h2>
-          <p className="relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="desktop-text-balance relative z-10 mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
             The difference is simple. We don&apos;t hand over a check and hope
             for the best. Here&apos;s how our approach stands apart.
           </p>
           <div className="relative z-10 mx-auto mt-14 grid max-w-[1000px] gap-8 md:grid-cols-2 md:gap-0">
-            <div className="rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022] md:-rotate-1 md:translate-y-[-10px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
-                What Others Do
-              </h3>
-              <ul className="mt-6">
-                {othersDo.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base text-[#3a332b]"
-                  >
-                    <span aria-hidden="true" className="text-lg font-bold">✕</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div
+              data-scroll-reveal
+              data-scroll-reveal-gap="200"
+              className="impact-comparison-reveal"
+            >
+              <div
+                data-scroll-reveal-group
+                className="impact-comparison-card impact-comparison-card--left rounded-2xl bg-[#efe7cf] p-8 shadow-[0px_4px_14px_#00000022]"
+              >
+                <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                  What Others Do
+                </h3>
+                <ul className="mt-6">
+                  {othersDo.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
+                    >
+                      <span aria-hidden="true" className="text-lg font-bold">✕</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="rounded-2xl bg-[#faf5e4] p-8 shadow-[0px_4px_14px_#00000022] md:rotate-1 md:translate-y-[30px]">
-              <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold text-[#3a332b]">
-                What We Do
-              </h3>
-              <ul className="mt-6">
-                {weDo.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-4 border-b border-[#3a332b]/40 py-3 [font-family:'Inter',Helvetica] text-base text-[#3a332b]"
-                  >
-                    <span aria-hidden="true" className="text-lg font-bold">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div
+              data-scroll-reveal
+              className="impact-comparison-reveal"
+            >
+              <div
+                data-scroll-reveal-group
+                className="impact-comparison-card impact-comparison-card--right rounded-2xl bg-[#faf5e4] p-8 shadow-[0px_4px_14px_#00000022]"
+              >
+                <h3 className="[font-family:'Inter',Helvetica] text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                  What We Do
+                </h3>
+                <ul className="mt-6">
+                  {weDo.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-4 border-b border-[#5e4540] py-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]"
+                    >
+                      <span aria-hidden="true" className="text-lg font-bold">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-[29px]">
-          <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Cornfield with farm buildings"
-              src="/figmaAssets/cornfield_farm.webp"
-            />
-            <div className="absolute inset-0 bg-[#54501f]/85 mix-blend-multiply" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center md:px-[60px] md:py-[94px]">
-              <div>
-                <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  data-testid="input-newsletter-name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
-                  <Input
-                    name="email"
-                    type="email"
-                    aria-label="Email address"
-                    required
-                    placeholder="Enter email"
-                    data-testid="input-newsletter-email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="submit"
-                    data-testid="button-newsletter-subscribe"
-                    className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+        <NewsletterSection
+          imageAlt="Cornfield with farm buildings"
+          imageSrc="/figmaAssets/cornfield_farm.webp"
+          overlayColor="#827B3E"
+        />
 
         <section id="team" className="scroll-mt-24 px-4 py-12 md:px-8 md:py-[84px]">
-          <h2 className="mx-auto max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[50px]">
+          <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Meet the Industry Leaders Who Launched Better Farms
           </h2>
-          <p className="mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
+          <p className="desktop-text-balance mx-auto mt-8 max-w-[760px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
             Our board members helped create organic certification, served under
             presidential administrations, and built some of the largest
             operations in sustainable agriculture. They have the relationships,
             credibility, and track record to make Better Farms a great success.
           </p>
-          <div className="mx-auto mt-14 grid max-w-[1100px] gap-x-10 gap-y-14 md:grid-cols-3">
+          <div
+            data-scroll-reveal-sequence
+            className="mx-auto mt-14 grid max-w-[760px] gap-x-10 gap-y-14 md:grid-cols-2"
+          >
             {boardMembers.map((member, index) => (
               <div
                 key={index}
                 role="button"
                 tabIndex={0}
                 data-testid={`card-board-member-${index}`}
+                data-scroll-reveal
+                data-scroll-reveal-group
                 onClick={() => setSelectedMember(member)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -298,18 +443,23 @@ export const AboutUs = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className={`cursor-pointer ${index % 3 === 1 ? "md:mt-12" : ""}`}
+                className="group cursor-pointer"
               >
-                <img
-                  className="h-[330px] w-full rounded-2xl object-cover grayscale-[60%] sepia-[20%]"
-                  alt={member.name}
-                  src={member.image}
-                />
-                <p className="mt-4 [font-family:'Inter',Helvetica] text-base font-bold text-[#5e4540]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
+                  <img
+                    className="h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] md:h-[330px]"
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    src={member.image}
+                  />
+                  <div
+                    className="absolute inset-0 mix-blend-multiply"
+                    style={{ backgroundColor: member.overlay }}
+                  />
+                </div>
+                <p className="mt-4 [font-family:'Inter',Helvetica] text-[24px] font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                   {member.name}
-                </p>
-                <p className="mt-1 [font-family:'Inter',Helvetica] text-base text-[#5e4540]">
-                  {member.credential}
                 </p>
               </div>
             ))}
@@ -317,34 +467,40 @@ export const AboutUs = (): JSX.Element => {
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[720px] text-center text-[40px] font-bold leading-[1.1] text-[#5e4540] md:text-[56px]">
-            Ready to See How It Works?
-          </h2>
-          <p className="mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-7 text-[#5e4540]">
-            Better Farms projects follow a clear process from funding to
-            fieldwork to final reporting. See how we turn your investment into
-            measurable results on a real farm.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Button
-              asChild
-              className="h-auto rounded-lg bg-[#7587ac] px-[24px] py-[15px] text-white hover:bg-[#6c7ea0]"
-            >
-              <Link href="/how-it-works" data-testid="link-how-it-works">
-                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                  How It Works
-                </span>
-                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-              </Link>
-            </Button>
+          <div data-scroll-reveal data-scroll-reveal-group>
+            <h2 className="desktop-text-balance mx-auto max-w-[720px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+              Ready to See How It Works?
+            </h2>
+            <p className="desktop-text-balance mx-auto mt-6 max-w-[680px] text-center [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540] md:text-lg">
+              Better Farms projects follow a clear process from funding to
+              fieldwork to final reporting. See how we turn your investment into
+              measurable results on a real farm.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Button
+                asChild
+                arrowMotion
+                className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
+              >
+                <Link href="/how-it-works" data-testid="link-how-it-works">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
+                    How It Works
+                  </span>
+                  <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
 
         <div className="relative">
           <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
           <img
+            data-scroll-reveal-skip
             className="h-[360px] w-full object-cover md:h-[460px]"
             alt="Rancher with cattle at sunset"
+            loading="lazy"
+            decoding="async"
             src="/figmaAssets/cattle_rancher_field.webp"
           />
         </div>
@@ -354,6 +510,6 @@ export const AboutUs = (): JSX.Element => {
         onClose={() => setSelectedMember(null)}
       />
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

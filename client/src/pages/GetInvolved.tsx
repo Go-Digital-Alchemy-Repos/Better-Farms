@@ -1,17 +1,20 @@
+import { useRef } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { CompactDonationCard } from "@/components/CompactDonationCard";
-import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
+import { DonationSection } from "@/components/DonationSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
+import { useOrderedViewportReveal } from "@/hooks/use-ordered-viewport-reveal";
 
 const pathways = [
   {
     id: "corporate",
     title: "Corporate Partnership",
     whoItsFor:
-      "Companies with sustainability commitments, food and agriculture businesses, and corporations seeking meaningful ESG impact.",
+      "Companies with sustainability commitments, food and agriculture businesses, and corporations seeking meaningful ESG\u00a0impact.",
     whatYouGet: [
       "Projects aligned with your strategic priorities",
       "Impact reporting formatted for ESG requirements",
@@ -132,29 +135,48 @@ const partnerBenefits = [
 ];
 
 export const GetInvolved = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
+  const imagePairRef = useRef<HTMLDivElement>(null);
+  const smallImageRef = useRef<HTMLDivElement>(null);
+  const partnerBenefitsRef = useRef<HTMLDivElement>(null);
+  useImagePairParallax(imagePairRef, smallImageRef);
+  useOrderedViewportReveal(
+    partnerBenefitsRef,
+    "[data-partner-benefit-reveal-anchor]",
+    "[data-partner-benefit-reveal]",
+    "principle-reveal-visible",
+    160,
+  );
+
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="px-4 pt-4 md:px-[29px]">
-        <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-6 pb-6 pt-10 md:px-[42px] md:pb-[42px] md:pt-[116px]">
-            <p className="text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
+        <section className="px-4 pt-4 md:px-[29px] lg:pt-0">
+        <div className="hero-load-sequence hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]">
+            <p className="hero-load-content hero-load-content--1 hero-eyebrow text-center text-xl font-bold text-white [font-family:'Playfair_Display',Georgia,serif] md:text-[28px]">
               Better Farms Start With the Right Support
             </p>
-            <h1 className="mx-auto mt-[38px] max-w-[1000px] text-center text-[44px] font-bold leading-[1.02] text-white md:text-[72px] lg:text-[92px] xl:text-[112px]">
-              Help Independent Farms Thrive
+            <h1 className="hero-load-content hero-load-content--2 hero-title mx-auto text-center font-bold text-white">
+              Help Independent <span className="whitespace-nowrap">Farms Thrive</span>
             </h1>
-          <img
-            className="mt-[68px] h-auto w-full rounded-[20px] object-contain"
-            alt="Chickens roaming outside a mobile coop"
-            src="/sourcePhotos/get-involved/chickens-roaming.webp"
-          />
+            <div className="hero-load-image hero-image-frame w-full overflow-hidden rounded-[20px]">
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Chickens roaming outside a mobile coop"
+                decoding="async"
+                fetchPriority="high"
+                width="2614"
+                height="1166"
+                srcSet="/sourcePhotos/get-involved/chickens-roaming-768.jpg 768w, /sourcePhotos/get-involved/chickens-roaming-1280.jpg 1280w, /sourcePhotos/get-involved/chickens-roaming.webp 2614w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
+                src="/sourcePhotos/get-involved/chickens-roaming.webp"
+              />
+            </div>
           </div>
         </section>
 
         <section className="px-4 py-12 md:px-8 md:py-[104px]">
-          <p className="mx-auto max-w-[760px] text-center [font-family:'Inter',Helvetica] text-lg leading-8 text-[#2f2820] md:text-xl">
+          <p className="desktop-text-balance mx-auto max-w-[1000px] text-center [font-family:'Inter',Helvetica] text-lg leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]">
             Funding a stronger food system starts with choosing how you want to
             contribute. We built four pathways so every donor can get involved
             in the way that works best for them. Explore them below and put
@@ -162,46 +184,46 @@ export const GetInvolved = (): JSX.Element => {
           </p>
         </section>
 
-        <section className="px-4 pb-10 md:px-8">
-          <h2 className="mx-auto mb-12 max-w-[720px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px] lg:hidden">
+        <section className="px-4 pb-10 md:px-8 lg:pl-[max(32px,calc((100%-1100px)/2))] lg:pr-0">
+          <h2 className="mb-12 max-w-[720px] text-left text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1] lg:hidden">
             Choose the Path That Fits Your Organization
           </h2>
-          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_440px] lg:pt-[108px]">
-            <div className="flex flex-col gap-24 md:gap-0">
+          <div className="get-involved-pathways-layout grid gap-12 lg:grid-cols-[minmax(406px,1fr)_minmax(406px,721px)] lg:pt-[108px]">
+            <div className="get-involved-pathways-copy flex w-full flex-col gap-24 md:gap-0">
               {pathways.map((pathway, index) => (
                 <div
                   key={pathway.id}
                   data-testid={`section-pathway-${pathway.id}`}
-                  className={index === 0 ? "" : index === 2 ? "md:mt-[190px]" : "md:mt-20"}
+                  className={index === 0 ? "" : "md:mt-20"}
                 >
-                  <h2 className="text-[32px] font-bold leading-[1.1] text-[#5e4540] md:text-[40px]">
+                  <h2 className="text-[32px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[40px]">
                     {pathway.title}
                   </h2>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                     <span className="font-bold">Who it&apos;s for: </span>
                     {pathway.whoItsFor}
                   </p>
-                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-7 text-[#2f2820]">
+                  <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                     What you get:
                   </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                  <ul className="mt-2 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                     {pathway.whatYouGet.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                   {pathway.extraLabel && (
                     <>
-                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-7 text-[#2f2820]">
+                      <p className="mt-6 [font-family:'Inter',Helvetica] text-base font-bold leading-[1.6] tracking-normal text-[#5e4540]">
                         {pathway.extraLabel}
                       </p>
                       {pathway.extraBullets ? (
-                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                        <ul className="mt-1 list-disc space-y-1 pl-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                           {pathway.extraLines.map((line, index) => (
                             <li key={index}>{line}</li>
                           ))}
                         </ul>
                       ) : (
-                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                        <div className="mt-1 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                           {pathway.extraLines.map((line, index) => (
                             <p key={index}>{line}</p>
                           ))}
@@ -210,15 +232,16 @@ export const GetInvolved = (): JSX.Element => {
                     </>
                   )}
                   {pathway.note && (
-                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-7 text-[#2f2820]">
+                    <p className="mt-6 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
                       <span className="font-bold">{pathway.note.label}</span>
                       {pathway.note.text}
                     </p>
                   )}
                   <Button
                     asChild={pathway.id === "individual" || pathway.id === "corporate" || pathway.id === "foundation" || pathway.id === "daf"}
+                    arrowMotion
                     data-testid={`button-cta-${pathway.id}`}
-                    className="mt-8 h-auto rounded-lg bg-[#7587ac] px-5 py-3 text-white hover:bg-[#6c7ea0]"
+                    className="mt-8 h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
                   >
                     <Link href={pathway.id === "individual" ? "/fund-a-farm" : "/contact"}>
                       <span className="[font-family:'Inter',Helvetica] text-base font-medium">
@@ -234,140 +257,107 @@ export const GetInvolved = (): JSX.Element => {
                 </div>
               ))}
             </div>
-            <div className="hidden lg:block">
+            <div className="get-involved-pathways-image hidden w-full max-w-[721px] justify-self-end lg:sticky lg:top-28 lg:block lg:self-start">
               <img
-                className="h-[520px] w-full rounded-[14px] object-cover"
+                className="edge-image-pair-large rounded-l-[14px] rounded-r-none"
                 alt="Farmer harvesting fresh vegetables into a wooden crate"
+                loading="lazy"
+                decoding="async"
                 src="/sourcePhotos/get-involved/vegetable-crate.webp"
               />
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-[29px]">
-          <div className="relative mx-auto max-w-[1386px] overflow-hidden rounded-[20px]">
-            <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Cornfield with farm buildings at dusk"
-              src="/figmaAssets/cornfield_farm.webp"
-            />
-            <div className="absolute inset-0 bg-[#783f30]/85 mix-blend-multiply" />
-            <div className="relative z-10 grid gap-10 px-6 py-12 lg:grid-cols-[1fr_460px] lg:items-center lg:px-[60px] lg:py-[138px]">
-              <div>
-                <h2 className="max-w-[480px] text-[38px] font-bold leading-[1.1] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[420px] [font-family:'Inter',Helvetica] text-base leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  data-testid="input-newsletter-name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
-                  <Input
-                    name="email"
-                    type="email"
-                    aria-label="Email address"
-                    required
-                    placeholder="Enter email"
-                    data-testid="input-newsletter-email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="submit"
-                    data-testid="button-newsletter-subscribe"
-                    className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+        <NewsletterSection
+          imageAlt="Cornfield with farm buildings at dusk"
+          imageSrc="/figmaAssets/cornfield_farm.webp"
+        />
 
         <section className="px-4 py-12 md:px-8 md:py-16">
-          <h2 className="mx-auto max-w-[560px] text-center text-[38px] font-bold leading-[1.15] text-[#5e4540] md:text-[52px]">
+          <h2 className="desktop-text-balance mx-auto max-w-[560px] text-center text-[36px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
             Why Partner With Better Farms
           </h2>
-          <div className="mx-auto mt-12 grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2">
+          <div
+            ref={partnerBenefitsRef}
+            data-scroll-reveal-skip
+            className="mx-auto mt-[60px] grid max-w-[1100px] gap-x-16 gap-y-12 md:grid-cols-2"
+          >
             {partnerBenefits.map((benefit, index) => (
               <div
                 key={index}
+                data-partner-benefit-reveal-anchor
                 data-testid={`card-benefit-${index}`}
-                className="flex gap-6 border-b border-[#d9d4c8] pb-10"
+                className="overflow-hidden border-b border-[#d9d4c8]"
               >
-                <img className="h-12 w-12 shrink-0 object-contain" src={benefit.icon} alt="" />
-                <div>
-                  <h3 className="text-2xl font-bold text-[#5e4540] md:text-[28px]">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-3 [font-family:'Inter',Helvetica] text-sm leading-6 text-[#2f2820]">
-                    {benefit.text}
-                  </p>
+                <div
+                  data-partner-benefit-reveal
+                  className="principle-reveal flex gap-6 pb-10"
+                >
+                  <div className="h-12 w-12 shrink-0">
+                    <img
+                      className="continuous-icon-wiggle h-full w-full object-contain"
+                      src={benefit.icon}
+                      alt=""
+                      aria-hidden="true"
+                      style={{ animationDelay: `${index * -0.55}s` }}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold leading-[1.25] tracking-normal text-[#5e4540] md:text-[24px]">
+                      {benefit.title}
+                    </h3>
+                    <p className="mt-3 [font-family:'Inter',Helvetica] text-base leading-[1.6] tracking-normal text-[#5e4540]">
+                      {benefit.text}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="px-4 py-10 md:px-8 md:py-16">
-          <div className="mx-auto grid max-w-[1200px] gap-8 md:grid-cols-[1fr_1fr] md:items-start md:gap-16">
+        <section className="overflow-hidden py-10 md:py-16">
+          <div
+            ref={imagePairRef}
+            data-parallax-image-pair
+            data-scroll-reveal-anchor
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-left grid-cols-1 items-start"
+          >
             <img
-              className="h-[330px] w-full rounded-2xl object-cover md:h-[430px]"
+              data-parallax-image-role="large"
+              data-scroll-reveal
+              data-scroll-reveal-baseline
+              className="image-pair-large-reveal edge-image-pair-large rounded-lg object-top"
               alt="Goats gathered in a pasture"
-              src="/sourcePhotos/get-involved/goats.webp"
+              loading="lazy"
+              decoding="async"
+              src="/sourcePhotos/get-involved/goats-flipped.jpg"
             />
-            <img
-              className="h-[330px] w-full rounded-2xl object-cover md:mt-20 md:h-[390px]"
-              alt="Fresh apples in a bushel"
-              src="/sourcePhotos/get-involved/apples.webp"
-            />
+            <div
+              ref={smallImageRef}
+              data-parallax-image-role="small"
+              className="edge-image-pair-small will-change-transform"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Fresh apples in a bushel"
+                loading="lazy"
+                decoding="async"
+                src="/sourcePhotos/get-involved/apples.webp"
+              />
+            </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden pt-10 md:pt-[270px]">
-          <div className="px-4 md:px-8">
-            <h2 className="text-center text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[72px]">
-              Fund a Farm Today
-            </h2>
-            <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-[#5e4540] md:text-xl">
-              <span className="font-bold">
-                Your contribution can strengthen a farm for decades.{" "}
-              </span>
-              <span>
-                Put your dollars to work and get proof of what you&apos;ve built.
-              </span>
-            </p>
-            <CompactDonationCard />
-            <p className="relative z-10 mx-auto mt-8 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-sm font-bold leading-6 text-[#2f2820]">
-              501(c)(3) nonprofit organization&nbsp;&nbsp;|&nbsp;&nbsp;100% of
-              your funds go to farm-level work&nbsp;&nbsp;|&nbsp;&nbsp;ESG
-              impact reporting included
-            </p>
-          </div>
-          <div className="relative mt-10">
-            <div className="absolute inset-x-0 top-0 z-[5] h-[160px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)] md:h-[220px]" />
-            <img
-              className="h-[380px] w-full object-cover md:h-[590px]"
-              alt="Cattle grazing in a wide pasture"
-              src="/sourcePhotos/get-involved/cows-grazing.webp"
-            />
-          </div>
-        </section>
+        <DonationSection
+          sectionClassName="pt-16 md:pt-[78px]"
+          imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
+          imageAlt="Cattle grazing in a wide pasture"
+          imageSrc="/sourcePhotos/get-involved/cows-grazing.webp"
+        />
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

@@ -1,0 +1,68 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1440 620"
+  preserveAspectRatio="none"
+>
+  <defs>
+    <path
+      id="upper-contour"
+      d="M470-38c70 53 138 68 204 43 76-29 144-19 204 28 69 53 136 60 201 20 77-47 150-47 220 0 57 39 121 48 193 28"
+    />
+    <path
+      id="lower-contour"
+      d="M-85 320c74-46 145-48 213-5 59 37 116 41 171 11 62-34 122-29 181 16 64 49 129 54 196 15 51-30 101-31 152-3"
+    />
+  </defs>
+
+  <g
+    fill="none"
+    stroke="#6f5852"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.35"
+    opacity=".13"
+  >
+    <use href="#upper-contour" />
+    <use href="#upper-contour" transform="translate(0 14)" />
+    <use href="#upper-contour" transform="translate(0 28)" />
+    <use href="#upper-contour" transform="translate(0 42)" />
+    <use href="#upper-contour" transform="translate(0 56)" />
+    <use href="#upper-contour" transform="translate(0 70)" />
+    <use href="#upper-contour" transform="translate(0 84)" />
+    <use href="#upper-contour" transform="translate(0 98)" />
+    <use href="#upper-contour" transform="translate(0 112)" />
+    <use href="#upper-contour" transform="translate(0 126)" />
+    <use href="#upper-contour" transform="translate(0 140)" />
+    <use href="#upper-contour" transform="translate(0 154)" />
+
+    <use href="#lower-contour" />
+    <use href="#lower-contour" transform="translate(0 18)" />
+    <use href="#lower-contour" transform="translate(0 36)" />
+    <use href="#lower-contour" transform="translate(0 54)" />
+    <use href="#lower-contour" transform="translate(0 72)" />
+    <use href="#lower-contour" transform="translate(0 90)" />
+    <use href="#lower-contour" transform="translate(0 108)" />
+    <use href="#lower-contour" transform="translate(0 126)" />
+    <use href="#lower-contour" transform="translate(0 144)" />
+    <use href="#lower-contour" transform="translate(0 162)" />
+    <use href="#lower-contour" transform="translate(0 180)" />
+    <use href="#lower-contour" transform="translate(0 198)" />
+    <use href="#lower-contour" transform="translate(0 216)" />
+
+    <path d="M1096-22c43 24 71 58 85 101 14 45 48 68 103 69 50 0 80 23 91 69 10 42 38 66 83 71" />
+    <path d="M1131-17c35 21 57 49 67 84 11 38 39 57 85 58 42 0 66 19 75 58 8 35 31 55 69 60" />
+    <path d="M1167-12c27 17 44 39 51 67 8 30 30 45 67 46 33 0 53 15 59 46 6 28 24 43 54 48" />
+    <path d="M1203-7c20 13 32 30 37 50 6 23 22 34 49 35 25 0 39 11 44 34 4 20 17 32 38 35" />
+    <path d="M1239-2c12 9 20 20 23 34 3 15 13 23 31 23 16 0 25 8 28 22 3 13 11 21 23 23" />
+
+    <path d="M842 72c18-24 44-34 77-31 35 3 59 20 73 50 13 29 34 43 64 42 31-1 53 12 67 39 15 29 38 42 70 38" />
+    <path d="M871 77c14-18 34-26 60-23 27 3 46 16 56 39 10 22 27 32 50 31 24-1 41 9 52 30 11 22 29 32 53 29" />
+    <path d="M901 82c10-13 24-18 42-16 20 2 33 11 41 28 7 16 19 23 35 22 18-1 30 6 38 21 8 16 20 23 37 21" />
+    <path d="M931 87c6-8 14-11 25-10 12 1 20 7 25 17 4 10 11 14 21 14 10-1 18 4 22 13 5 9 12 14 22 12" />
+
+    <path d="M1018 484c46-33 91-35 134-5 42 29 81 30 119 3 42-30 83-27 123 9 31 28 66 34 104 19" />
+    <path d="M1060 515c35-25 69-26 102-4 32 22 62 23 91 2 32-23 63-20 93 7 24 21 50 25 79 14" />
+    <path d="M1103 546c23-17 46-18 69-3 22 15 42 16 62 2 22-16 43-14 63 5 16 14 34 17 54 9" />
+    <path d="M1146 577c12-9 24-10 36-2 12 8 23 8 33 1 12-9 23-8 34 3 8 7 18 9 28 5" />
+  </g>
+</svg>

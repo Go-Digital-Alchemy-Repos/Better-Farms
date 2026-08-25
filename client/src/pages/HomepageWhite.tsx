@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import {
   TeamMemberDialog,
   type TeamMember,
-  placeholderBio,
 } from "@/components/TeamMemberDialog";
 import {
   Accordion,
@@ -13,18 +13,229 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { DonationSection } from "@/components/DonationSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
+import { AnimatedStatValue } from "@/components/AnimatedStatValue";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { johnFoster, stevenWray, tracyFavre } from "@/data/team";
 
 export const HomepageWhite = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
-  const [selectedDonation, setSelectedDonation] = useState("$30");
-  const [customAmount, setCustomAmount] = useState("");
+  const pageRef = useRef<HTMLDivElement>(null);
+  const parallaxPairRef = useRef<HTMLDivElement>(null);
+  const parallaxSmallImageRef = useRef<HTMLDivElement>(null);
+  const fieldParallaxImageRef = useRef<HTMLImageElement>(null);
+  const workCardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [openChallenge, setOpenChallenge] = useState("01");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  useScrollReveal(pageRef);
+
+  useEffect(() => {
+    const pair = parallaxPairRef.current;
+    const smallImage = parallaxSmallImageRef.current;
+    if (!pair || !smallImage) return;
+
+    let animationFrame = 0;
+    let currentOffset = 0;
+    let targetOffset = 0;
+    let lastFrameTime = 0;
+
+    const calculateTargetOffset = () => {
+      if (window.innerWidth < 1024) {
+        currentOffset = 0;
+        targetOffset = 0;
+        smallImage.style.removeProperty("transform");
+        return 0;
+      }
+
+      const largeImage = pair.querySelector<HTMLElement>(
+        ".edge-image-pair-large",
+      );
+      if (!largeImage) return currentOffset;
+
+      const pairRect = pair.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const largeHeight = largeImage.offsetHeight;
+      const smallHeight = smallImage.offsetHeight;
+      const progress = Math.min(
+        Math.max(
+          (viewportHeight - pairRect.top) / (viewportHeight + largeHeight),
+          0,
+        ),
+        1,
+      );
+      const exitOffset = Math.max(0, largeHeight - smallHeight);
+
+      return exitOffset * progress;
+    };
+
+    const animateToTarget = (time: number) => {
+      const deltaTime = lastFrameTime ? Math.min(time - lastFrameTime, 64) : 16;
+      lastFrameTime = time;
+      const ease = 1 - Math.exp(-deltaTime / 220);
+
+      currentOffset += (targetOffset - currentOffset) * ease;
+      smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+
+      if (Math.abs(targetOffset - currentOffset) > 0.1) {
+        animationFrame = window.requestAnimationFrame(animateToTarget);
+      } else {
+        currentOffset = targetOffset;
+        smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+        animationFrame = 0;
+        lastFrameTime = 0;
+      }
+    };
+
+    const updateParallaxTarget = (snap = false) => {
+      targetOffset = calculateTargetOffset();
+
+      if (window.innerWidth < 1024) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        lastFrameTime = 0;
+        return;
+      }
+
+      if (snap) {
+        currentOffset = targetOffset;
+        smallImage.style.transform = `translate3d(0, ${currentOffset}px, 0)`;
+        return;
+      }
+
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(animateToTarget);
+      }
+    };
+
+    const handleScroll = () => updateParallaxTarget();
+    const handleResize = () => updateParallaxTarget(true);
+
+    updateParallaxTarget(true);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const image = fieldParallaxImageRef.current;
+    const frame = image?.parentElement;
+    if (!image || !frame) return;
+
+    let animationFrame = 0;
+
+    const updateParallax = () => {
+      animationFrame = 0;
+
+      const frameRect = frame.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const frameCenter = frameRect.top + frameRect.height / 2;
+      const maxOffset = frameRect.height * 0.09;
+      const offset = Math.min(
+        Math.max((viewportCenter - frameCenter) * 0.1, -maxOffset),
+        maxOffset,
+      );
+
+      image.style.transform = `translate3d(0, ${offset}px, 0) scale(1.2)`;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestParallaxUpdate);
+      window.removeEventListener("resize", requestParallaxUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    let animationFrame = 0;
+
+    const setCardProgress = (
+      cardFrame: HTMLDivElement,
+      cardProgress: number,
+      copyProgress: number,
+    ) => {
+      const easedCardProgress =
+        cardProgress * cardProgress * (3 - 2 * cardProgress);
+      const easedCopyProgress =
+        copyProgress * copyProgress * (3 - 2 * copyProgress);
+      const card = cardFrame.querySelector<HTMLElement>(
+        "[data-work-card-surface]",
+      );
+      const copy = cardFrame.querySelector<HTMLElement>("[data-work-card-copy]");
+
+      if (card) {
+        card.style.opacity = `${cardProgress}`;
+        card.style.transform = `scale(${0.84 + easedCardProgress * 0.16})`;
+      }
+
+      if (copy) {
+        copy.style.opacity = `${copyProgress}`;
+        copy.style.transform = `translate3d(0, ${
+          36 * (1 - easedCopyProgress)
+        }px, 0)`;
+      }
+    };
+
+    const updateCardProgress = () => {
+      animationFrame = 0;
+
+      workCardRefs.current.forEach((cardFrame) => {
+        if (!cardFrame) return;
+
+        const cardRect = cardFrame.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const revealStart = viewportHeight * 0.96;
+        const revealDistance = Math.max(viewportHeight * 0.58, 280);
+        const cardProgress = Math.min(
+          Math.max((revealStart - cardRect.top) / revealDistance, 0),
+          1,
+        );
+        const copyProgress = Math.min(
+          Math.max((cardProgress - 0.22) / 0.68, 0),
+          1,
+        );
+
+        setCardProgress(cardFrame, cardProgress, copyProgress);
+      });
+    };
+
+    const requestCardUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(updateCardProgress);
+    };
+
+    updateCardProgress();
+    window.addEventListener("scroll", requestCardUpdate, { passive: true });
+    window.addEventListener("resize", requestCardUpdate);
+    window.addEventListener("load", requestCardUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestCardUpdate);
+      window.removeEventListener("resize", requestCardUpdate);
+      window.removeEventListener("load", requestCardUpdate);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
 
   const testimonials = [
     {
@@ -44,18 +255,37 @@ export const HomepageWhite = (): JSX.Element => {
     },
   ];
 
+  useEffect(() => {
+    const autoplayInterval = window.setInterval(() => {
+      setActiveTestimonial(
+        (currentTestimonial) =>
+          (currentTestimonial + 1) % testimonials.length,
+      );
+    }, 8000);
+
+    return () => window.clearInterval(autoplayInterval);
+  }, []);
+
   const impactStats = [
     {
-      label: "The average age of American farmers today.",
+      label: "Average age of U.S. farm producers in 2022.",
       value: "58",
+      sourceName: "2022 Census of Agriculture",
+      sourceUrl: "https://data.nass.usda.gov/Newsroom/2024/02-13-2024.php",
     },
     {
-      label: "Farms lost in the U.S. in just seven years.",
+      label: "U.S. farms lost between 2017 and 2024.",
       value: "160K+",
+      sourceName: "USDA Economic Research Service",
+      sourceUrl: "https://ers.usda.gov/data-products/charts-of-note/111304",
     },
     {
-      label: "Disaster losses farmers absorbed without insurance since 2022.",
+      label:
+        "Crop losses left uncovered by insurance and prior disaster aid, 2022–2024.",
       value: "$26B",
+      sourceName: "American Farm Bureau Federation",
+      sourceUrl:
+        "https://www.fb.org/market-intel/hurricanes-heat-and-hardship-counting-2024s-crop-losses",
     },
   ];
 
@@ -127,70 +357,93 @@ export const HomepageWhite = (): JSX.Element => {
 
   const teamCards: (TeamMember & { overlay: string })[] = [
     {
-      image: "/figmaAssets/rectangle-88.webp",
-      overlay: "bg-[#7587ac]/30",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
+      ...johnFoster,
+      overlay: "rgba(130, 123, 62, 0.36)",
     },
     {
-      image: "/figmaAssets/rectangle-80.webp",
-      overlay: "bg-[#827b3e]/30",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
+      ...stevenWray,
+      overlay: "rgba(117, 135, 172, 0.30)",
     },
     {
-      image: "/figmaAssets/rectangle-87.webp",
-      overlay: "bg-[#bc623f]/30",
-      name: "Full Name",
-      credential: "One-line credential",
-      bio: placeholderBio,
+      ...tracyFavre,
+      overlay: "rgba(188, 98, 63, 0.32)",
     },
   ];
 
-  const donationOptions = ["$25", "$30", "$100"];
-
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <div ref={pageRef} className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="px-4 pt-4 md:px-[29px] md:pt-4">
-          <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-8 md:px-[42px] md:pb-8 md:pt-[58px]">
+        <section className="px-4 pt-4 md:px-[29px] md:pt-4 lg:pt-0">
+          <div
+            className="hero-load-sequence hero-panel mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-4 md:px-[42px] md:pb-[42px]"
+          >
             <img
-              className="mx-auto mb-4 h-[72px] w-[72px] md:mb-6 md:h-[106px] md:w-[106px]"
-              alt="Group"
+              className="hero-load-content hero-load-content--1 hero-eyebrow-mark mx-auto h-[72px] w-[72px] md:h-[106px] md:w-[106px]"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              width="107"
+              height="107"
               src="/sourcePhotos/homepage/logo-icon.svg"
             />
-            <h1 className="mx-auto max-w-[1102px] text-center [font-family:'Playfair_Display',Helvetica] text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[80px] xl:text-[94px]">
+            <h1
+              className="hero-load-content hero-load-content--2 hero-title mx-auto text-center [font-family:'Playfair_Display',Helvetica] font-bold text-white"
+            >
               We&apos;re Funding the Farms That Keep America Fed
             </h1>
-            <img
-              className="mt-24 h-auto w-full rounded-[20px] object-cover"
-              alt="Rectangle"
-              src="/sourcePhotos/homepage/farm-aerial.webp"
-            />
+            <div
+              className="hero-load-image hero-image-frame w-full overflow-hidden rounded-[20px]"
+            >
+              <img
+                className="hero-image-after-title h-full w-full object-cover"
+                alt="Aerial view of farmland"
+                decoding="async"
+                fetchPriority="high"
+                width="1314"
+                height="608"
+                srcSet="/sourcePhotos/homepage/farm-aerial-768.jpg 768w, /sourcePhotos/homepage/farm-aerial.webp 1314w"
+                sizes="(max-width: 768px) calc(100vw - 32px), 1302px"
+                src="/sourcePhotos/homepage/farm-aerial.webp"
+              />
+            </div>
           </div>
         </section>
         <section className="px-4 py-10 md:px-8 md:py-[120px]">
-          <div className="mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-[32px] md:leading-10">
+          <div
+            data-scroll-reveal
+            className="desktop-text-balance mx-auto max-w-[893px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540] md:text-[28px] md:leading-[1.5]"
+          >
             <span className="font-bold">
               Better Farms Foundation bridges the gap{" "}
             </span>
             <span>
               between donors who want to make a real impact and the farmers who
               need it most. We manage every project on the ground, handling
-              everything from planning to execution.
+              everything from{" "}
+              <span className="whitespace-nowrap">planning to execution.</span>
             </span>
           </div>
         </section>
-        <section className="grid w-full grid-cols-1 overflow-hidden md:grid-cols-2">
-          <div className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]">
+        <section
+          data-scroll-reveal-sequence
+          className="grid w-full grid-cols-1 gap-[3px] overflow-hidden bg-white min-[921px]:grid-cols-2"
+        >
+          <div
+            data-scroll-reveal-background
+            className="bg-[#bc623f] px-6 py-10 md:min-h-[612px] md:px-[94px] md:py-[100px]"
+          >
             <div className="max-w-[565px]">
-              <h2 className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[64px]">
+              <h2
+                data-scroll-reveal
+                className="max-w-[561px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-white md:text-[64px] md:leading-[1.08]"
+              >
                 Building Better Farms From the Ground Up
               </h2>
-              <p className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-8 text-white">
+              <p
+                data-scroll-reveal
+                className="mt-8 max-w-[519px] [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-white"
+              >
                 <span className="font-bold leading-9">
                   The majority of the U.S. food supply is grown by independent
                   family farms.
@@ -205,61 +458,98 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
               </p>
               <Button
+                data-scroll-reveal
                 asChild
-                className="mt-8 h-auto rounded-lg bg-white px-[18px] py-[19px] text-[#5e4540] hover:bg-white/90"
+                arrowMotion
+                className="mt-8 h-auto rounded-lg bg-white pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-[#5e4540] hover:bg-white/90 hover:text-[#5e4540]"
               >
                 <Link href="/fund-a-farm">
-                  <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                  <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                     Fund A Farm
                   </span>
-                  <img
-                    className="ml-2 h-6 w-6"
-                    alt=""
-                    src="/figmaAssets/keyboard-arrow-right-2.svg"
+                  <ChevronRight
+                    className="ml-2 h-6 w-6 text-[#5e4540]"
+                    aria-hidden="true"
                   />
                 </Link>
               </Button>
             </div>
           </div>
-          <div className="flex flex-col bg-[#7587ac]">
+          <div className="flex flex-col gap-[3px] bg-white">
             <img
-              className="h-[240px] w-full object-cover grayscale md:h-[48%] md:min-h-[300px]"
+              data-scroll-reveal
+              className="h-[240px] w-full object-cover object-left grayscale md:h-[48%] md:min-h-[300px]"
               alt="Cattle in a barn"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/homepage/grayscale-cow.webp"
             />
-            <div className="flex flex-1 flex-col justify-center gap-4 px-6 py-8 md:px-[52px] md:py-8">
+            <div
+              data-scroll-reveal-background
+              className="flex flex-1 flex-col justify-center gap-4 bg-[#7587ac] px-6 py-8 md:px-[52px] md:py-8"
+            >
               {impactStats.map((stat) => (
-                <div
+                <a
+                  data-scroll-reveal
+                  data-scroll-reveal-gap="300"
                   key={stat.value}
-                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-2xl border border-white/70 bg-white/10 px-6 py-3"
+                  href={stat.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${stat.label} ${stat.value}. View source: ${stat.sourceName}`}
+                  className="flex min-h-[62px] items-center justify-between gap-6 rounded-full border border-white/70 bg-white/10 px-6 py-3 transition-colors duration-300 ease-out hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#7587ac]"
                 >
-                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[normal] text-white md:text-base">
+                  <p className="max-w-[340px] [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-white md:text-base">
                     {stat.label}
                   </p>
-                  <p className="[font-family:'Inter',Helvetica] text-3xl font-bold leading-[normal] text-white md:text-[40px]">
-                    {stat.value}
-                  </p>
-                </div>
+                  <AnimatedStatValue
+                    value={stat.value}
+                    className="[font-family:'Inter',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal text-white md:text-[40px]"
+                  />
+                </a>
               ))}
 
-              <p className="pt-1 text-center [font-family:'Inter',Helvetica] text-xs font-medium leading-[normal] text-[#2f3a56] md:text-sm">
-                Sources: <span className="underline">2022 Census of Agriculture</span>,{" "}
-                <span className="underline">USDA</span>,{" "}
-                <span className="underline">Farm Bureau</span>
+              <p
+                data-scroll-reveal
+                className="pt-1 text-center [font-family:'Inter',Helvetica] text-sm font-medium leading-[1.6] tracking-normal text-[#2f3a56] md:text-base"
+              >
+                Sources:{" "}
+                {impactStats.map((stat, index) => (
+                  <span key={stat.sourceName}>
+                    {index > 0 && ", "}
+                    <a
+                      className="underline underline-offset-2 hover:text-white focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      href={stat.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {stat.sourceName}
+                    </a>
+                  </span>
+                ))}
               </p>
             </div>
           </div>
         </section>
-        <section>
+        <section
+          data-scroll-reveal
+          className="relative aspect-[1442/520] overflow-hidden rounded-b-[40px] border-t-[3px] border-white md:rounded-b-[64px]"
+        >
           <img
-            className="h-auto w-full"
-            alt="Rectangle"
+            ref={fieldParallaxImageRef}
+            className="absolute inset-0 h-full w-full object-cover will-change-transform"
+            alt="Agricultural specialists walking through a wheat field"
+            loading="lazy"
+            decoding="async"
             src="/figmaAssets/rectangle-44.webp"
           />
         </section>
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-[730px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
+        <section
+          data-scroll-reveal-sequence
+          className="px-4 py-12 md:px-8 md:py-16"
+        >
+          <div data-scroll-reveal className="mx-auto max-w-[730px]">
+            <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               What Independent Farmers Are Up Against
             </h2>
           </div>
@@ -275,12 +565,13 @@ export const HomepageWhite = (): JSX.Element => {
                 const isOpen = openChallenge === item.id;
                 return (
                   <AccordionItem
+                    data-scroll-reveal
                     key={item.id}
                     value={item.id}
                     className={`border-none ${isOpen ? "mb-8" : ""}`}
                   >
                     <AccordionTrigger
-                      className={`border border-[#5e4540] px-5 py-5 hover:no-underline md:px-[27px] md:py-[19px] [&>svg]:hidden ${
+                      className={`group border border-[#5e4540] px-5 py-5 hover:no-underline md:px-[27px] md:py-[19px] [&>svg]:hidden ${
                         isOpen
                           ? "bg-[#8396be] text-white"
                           : "-mt-px bg-white/90 text-[#5e4540]"
@@ -300,7 +591,7 @@ export const HomepageWhite = (): JSX.Element => {
                           }`}
                         />
                         <span
-                          className={`[font-family:'Inter',Helvetica] text-xl font-medium leading-[normal] md:text-[28px] ${
+                          className={`transition-transform duration-300 ease-out group-hover:translate-x-3 [font-family:'Inter',Helvetica] text-xl font-medium leading-[1.25] tracking-normal md:text-[24px] ${
                             isOpen ? "text-white" : "text-[#5e4540]"
                           }`}
                         >
@@ -317,7 +608,7 @@ export const HomepageWhite = (): JSX.Element => {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="px-5 pb-8 pt-8 md:px-[125px]">
-                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-base font-normal leading-7 text-[#5e4540]">
+                      <p className="max-w-[700px] [font-family:'Inter',Helvetica] text-[1.125rem] font-normal leading-[1.6] tracking-normal text-[#5e4540]">
                         {item.content}
                       </p>
                     </AccordionContent>
@@ -327,128 +618,128 @@ export const HomepageWhite = (): JSX.Element => {
             </Accordion>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-[861px]">
-            <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-7xl">
+        <section
+          data-scroll-reveal-sequence
+          className="px-4 py-12 md:px-8 md:py-16"
+        >
+          <div data-scroll-reveal className="mx-auto max-w-[861px]">
+            <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[64px] md:leading-[1.08]">
               We Work Like Farmers, Report Like Scientists
             </h2>
           </div>
-          <div className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7">
-            {workCards.map((card) => (
-              <Card
+          <div
+            data-scroll-reveal-skip
+            className="mx-auto mt-12 flex max-w-[1103px] flex-col gap-7"
+          >
+            {workCards.map((card, index) => (
+              <div
+                ref={(cardElement) => {
+                  workCardRefs.current[index] = cardElement;
+                }}
                 key={card.title}
-                className={`overflow-hidden rounded-[20px] border-0 shadow-none md:h-[300px] lg:h-[342px] ${card.bg}`}
+                className="md:h-[420px] lg:h-[380px]"
               >
-                <CardContent className="h-full p-0">
-                  <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
-                    {!card.reverse && (
-                      <img
-                        className="h-[240px] w-full object-cover md:h-full"
-                        alt="Img"
-                        src={card.image}
-                      />
-                    )}
+                <Card
+                  data-work-card-surface
+                  className={`work-card-scroll-progress h-full overflow-hidden rounded-[20px] border-0 shadow-none ${card.bg}`}
+                >
+                  <CardContent className="h-full p-0">
+                    <div className="grid h-full items-stretch gap-0 md:grid-cols-2">
+                      {!card.reverse && (
+                        <img
+                          className="h-[240px] w-full object-cover md:h-full md:min-h-0"
+                          alt={card.title}
+                          loading="lazy"
+                          decoding="async"
+                          src={card.image}
+                        />
+                      )}
 
-                    <div
-                      className="flex h-full flex-col items-start justify-center gap-5 p-6 md:p-10 lg:px-[54px]"
-                    >
-                      <h3
-                        className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.05] md:text-[38px] lg:text-[40px] ${card.titleColor}`}
+                      <div
+                        data-work-card-copy
+                        className="work-card-scroll-copy flex h-full flex-col items-start justify-center gap-5 p-6 text-left md:min-h-0 md:p-10 lg:px-[54px]"
                       >
-                        {card.title}
-                      </h3>
-                      <p
-                        className={`[font-family:'Inter',Helvetica] text-base font-normal leading-6 md:text-lg md:leading-7 ${card.bodyColor}`}
-                      >
-                        {card.description}
-                      </p>
+                        <h3
+                          className={`[font-family:'Playfair_Display',Helvetica] text-[32px] font-bold leading-[1.15] tracking-normal md:text-[40px] ${card.titleColor}`}
+                        >
+                          {card.title}
+                        </h3>
+                        <p
+                          className={`[font-family:'Inter',Helvetica] text-base font-normal leading-[1.6] tracking-normal md:text-lg ${card.bodyColor}`}
+                        >
+                          {card.description}
+                        </p>
+                      </div>
+                      {card.reverse && (
+                        <img
+                          className="h-[240px] w-full object-cover md:h-full md:min-h-0"
+                          alt={card.title}
+                          loading="lazy"
+                          decoding="async"
+                          src={card.image}
+                        />
+                      )}
                     </div>
-                    {card.reverse && (
-                      <img
-                        className="h-[240px] w-full object-cover md:h-full"
-                        alt="Img"
-                        src={card.image}
-                      />
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
-          <div className="mt-9 flex justify-center">
-            <Button asChild className="h-auto rounded-lg bg-[#7587ac] px-5 py-3.5 text-white hover:bg-[#6c7ea0]">
-              <Link href="/fund-a-farm">Fund A Farm<img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" /></Link>
+          <div
+            data-scroll-reveal
+            data-scroll-reveal-sequence
+            className="mt-9 flex justify-center"
+          >
+            <Button
+              asChild
+              arrowMotion
+              className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
+            >
+              <Link href="/fund-a-farm">
+                <span>Fund A Farm</span>
+                <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
+              </Link>
             </Button>
           </div>
         </section>
-        <section className="px-4 py-12 md:px-[39px] md:py-16">
-          <div className="relative mx-auto max-w-[1372px] overflow-hidden rounded-lg">
+        <NewsletterSection
+          imageAlt="Cornfield with farm buildings"
+          imageSrc="/figmaAssets/cornfield_farm.webp"
+          overlayColor="#827B3E"
+        />
+        <section className="overflow-hidden py-12 md:pb-[160px] md:pt-[128px]">
+          <div
+            ref={parallaxPairRef}
+            data-scroll-reveal-anchor
+            className="edge-image-pair edge-image-pair--images edge-image-pair--large-right grid-cols-1 items-start"
+          >
             <img
-              className="absolute inset-0 h-full w-full object-cover"
-              alt="Rectangle"
-              src="/figmaAssets/rectangle-90.webp"
-            />
-            <div className="absolute inset-0 bg-[#4a4526] opacity-80 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="relative z-10 grid gap-10 px-6 py-10 md:px-[83px] md:py-[74px] lg:grid-cols-[minmax(0,1fr)_minmax(360px,500px)]">
-              <div>
-                <h2 className="max-w-[642px] [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-white md:text-[52px]">
-                  Sign up for Our Newsletter &amp; See What&apos;s Growing
-                </h2>
-                <p className="mt-6 max-w-[529px] [font-family:'Inter',Helvetica] text-base font-normal leading-6 text-white">
-                  We cover projects, farmers, policy shifts, and the latest
-                  thinking on building a more resilient food system.
-                </p>
-              </div>
-              <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
-                  <Input
-                    name="email"
-                    type="email"
-                    aria-label="Email address"
-                    required
-                    placeholder="Enter email"
-                    className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                  />
-                  <Button
-                    type="submit"
-                    className="h-[52px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
-                  >
-                    <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
-                    </span>
-                    <img
-                      className="ml-2 h-6 w-6"
-                      alt="Keyboard arrow right"
-                      src="/figmaAssets/keyboard-arrow-right-2.svg"
-                    />
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-        <section className="px-4 py-12 md:px-8 md:pb-[160px] md:pt-[128px]">
-          <div className="mx-auto grid max-w-[1317px] grid-cols-1 items-start gap-8 xl:grid-cols-[406px_603px] xl:justify-between">
-            <img
-              className="h-auto w-full max-w-[406px] rounded-lg object-cover"
-              alt="Rectangle"
-              src="/sourcePhotos/homepage/crops.webp"
-            />
-            <img
-              className="h-auto w-full max-w-[603px] rounded-[8px_0px_0px_8px] object-cover"
-              alt="Rectangle"
+              data-scroll-reveal
+              data-scroll-reveal-baseline
+              className="image-pair-large-reveal edge-image-pair-large rounded-lg lg:col-start-2 lg:row-start-1"
+              alt="Farmer carrying freshly harvested vegetables"
+              loading="lazy"
+              decoding="async"
               src="/sourcePhotos/homepage/vegetable-crate.webp"
             />
+            <div
+              ref={parallaxSmallImageRef}
+              className="edge-image-pair-small will-change-transform lg:col-start-1 lg:row-start-1"
+            >
+              <img
+                className="h-full w-full rounded-lg object-cover"
+                alt="Rows of crops stretching toward the horizon"
+                loading="lazy"
+                decoding="async"
+                src="/sourcePhotos/homepage/crops.webp"
+              />
+            </div>
           </div>
-          <div className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]">
+          <div data-scroll-reveal-sequence className="px-4 md:px-8">
+            <div
+              data-scroll-reveal
+              className="mx-auto mt-12 max-w-[790px] overflow-hidden md:mt-[128px]"
+            >
             <div
               className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -482,8 +773,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="mx-auto mt-8 flex w-fit items-center gap-[9px]">
+            </div>
+            <div className="mx-auto mt-8 flex w-fit items-center gap-[9px]">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -503,24 +794,32 @@ export const HomepageWhite = (): JSX.Element => {
                 />
               </button>
             ))}
-          </div>
-          <div className="mx-auto mt-16 max-w-[844px] md:mt-24">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.05] text-[#5e4540] md:text-[52px]">
-              Led by the People Who Built Organic Agriculture
-            </h2>
-          </div>
-          <p className="mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-7 text-[#5e4540]">
-            The people running Better Farms helped define organic standards,
-            build national brands, and advise the USDA. They&apos;re putting
-            that expertise to work for the farms that need it most.
-          </p>
-          <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
+            </div>
+            <div data-scroll-reveal-sequence>
+              <div
+                data-scroll-reveal
+                className="mx-auto mt-16 max-w-[844px] md:mt-24"
+              >
+                <h2 className="desktop-text-balance text-center [font-family:'Playfair_Display',Helvetica] text-[38px] font-bold leading-[1.15] tracking-normal text-[#5e4540] md:text-[52px] md:leading-[1.1]">
+                Led by the People Who Built Organic Agriculture
+              </h2>
+              </div>
+              <p
+                data-scroll-reveal
+                className="desktop-text-balance mx-auto mt-8 max-w-[846px] text-center [font-family:'Inter',Helvetica] text-lg font-normal leading-[1.6] tracking-normal text-[#5e4540]"
+              >
+              The people running Better Farms helped define organic standards,
+              build national brands, and advise the USDA. They&apos;re putting
+              that expertise to work for the farms that need it most.
+              </p>
+              <div className="mx-auto mt-12 grid max-w-[1077px] gap-6 md:grid-cols-3">
             {teamCards.map((member, index) => (
               <article
                 key={`${member.name}-${index}`}
                 role="button"
                 tabIndex={0}
                 data-testid={`card-team-member-${index}`}
+                data-scroll-reveal
                 onClick={() => setSelectedMember(member)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -528,136 +827,66 @@ export const HomepageWhite = (): JSX.Element => {
                     setSelectedMember(member);
                   }
                 }}
-                className="flex cursor-pointer flex-col"
+                className="group flex cursor-pointer flex-col"
               >
-                <div className="relative overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl md:aspect-auto">
                   <img
-                    className={`w-full object-cover grayscale ${index === 1 ? "h-[375px]" : "h-[303px]"}`}
-                    alt="Rectangle"
+                    className={`h-full w-full object-cover grayscale transition-transform duration-300 ease-out group-hover:scale-[1.08] ${index === 1 ? "md:h-[375px]" : "md:h-[303px]"}`}
+                    alt={`${member.name} portrait`}
+                    loading="lazy"
+                    decoding="async"
                     src={member.image}
                   />
                   <div
-                    className={`absolute inset-0 rounded-2xl mix-blend-multiply ${member.overlay.replace("/30", "/40")}`}
+                    className="absolute inset-0 rounded-2xl mix-blend-multiply"
+                    style={{ backgroundColor: member.overlay }}
                   />
                 </div>
                 <div className="pt-4">
-                  <h3 className="[font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#5e4540]">
+                  <h3 className="[font-family:'Inter',Helvetica] text-[24px] font-bold leading-[1.25] tracking-normal text-[#5e4540]">
                     {member.name}
                   </h3>
-                  <p className="[font-family:'Inter',Helvetica] text-base font-normal leading-6 text-[#5e4540]">
-                    {member.credential}
-                  </p>
                 </div>
               </article>
             ))}
-          </div>
-          <div className="mt-12 flex justify-center">
+              </div>
+              <div
+                data-scroll-reveal
+                data-scroll-reveal-sequence
+                className="mt-12 flex justify-center"
+              >
             <Button
               asChild
+              arrowMotion
               data-testid="button-meet-the-team"
-              className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[19px] text-white hover:bg-[#6c7ea0]"
+              className="h-auto rounded-lg bg-[#7587ac] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#6c7ea0]"
             >
               <Link href="/about#team">
-                <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
+                <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                   Meet The Team
                 </span>
                 <img
                   className="ml-2 h-6 w-6"
-                  alt="Keyboard arrow right"
+                  alt=""
+                  aria-hidden="true"
                   src="/figmaAssets/keyboard-arrow-right-2.svg"
                 />
               </Link>
             </Button>
-          </div>
-        </section>
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-x-0 top-0 z-10 h-[245px] bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_100%)]" />
-          <img
-            className="h-[760px] w-full object-cover md:h-[820px]"
-            alt="Rectangle"
-            src="/sourcePhotos/homepage/tractor-spraying.webp"
-          />
-          <div className="absolute inset-x-0 top-0 z-20 px-4 pt-16 md:px-8 md:pt-[78px]">
-            <div className="mx-auto max-w-[875px]">
-              <h2 className="text-center [font-family:'Playfair_Display',Helvetica] text-[44px] font-bold leading-[1.05] text-[#5e4540] md:text-[64px]">
-                Fund a Farm Today
-              </h2>
-              <p className="mx-auto mt-6 max-w-[724px] text-center [font-family:'Inter',Helvetica] text-xl font-normal leading-8 text-[#5e4540] md:text-2xl">
-                <span className="font-bold">
-                  Your contribution can strengthen a farm for decades.{" "}
-                </span>
-                <span>
-                  Put your dollars to work and get proof of what you&apos;ve
-                  built.
-                </span>
-              </p>
-              <div className="mx-auto mt-10 max-w-[997px] rounded-xl bg-white/80 shadow-[0px_4px_10px_#00000040] backdrop-blur-[30px]">
-                <div className="flex flex-col gap-6 p-6 md:px-[55px] md:py-[36px]">
-                  <div className="grid gap-3 lg:grid-cols-[repeat(3,1fr)_1.15fr_170px] lg:items-end" role="group" aria-label="Donation amount">
-                    {donationOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        aria-pressed={selectedDonation === option}
-                        onClick={() => {
-                          setSelectedDonation(option);
-                          setCustomAmount("");
-                        }}
-                        className={`flex h-[58px] items-center justify-center rounded-[10px] border [font-family:'Inter',Helvetica] text-xl font-bold leading-[normal] md:text-2xl ${
-                          selectedDonation === option
-                            ? "border-[#d7d7d7] bg-[#434343] text-white"
-                            : "border-[#bcb9b9] bg-white text-[#434343]"
-                        }`}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                    <div className="relative flex h-[58px] items-center gap-2 rounded-[10px] border border-[#bcb9b9] bg-white px-[18px]">
-                      <span className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap [font-family:'Inter',Helvetica] text-xs font-semibold text-[#5e4540]">Enter Donation</span>
-                      <span className="[font-family:'Inter',Helvetica] text-2xl font-bold leading-[normal] text-[#5e4540]">
-                        $
-                      </span>
-                      <input
-                        id="donation-other-amount"
-                        type="text"
-                        inputMode="numeric"
-                        aria-label="Other donation amount"
-                        placeholder="Other Amount"
-                        value={customAmount}
-                        onChange={(e) => {
-                          setCustomAmount(e.target.value);
-                          if (e.target.value) setSelectedDonation("");
-                        }}
-                        className="w-full bg-transparent [font-family:'Inter',Helvetica] text-lg font-medium text-[#5e4540] outline-none placeholder:text-[#a9a29a]"
-                      />
-                    </div>
-                    <Button
-                      asChild
-                      className="h-[58px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
-                    >
-                      <Link href="/contact">
-                        <span className="[font-family:'Inter',Helvetica] text-lg font-medium">
-                          Donate Now
-                        </span>
-                        <img
-                          className="ml-2 h-6 w-6"
-                          alt=""
-                          src="/figmaAssets/keyboard-arrow-right-2.svg"
-                        />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
               </div>
-              <p className="mx-auto mt-4 max-w-[875px] text-center [font-family:'Inter',Helvetica] text-base font-bold leading-6 text-[#2f2820]">
-                501(c)(3) nonprofit
-                organization&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 100% of your
-                funds go to farm-level work&nbsp;&nbsp; |&nbsp;&nbsp; ESG impact
-                reporting included
-              </p>
             </div>
           </div>
         </section>
+        <div>
+          <DonationSection
+            sectionClassName="pt-16 md:pt-[78px]"
+            imageWrapperClassName="-mt-[114px] md:-mt-[177px]"
+            imageAlt="Tractor applying crop protection in a farm field"
+            imageSrc="/sourcePhotos/homepage/tractor-spraying.webp"
+            headingClassName="[font-family:'Playfair_Display',Helvetica] text-[44px] md:text-[64px]"
+            descriptionClassName="text-xl md:text-2xl"
+          />
+        </div>
       </main>
       <TeamMemberDialog
         member={selectedMember}

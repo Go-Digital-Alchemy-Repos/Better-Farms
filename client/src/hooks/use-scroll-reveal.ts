@@ -1,0 +1,298 @@
+import { useLayoutEffect, type RefObject } from "react";
+
+const revealSelector = "[data-scroll-reveal]";
+const backgroundSelector = "[data-scroll-reveal-background]";
+const sequenceSelector = "[data-scroll-reveal-sequence]";
+const skipSelector = "[data-scroll-reveal-skip]";
+const baselineRevealSelector = "[data-scroll-reveal-baseline]";
+const baselineAnchorSelector = "[data-scroll-reveal-anchor]";
+const sequenceDelayMs = 140;
+const autoSequenceMaximumDelayMs = 560;
+const sameRowTolerancePx = 8;
+const sequenceTargetSelector = `${revealSelector}, ${backgroundSelector}`;
+const autoRevealCandidateSelector = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "p",
+  "blockquote",
+  "li",
+  "article",
+  "form",
+  "figure",
+  "picture",
+  "img",
+  "button",
+  "main a",
+  "footer a",
+  'footer [role="img"]',
+  "footer span",
+].join(", ");
+const autoBackgroundCandidateSelector = [
+  "main section",
+  'main [class*="bg-"]',
+  "footer",
+  'footer [class*="bg-"]',
+].join(", ");
+const groupedRevealSelector = "article, form, figure, picture, li, button, a";
+const transformControlledImageSelector = [
+  ".hero-image-after-title",
+  ".will-change-transform",
+].join(", ");
+const autoRevealExcludedSelector = [
+  '[data-testid="donation-background-image"]',
+  ".hero-load-sequence",
+  ".hero-load-sequence *",
+  ".edge-image-pair--images",
+  ".edge-image-pair--images *",
+].join(", ");
+
+const hasVisibleBackground = (backgroundColor: string): boolean =>
+  backgroundColor !== "transparent" &&
+  backgroundColor !== "rgba(0, 0, 0, 0)";
+
+export const useScrollReveal = (rootRef: RefObject<HTMLElement>): void => {
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    if (root.hasAttribute("data-scroll-reveal-auto")) {
+      root
+        .querySelectorAll<HTMLElement>("main section, footer")
+        .forEach((sequence) => {
+          if (sequence.closest(skipSelector)) return;
+          sequence.setAttribute("data-scroll-reveal-sequence", "");
+          sequence.dataset.scrollRevealAutoSequence = "true";
+        });
+
+      root
+        .querySelectorAll<HTMLElement>(autoRevealCandidateSelector)
+        .forEach((candidate) => {
+          if (!candidate.closest("main, footer")) return;
+          if (candidate.closest(skipSelector)) return;
+          if (candidate.matches(autoRevealExcludedSelector)) return;
+          const revealGroup = candidate.closest<HTMLElement>(
+            "[data-scroll-reveal-group]",
+          );
+          if (revealGroup && revealGroup !== candidate) return;
+          if (
+            candidate.matches("footer span") &&
+            candidate.parentElement?.matches("footer span")
+          ) {
+            return;
+          }
+
+          const groupedParent = candidate.parentElement?.closest(
+            groupedRevealSelector,
+          );
+          if (groupedParent && groupedParent !== candidate) return;
+
+          let revealTarget = candidate;
+          if (
+            candidate instanceof HTMLImageElement &&
+            candidate.matches(transformControlledImageSelector)
+          ) {
+            revealTarget = candidate.parentElement ?? candidate;
+          }
+
+          revealTarget.setAttribute("data-scroll-reveal", "");
+        });
+
+      root
+        .querySelectorAll<HTMLElement>(autoBackgroundCandidateSelector)
+        .forEach((candidate) => {
+          if (candidate.closest(skipSelector)) return;
+          if (
+            candidate.matches(".hero-load-sequence") ||
+            candidate.closest(".hero-load-sequence")
+          ) {
+            return;
+          }
+          if (candidate.closest("[data-scroll-reveal-group]")) return;
+          if (
+            hasVisibleBackground(
+              window.getComputedStyle(candidate).backgroundColor,
+            )
+          ) {
+            candidate.setAttribute("data-scroll-reveal-background", "");
+          }
+        });
+    }
+
+    const elements = Array.from(
+      root.querySelectorAll<HTMLElement>(revealSelector),
+    );
+    const backgroundElements = Array.from(
+      root.querySelectorAll<HTMLElement>(backgroundSelector),
+    );
+
+    elements.forEach((element) => {
+      if (
+        hasVisibleBackground(window.getComputedStyle(element).backgroundColor)
+      ) {
+        backgroundElements.push(element);
+      }
+    });
+
+    const uniqueBackgroundElements = Array.from(new Set(backgroundElements));
+    const observedElements = Array.from(
+      new Set([...elements, ...uniqueBackgroundElements]),
+    );
+    const baselineElements = elements.filter((element) =>
+      element.matches(baselineRevealSelector),
+    );
+    const regularObservedElements = observedElements.filter(
+      (element) => !element.matches(baselineRevealSelector),
+    );
+
+    elements.forEach((element) => {
+      element.classList.add("scroll-reveal-pending");
+    });
+
+    uniqueBackgroundElements.forEach((element) => {
+      const backgroundColor =
+        window.getComputedStyle(element).backgroundColor;
+      if (!hasVisibleBackground(backgroundColor)) return;
+
+      element.style.setProperty(
+        "--scroll-reveal-background",
+        backgroundColor,
+      );
+      element.classList.add("scroll-reveal-background-pending");
+    });
+
+    root
+      .querySelectorAll<HTMLElement>(sequenceSelector)
+      .forEach((sequence) => {
+        const sequenceElements = [
+          ...(sequence.matches(sequenceTargetSelector) ? [sequence] : []),
+          ...Array.from(
+            sequence.querySelectorAll<HTMLElement>(sequenceTargetSelector),
+          ),
+        ]
+          .filter(
+            (element) => element.closest(sequenceSelector) === sequence,
+          )
+          .sort((firstElement, secondElement) => {
+            const firstIsVisible = firstElement.getClientRects().length > 0;
+            const secondIsVisible = secondElement.getClientRects().length > 0;
+
+            if (firstIsVisible !== secondIsVisible) {
+              return firstIsVisible ? -1 : 1;
+            }
+            if (!firstIsVisible) return 0;
+
+            const firstRect = firstElement.getBoundingClientRect();
+            const secondRect = secondElement.getBoundingClientRect();
+            const verticalDifference = firstRect.top - secondRect.top;
+
+            if (Math.abs(verticalDifference) > sameRowTolerancePx) {
+              return verticalDifference;
+            }
+
+            return firstRect.left - secondRect.left;
+          });
+
+        let currentDelay = 0;
+
+        sequenceElements.forEach((element) => {
+          element.style.setProperty(
+            "--scroll-reveal-delay",
+            `${currentDelay}ms`,
+          );
+
+          const nextDelay =
+            currentDelay +
+            (Number.parseFloat(element.dataset.scrollRevealGap ?? "") ||
+              sequenceDelayMs);
+
+          currentDelay =
+            sequence.dataset.scrollRevealAutoSequence === "true"
+              ? Math.min(nextDelay, autoSequenceMaximumDelayMs)
+              : nextDelay;
+        });
+      });
+
+    baselineElements.forEach((element) => {
+      element.style.setProperty("--scroll-reveal-delay", "0ms");
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      observedElements.forEach((element) => {
+        if (element.matches(revealSelector)) {
+          element.classList.add("scroll-reveal-visible");
+        }
+        if (element.classList.contains("scroll-reveal-background-pending")) {
+          element.classList.add("scroll-reveal-background-visible");
+        }
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          if (entry.target.matches(revealSelector)) {
+            entry.target.classList.add("scroll-reveal-visible");
+          }
+          if (
+            entry.target.classList.contains(
+              "scroll-reveal-background-pending",
+            )
+          ) {
+            entry.target.classList.add(
+              "scroll-reveal-background-visible",
+            );
+          }
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.12,
+      },
+    );
+
+    regularObservedElements.forEach((element) => observer.observe(element));
+
+    const baselineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const target = entry.target.querySelector<HTMLElement>(
+            baselineRevealSelector,
+          );
+          if (!target) return;
+
+          target.classList.add("scroll-reveal-visible");
+          if (
+            target.classList.contains("scroll-reveal-background-pending")
+          ) {
+            target.classList.add("scroll-reveal-background-visible");
+          }
+          baselineObserver.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0,
+      },
+    );
+
+    baselineElements.forEach((element) => {
+      const anchor = element.closest<HTMLElement>(baselineAnchorSelector);
+      if (anchor) baselineObserver.observe(anchor);
+    });
+
+    return () => {
+      observer.disconnect();
+      baselineObserver.disconnect();
+    };
+  }, [rootRef]);
+};

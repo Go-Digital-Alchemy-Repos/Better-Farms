@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -22,6 +23,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollRevealPage } from "@/components/ScrollRevealPage";
+import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
 
 const contactSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -38,7 +41,16 @@ const roleOptions = ["Farmer", "Donor", "Corporate Partner", "Foundation", "Othe
 const referralOptions = ["Search", "Social Media", "Word of Mouth", "Event", "Other"];
 
 export const Contact = (): JSX.Element => {
+  const contactImageFrameRef = useRef<HTMLDivElement>(null);
+  const contactImageParallaxRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  useSlowerScrollParallax(
+    contactImageFrameRef,
+    contactImageParallaxRef,
+    0.3,
+    180,
+  );
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
@@ -61,22 +73,22 @@ export const Contact = (): JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-clip bg-white">
+    <ScrollRevealPage className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
       <main>
-        <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 min-[1400px]:grid-cols-[560px_642px] min-[1400px]:gap-[86px] min-[1400px]:pb-[67px] min-[1400px]:pl-[112px] min-[1400px]:pr-0 min-[1400px]:pt-[40px]">
+        <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 md:px-[29px] lg:pt-0 min-[1400px]:grid-cols-[560px_minmax(0,1fr)] min-[1400px]:gap-[86px] min-[1400px]:pb-[67px]">
           <div>
-            <h1 className="max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
+            <h1 className="typography-exempt max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">
               Take the First Step Towards Better Farms
             </h1>
-            <p className="mt-10 max-w-[360px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540]">
+            <p className="mt-10 max-w-[520px] [font-family:'Inter',Helvetica] text-base leading-6 text-[#5e4540] md:text-lg md:leading-[1.5]">
               Every partnership, project, and breakthrough starts with a simple
               conversation. Fill out the form below. Our team will be in touch.
             </p>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 max-w-[552px]">
-                <p className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                <p className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                   Personal Information
                 </p>
                 <div className="mt-3 space-y-4">
@@ -140,7 +152,7 @@ export const Contact = (): JSX.Element => {
                   name="role"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         I am a:
                       </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
@@ -170,7 +182,7 @@ export const Contact = (): JSX.Element => {
                   name="referral"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         How did you hear about Better Farms?
                       </FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
@@ -200,7 +212,7 @@ export const Contact = (): JSX.Element => {
                   name="message"
                   render={({ field }) => (
                     <FormItem className="mt-6">
-                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#3a332b]">
+                      <FormLabel className="[font-family:'Inter',Helvetica] text-sm font-semibold text-[#5e4540]">
                         Leave us a message*
                       </FormLabel>
                       <FormControl>
@@ -218,8 +230,9 @@ export const Contact = (): JSX.Element => {
 
                 <Button
                   type="submit"
+                  arrowMotion
                   data-testid="button-send-message"
-                  className="mt-8 h-auto rounded-lg bg-[#bc623f] px-[20px] py-[14px] text-white hover:bg-[#ab5838]"
+                  className="mt-8 h-auto rounded-lg bg-[#bc623f] pb-[19px] pl-[18px] pr-[14px] pt-[19px] text-white hover:bg-[#ab5838]"
                 >
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                     Send Message
@@ -229,16 +242,28 @@ export const Contact = (): JSX.Element => {
               </form>
             </Form>
           </div>
-          <div className="hidden md:block">
-            <img
-              className="h-[520px] w-full rounded-lg object-cover min-[1400px]:h-[900px]"
-              alt="Two farmers inspecting crops at dusk"
-              src="/sourcePhotos/contact/farmers.webp"
-            />
+          <div
+            ref={contactImageFrameRef}
+            className="relative hidden h-[520px] overflow-hidden rounded-[20px] md:block min-[1400px]:h-[900px]"
+          >
+            <div
+              ref={contactImageParallaxRef}
+              className="absolute inset-x-0 -bottom-[35%] -top-[35%] will-change-transform"
+            >
+              <img
+                className="h-full w-full object-cover"
+                alt="Two farmers inspecting crops at dusk"
+                decoding="async"
+                fetchPriority="high"
+                width="642"
+                height="900"
+                src="/sourcePhotos/contact/farmers.webp"
+              />
+            </div>
           </div>
         </section>
       </main>
       <SiteFooter />
-    </div>
+    </ScrollRevealPage>
   );
 };

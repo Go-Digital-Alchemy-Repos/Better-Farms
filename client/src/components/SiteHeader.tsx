@@ -11,11 +11,31 @@ export const navItems = [
   { label: "CONTACT", href: "/contact" },
 ];
 
-export const SiteHeader = (): JSX.Element => {
+type SiteHeaderProps = {
+  animateOnLoad?: boolean;
+};
+
+export const SiteHeader = ({
+  animateOnLoad = true,
+}: SiteHeaderProps): JSX.Element => {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      setHasScrolled(window.scrollY > 16);
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -40,12 +60,21 @@ export const SiteHeader = (): JSX.Element => {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-transparent bg-white">
+    <header
+      className={`${animateOnLoad ? "site-header-load" : ""} sticky top-0 z-50 border-b border-transparent bg-white transition-shadow duration-300 ${
+        hasScrolled
+          ? "shadow-[0_4px_12px_rgba(94,69,64,0.07)]"
+          : "shadow-none"
+      }`}
+    >
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 lg:py-[6px] xl:px-[37px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img
             className="block h-auto w-[224px] md:w-[200px] xl:w-[240px]"
             alt="Better Farms Foundation"
+            decoding="async"
+            width="341"
+            height="90"
             src="/sourcePhotos/brand/logo.svg"
           />
         </Link>
@@ -58,9 +87,9 @@ export const SiteHeader = (): JSX.Element => {
               key={item.label}
               href={item.href}
               data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-              className={`whitespace-nowrap [font-family:'Inter',Helvetica] text-[13px] font-bold leading-none text-[#5e4540] transition-colors hover:text-[#827b3e] xl:text-[15px] ${
+              className={`relative whitespace-nowrap pb-1 [font-family:'Inter',Helvetica] text-[13px] font-bold leading-none text-[#5e4540] transition-colors duration-300 ease-out after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[#827b3e] after:transition-transform after:duration-300 after:ease-out hover:text-[#827b3e] hover:after:scale-x-100 xl:text-[15px] ${
                 item.href !== "/" && location === item.href
-                  ? "underline underline-offset-4"
+                  ? "primary-nav-link--active"
                   : ""
               }`}
             >
@@ -71,11 +100,12 @@ export const SiteHeader = (): JSX.Element => {
         <div className="flex items-center gap-2">
           <Button
             asChild
+            arrowMotion
             data-testid="button-fund-a-farm-header"
-            className="hidden h-auto whitespace-nowrap rounded-lg bg-[#7587ac] px-3 py-2.5 text-white hover:bg-[#6c7ea0] sm:inline-flex md:px-5"
+            className="hidden h-auto whitespace-nowrap rounded-lg bg-[#7587ac] pb-4 pl-6 pr-[18px] pt-4 text-white hover:bg-[#6c7ea0] sm:inline-flex"
           >
             <Link href="/fund-a-farm">
-              <span className="[font-family:'Inter',Helvetica] text-sm font-medium xl:text-base">
+              <span className="[font-family:'Inter',Helvetica] text-base font-medium">
                 Fund a Farm
               </span>
               <img
@@ -147,6 +177,9 @@ export const SiteHeader = (): JSX.Element => {
             <img
               className="block h-auto w-full"
               alt="Better Farms Foundation"
+              decoding="async"
+              width="341"
+              height="90"
               src="/sourcePhotos/brand/logo.svg"
             />
           </Link>
@@ -192,13 +225,13 @@ export const SiteHeader = (): JSX.Element => {
                 ? `${120 + navItems.length * 60}ms`
                 : "0ms",
             }}
-            className={`mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#7587ac] px-5 py-3.5 [font-family:'Inter',Helvetica] text-base font-medium text-white transition-all duration-500 hover:bg-[#6c7ea0] ${
+            className={`button-arrow-motion mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-[#7587ac] pb-4 pl-6 pr-[18px] pt-4 [font-family:'Inter',Helvetica] text-base font-medium text-white transition-all duration-500 hover:bg-[#6c7ea0] ${
               mobileOpen
                 ? "translate-x-0 opacity-100"
                 : "translate-x-8 opacity-0"
             }`}
           >
-            Fund a Farm
+            <span>Fund a Farm</span>
             <img
               className="h-5 w-5"
               alt=""

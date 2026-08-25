@@ -1,9 +1,10 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Switch, Route, useLocation } from "wouter";
+import { Router as WouterRouter, Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { RouteSeo } from "@/components/RouteSeo";
 const NotFound = lazy(() => import("@/pages/not-found"));
 const HomepageWhite = lazy(() =>
   import("@/pages/HomepageWhite").then((module) => ({ default: module.HomepageWhite })),
@@ -25,6 +26,12 @@ const FundAFarm = lazy(() =>
 );
 const GetInvolved = lazy(() =>
   import("@/pages/GetInvolved").then((module) => ({ default: module.GetInvolved })),
+);
+const BlogIndex = lazy(() =>
+  import("@/pages/BlogIndex").then((module) => ({ default: module.BlogIndex })),
+);
+const BlogArticle = lazy(() =>
+  import("@/pages/BlogArticle").then((module) => ({ default: module.BlogArticle })),
 );
 
 function ScrollToTop() {
@@ -50,19 +57,28 @@ function Router() {
         <Route path="/for-farmers" component={ForFarmers} />
         <Route path="/fund-a-farm" component={FundAFarm} />
         <Route path="/get-involved" component={GetInvolved} />
+        <Route path="/blog" component={BlogIndex} />
+        <Route path="/blog/:slug" component={BlogArticle} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
   );
 }
 
-function App() {
+type AppProps = {
+  initialPath?: string;
+};
+
+function App({ initialPath }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <ScrollToTop />
-        <Router />
+        <WouterRouter ssrPath={initialPath}>
+          <Toaster />
+          <RouteSeo />
+          <ScrollToTop />
+          <Router />
+        </WouterRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
