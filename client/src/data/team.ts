@@ -91,3 +91,15 @@ export const marniKarlin: TeamMember = {
     "• During college basketball season, you don’t want to get between Marni and the television.",
   ],
 };
+
+export const chrisAnderson: TeamMember = {
+  image: "/sourcePhotos/team/chris-anderson.jpeg",
+  name: "Chris Anderson",
+  credential: "President, Sustainable Strategies; Senior Trade Advisor, Organic Trade Association",
+  bio: [
+    "Chris is a lifelong organic foods activist passionate about food and organic agriculture. This passion began at a young age, shaped by growing up around Walnut Acres—one of America’s original organic farms—which played a key role in influencing U.S. agricultural policy and national organic standards.",
+    "Chris currently serves as President of Sustainable Strategies and Senior Trade Advisor for the Organic Trade Association. He advises governments and corporations on navigating global organic standards and expanding international trade opportunities. His work has contributed to gap analyses and strategic planning for U.S. organic equivalency agreements, including those with the European Union and Canada.",
+    "He is an active industry leader and speaker, with appearances at events such as Natural Products Expo, Biofach, and Gulfood. He currently serves on the Board of Directors at PCO (Pennsylvania Certified Organic), where Walnut Acres was first certified.",
+    "Outside of his professional work, Chris is engaged in philanthropy through the Walnut Acres Foundation, which focuses on food security, education, and preserving the legacy of organic agriculture. He and his family also share a passion for global travel and culinary exploration. They are closing in on seeing all 7 Wonders of the World.",
+  ],
+};

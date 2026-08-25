@@ -14,6 +14,7 @@ import { useImagePairParallax } from "@/hooks/use-image-pair-parallax";
 import { useSlowerScrollParallax } from "@/hooks/use-slower-scroll-parallax";
 import {
   bobAnderson,
+  chrisAnderson,
   joeDickson,
   johnFoster,
   marniKarlin,
@@ -76,6 +77,7 @@ const boardMembers: (TeamMember & { overlay: string })[] = [
   { ...bobAnderson, overlay: "rgba(117, 135, 172, 0.30)" },
   { ...joeDickson, overlay: "rgba(130, 123, 62, 0.36)" },
   { ...marniKarlin, overlay: "rgba(188, 98, 63, 0.32)" },
+  { ...chrisAnderson, overlay: "rgba(117, 135, 172, 0.30)" },
 ];
 
 export const AboutUs = (): JSX.Element => {
