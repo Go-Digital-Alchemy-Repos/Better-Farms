@@ -14,6 +14,11 @@ forms, donation behavior, or submission logic.
 - The preview bridge accepts version `1.0` messages only from the exact
   `VITE_CORE_PLATFORM_ADMIN_ORIGIN`, requires the Better Farms stack/route/component identifiers, and
   validates content again before rendering.
+- The public page loads a versioned published-content envelope through its same-origin `/api` route. The
+  server proxies that one public endpoint to `CORE_PLATFORM_API_ORIGIN`, preserves cache headers and ETags,
+  and times out after five seconds. Missing, failed, or invalid responses retain the built-in content.
+- Preview content takes precedence in the trusted admin iframe. Outside preview, only validated published
+  content can replace the built-in fallback.
 
 Run the bounded checks with:
 
@@ -23,5 +28,5 @@ npm run check
 npm run build
 ```
 
-The Puck metadata is an adapter contract for the Core Platform bridge. This slice does not add an editor
-UI, publish content, connect a donation provider, change live data, or deploy the site.
+The Puck metadata is the adapter contract for the Core Platform editor and runtime API. This slice does not
+connect a donation provider, change live data, or deploy the site.

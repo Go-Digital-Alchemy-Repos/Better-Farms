@@ -7,6 +7,7 @@ import {
 } from "./fund-a-farm-content";
 import { betterFarmsPuckRegistry } from "./puck-registry";
 import { parseFundAFarmPreviewMessage } from "./client-site-preview";
+import { fetchPublishedFundAFarmContent } from "./client-site-content";
 
 test("default Fund a Farm content satisfies the editable contract", () => {
   assert.deepEqual(
@@ -113,5 +114,40 @@ test("preview bridge accepts only the trusted origin and exact component contrac
       "https://admin.better-farms.example",
     ),
     null,
+  );
+});
+
+test("published content loader accepts only a valid matching envelope", async () => {
+  const fetcher = async () =>
+    new Response(
+      JSON.stringify({
+        stackId: "better-farms-foundation",
+        routeId: "fund-a-farm",
+        componentKey: "fund-a-farm-page",
+        revision: 4,
+        publishedAt: new Date().toISOString(),
+        content: { ...defaultFundAFarmContent, heading: "Published heading" },
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
+  assert.equal(
+    (await fetchPublishedFundAFarmContent(fetcher as typeof fetch)).heading,
+    "Published heading",
+  );
+});
+
+test("published content loader falls back on API failure and invalid content", async () => {
+  const unavailable = async () => new Response("unavailable", { status: 503 });
+  const invalid = async () =>
+    new Response(JSON.stringify({ content: { heading: "partial" } }), {
+      status: 200,
+    });
+  assert.deepEqual(
+    await fetchPublishedFundAFarmContent(unavailable as typeof fetch),
+    defaultFundAFarmContent,
+  );
+  assert.deepEqual(
+    await fetchPublishedFundAFarmContent(invalid as typeof fetch),
+    defaultFundAFarmContent,
   );
 });
