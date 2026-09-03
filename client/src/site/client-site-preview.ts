@@ -48,6 +48,16 @@ export function useFundAFarmPreview(): FundAFarmContent | null {
     };
 
     window.addEventListener("message", receivePreview);
+    window.parent.postMessage(
+      {
+        type: "core-platform:client-site-preview-ready",
+        protocolVersion: "1.0",
+        clientStackId: "better-farms-foundation",
+        routeId: "fund-a-farm",
+        componentKey: "fund-a-farm-page",
+      },
+      trustedAdminOrigin,
+    );
     return () => window.removeEventListener("message", receivePreview);
   }, []);
 

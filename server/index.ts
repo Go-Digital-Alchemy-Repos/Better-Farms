@@ -4,10 +4,14 @@ import { rateLimit } from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { getTrustedAdminOrigin } from "./preview-security";
 
 const app = express();
 const httpServer = createServer(app);
 const isProduction = process.env.NODE_ENV === "production";
+const trustedAdminOrigin = getTrustedAdminOrigin(
+  process.env.VITE_CORE_PLATFORM_ADMIN_ORIGIN,
+);
 
 app.disable("x-powered-by");
 if (isProduction) app.set("trust proxy", 1);
@@ -19,18 +23,25 @@ app.use(
           directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            styleSrc: [
+              "'self'",
+              "'unsafe-inline'",
+              "https://fonts.googleapis.com",
+            ],
             fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "data:"],
             connectSrc: ["'self'"],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],
             formAction: ["'self'"],
-            frameAncestors: ["'none'"],
+            frameAncestors: trustedAdminOrigin
+              ? ["'self'", trustedAdminOrigin]
+              : ["'none'"],
           },
         }
       : false,
     crossOriginEmbedderPolicy: false,
+    xFrameOptions: trustedAdminOrigin ? false : { action: "deny" },
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   }),
 );
