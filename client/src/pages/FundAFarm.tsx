@@ -8,6 +8,7 @@ import {
   defaultFundAFarmContent,
   type FundAFarmContent,
 } from "@/site/fund-a-farm-content";
+import { useFundAFarmPreview } from "@/site/client-site-preview";
 
 const donationOptions = ["$25", "$30", "$100"];
 
@@ -115,7 +116,10 @@ export const FundAFarmPage = ({
   );
 };
 
-export const FundAFarm = (): JSX.Element => <FundAFarmPage />;
+export const FundAFarm = (): JSX.Element => {
+  const previewContent = useFundAFarmPreview();
+  return <FundAFarmPage content={previewContent ?? defaultFundAFarmContent} />;
+};
 
 function CtaContent({ label }: { label: string }): JSX.Element {
   return (

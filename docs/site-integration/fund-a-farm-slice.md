@@ -11,6 +11,9 @@ forms, donation behavior, or submission logic.
 - `betterFarmsPuckRegistry` publishes the allowed fields and lists locked shell, routing, donation,
   validation, submission, accessibility, responsive, and security behavior. Its renderer validates
   content before constructing the page.
+- The preview bridge accepts version `1.0` messages only from the exact
+  `VITE_CORE_PLATFORM_ADMIN_ORIGIN`, requires the Better Farms stack/route/component identifiers, and
+  validates content again before rendering.
 
 Run the bounded checks with:
 

@@ -6,6 +6,7 @@ import {
   fundAFarmContentSchema,
 } from "./fund-a-farm-content";
 import { betterFarmsPuckRegistry } from "./puck-registry";
+import { parseFundAFarmPreviewMessage } from "./client-site-preview";
 
 test("default Fund a Farm content satisfies the editable contract", () => {
   assert.deepEqual(
@@ -75,5 +76,42 @@ test("Puck metadata exposes content fields while locking site behavior", () => {
       ...defaultFundAFarmContent,
       cta: { label: "Unsafe", target: "javascript:alert(1)" },
     }),
+  );
+});
+
+test("preview bridge accepts only the trusted origin and exact component contract", () => {
+  const message = {
+    type: "core-platform:client-site-preview",
+    protocolVersion: "1.0",
+    clientStackId: "better-farms-foundation",
+    routeId: "fund-a-farm",
+    componentKey: "fund-a-farm-page",
+    revision: 1,
+    content: defaultFundAFarmContent,
+  };
+
+  assert.deepEqual(
+    parseFundAFarmPreviewMessage(
+      message,
+      "https://admin.better-farms.example",
+      "https://admin.better-farms.example",
+    ),
+    defaultFundAFarmContent,
+  );
+  assert.equal(
+    parseFundAFarmPreviewMessage(
+      message,
+      "https://malicious.example",
+      "https://admin.better-farms.example",
+    ),
+    null,
+  );
+  assert.equal(
+    parseFundAFarmPreviewMessage(
+      { ...message, componentKey: "arbitrary-jsx" },
+      "https://admin.better-farms.example",
+      "https://admin.better-farms.example",
+    ),
+    null,
   );
 });
