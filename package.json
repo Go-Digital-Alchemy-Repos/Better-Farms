@@ -8,6 +8,7 @@
     "build": "tsx script/build.ts",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
+    "test:site-contract": "tsx --test client/src/site/*.test.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
