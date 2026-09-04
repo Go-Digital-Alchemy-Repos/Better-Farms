@@ -19,9 +19,10 @@ donation behavior.
   and times out after five seconds. Missing, failed, or invalid responses retain the built-in content.
 - Contact and newsletter submissions use the same-origin API routes declared in the client manifest. The
   server validates only the Core Platform contact and newsletter payloads, then proxies them to the
-  credential-free `CORE_PLATFORM_API_ORIGIN`; browser code does not receive that origin or bypass the
-  site CSP. The routes return a clear `503` until that variable is configured. Configure it only after
-  the client-specific Core form destinations and data-handling approval are complete.
+  client-scoped Core route using the server-only `CORE_PLATFORM_FORM_PROXY_TOKEN`; browser code does not
+  receive that token or the Core origin, and cannot bypass the site CSP. The routes return a clear `503`
+  until the origin and token are configured. Configure them only after the client-specific Core form
+  destinations and data-handling approval are complete.
 - The production server injects route-specific title, description, robots, Open Graph, Twitter, and canonical
   metadata into the application shell. Canonical URLs are emitted only for declared public routes and only
   when `PUBLIC_SITE_ORIGIN` is an approved credential-free HTTPS origin. Client-side navigation keeps those
