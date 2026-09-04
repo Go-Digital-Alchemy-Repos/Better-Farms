@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { applySitePageMetadata } from "@/site/page-metadata";
 const NotFound = lazy(() => import("@/pages/not-found"));
 const HomepageWhite = lazy(() =>
   import("@/pages/HomepageWhite").then((module) => ({ default: module.HomepageWhite })),
@@ -34,6 +35,7 @@ function ScrollToTop() {
     if (!window.location.hash) {
       window.scrollTo(0, 0);
     }
+    applySitePageMetadata(location);
   }, [location]);
 
   return null;

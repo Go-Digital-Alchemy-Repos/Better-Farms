@@ -22,6 +22,10 @@ donation behavior.
   credential-free `CORE_PLATFORM_API_ORIGIN`; browser code does not receive that origin or bypass the
   site CSP. The routes return a clear `503` until that variable is configured. Configure it only after
   the client-specific Core form destinations and data-handling approval are complete.
+- The production server injects route-specific title, description, robots, Open Graph, Twitter, and canonical
+  metadata into the application shell. Canonical URLs are emitted only for declared public routes and only
+  when `PUBLIC_SITE_ORIGIN` is an approved credential-free HTTPS origin. Client-side navigation keeps those
+  tags synchronized; unknown routes are `noindex, nofollow` and have no canonical URL.
 - Preview content takes precedence in the trusted admin iframe. Outside preview, only validated published
   content can replace the built-in fallback.
 
