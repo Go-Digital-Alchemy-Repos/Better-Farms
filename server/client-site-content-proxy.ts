@@ -82,8 +82,14 @@ export async function proxyPlatformFormSubmission(
   req: Request,
   res: Response,
   path: "/api/contact" | "/api/forms/newsletter-signup/submit",
+  options: {
+    corePlatformApiOrigin?: string;
+    fetcher?: typeof fetch;
+  } = {},
 ): Promise<void> {
-  const origin = getCorePlatformApiOrigin(process.env.CORE_PLATFORM_API_ORIGIN);
+  const origin = getCorePlatformApiOrigin(
+    options.corePlatformApiOrigin ?? process.env.CORE_PLATFORM_API_ORIGIN,
+  );
   if (!origin) {
     res.status(503).json({ message: "Form submission is temporarily unavailable." });
     return;
@@ -101,7 +107,7 @@ export async function proxyPlatformFormSubmission(
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
-    const upstream = await fetch(`${origin}${path}`, {
+    const upstream = await (options.fetcher ?? fetch)(`${origin}${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(parsed.data),
