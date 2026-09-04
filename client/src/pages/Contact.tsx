@@ -102,6 +102,7 @@ export const Contact = (): JSX.Element => {
                     name="fullName"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="sr-only">Full name</FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Full Name*"
@@ -120,6 +121,7 @@ export const Contact = (): JSX.Element => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
+                          <FormLabel className="sr-only">Email address</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Email*"
@@ -137,6 +139,7 @@ export const Contact = (): JSX.Element => {
                       name="organization"
                       render={({ field }) => (
                         <FormItem>
+                          <FormLabel className="sr-only">Organization</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Organization"
