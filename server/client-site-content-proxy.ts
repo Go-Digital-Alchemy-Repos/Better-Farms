@@ -49,9 +49,11 @@ export async function proxyFundAFarmContent(
 ): Promise<void> {
   const origin = getCorePlatformApiOrigin(process.env.CORE_PLATFORM_API_ORIGIN);
   if (!origin) {
-    res
-      .status(503)
-      .json({ error: "Published content is temporarily unavailable" });
+    // A site checkout without a configured Core origin intentionally renders its
+    // schema-validated bundled content.  Treat that as an empty publication,
+    // rather than an upstream outage, so the browser does not report a false
+    // failed-resource error during local and isolated review.
+    res.status(204).setHeader("Cache-Control", "no-store").end();
     return;
   }
   const controller = new AbortController();

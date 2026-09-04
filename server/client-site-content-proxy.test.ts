@@ -2,12 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   getCorePlatformApiOrigin,
+  proxyFundAFarmContent,
   proxyPlatformFormSubmission,
 } from "./client-site-content-proxy";
 
 class TestResponse {
   statusCode: number | undefined;
   contentType: string | undefined;
+  cacheControl: string | undefined;
   body: unknown;
 
   status(code: number) {
@@ -17,6 +19,15 @@ class TestResponse {
 
   type(value: string) {
     this.contentType = value;
+    return this;
+  }
+
+  setHeader(name: string, value: string) {
+    if (name.toLowerCase() === "cache-control") this.cacheControl = value;
+    return this;
+  }
+
+  end() {
     return this;
   }
 
@@ -30,6 +41,22 @@ class TestResponse {
     return this;
   }
 }
+
+test("content proxy exposes an empty publication when Core is intentionally unconfigured", async () => {
+  const response = new TestResponse();
+  const previousOrigin = process.env.CORE_PLATFORM_API_ORIGIN;
+  delete process.env.CORE_PLATFORM_API_ORIGIN;
+
+  try {
+    await proxyFundAFarmContent({ get: () => undefined } as Request, response as unknown as Response);
+  } finally {
+    if (previousOrigin === undefined) delete process.env.CORE_PLATFORM_API_ORIGIN;
+    else process.env.CORE_PLATFORM_API_ORIGIN = previousOrigin;
+  }
+
+  assert.equal(response.statusCode, 204);
+  assert.equal(response.cacheControl, "no-store");
+});
 
 test("Core Platform API origin requires HTTPS except for loopback development", () => {
   assert.equal(

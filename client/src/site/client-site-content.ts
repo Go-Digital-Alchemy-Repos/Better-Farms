@@ -26,6 +26,7 @@ export async function fetchPublishedFundAFarmContent(
       "/api/client-site-content/fund-a-farm/fund-a-farm-page",
       { headers: { Accept: "application/json" }, signal },
     );
+    if (response.status === 204) return defaultFundAFarmContent;
     if (!response.ok) return defaultFundAFarmContent;
     const parsed = responseSchema.safeParse(await response.json());
     return parsed.success ? parsed.data.content : defaultFundAFarmContent;
