@@ -19,7 +19,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useNewsletterSignup } from "@/hooks/use-newsletter-signup";
 
 export const HomepageWhite = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
+  const { handleSubmit: handleNewsletterSignup, isSubmitting: isNewsletterSubmitting } =
+    useNewsletterSignup();
   const [selectedDonation, setSelectedDonation] = useState("$30");
   const [customAmount, setCustomAmount] = useState("");
   const [openChallenge, setOpenChallenge] = useState("01");
@@ -419,10 +420,11 @@ export const HomepageWhite = (): JSX.Element => {
                   />
                   <Button
                     type="submit"
+                    disabled={isNewsletterSubmitting}
                     className="h-[52px] rounded-lg bg-[#bc623f] px-[18px] py-0 text-white hover:bg-[#ab5838]"
                   >
                     <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
+                      {isNewsletterSubmitting ? "Subscribing…" : "Subscribe"}
                     </span>
                     <img
                       className="ml-2 h-6 w-6"

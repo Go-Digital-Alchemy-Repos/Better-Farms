@@ -1,4 +1,20 @@
 import type { Request, Response } from "express";
+import { z } from "zod";
+
+const contactSubmissionSchema = z
+  .object({
+    name: z.string().trim().min(1),
+    email: z.string().trim().email(),
+    subject: z.string().trim().min(1),
+    message: z.string().trim().min(1),
+  })
+  .strict();
+
+const newsletterSubmissionSchema = z
+  .object({
+    email: z.string().trim().email(),
+  })
+  .strict();
 
 export function getCorePlatformApiOrigin(
   value: string | undefined,
@@ -57,6 +73,46 @@ export async function proxyFundAFarmContent(
     res
       .status(503)
       .json({ error: "Published content is temporarily unavailable" });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export async function proxyPlatformFormSubmission(
+  req: Request,
+  res: Response,
+  path: "/api/contact" | "/api/forms/newsletter-signup/submit",
+): Promise<void> {
+  const origin = getCorePlatformApiOrigin(process.env.CORE_PLATFORM_API_ORIGIN);
+  if (!origin) {
+    res.status(503).json({ message: "Form submission is temporarily unavailable." });
+    return;
+  }
+
+  const parsed =
+    path === "/api/contact"
+      ? contactSubmissionSchema.safeParse(req.body)
+      : newsletterSubmissionSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ message: "Please review the form and try again." });
+    return;
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    const upstream = await fetch(`${origin}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(parsed.data),
+      signal: controller.signal,
+      redirect: "error",
+    });
+    const responseBody = await upstream.text();
+    res.status(upstream.status);
+    res.type("application/json").send(responseBody);
+  } catch {
+    res.status(503).json({ message: "Form submission is temporarily unavailable." });
   } finally {
     clearTimeout(timeout);
   }

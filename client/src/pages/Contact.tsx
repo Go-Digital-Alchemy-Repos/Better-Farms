@@ -22,6 +22,11 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import {
+  createBetterFarmsContactSubmission,
+  PlatformFormSubmissionError,
+  submitPlatformForm,
+} from "@/site/platform-forms";
 
 const contactSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -52,12 +57,24 @@ export const Contact = (): JSX.Element => {
     },
   });
 
-  const onSubmit = (data: ContactForm) => {
-    toast({
-      title: "Message sent",
-      description: "Thanks for reaching out. Our team will be in touch soon.",
-    });
-    form.reset();
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      const message = await submitPlatformForm(
+        "/api/contact",
+        createBetterFarmsContactSubmission(data),
+      );
+      toast({ title: "Message sent", description: message });
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Message not sent",
+        description:
+          error instanceof PlatformFormSubmissionError
+            ? error.message
+            : "We could not submit your message. Please try again.",
+      });
+    }
   };
 
   return (
@@ -219,10 +236,11 @@ export const Contact = (): JSX.Element => {
                 <Button
                   type="submit"
                   data-testid="button-send-message"
+                  disabled={form.formState.isSubmitting}
                   className="mt-8 h-auto rounded-lg bg-[#bc623f] px-[20px] py-[14px] text-white hover:bg-[#ab5838]"
                 >
                   <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                    Send Message
+                    {form.formState.isSubmitting ? "Sending…" : "Send Message"}
                   </span>
                   <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
                 </Button>

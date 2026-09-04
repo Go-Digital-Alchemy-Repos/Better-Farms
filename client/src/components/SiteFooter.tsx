@@ -99,7 +99,8 @@ const legalDocuments = [
 ];
 
 export const SiteFooter = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
+  const { handleSubmit: handleNewsletterSignup, isSubmitting: isNewsletterSubmitting } =
+    useNewsletterSignup();
 
   return (
     <footer className="overflow-hidden bg-[#5e4540] px-4 py-10 md:px-8 xl:h-[461px] xl:py-1">
@@ -154,11 +155,12 @@ export const SiteFooter = (): JSX.Element => {
                 />
                 <Button
                   type="submit"
+                  disabled={isNewsletterSubmitting}
                   data-testid="button-footer-subscribe"
                   className="h-11 rounded-lg bg-[#7587ac] px-4 py-0 text-[#e6dfc9] hover:bg-[#6c7ea0]"
                 >
                   <span className="[font-family:'Inter',Helvetica] text-sm font-medium">
-                    Subscribe
+                    {isNewsletterSubmitting ? "Subscribing…" : "Subscribe"}
                   </span>
                   <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
                 </Button>

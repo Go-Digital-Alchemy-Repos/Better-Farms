@@ -1,7 +1,7 @@
 # Site Shell and Fund a Farm Integration Slice
 
-This bounded slice establishes the first Better Farms site adapter surface without changing routing,
-forms, donation behavior, or submission logic.
+This bounded slice establishes the first Better Farms site adapter surface without changing routing or
+donation behavior.
 
 - `SiteShell` owns the existing `SiteHeader`, main landmark, and `SiteFooter` composition.
 - `betterFarmsTheme` is the named semantic theme adapter. Components consume its token metadata and
@@ -17,6 +17,11 @@ forms, donation behavior, or submission logic.
 - The public page loads a versioned published-content envelope through its same-origin `/api` route. The
   server proxies that one public endpoint to `CORE_PLATFORM_API_ORIGIN`, preserves cache headers and ETags,
   and times out after five seconds. Missing, failed, or invalid responses retain the built-in content.
+- Contact and newsletter submissions use the same-origin API routes declared in the client manifest. The
+  server validates only the Core Platform contact and newsletter payloads, then proxies them to the
+  credential-free `CORE_PLATFORM_API_ORIGIN`; browser code does not receive that origin or bypass the
+  site CSP. The routes return a clear `503` until that variable is configured. Configure it only after
+  the client-specific Core form destinations and data-handling approval are complete.
 - Preview content takes precedence in the trusted admin iframe. Outside preview, only validated published
   content can replace the built-in fallback.
 

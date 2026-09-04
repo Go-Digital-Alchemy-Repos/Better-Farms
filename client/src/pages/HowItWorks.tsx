@@ -122,7 +122,8 @@ const trackingColumns = [
 ];
 
 export const HowItWorks = (): JSX.Element => {
-  const handleNewsletterSignup = useNewsletterSignup();
+  const { handleSubmit: handleNewsletterSignup, isSubmitting: isNewsletterSubmitting } =
+    useNewsletterSignup();
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
@@ -231,11 +232,12 @@ export const HowItWorks = (): JSX.Element => {
                   />
                   <Button
                     type="submit"
+                    disabled={isNewsletterSubmitting}
                     data-testid="button-newsletter-subscribe"
                     className="h-auto rounded-lg bg-[#7587ac] px-[18px] py-[15px] text-white hover:bg-[#6c7ea0]"
                   >
                     <span className="[font-family:'Inter',Helvetica] text-base font-medium">
-                      Subscribe
+                      {isNewsletterSubmitting ? "Subscribing…" : "Subscribe"}
                     </span>
                     <img className="ml-2 h-5 w-5" alt="" src="/figmaAssets/keyboard-arrow-right-2.svg" />
                   </Button>

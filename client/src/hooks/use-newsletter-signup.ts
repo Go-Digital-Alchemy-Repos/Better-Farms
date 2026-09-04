@@ -1,18 +1,46 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  newsletterSubmissionSchema,
+  PlatformFormSubmissionError,
+  submitPlatformForm,
+} from "@/site/platform-forms";
 
 export function useNewsletterSignup() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  return (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!event.currentTarget.reportValidity()) return;
 
-    toast({
-      title: "Newsletter signup is coming soon",
-      description:
-        "Please use the Contact page to request updates while we finish connecting the mailing list.",
-    });
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const parsed = newsletterSubmissionSchema.safeParse({ email: formData.get("email") });
+    if (!parsed.success) return;
+
+    setIsSubmitting(true);
+    try {
+      const message = await submitPlatformForm(
+        "/api/forms/newsletter-signup/submit",
+        parsed.data,
+      );
+      toast({ title: "Subscription confirmed", description: message });
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Subscription not completed",
+        description:
+          error instanceof PlatformFormSubmissionError
+            ? error.message
+            : "We could not subscribe you right now. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  return { handleSubmit, isSubmitting };
 }
