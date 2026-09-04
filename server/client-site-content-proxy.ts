@@ -16,6 +16,8 @@ const newsletterSubmissionSchema = z
   })
   .strict();
 
+const BETTER_FARMS_STACK_ID = "better-farms-foundation";
+
 export function getCorePlatformApiOrigin(
   value: string | undefined,
 ): string | null {
@@ -84,6 +86,7 @@ export async function proxyPlatformFormSubmission(
   path: "/api/contact" | "/api/forms/newsletter-signup/submit",
   options: {
     corePlatformApiOrigin?: string;
+    corePlatformFormProxyToken?: string;
     fetcher?: typeof fetch;
   } = {},
 ): Promise<void> {
@@ -91,7 +94,20 @@ export async function proxyPlatformFormSubmission(
     options.corePlatformApiOrigin ?? process.env.CORE_PLATFORM_API_ORIGIN,
   );
   if (!origin) {
-    res.status(503).json({ message: "Form submission is temporarily unavailable." });
+    res
+      .status(503)
+      .json({ message: "Form submission is temporarily unavailable." });
+    return;
+  }
+
+  const token = (
+    options.corePlatformFormProxyToken ??
+    process.env.CORE_PLATFORM_FORM_PROXY_TOKEN
+  )?.trim();
+  if (!token) {
+    res
+      .status(503)
+      .json({ message: "Form submission is temporarily unavailable." });
     return;
   }
 
@@ -107,18 +123,31 @@ export async function proxyPlatformFormSubmission(
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
-    const upstream = await (options.fetcher ?? fetch)(`${origin}${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(parsed.data),
-      signal: controller.signal,
-      redirect: "error",
-    });
+    const upstreamPath =
+      path === "/api/contact"
+        ? `/api/client-forms/${BETTER_FARMS_STACK_ID}/contact`
+        : `/api/client-forms/${BETTER_FARMS_STACK_ID}/newsletter-signup`;
+    const upstream = await (options.fetcher ?? fetch)(
+      `${origin}${upstreamPath}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Client-Form-Proxy-Token": token,
+        },
+        body: JSON.stringify(parsed.data),
+        signal: controller.signal,
+        redirect: "error",
+      },
+    );
     const responseBody = await upstream.text();
     res.status(upstream.status);
     res.type("application/json").send(responseBody);
   } catch {
-    res.status(503).json({ message: "Form submission is temporarily unavailable." });
+    res
+      .status(503)
+      .json({ message: "Form submission is temporarily unavailable." });
   } finally {
     clearTimeout(timeout);
   }

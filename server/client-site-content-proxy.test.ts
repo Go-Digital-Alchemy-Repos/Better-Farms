@@ -66,6 +66,7 @@ test("contact proxy forwards only the validated managed-form payload", async () 
     "/api/contact",
     {
       corePlatformApiOrigin: "https://core.example.org",
+      corePlatformFormProxyToken: "test-client-form-proxy-token",
       fetcher: async (url, init) => {
         upstreamUrl = String(url);
         upstreamInit = init;
@@ -77,11 +78,15 @@ test("contact proxy forwards only the validated managed-form payload", async () 
     },
   );
 
-  assert.equal(upstreamUrl, "https://core.example.org/api/contact");
+  assert.equal(
+    upstreamUrl,
+    "https://core.example.org/api/client-forms/better-farms-foundation/contact",
+  );
   assert.equal(upstreamInit?.method, "POST");
   assert.deepEqual(upstreamInit?.headers, {
     "Content-Type": "application/json",
     Accept: "application/json",
+    "X-Client-Form-Proxy-Token": "test-client-form-proxy-token",
   });
   assert.deepEqual(JSON.parse(String(upstreamInit?.body)), {
     name: "Ada Lovelace",
@@ -104,6 +109,7 @@ test("form proxy rejects unexpected payload fields before contacting Core", asyn
     "/api/forms/newsletter-signup/submit",
     {
       corePlatformApiOrigin: "https://core.example.org",
+      corePlatformFormProxyToken: "test-client-form-proxy-token",
       fetcher: async () => {
         contacted = true;
         return new Response();
@@ -113,7 +119,9 @@ test("form proxy rejects unexpected payload fields before contacting Core", asyn
 
   assert.equal(contacted, false);
   assert.equal(response.statusCode, 400);
-  assert.deepEqual(response.body, { message: "Please review the form and try again." });
+  assert.deepEqual(response.body, {
+    message: "Please review the form and try again.",
+  });
 });
 
 test("form proxy reports an unavailable upstream without a false success", async () => {
@@ -125,6 +133,7 @@ test("form proxy reports an unavailable upstream without a false success", async
     "/api/forms/newsletter-signup/submit",
     {
       corePlatformApiOrigin: "https://core.example.org",
+      corePlatformFormProxyToken: "test-client-form-proxy-token",
       fetcher: async () => {
         throw new Error("network unavailable");
       },
@@ -132,5 +141,31 @@ test("form proxy reports an unavailable upstream without a false success", async
   );
 
   assert.equal(response.statusCode, 503);
-  assert.deepEqual(response.body, { message: "Form submission is temporarily unavailable." });
+  assert.deepEqual(response.body, {
+    message: "Form submission is temporarily unavailable.",
+  });
+});
+
+test("form proxy does not contact Core without its server-only token", async () => {
+  const response = new TestResponse();
+  let contacted = false;
+
+  await proxyPlatformFormSubmission(
+    { body: { email: "ada@example.org" } } as Request,
+    response as unknown as Response,
+    "/api/forms/newsletter-signup/submit",
+    {
+      corePlatformApiOrigin: "https://core.example.org",
+      fetcher: async () => {
+        contacted = true;
+        return new Response();
+      },
+    },
+  );
+
+  assert.equal(contacted, false);
+  assert.equal(response.statusCode, 503);
+  assert.deepEqual(response.body, {
+    message: "Form submission is temporarily unavailable.",
+  });
 });
