@@ -6,10 +6,11 @@ function setMetaContent(selector: string, content: string): void {
 }
 
 function getCanonicalOrigin(): string | null {
-  const value = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href;
+  const value = document.head.querySelector<HTMLMetaElement>('meta[name="site-public-origin"]')?.content;
   if (!value) return null;
   try {
-    return new URL(value).origin;
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) ? url.origin : null;
   } catch {
     return null;
   }
@@ -27,7 +28,12 @@ export function applySitePageMetadata(pathname: string): void {
 
   const canonicalOrigin = getCanonicalOrigin();
   const currentCanonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-  if (canonicalOrigin && currentCanonical) {
-    currentCanonical.href = `${canonicalOrigin}${pathname === "/" ? "/" : pathname}`;
+  if (!canonicalOrigin || metadata.robots !== "index, follow") {
+    currentCanonical?.remove();
+    return;
   }
+  const canonical = currentCanonical ?? document.createElement("link");
+  canonical.rel = "canonical";
+  canonical.href = `${canonicalOrigin}${pathname}`;
+  if (!currentCanonical) document.head.appendChild(canonical);
 }

@@ -55,6 +55,12 @@ export function renderSitePageMetadata(
   html = replaceMetaContent(html, 'name="twitter:description"', metadata.description);
   html = html.replace(/\s*<link\s+rel="canonical"[^>]*>/gi, "");
 
+  // Keep configured origin available even on a direct 404 for subsequent SPA navigation.
+  html = html.replace(/\s*<meta\s+name="site-public-origin"[^>]*>/gi, "");
+  if (publicSiteOrigin) {
+    html = html.replace("</head>", `    <meta name="site-public-origin" content="${escapeHtml(publicSiteOrigin)}" >\n  </head>`);
+  }
+
   if (publicSiteOrigin && metadata.robots === "index, follow") {
     const canonicalPath = pathname === "/" ? "/" : pathname;
     const canonical = `${publicSiteOrigin}${canonicalPath}`;

@@ -33,3 +33,12 @@ test("unknown routes are noindex and do not receive a canonical URL", () => {
   assert.match(html, /meta name="robots" content="noindex, nofollow"/);
   assert.doesNotMatch(html, /rel="canonical"/);
 });
+
+
+test("configured origin survives unknown routes without emitting a canonical", () => {
+  const html = renderSitePageMetadata(indexHtml, "/unknown", "https://better-farms.example");
+  assert.match(html, /name="site-public-origin" content="https:\/\/better-farms\.example"/);
+  assert.doesNotMatch(html, /rel="canonical"/);
+  const rerendered = renderSitePageMetadata(html, "/about", null);
+  assert.doesNotMatch(rerendered, /site-public-origin|rel="canonical"/);
+});
