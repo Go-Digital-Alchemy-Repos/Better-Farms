@@ -151,3 +151,14 @@ test("published content loader falls back on API failure and invalid content", a
     defaultFundAFarmContent,
   );
 });
+
+
+test("internal image and CTA paths reject browser host escapes and controls", () => {
+  for (const value of [String.raw`/\example.test/image`, String.raw`/\user:pass@example.test/image`, "/image\u0000.png", "/image\u007f.png"]) {
+    assert.equal(ctaTargetSchema.safeParse(value).success, false);
+    assert.equal(fundAFarmContentSchema.safeParse({
+      ...defaultFundAFarmContent,
+      heroImage: { src: value, alt: "Test image" },
+    }).success, false);
+  }
+});

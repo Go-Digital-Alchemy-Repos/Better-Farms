@@ -3,7 +3,7 @@ import { z } from "zod";
 const sitePathSchema = z
   .string()
   .regex(
-    /^\/(?!\/)[^\s]*$/,
+    /^\/(?!\/)[^\s\\\u0000-\u001f\u007f]*$/,
     "must be an internal site path beginning with one slash",
   );
 
