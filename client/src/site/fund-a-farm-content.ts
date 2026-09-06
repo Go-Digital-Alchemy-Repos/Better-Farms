@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isAllowedHeroImage } from "../../../shared/image-origin-policy";
 
 const sitePathSchema = z
   .string()
@@ -26,28 +27,39 @@ const httpsUrlSchema = z.string().superRefine((value, context) => {
 
 export const ctaTargetSchema = z.union([sitePathSchema, httpsUrlSchema]);
 
-const imageSchema = z
-  .object({
-    src: z.union([sitePathSchema, httpsUrlSchema]),
-    alt: z.string().trim().min(1, "image alt text is required").max(240),
-  })
-  .strict();
+const imageSchema = (adminOrigin?: string) =>
+  z
+    .object({
+      src: z
+        .string()
+        .refine(
+          (value) => isAllowedHeroImage(value, adminOrigin),
+          "must be an internal path or an image from the configured Core HTTPS origin",
+        ),
+      alt: z.string().trim().min(1, "image alt text is required").max(240),
+    })
+    .strict();
 
-export const fundAFarmContentSchema = z
-  .object({
-    heading: z.string().trim().min(1).max(120),
-    introductionLead: z.string().trim().min(1).max(240),
-    introductionBody: z.string().trim().min(1).max(400),
-    cta: z
-      .object({
-        label: z.string().trim().min(1).max(80),
-        target: ctaTargetSchema,
-      })
-      .strict(),
-    impactStatement: z.string().trim().min(1).max(400),
-    heroImage: imageSchema,
-  })
-  .strict();
+export const createFundAFarmContentSchema = (adminOrigin?: string) =>
+  z
+    .object({
+      heading: z.string().trim().min(1).max(120),
+      introductionLead: z.string().trim().min(1).max(240),
+      introductionBody: z.string().trim().min(1).max(400),
+      cta: z
+        .object({
+          label: z.string().trim().min(1).max(80),
+          target: ctaTargetSchema,
+        })
+        .strict(),
+      impactStatement: z.string().trim().min(1).max(400),
+      heroImage: imageSchema(adminOrigin),
+    })
+    .strict();
+
+export const fundAFarmContentSchema = createFundAFarmContentSchema(
+  import.meta.env?.VITE_CORE_PLATFORM_ADMIN_ORIGIN,
+);
 
 export type FundAFarmContent = z.infer<typeof fundAFarmContentSchema>;
 

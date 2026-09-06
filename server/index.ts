@@ -5,6 +5,7 @@ import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 import { getTrustedAdminOrigin } from "./preview-security";
+import { heroImageSources } from "../shared/image-origin-policy";
 
 const app = express();
 const httpServer = createServer(app);
@@ -29,7 +30,9 @@ app.use(
               "https://fonts.googleapis.com",
             ],
             fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
-            imgSrc: ["'self'", "data:"],
+            imgSrc: heroImageSources(
+              process.env.VITE_CORE_PLATFORM_ADMIN_ORIGIN,
+            ),
             connectSrc: ["'self'"],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],

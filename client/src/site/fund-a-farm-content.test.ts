@@ -1,7 +1,12 @@
+import {
+  heroImageSources,
+  getTrustedImageOrigin,
+} from "../../../shared/image-origin-policy";
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
   ctaTargetSchema,
+  createFundAFarmContentSchema,
   defaultFundAFarmContent,
   fundAFarmContentSchema,
 } from "./fund-a-farm-content";
@@ -152,13 +157,90 @@ test("published content loader falls back on API failure and invalid content", a
   );
 });
 
-
 test("internal image and CTA paths reject browser host escapes and controls", () => {
-  for (const value of [String.raw`/\example.test/image`, String.raw`/\user:pass@example.test/image`, "/image\u0000.png", "/image\u007f.png"]) {
+  for (const value of [
+    String.raw`/\example.test/image`,
+    String.raw`/\user:pass@example.test/image`,
+    "/image\u0000.png",
+    "/image\u007f.png",
+  ]) {
     assert.equal(ctaTargetSchema.safeParse(value).success, false);
-    assert.equal(fundAFarmContentSchema.safeParse({
-      ...defaultFundAFarmContent,
-      heroImage: { src: value, alt: "Test image" },
-    }).success, false);
+    assert.equal(
+      fundAFarmContentSchema.safeParse({
+        ...defaultFundAFarmContent,
+        heroImage: { src: value, alt: "Test image" },
+      }).success,
+      false,
+    );
   }
+});
+
+test("hero images require the exact configured Core HTTPS origin and preserve local paths", () => {
+  const origin = "https://dashboard.better-farms.example";
+  const schema = createFundAFarmContentSchema(origin);
+  for (const src of [
+    "/image.webp",
+    `${origin}/r2/clients/better-farms/uploads/image.webp`,
+  ]) {
+    assert.equal(
+      schema.safeParse({
+        ...defaultFundAFarmContent,
+        heroImage: { src, alt: "Farm" },
+      }).success,
+      true,
+    );
+  }
+  for (const src of [
+    "https://dashboard.better-farms.example.evil.test/a",
+    `${origin}:444/a`,
+    "https://user:pass@dashboard.better-farms.example/a",
+    "http://dashboard.better-farms.example/a",
+    "https://other.example/a",
+    String.raw`https://dashboard.better-farms.example\image`,
+    String.raw`/\evil.test/a`,
+    "/image\u0000.png",
+    "https://dashboard.better-farms.example/\u007fa",
+  ]) {
+    assert.equal(
+      schema.safeParse({
+        ...defaultFundAFarmContent,
+        heroImage: { src, alt: "Farm" },
+      }).success,
+      false,
+      src,
+    );
+  }
+  assert.deepEqual(heroImageSources(origin), ["'self'", "data:", origin]);
+  assert.equal(
+    createFundAFarmContentSchema().safeParse({
+      ...defaultFundAFarmContent,
+      heroImage: { src: `${origin}/a`, alt: "Farm" },
+    }).success,
+    false,
+  );
+});
+
+test("invalid configured image origins fail closed and build/runtime disagreement cannot widen acceptance", () => {
+  for (const origin of [
+    undefined,
+    "https://*.example",
+    "https://HOST.example",
+    "https://host.example/",
+    "https://host.example:443",
+    "http://127.0.0.1:5000",
+    "https://user:pass@host.example",
+  ]) {
+    assert.equal(getTrustedImageOrigin(origin), null);
+    assert.deepEqual(heroImageSources(origin), ["'self'", "data:"]);
+  }
+  const built = createFundAFarmContentSchema("https://build.example");
+  const runtimeSources = heroImageSources("https://runtime.example");
+  assert.equal(
+    built.safeParse({
+      ...defaultFundAFarmContent,
+      heroImage: { src: "https://runtime.example/a", alt: "Farm" },
+    }).success,
+    false,
+  );
+  assert.equal(runtimeSources.includes("https://build.example"), false);
 });
