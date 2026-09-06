@@ -16,21 +16,69 @@ export const SiteHeader = (): JSX.Element => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     if (mobileOpen) {
-      const firstLink = drawerRef.current?.querySelector("a");
+      const drawer = drawerRef.current;
+      const trigger = menuButtonRef.current;
+      const backdrop = backdropRef.current;
+      if (!drawer || !trigger || !backdrop) return;
+      const firstLink = drawer.querySelector("a");
       firstLink?.focus();
-      const onKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-          setMobileOpen(false);
-          menuButtonRef.current?.focus();
+      // Make background branches inert without disabling the drawer, its close
+      // trigger, or the clickable backdrop. Restore their original state on close.
+      const protectedElements = [drawer, trigger, backdrop];
+      const background: Array<{ element: HTMLElement; inert: boolean }> = [];
+      const disableBackground = (parent: HTMLElement) => {
+        for (const child of Array.from(parent.children)) {
+          if (!(child instanceof HTMLElement)) continue;
+          if (protectedElements.includes(child)) continue;
+          if (protectedElements.some((element) => child.contains(element))) {
+            disableBackground(child);
+          } else {
+            background.push({ element: child, inert: child.inert });
+            child.inert = true;
+          }
         }
       };
+      disableBackground(document.body);
+      const focusable = () => [
+        trigger,
+        ...Array.from(drawer.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )),
+      ].filter((element) => element.getClientRects().length > 0);
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setMobileOpen(false);
+          trigger.focus();
+        } else if (e.key === "Tab") {
+          const elements = focusable();
+          const index = elements.indexOf(document.activeElement as HTMLElement);
+          if (index < 0 || (e.shiftKey ? index === 0 : index === elements.length - 1)) {
+            e.preventDefault();
+            (e.shiftKey ? elements.at(-1) : elements[0])?.focus();
+          }
+        }
+      };
+      const onFocus = (e: FocusEvent) => {
+        if (e.target instanceof Node && e.target !== trigger && !drawer.contains(e.target)) {
+          firstLink?.focus();
+        }
+      };
+      const desktop = window.matchMedia("(min-width: 1024px)");
+      const onDesktop = () => { if (desktop.matches) setMobileOpen(false); };
       document.addEventListener("keydown", onKeyDown);
+      document.addEventListener("focusin", onFocus);
+      desktop.addEventListener("change", onDesktop);
       return () => {
         document.removeEventListener("keydown", onKeyDown);
+        document.removeEventListener("focusin", onFocus);
+        desktop.removeEventListener("change", onDesktop);
+        for (const { element, inert } of background) element.inert = inert;
         document.body.style.overflow = "";
       };
     }
@@ -114,6 +162,7 @@ export const SiteHeader = (): JSX.Element => {
       </div>
       {/* Backdrop */}
       <div
+        ref={backdropRef}
         aria-hidden="true"
         onClick={() => setMobileOpen(false)}
         className={`fixed inset-0 z-40 bg-[#3c3520]/40 backdrop-blur-[2px] transition-opacity duration-300 lg:hidden ${
