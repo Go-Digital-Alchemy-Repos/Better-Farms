@@ -122,6 +122,19 @@ export async function proxyPlatformFormSubmission(
     return;
   }
 
+  const rawKey = req.headers?.["idempotency-key"];
+  const idempotencyKey = typeof rawKey === "string" ? rawKey.trim() : undefined;
+  if (
+    rawKey !== undefined &&
+    (!idempotencyKey ||
+      idempotencyKey.length > 128 ||
+      !/^[\x21-\x7e]+$/.test(idempotencyKey) ||
+      idempotencyKey.includes(","))
+  ) {
+    res.status(400).json({ message: "Invalid submission retry key." });
+    return;
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
@@ -137,6 +150,7 @@ export async function proxyPlatformFormSubmission(
           "Content-Type": "application/json",
           Accept: "application/json",
           "X-Client-Form-Proxy-Token": token,
+          ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
         },
         body: JSON.stringify(parsed.data),
         signal: controller.signal,

@@ -1,28 +1,32 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useToast } from "@/hooks/use-toast";
 import {
   newsletterSubmissionSchema,
   PlatformFormSubmissionError,
-  submitPlatformForm,
+  createPlatformFormAttempt,
 } from "@/site/platform-forms";
 
 export function useNewsletterSignup() {
   const { toast } = useToast();
+  const attempt = useRef(createPlatformFormAttempt());
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!event.currentTarget.reportValidity()) return;
+    if (attempt.current.isPending || !event.currentTarget.reportValidity())
+      return;
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const parsed = newsletterSubmissionSchema.safeParse({ email: formData.get("email") });
+    const parsed = newsletterSubmissionSchema.safeParse({
+      email: formData.get("email"),
+    });
     if (!parsed.success) return;
 
     setIsSubmitting(true);
     try {
-      const message = await submitPlatformForm(
+      const message = await attempt.current.submit(
         "/api/forms/newsletter-signup/submit",
         parsed.data,
       );

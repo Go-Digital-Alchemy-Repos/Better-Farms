@@ -1,0 +1,13 @@
+# Contact and newsletter retry contract
+
+This change builds on Better Farms site revision `ee14d6746cc14cb4b441eecf6598aaaf0e18e975` and Core's existing client-form proxy endpoints. Contact still maps optional organization, role and referral into the message and uses the fixed website inquiry subject; newsletter still submits only its declared email field. No provider, payload schema or source attribution changes are introduced.
+
+Each mounted contact/newsletter form owns an in-memory attempt controller. After local normalization/validation, a random UUID identifies that endpoint and payload. A failed request, unavailable response or malformed success retains that key for an unchanged-payload retry. Changed normalized payload gets a new key; a valid accepted response clears the attempt so a subsequent intentional submission receives a new key. Concurrent identical submissions share one pending request, and the UI guards duplicate events. A different payload cannot replace an in-flight request.
+
+The browser sends `Idempotency-Key` to the same-origin site endpoint. The server validates an optional nonempty printable key of at most 128 characters, rejecting repeated/comma-joined headers, then forwards it unchanged after trimming. It continues to attach the server-only proxy token and fixed Better Farms stack identifier. Missing keys remain supported for existing callers, with no deduplication guarantee. The proxy never generates replacement keys on retry.
+
+Core deduplicates by managed form ID and key and atomically creates submission effects with a new submission. Its duplicate branch returns the original submission without comparing payloads; therefore key renewal on changed payload is necessary. Core supplies the provenance (`client-stack:better-farms-foundation:contact-proxy` or `newsletter-proxy`), which browser input cannot override. Effect delivery remains at-least-once and is a separate operational concern.
+
+Attempt state lasts only while the form stays mounted. Reloading/navigating away loses the key; no form PII or attempt state is written to browser storage. Error handling retains input. Successful acceptance resets the form. This is receipt reliability, not proof of email/provider delivery or a guarantee across browser reloads.
+
+`npm run test:site-contract` checks unchanged retries after network/503/malformed responses, normalized payload changes, new post-success submissions, pending duplicates, per-form separation, proxy forwarding and invalid header rejection. Real Better Farms → Core database receipt/response-loss verification belongs to the isolated Core pilot browser gate.

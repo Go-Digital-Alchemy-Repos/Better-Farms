@@ -48,9 +48,13 @@ test("content proxy exposes an empty publication when Core is intentionally unco
   delete process.env.CORE_PLATFORM_API_ORIGIN;
 
   try {
-    await proxyFundAFarmContent({ get: () => undefined } as Request, response as unknown as Response);
+    await proxyFundAFarmContent(
+      { get: () => undefined } as Request,
+      response as unknown as Response,
+    );
   } finally {
-    if (previousOrigin === undefined) delete process.env.CORE_PLATFORM_API_ORIGIN;
+    if (previousOrigin === undefined)
+      delete process.env.CORE_PLATFORM_API_ORIGIN;
     else process.env.CORE_PLATFORM_API_ORIGIN = previousOrigin;
   }
 
@@ -196,3 +200,62 @@ test("form proxy does not contact Core without its server-only token", async () 
     message: "Form submission is temporarily unavailable.",
   });
 });
+
+test("form proxy forwards an exact bounded retry key and preserves server-only authorization", async () => {
+  const response = new TestResponse();
+  let headers: Headers | undefined;
+  await proxyPlatformFormSubmission(
+    {
+      headers: { "idempotency-key": "  browser-attempt-1  " },
+      body: { email: "ada@example.org" },
+    } as Request,
+    response as unknown as Response,
+    "/api/forms/newsletter-signup/submit",
+    {
+      corePlatformApiOrigin: "https://core.example.org",
+      corePlatformFormProxyToken: "server-only-token",
+      fetcher: async (_url, init) => {
+        headers = new Headers(init?.headers);
+        return new Response('{"message":"Accepted","submissionId":"receipt"}', {
+          status: 200,
+        });
+      },
+    },
+  );
+  assert.equal(headers?.get("idempotency-key"), "browser-attempt-1");
+  assert.equal(headers?.get("x-client-form-proxy-token"), "server-only-token");
+  assert.equal(response.statusCode, 200);
+  assert.equal(String(response.body).includes("server-only-token"), false);
+});
+
+for (const key of [
+  "",
+  " ",
+  "x".repeat(129),
+  "one,two",
+  ["one", "two"],
+  "bad\tkey",
+]) {
+  test(`invalid retry header is rejected before upstream: ${JSON.stringify(key)}`, async () => {
+    const response = new TestResponse();
+    let calls = 0;
+    await proxyPlatformFormSubmission(
+      {
+        headers: { "idempotency-key": key },
+        body: { email: "ada@example.org" },
+      } as unknown as Request,
+      response as unknown as Response,
+      "/api/forms/newsletter-signup/submit",
+      {
+        corePlatformApiOrigin: "https://core.example.org",
+        corePlatformFormProxyToken: "server-only-token",
+        fetcher: async () => {
+          calls++;
+          return new Response();
+        },
+      },
+    );
+    assert.equal(calls, 0);
+    assert.equal(response.statusCode, 400);
+  });
+}

@@ -35,7 +35,9 @@ export function createBetterFarmsContactSubmission(input: {
   message: string;
 }): ContactSubmission {
   const context = [
-    input.organization?.trim() ? `Organization: ${input.organization.trim()}` : null,
+    input.organization?.trim()
+      ? `Organization: ${input.organization.trim()}`
+      : null,
     input.role?.trim() ? `Role: ${input.role.trim()}` : null,
     input.referral?.trim() ? `Referred by: ${input.referral.trim()}` : null,
   ].filter((value): value is string => Boolean(value));
@@ -69,10 +71,15 @@ export async function submitPlatformForm(
   endpoint: "/api/contact" | "/api/forms/newsletter-signup/submit",
   data: ContactSubmission | z.infer<typeof newsletterSubmissionSchema>,
   fetcher: typeof fetch = fetch,
+  idempotencyKey?: string,
 ): Promise<string> {
   const response = await fetcher(endpoint, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
+    },
     body: JSON.stringify(data),
   });
 
@@ -86,4 +93,49 @@ export async function submitPlatformForm(
     throw new PlatformFormSubmissionError();
   }
   return result.data.message;
+}
+
+/** Mounted-form retry state only. No submission data is persisted in browser storage. */
+export function createPlatformFormAttempt(
+  newKey: () => string = () => crypto.randomUUID(),
+) {
+  let attempt: { identity: string; key: string } | undefined;
+  let pending: Promise<string> | undefined;
+  return {
+    get isPending() {
+      return pending !== undefined;
+    },
+    submit(
+      endpoint: "/api/contact" | "/api/forms/newsletter-signup/submit",
+      input: ContactSubmission | z.infer<typeof newsletterSubmissionSchema>,
+      fetcher: typeof fetch = fetch,
+    ): Promise<string> {
+      const data =
+        endpoint === "/api/contact"
+          ? contactSubmissionSchema.parse(input)
+          : newsletterSubmissionSchema.parse(input);
+      const identity = JSON.stringify([endpoint, data]);
+      if (pending) {
+        if (attempt?.identity === identity) return pending;
+        return Promise.reject(
+          new PlatformFormSubmissionError(
+            "Please wait for the current submission to finish.",
+          ),
+        );
+      }
+      if (attempt?.identity !== identity) attempt = { identity, key: newKey() };
+      const current = attempt;
+      // Assign the promise before invoking fetch, including injected synchronous fetchers.
+      pending = Promise.resolve()
+        .then(() => submitPlatformForm(endpoint, data, fetcher, current.key))
+        .then((message) => {
+          attempt = undefined;
+          return message;
+        })
+        .finally(() => {
+          pending = undefined;
+        });
+      return pending;
+    },
+  };
 }

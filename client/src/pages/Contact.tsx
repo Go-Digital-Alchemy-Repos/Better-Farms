@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,7 +26,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   createBetterFarmsContactSubmission,
   PlatformFormSubmissionError,
-  submitPlatformForm,
+  createPlatformFormAttempt,
 } from "@/site/platform-forms";
 
 const contactSchema = z.object({
@@ -44,6 +45,7 @@ const referralOptions = ["Search", "Social Media", "Word of Mouth", "Event", "Ot
 
 export const Contact = (): JSX.Element => {
   const { toast } = useToast();
+  const attempt = useRef(createPlatformFormAttempt());
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
@@ -58,8 +60,9 @@ export const Contact = (): JSX.Element => {
   });
 
   const onSubmit = async (data: ContactForm) => {
+    if (attempt.current.isPending) return;
     try {
-      const message = await submitPlatformForm(
+      const message = await attempt.current.submit(
         "/api/contact",
         createBetterFarmsContactSubmission(data),
       );
