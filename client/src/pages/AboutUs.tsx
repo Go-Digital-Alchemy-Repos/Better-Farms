@@ -88,7 +88,7 @@ export const AboutUs = (): JSX.Element => {
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="px-4 pt-4 md:px-[29px]">
           <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-8 pt-10 md:px-[42px] md:pb-12 md:pt-[88px]">
             <h1 className="mx-auto max-w-[1000px] text-center text-[42px] font-bold leading-[1.05] text-white md:text-[72px] lg:text-[88px] xl:text-[104px]">
@@ -241,14 +241,6 @@ export const AboutUs = (): JSX.Element => {
                 </p>
               </div>
               <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  data-testid="input-newsletter-name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_140px]">
                   <Input
                     name="email"

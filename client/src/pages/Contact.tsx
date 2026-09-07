@@ -83,7 +83,7 @@ export const Contact = (): JSX.Element => {
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="mx-auto grid w-full max-w-[1440px] gap-10 px-4 py-10 min-[1400px]:grid-cols-[560px_642px] min-[1400px]:gap-[86px] min-[1400px]:pb-[67px] min-[1400px]:pl-[112px] min-[1400px]:pr-0 min-[1400px]:pt-[40px]">
           <div>
             <h1 className="max-w-[520px] text-[38px] font-bold leading-[1.08] text-[#5e4540] min-[1400px]:mt-5 md:text-[48px]">

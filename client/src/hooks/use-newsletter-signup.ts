@@ -26,11 +26,14 @@ export function useNewsletterSignup() {
 
     setIsSubmitting(true);
     try {
-      const message = await attempt.current.submit(
+      await attempt.current.submit(
         "/api/forms/newsletter-signup/submit",
         parsed.data,
       );
-      toast({ title: "Subscription confirmed", description: message });
+      toast({
+        title: "Request received",
+        description: "Your newsletter signup request has been received.",
+      });
       form.reset();
     } catch (error) {
       toast({

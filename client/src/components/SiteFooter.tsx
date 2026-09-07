@@ -135,14 +135,6 @@ export const SiteFooter = (): JSX.Element => {
               Sign up for Our Newsletter, See What&apos;s Growing
             </h2>
             <form className="mt-6 space-y-4" onSubmit={handleNewsletterSignup}>
-              <Input
-                name="name"
-                aria-label="Full name"
-                required
-                placeholder="Full Name"
-                data-testid="input-footer-name"
-                className="h-11 rounded-lg border-0 bg-white px-4 [font-family:'Inter',Helvetica] text-sm font-medium text-[#5e4540]"
-              />
               <div className="grid grid-cols-[1fr_122px] gap-[5px]">
                 <Input
                   name="email"
