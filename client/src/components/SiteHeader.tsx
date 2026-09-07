@@ -89,6 +89,13 @@ export const SiteHeader = (): JSX.Element => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-transparent bg-white">
+      <a
+        href="#main-content"
+        onClick={() => document.getElementById("main-content")?.focus()}
+        className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-[100] focus-visible:rounded focus-visible:bg-white focus-visible:px-4 focus-visible:py-3 focus-visible:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+      >
+        Skip to main content
+      </a>
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-4 lg:py-[6px] xl:px-[37px]">
         <Link href="/" className="shrink-0" data-testid="link-home-logo">
           <img

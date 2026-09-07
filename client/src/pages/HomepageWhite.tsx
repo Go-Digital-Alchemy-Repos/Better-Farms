@@ -155,7 +155,7 @@ export const HomepageWhite = (): JSX.Element => {
   return (
     <div className="min-h-screen w-full overflow-x-clip bg-white">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="px-4 pt-4 md:px-[29px] md:pt-4">
           <div className="mx-auto max-w-[1386px] rounded-[20px] bg-[#827b3e] px-4 pb-6 pt-8 md:px-[42px] md:pb-8 md:pt-[58px]">
             <img
@@ -402,13 +402,6 @@ export const HomepageWhite = (): JSX.Element => {
                 </p>
               </div>
               <form className="flex w-full flex-col gap-4 self-center" onSubmit={handleNewsletterSignup}>
-                <Input
-                  name="name"
-                  aria-label="Full name"
-                  required
-                  placeholder="Full Name"
-                  className="h-[52px] rounded-lg border-0 bg-white px-5 [font-family:'Inter',Helvetica] text-base font-medium text-[#5e4540]"
-                />
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_143px]">
                   <Input
                     name="email"
@@ -428,7 +421,8 @@ export const HomepageWhite = (): JSX.Element => {
                     </span>
                     <img
                       className="ml-2 h-6 w-6"
-                      alt="Keyboard arrow right"
+                      alt=""
+                      aria-hidden="true"
                       src="/figmaAssets/keyboard-arrow-right-2.svg"
                     />
                   </Button>
@@ -565,7 +559,8 @@ export const HomepageWhite = (): JSX.Element => {
                 </span>
                 <img
                   className="ml-2 h-6 w-6"
-                  alt="Keyboard arrow right"
+                  alt=""
+                  aria-hidden="true"
                   src="/figmaAssets/keyboard-arrow-right-2.svg"
                 />
               </Link>

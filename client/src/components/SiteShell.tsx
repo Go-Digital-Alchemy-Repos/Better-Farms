@@ -14,7 +14,9 @@ export function SiteShell({ children }: SiteShellProps): JSX.Element {
       data-theme-adapter={betterFarmsTheme.id}
     >
       <SiteHeader />
-      <main>{children}</main>
+      <main id="main-content" tabIndex={-1}>
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );
